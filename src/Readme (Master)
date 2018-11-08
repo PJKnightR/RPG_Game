@@ -1,0 +1,34 @@
+To-do (overall):
+-Start
+-?
+-Finish
+-Profit$$$
+-Microtransactions
+-DLC
+-Actually finish
+
+To-do aka ? (In order of priority):
+-Implement base game class (initiate battles against enemy) (Kellan)
+-Implement base battle class (Patrick & TJ)
+-Implement base actor class (Nathan)
+-Implement base player class (Nathan)
+-Implement base enemy class (Paul & Nathan)
+-Stub methods (Kellan)
+
+-Add different player classes (Knight, Archer, Wizard)
+-Add different enemies
+
+Ideas:
+-Able to do more then just fight enemies with game class (find towns, shops, dungeons, ect)
+-Pets
+-Items
+-Item Shop
+-Power ups/better weapons and armor
+-Background music
+-GUI?!?! (Maybe, no, probably not)
+-Damage types
+-Randomize Enemy stats
+-Miss attacks, critical hits
+-Time cycle
+-Bosses
+-Other Players?
