@@ -1,4 +1,4 @@
 Please note your changes with your name here!!! Keep newer versions at the top.
 
-Version 1.0
+Version 1.0 11/5/18
 -Created empty Actor, Battle, Enemy, Game, Main, and Player Classes (Patrick)
