@@ -17,9 +17,10 @@ To-do aka ? (In order of priority):
 
 -Add different player classes (Knight, Archer, Wizard)
 -Add different enemies
+-Add Critical Hits
 
 Ideas:
--Able to do more then just fight enemies with game class (find towns, shops, dungeons, ect)
+-Able to do more then just fight enemies with game class (find towns, shops, dungeons, spikepits, ect)
 -Pets
 -Items
 -Item Shop
@@ -28,7 +29,7 @@ Ideas:
 -GUI?!?! (Maybe, no, probably not)
 -Damage types
 -Randomize Enemy stats
--Miss attacks, critical hits
+-Missed attacks
 -Time cycle
 -Bosses
 -Other Players?

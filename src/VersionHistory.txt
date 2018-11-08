@@ -1,4 +1,16 @@
 Please note your changes with your name here!!! Keep newer versions at the top.
 
-Version 1.0 11/5/18
+To make versions numbers easier:
+-Add 00.01.000 to number for an update that implements any new features
+-Add 00.00.001 if its just tweaks and bug fixes
+-Unless we make a GUI or something that completely changes the program like that, then it will always remain Version 1.*
+
+
+Version Version # Month/Day/Year
+
+
+Version 1.00.000 11/5/18
 -Created empty Actor, Battle, Enemy, Game, Main, and Player Classes (Patrick)
+-Created the VersionHistory and Readme (Master) documents (Patrick)
+-Added general comments to each class for their general functionality (Patrick)
+-Added specific comments to the battle class regarding the planned methods and their functionality (Patrick)
