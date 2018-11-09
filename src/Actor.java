@@ -1,3 +1,18 @@
+
+import java.util.ArrayList;
+
 abstract public class Actor {
-    //common elements between player and enemy
+	protected String name;
+	protected int health;
+	protected int defense;
+	protected int attack;
+	protected int damage;
+	protected double speed;
+	protected int level;
+	//protected ArrayList<Item> Inventory = new ArrayList<>();
+	//protected String Class;
+
+    /**
+     * Add the basic getBLANK() methods to this class
+     */
 }

@@ -8,6 +8,10 @@ To make versions numbers easier:
 
 Version Version # Month/Day/Year
 
+Version 1.01.00 11/9/18
+-Created the Item Class (Nathan)
+-Added basic statistic values and methods to Actor and Player (Nathan)
+-Misc tweaks to Actor and Player class (Patrick)
 
 Version 1.00.000 11/5/18
 -Created empty Actor, Battle, Enemy, Game, Main, and Player Classes (Patrick)
