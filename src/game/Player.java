@@ -13,39 +13,54 @@ public class Player extends Actor {
      * each class
      */
 
-	//Allows the player to enter a name for their character
+	/**
+	 * This will ask the Player to type in their name.
+	 */
 	public void getName() {
 		Scanner in = new Scanner(IOStream);
 		name = in.next();
 		in.close();
 	}
 	
-	//Sets health at 100
+	/**
+	 * This will set the health of the player. This will change later
+	 */
 	public void setHealth() {
 		health = 100;
 	}
 	
-	
+	/**
+	 * This will set the defense of the player
+	 */
 	public void setDefense() {
 		defense = 100;
 	}
 	
+	/**
+	 * This will set the attack strength of the player's move. Changes based on other stats
+	 */
 	public void setAttack() {
 		attack = 70;
 	}
 	
-	//Damage is calculated in game.Battle
+	/**
+	 * Damage will be changed in Battle
+	 */
 	public void damage() {
 		//damage = (((((2 * level)/5)+2)*power*(attack/defence))/50)+2; 
 		//What would Power be?
 	}
 	
-	//Speed is determined in game.Battle
+	/**
+	 * This will set the speed of the player but will also change in Battle
+	 */
 	public void setSpeed() {
 		speed = 1.0;
 	}
 	
-	//level starts at 1
+	/**
+	 * This will set the Level of the player starting at 1
+	 */
 	public void setLevel() {
 		level = 1;
 	}
@@ -54,7 +69,9 @@ public class Player extends Actor {
 	//Keeps track of Exp to level up with
 	public int Exp;
 	
-	//Checks if Exp is enough to level up.
+	/**
+	 * This will set the check if the player has enough Exp to level up
+	 */
 	public void levelUp(){
 		if (this.Exp > 100) {
 			System.out.println("Level Up!!!");
@@ -64,42 +81,63 @@ public class Player extends Actor {
 	}
 
 	@Override
+	/**
+	 * This will get the health of the player
+	 */
 	protected void getHealth() {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
+	/**
+	 * This will get the health of the player left after an attack is dealt to the player
+	 */
 	protected void getHealthLeft() {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
+	/**
+	 * This will get the health of the player
+	 */
 	protected void getDefence() {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
+	/**
+	 * This will get the health of the player based on other variables
+	 */
 	protected void getAttack() {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
+	/**
+	 * This will get the health of the player based on other variables
+	 */
 	protected void getDamage() {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
+	/**
+	 * This will get the speed of the player
+	 */
 	protected void getSpeed() {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
+	/**
+	 * This will get the level of the player
+	 */
 	protected void getLevel() {
 		// TODO Auto-generated method stub
 		
