@@ -139,7 +139,7 @@ public class Player extends Actor {
 	 * This will get the level of the player
 	 */
 	protected void getLevel() {
-		// TODO Auto-generated method stub
+		
 	}
 	
 	

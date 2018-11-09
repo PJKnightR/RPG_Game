@@ -14,6 +14,7 @@ Version 1.01.00 11/9/18
 -Added basic statistic values and methods to game.Actor and game.Player (Nathan)
 -Added basic methods to Game class (Kellan)
 -Added basic methods to Enemy Class (Paul)
+-Added get methods to Actor (Patrick & Nathan)
 -Misc tweaks to Actor, Player, and Game class (Patrick)
 -Made Item Class abstract and player class not abstract (For now) (Patrick)
 
