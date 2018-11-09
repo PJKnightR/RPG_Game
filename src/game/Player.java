@@ -140,7 +140,6 @@ public class Player extends Actor {
 	 */
 	protected void getLevel() {
 		// TODO Auto-generated method stub
-		
 	}
 	
 	
