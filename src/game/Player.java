@@ -1,3 +1,6 @@
+package game;
+
+import game.Actor;
 
 import java.util.Scanner;
  
@@ -31,13 +34,13 @@ public class Player extends Actor {
 		attack = 70;
 	}
 	
-	//Damage is calculated in Battle
+	//Damage is calculated in game.Battle
 	public void damage() {
 		//damage = (((((2 * level)/5)+2)*power*(attack/defence))/50)+2; 
 		//What would Power be?
 	}
 	
-	//Speed is determined in Battle
+	//Speed is determined in game.Battle
 	public void setSpeed() {
 		speed = 1.0;
 	}

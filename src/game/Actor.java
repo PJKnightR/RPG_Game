@@ -1,3 +1,4 @@
+package game;
 
 import java.util.ArrayList;
 
@@ -9,7 +10,7 @@ abstract public class Actor {
 	protected int damage;
 	protected double speed;
 	protected int level;
-	//protected ArrayList<Item> Inventory = new ArrayList<>();
+	//protected ArrayList<item.Item> Inventory = new ArrayList<>();
 	//protected String Class;
 
     /**

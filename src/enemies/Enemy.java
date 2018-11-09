@@ -1,3 +1,6 @@
+package enemies;
+
+import game.Actor;
 
 abstract public class Enemy extends Actor {
 	
@@ -13,13 +16,13 @@ abstract public class Enemy extends Actor {
 		attack = 50;
 	}
 	
-	//Damage is calculated in Battle
+	//Damage is calculated in game.Battle
 	public void damage() {
 		//damage = (((((2 * level)/5)+2)*power*(attack/defence))/50)+2; 
 		//What would Power be?
 	}
 	
-	//Speed is determined in Battle
+	//Speed is determined in game.Battle
 	public void speed() {
 		speed = 1.0;
 	}

@@ -1,3 +1,5 @@
+package game;
+
 public class Battle {
     /**startBattle()
      * -Initializes values needed to start the battle. Will most likely be where the players current health is imported

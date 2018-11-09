@@ -1,5 +1,6 @@
+package item;
 
-public class Item {
+abstract public class Item {
 	private String name;
 	private int value;
 	private int damage;

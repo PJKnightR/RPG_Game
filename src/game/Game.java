@@ -1,3 +1,4 @@
+package game;
 
 import java.util.Scanner;
 
@@ -44,7 +45,7 @@ public class Game {
 		scan.nextLine();
 		String name = scan.nextLine();
 		
-		//Player PC = new Player(name, 0);
+		//game.Player PC = new game.Player(name, 0);
         Player PC = new Player();
 		return PC;
 	}
