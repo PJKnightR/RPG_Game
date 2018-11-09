@@ -18,7 +18,7 @@ abstract public class Actor {
 	 */
 	protected abstract void getName();
 	/**
-	 * This method gets Health
+	 * THis method gets Health
 	 */
 	protected  void getHealth() {
 		
