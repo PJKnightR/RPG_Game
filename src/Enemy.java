@@ -1,4 +1,3 @@
-package game;
 
 abstract public class Enemy extends Actor {
 	

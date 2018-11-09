@@ -13,6 +13,6 @@ abstract public class Actor {
 	//protected String Class;
 
     /**
-     * Add the basic getBLANK() methods to this class
+     * Add the basic get() methods to this class
      */
 }
