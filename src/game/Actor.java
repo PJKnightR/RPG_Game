@@ -13,23 +13,34 @@ abstract public class Actor {
 	//protected ArrayList<item.Item> Inventory = new ArrayList<>();
 	//protected String Class;
 
-    /**
-     * Add the basic get() methods to this class
-     */
-	
+
 	protected abstract void getName();
 	
-	protected abstract void getHealth();
+	protected  void getHealth() {
+		
+	}
 	
-	protected abstract void getHealthLeft();
+	protected void getHealthLeft() {
+		
+	}
 	
-	protected abstract void getDefence();
+	protected  void getDefence() {
+		
+	}
 	
-	protected abstract void getAttack();
+	protected  void getAttack() {
+		
+	}
 	
-	protected abstract void getDamage();
+	protected  void getDamage() {
+		
+	}
 	
-	protected abstract void getSpeed();
+	protected  void getSpeed() {
+		
+	}
 	
-	protected abstract void getLevel();
+	protected  void getLevel() {
+		
+	}
 }
