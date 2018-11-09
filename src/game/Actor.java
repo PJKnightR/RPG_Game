@@ -4,11 +4,7 @@ import java.util.ArrayList;
 
 abstract public class Actor {
 	protected String name;
-	protected int health;
-	protected int defense;
-	protected int attack;
-	protected int damage;
-	protected double speed;
+	protected double health, defense, attack, speed, health_left;
 	protected int level;
 	//protected ArrayList<item.Item> Inventory = new ArrayList<>();
 	//protected String Class;
@@ -19,17 +15,27 @@ abstract public class Actor {
 	
 	protected abstract void getName();
 	
-	protected abstract void getHealth();
+	protected double getHealth(){
+		return health;
+	}
 	
-	protected abstract void getHealthLeft();
+	protected double getHealthLeft(){
+		return health_left;
+	}
 	
-	protected abstract void getDefence();
+	protected double getDefense(){
+		return defense;
+	}
 	
-	protected abstract void getAttack();
+	protected double getAttack(){
+		return attack;
+	}
 	
-	protected abstract void getDamage();
+	protected double getSpeed(){
+		return speed;
+	}
 	
-	protected abstract void getSpeed();
-	
-	protected abstract void getLevel();
+	protected int getLevel(){
+		return level;
+	}
 }
