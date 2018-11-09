@@ -62,6 +62,48 @@ public class Player extends Actor {
 		}
 		else{};
 	}
+
+	@Override
+	protected void getHealth() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void getHealthLeft() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void getDefence() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void getAttack() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void getDamage() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void getSpeed() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void getLevel() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 }
