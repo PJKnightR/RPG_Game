@@ -5,7 +5,7 @@ public class Battle {
      * -Initializes values needed to start the battle. Will most likely be where the players current health is imported
      *
      * generateEnemy()
-     * -may do this in a separate method somewhere, easier to implement things like bosses, may put in game (unless
+     * -ma do this in a separate method somewhere, easier to implement things like bosses, may put in game (unless
      * fighting more than one enemy at a time is a thing). Will be using the players level in some fashion.
      *
      * playerMove()
