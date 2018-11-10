@@ -33,7 +33,7 @@ abstract public class Enemy extends Actor {
 	
 	//Speed is determined in game.Battle
 	/**
-	 * Sets the speed of the enemy
+	 * Set the speed of the enemy
 	 */
 	public void speed() {
 		speed = 1.0;
