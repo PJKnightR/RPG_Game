@@ -1,9 +1,5 @@
 package game;
 
-import game.Actor;
-
-import java.util.Scanner;
- 
 
 public class Player extends Actor {
 	private static final Readable IOStream = null;

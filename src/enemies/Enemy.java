@@ -3,48 +3,31 @@ package enemies;
 import game.Actor;
 
 abstract public class Enemy extends Actor {
+
 	/**
 	 * Sets the health of the enemy
 	 */
-	public void health() {
-		health = 100;
-	}
+	abstract public void setHealth();
+
 	/**
 	 * Sets the defense stat of the enemy
 	 */
-	public void defence() {
-		defense = 50;
-	}
+	abstract public void setDefense();
+
 	/**
 	 * Sets the attack stat of the enemy
 	 */
-	public void attack() {
-		attack = 50;
-	}
-	
-	//Damage is calculated in game.Battle
+	abstract public void setAttack();
+
 	/**
-	 * Sets the damage stat of a particular attack from the enemy
+	 * Should set the enemy level based on the player level
 	 */
-	public void damage() {
-		//damage = (((((2 * level)/5)+2)*power*(attack/defence))/50)+2; 
-		//What would Power be?
-	}
-	
+	abstract public void setLevel();
+
 	//Speed is determined in game.Battle
 	/**
 	 * Set the speed of the enemy
 	 */
-	public void speed() {
-		speed = 1.0;
-	}
-	
-	// Should set the enemy level based on the player level
-	// Currently sets a base level
-	/**
-	 * Sets the level of the enemy
-	 */
-	public void setLevel() {
-		level = 1;
-	}
+	public void setSpeed() { speed = 1.0; }
+
 }
