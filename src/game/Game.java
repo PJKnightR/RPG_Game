@@ -9,15 +9,18 @@ public class Game {
 	// Variables
 	private String name;
 	private Scanner scan;
+	private Module module;
 	
 	/** Constructor Class
 	 *  This constructor creates a new game.
 	 * @param name Str: name
 	 * @param scan Scanner: to receive user Input.
 	 */
-	public Game (String name, Scanner scan) {
+	public Game (String name, Scanner scan, Module module) {
+		// TODO: Possibly create a new class for handling and storing saves and settings
 		this.name = name;
 		this.scan = scan;
+		this.module = module;
 	}
 	
 	/**
@@ -42,9 +45,23 @@ public class Game {
 	/** Runs the game.
 	 */
 	public void runGame () {
+
+		// TODO: Start of the game
+
+		System.out.println(this.getTitle());
+
+		// TODO: Implement saved game and/or password
+
+		this.createCharacter();
+
+		// TODO: Get Intro text, ect.
+
+		// Begin the main game loop.
 		boolean playing = true;
 		boolean menu = false;
-		
+
+
+		// User Input is gathered first, then the results and consequences are dealt with.
 		while (playing) {
 			System.out.print(" > ");
 			String userInput = scan.next();
@@ -78,8 +95,13 @@ public class Game {
 				} else {
 					System.out.printf("'%s' not recognized.\n", userInput);
 				}
-			} 
-			// TODO: Detect new Input other than menu.
+			}
+
+
+			// TODO: Detect new Input other than menu. (the sort of thing help is designed to show)
+
+			// TODO: Handle Game Events (response to the Input)
+
 			// TODO: Detect game over conditions
 		}
 		System.out.println("\n\t GAME OVER\n\n");
