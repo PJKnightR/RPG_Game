@@ -22,6 +22,7 @@ public class Game {
 	 * 
 	 * @param name of this game
 	 * @param scan to get user input
+	 *             hahaha
 	 */
 	public Game (String name, Scanner scan) {
 		this.name = name;
