@@ -10,19 +10,10 @@ public class Game {
 	private String name;
 	private Scanner scan;
 	
-	/**  Creates a new, basic game
-	 * 
-	 */
-	public Game () {
-		Scanner scan = new Scanner(System.in);
-		this.name = "nameless";
-	}
-	
-	/** Creates a specific, basic game.
-	 * 
-	 * @param name of this game
-	 * @param scan to get user input
-	 *             hahaha
+	/** Constructor Class
+	 *  This constructor creates a new game.
+	 * @param name Str: name
+	 * @param scan Scanner: to receive user Input.
 	 */
 	public Game (String name, Scanner scan) {
 		this.name = name;
@@ -36,23 +27,19 @@ public class Game {
 		return "\n\t" + this.name.toUpperCase() + "\n\n";
 	}
 	
-	/** Gets the parameters for a new character
-	 * 
-	 * @return a new character
+	/** Creates a new character based on userInput.
+	 * @return a new Player object
 	 */
 	private Player createCharacter() {
-		
 		System.out.println("Please enter character name: ");
 		scan.nextLine();
 		String name = scan.nextLine();
-		
 		game.Player PC = new game.Player(name);
         //Player PC = new Player();
 		return PC;
 	}
 	
-	/**
-	 *  Runs the game. 
+	/** Runs the game.
 	 */
 	public void runGame () {
 		boolean playing = true;
@@ -62,25 +49,28 @@ public class Game {
 			System.out.print(" > ");
 			String userInput = scan.next();
 			
-			// as long as the user has no quit the menu, remain in it. 
+			// User is kept in the menu until they exit it.
 			if (userInput.equals("menu") || menu == true) {
-				// Since we want the menu to persist until 
 				
-				// We only want it to print the menu once. 
-				// We can use this catch for both scenarios. 
+				// Print the menu the first time menu is called, or when asked for again.
 				if (menu == false || userInput.equals("menu")) {
-					System.out.print("'c' continue\n'h' help\n's' save\n'q' quit");
+					System.out.println("'c' continue\n'h' help\n's' save\n'q' quit\n'menu' to see this again");
 					menu = true;
 				}
+				// Closes the menu
 				else if (userInput.equals("c")) {
 					menu = false;
 				}
+				// This would bring up the help interface. Such as available commands.
 				else if (userInput.equals("h")) {
+					// TODO create help
 					System.out.println("No one can help you.");
 				}
+				// This would save current data, using a printWriter
 				else if (userInput.equals("s")) {
-					System.out.println("This feature has not yet been implimented.");
+					System.out.println("This feature has not yet been implemented.");
 				}
+				// Ends the game.
 				else if (userInput.equals("q")) {
 					System.out.println("Goodbye.");
 					playing = false;
