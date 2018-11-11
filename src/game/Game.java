@@ -21,7 +21,7 @@ public class Game {
 	/** Creates a specific, basic game.
 	 * 
 	 * @param name of this game
-	 * @param scan to get user inpu
+	 * @param scan to get user input
 	 */
 	public Game (String name, Scanner scan) {
 		this.name = name;
