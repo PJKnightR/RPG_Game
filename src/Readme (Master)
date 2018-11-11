@@ -8,15 +8,13 @@ To-do (overall):
 -Actually finish
 
 To-do aka ? (In order of priority):
--Implement base game class (initiate battles against enemy) (Kellan)
+-Implement base game and main class (initiate battles against enemy) (Kellan)
 -Implement base battle class (Patrick & TJ)
 -Implement base actor class (Nathan)
 -Implement base player class (Nathan)
--Implement base enemy class (Paul & Nathan)
--Stub methods (Kellan)
+-Add different enemies (Paul)
 
 -Add different player classes (Knight, Archer, Wizard)
--Add different enemies
 -Add Critical Hits
 
 Ideas:
@@ -28,7 +26,7 @@ Ideas:
 -Background music
 -GUI?!?! (Maybe, no, probably not)
 -Damage types
--Randomize enemies.Enemy stats
+-Randomize Enemy stats
 -Missed attacks
 -Time cycle
 -Bosses

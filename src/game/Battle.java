@@ -1,6 +1,132 @@
 package game;
 
+import enemies.Enemy;
+import java.util.Scanner;
+
 public class Battle {
+    public Enemy enemy;
+    public Scanner scan = new Scanner(System.in);
+
+    public void startBattle(Player PC){
+        //enemy = generateEnemy();
+        System.out.println("A " + enemy.getName() + " appeared. Engage the " + enemy.getName() + " " + PC.getName());
+        doBattle(PC);
+    }
+
+    //public Enemy generateEnemy(){
+        //waiting for Paul to finish enemy child class
+    //}
+
+    public void doBattle(Player PC){
+        boolean battling = true, playerLoss = false, enemyLoss = false;
+
+        while (battling){
+            playerMove();
+            enemyMove();
+            if (PC.getSpeed() < enemy.getSpeed()){
+                playerAttack();
+                battling = checkEnemyLoss();
+                if (!battling){
+                    enemyLoss = true;
+                }
+                enemyAttack();
+                battling = checkPlayerLoss(PC);
+                if (!battling){
+                    playerLoss = true;
+                }
+            } else if (PC.getSpeed() >= enemy.getSpeed()){
+                enemyAttack();
+                battling = checkPlayerLoss(PC);
+                if (!battling){
+                    playerLoss = true;
+                }
+                playerAttack();
+                battling = checkEnemyLoss();
+                if (!battling){
+                    enemyLoss = true;
+                }
+            }
+
+        }
+
+        if (playerLoss){
+            //game over
+        } else if (enemyLoss){
+            //stuff when you win a fight
+        }
+    }
+
+    public void playerMove(){
+        boolean action = false;
+        String move = "";
+
+        System.out.println("What would you like to do?\n 1. Fight\n 2. Use an item\n 3. Run");
+        while (!action){
+            move = scan.nextLine();
+            if (move.equalsIgnoreCase("1")){
+
+                action = true;
+            } else if (move.equalsIgnoreCase("2")){
+
+                action = true;
+            } else if (move.equalsIgnoreCase("3")){
+                action = true;
+                double run = getChance();
+                if (run > 50){
+                    System.out.print("You escaped from the " + enemy.getName());
+                    //end the battle here
+                } else {
+                    System.out.print("The " + enemy.getName() + " blocks your escape path!");
+                }
+            } else {
+                System.out.println("Please enter a valid move");
+            }
+        }
+    }
+
+    public void enemyMove(){
+
+    }
+
+    public void playerAttack(){
+
+    }
+
+    public void enemyAttack(){
+
+    }
+
+    public void displayHealth(){
+
+    }
+
+    public boolean checkPlayerLoss(Player PC){
+        if (PC.getHealth() > 0){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean checkEnemyLoss(){
+        if (enemy.getHealth() > 0){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void getCriticalHitModifier(){
+
+    }
+
+    private double getChance(){
+        double chance = 1 + Math.random() * (100 - 1);
+        chance = Math.round(chance);
+
+        return chance;
+    }
+
     /**startBattle()
      * -Initializes values needed to start the battle. Will most likely be where the players current health is imported
      *
@@ -33,10 +159,10 @@ public class Battle {
      * displayHealth()
      * -displays the current health of the player and the enemy
      *
-     * checkPlayerLose()
+     * checkPlayerLoss()
      * -makes sure the player is still alive. If not then game over.
      *
-     * checkEnemyLose()
+     * checkEnemyLoss()
      * -makes sure the enemy is still alive. Deals out experience, possible items, ect. Will partially handle level ups.
      *
      * getCriticalHitModifier()

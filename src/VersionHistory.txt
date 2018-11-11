@@ -8,12 +8,20 @@ To make versions numbers easier:
 
 Version Version # Month/Day/Year
 
+Version 1.02.00 11/11/18
+-Added ability to escape from a battle
+-Began implementation of methods within Battle class (Patrick)
+-Reimplementation of get/set methods from player into actor (Patrick)
+-Fixed name implementation for the player (Patrick)
+-Tweaks to most classes (Patrick)
+
 Version 1.01.00 11/9/18
 -Created the Item Class (Nathan)
 -Created packages for items, enemies, and the rest of the game (Patrick)
 -Added basic statistic values and methods to game.Actor and game.Player (Nathan)
 -Added basic methods to Game class (Kellan)
 -Added basic methods to Enemy Class (Paul)
+-Made enemy class abstract in preparation for additional types of enemies (Paul)
 -Added get methods to Actor (Patrick & Nathan)
 -Misc tweaks to Actor, Player, and Game class (Patrick)
 -Made Item Class abstract and player class not abstract (For now) (Patrick)

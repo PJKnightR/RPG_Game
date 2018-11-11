@@ -45,8 +45,8 @@ public class Game {
 		scan.nextLine();
 		String name = scan.nextLine();
 		
-		//game.Player PC = new game.Player(name, 0);
-        Player PC = new Player();
+		game.Player PC = new game.Player(name);
+        //Player PC = new Player();
 		return PC;
 	}
 	

@@ -8,6 +8,10 @@ import java.util.Scanner;
 public class Player extends Actor {
 	private static final Readable IOStream = null;
 
+	public Player(String name){
+		setName(name);
+	}
+
     /**
      * We are going to want initial statistic values set in the constructor for this class and later on in the ones for
      * each class
@@ -16,11 +20,11 @@ public class Player extends Actor {
 	/**
 	 * This will ask the Player to type in their name.
 	 */
-	public void getName() {
-		Scanner in = new Scanner(IOStream);
-		name = in.next();
-		in.close();
-	}
+	//public void getName() {
+		//Scanner in = new Scanner(IOStream);
+		//name = in.next();
+		//in.close();
+	//}
 	
 	/**
 	 * This will set the health of the player. This will change later
@@ -80,11 +84,11 @@ public class Player extends Actor {
 		else{};
 	}
 
-	@Override
+	//@Override
 	/**
 	 * This will get the health of the player
 	 */
-	protected void getHealth() {
+	/*protected void getHealth() {
 		// TODO Auto-generated method stub
 		
 	}
@@ -93,7 +97,7 @@ public class Player extends Actor {
 	/**
 	 * This will get the health of the player left after an attack is dealt to the player
 	 */
-	protected void getHealthLeft() {
+	/*protected void getHealthLeft() {
 		// TODO Auto-generated method stub
 		
 	}
@@ -102,7 +106,7 @@ public class Player extends Actor {
 	/**
 	 * This will get the health of the player
 	 */
-	protected void getDefence() {
+	/*protected void getDefence() {
 		// TODO Auto-generated method stub
 		
 	}
@@ -111,7 +115,7 @@ public class Player extends Actor {
 	/**
 	 * This will get the health of the player based on other variables
 	 */
-	protected void getAttack() {
+	/*protected void getAttack() {
 		// TODO Auto-generated method stub
 		
 	}
@@ -120,7 +124,7 @@ public class Player extends Actor {
 	/**
 	 * This will get the health of the player based on other variables
 	 */
-	protected void getDamage() {
+	/*protected void getDamage() {
 		// TODO Auto-generated method stub
 		
 	}
@@ -129,7 +133,7 @@ public class Player extends Actor {
 	/**
 	 * This will get the speed of the player
 	 */
-	protected void getSpeed() {
+	/*protected void getSpeed() {
 		// TODO Auto-generated method stub
 		
 	}
@@ -138,9 +142,9 @@ public class Player extends Actor {
 	/**
 	 * This will get the level of the player
 	 */
-	protected void getLevel() {
-		
-	}
+	/*protected void getLevel() {
+
+	}*/
 	
 	
 }
