@@ -5,10 +5,11 @@ import java.util.Scanner;
 
 public class Battle {
     public Enemy enemy;
-    public Scanner scan = new Scanner(System.in);
+    public Scanner scan;
 
-    public void startBattle(Player PC){
-        //enemy = generateEnemy();
+    public void startBattle(Player PC, Scanner s){
+        //this.enemy = generateEnemy();
+        this.scan = s;
         System.out.println("A " + enemy.getName() + " appeared. Engage the " + enemy.getName() + " " + PC.getName());
         doBattle(PC);
     }
@@ -23,25 +24,25 @@ public class Battle {
         while (battling){
             playerMove();
             enemyMove();
-            if (PC.getSpeed() < enemy.getSpeed()){
+            if (PC.getSpeed() >= enemy.getSpeed()){
                 playerAttack();
-                battling = checkEnemyLoss();
+                battling = checkEnemyStatus();
                 if (!battling){
                     enemyLoss = true;
                 }
                 enemyAttack();
-                battling = checkPlayerLoss(PC);
+                battling = checkPlayerStatus(PC);
                 if (!battling){
                     playerLoss = true;
                 }
-            } else if (PC.getSpeed() >= enemy.getSpeed()){
+            } else if (PC.getSpeed() < enemy.getSpeed()){
                 enemyAttack();
-                battling = checkPlayerLoss(PC);
+                battling = checkPlayerStatus(PC);
                 if (!battling){
                     playerLoss = true;
                 }
                 playerAttack();
-                battling = checkEnemyLoss();
+                battling = checkEnemyStatus();
                 if (!battling){
                     enemyLoss = true;
                 }
@@ -100,7 +101,7 @@ public class Battle {
 
     }
 
-    public boolean checkPlayerLoss(Player PC){
+    public boolean checkPlayerStatus(Player PC){
         if (PC.getHealth() > 0){
             return true;
         } else {
@@ -108,7 +109,7 @@ public class Battle {
         }
     }
 
-    public boolean checkEnemyLoss(){
+    public boolean checkEnemyStatus(){
         if (enemy.getHealth() > 0){
             return true;
         } else {

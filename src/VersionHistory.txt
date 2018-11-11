@@ -9,8 +9,8 @@ To make versions numbers easier:
 Version Version # Month/Day/Year
 
 Version 1.02.00 11/11/18
--Added ability to escape from a battle
--Began implementation of methods within Battle class (Patrick)
+-Added ability to escape from a battle (Patrick)
+-Began implementation of methods within Battle class (Patrick & TJ)
 -Reimplementation of get/set methods from player into actor (Patrick)
 -Fixed name implementation for the player (Patrick)
 -Tweaks to most classes (Patrick)
