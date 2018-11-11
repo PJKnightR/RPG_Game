@@ -10,7 +10,7 @@ abstract public class Actor {
 	//protected String Class;
 
 	/**
-	 * This method gets Name
+	 * This method gets Nam
 	 */
 	//protected abstract void getName();
 
