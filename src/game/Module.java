@@ -17,6 +17,12 @@ public class Module {
 
     }
 
+    public void getEvent(int index) {
 
+    }
+
+    public void nextEvent() {
+
+    }
 
 }
