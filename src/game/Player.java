@@ -1,8 +1,6 @@
 package game;
 
-
-import attack.genericAttack1;
-import attack.genericAttack2;
+import attack.*;
 
 import java.util.ArrayList;
 
@@ -13,6 +11,9 @@ public class Player extends Actor {
 	public Player(String name){
 		setName(name);
 		setLevel();
+		setAttack();
+		setDefense();
+		setSpeed();
 
 		atts = new ArrayList<>();
 		att = new ArrayList<>();
