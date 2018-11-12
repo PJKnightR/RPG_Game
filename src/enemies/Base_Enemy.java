@@ -6,12 +6,11 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Base_Enemy extends Enemy {
 
     private String diff;
-    private String name;
     private Player player;
 
     public Base_Enemy() {
         diff = "easy";
-        this.setName("Goblin");
+        name = "Goblin";
         player = new Player(getName());
     }
 
