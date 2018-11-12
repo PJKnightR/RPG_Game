@@ -6,6 +6,7 @@ public class Main {
 	 */
 
     public static void main(String[] args) {
-
+		TestGame test = new TestGame();
+		test.battleTest();
     }
 }

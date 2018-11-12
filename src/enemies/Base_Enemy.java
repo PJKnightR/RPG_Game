@@ -11,7 +11,7 @@ public class Base_Enemy extends Enemy {
 
     public Base_Enemy() {
         diff = "easy";
-        name = "Goblin";
+        this.setName("Goblin");
         player = new Player(getName());
     }
 

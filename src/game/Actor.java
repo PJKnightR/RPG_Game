@@ -2,11 +2,16 @@ package game;
 
 //import java.util.ArrayList;
 
+import attack.Attack;
+import java.util.ArrayList;
+
 abstract public class Actor {
     public String name;
     public String e_name;
     public double health, defense, attack, speed, health_left;
     public double level;
+    public ArrayList<Attack> att, atts;
+    public int attLevel [];
     //protected ArrayList<item.Item> Inventory = new ArrayList<>();
     //protected String Class;
 
@@ -48,6 +53,10 @@ abstract public class Actor {
      */
     public double getHealthLeft() {
         return health_left;
+    }
+
+    public void setHealthLeft(double i){
+        health_left = i;
     }
 
     /**

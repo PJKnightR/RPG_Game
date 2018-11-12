@@ -8,20 +8,22 @@ To make versions numbers easier:
 
 Version Version # Month/Day/Year
 
-Version 1.02.01 11/11/18
- - Restructured Game class
-
 Version 1.02.00 11/11/18
+-Created base Attack class and two generic attack classes (Patrick)
+-Created Base_Enemy class as a foundation of future enemy classes (Paul)
+-Created TestGame class as an easy way to test various features within the game (Patrick)
 -Added ability to escape from a battle (Patrick)
--Began implementation of methods within Battle class (Patrick & TJ)
+-Fully implemented player half of battle (Patrick & TJ)
 -Reimplementation of get/set methods from player into actor (Patrick)
 -Fixed name implementation for the player (Patrick)
 -Tweaks to most classes (Patrick)
+-Restructured game class (Kellan)
+-Fixed a bug where the enemies name would not properly appear (Patrick)
 
 Version 1.01.00 11/9/18
 -Created the Item Class (Nathan)
 -Created packages for items, enemies, and the rest of the game (Patrick)
--Added basic statistic values and methods to game.Actor and game.Player (Nathan)
+-Added basic statistic values and methods to Actor and Player (Nathan)
 -Added basic methods to Game class (Kellan)
 -Added basic methods to Enemy Class (Paul)
 -Made enemy class abstract in preparation for additional types of enemies (Paul)

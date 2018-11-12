@@ -89,7 +89,7 @@ public class Game {
 			} else if (playing) {
 				boolean menu = false;
 
-				// If this is a new game
+				/* If this is a new game
 				if (start) {
 					// Create a new Player Character
 					this.PC = createCharacter();
@@ -139,8 +139,8 @@ public class Game {
 
 					// TODO: Handle Game Events (response to the Input)
 
-					// TODO: Detect game over conditions
-				}
+					// TODO: Detect game over conditions*/
+				//}
 				System.out.println("\n\t GAME OVER\n\n");
 			}
 		}
