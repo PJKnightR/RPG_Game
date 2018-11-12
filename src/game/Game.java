@@ -95,18 +95,22 @@ public class Game {
 					// Create a new Player Character
 					this.PC = createCharacter();
 
+					/*
 					System.out.println("There is a goblin in your closet. What do you do?");
 					System.out.println("'g' Give it a cookie" +
 										"\n'f' run away screaming" +
 										"\n'k' kill it");
 
+					*/
 					start = false;
 				}
 
 				System.out.print(" > ");
 				String userInput = scan.next();
 
-				// User is kept in the menu until they exit it.
+				/** This handles the menu, and all interactions within it.
+				 * 		The user stays in the menu unless they continue or exit.
+				 */
 				if (userInput.equals("menu") || menu) {
 
 					// Print the menu the first time menu is called, or when asked for again.
@@ -119,21 +123,21 @@ public class Game {
 						menu = true;
 					}
 					// Closes the menu
-					if (userInput.equals("1")) {
+					else if (userInput.equals("1")) {
 						menu = false;
 					}
 					// This would save current data, using a printWriter
-					if (userInput.equals("2")) {
+					else if (userInput.equals("2")) {
 						//TODO: save
 						System.out.println("This feature has not yet been implemented.");
 					}
 					// This would print out all available options
-					if (userInput.equals("3")) {
+					else if (userInput.equals("3")) {
 						//TODO: help options
 						System.out.println("No one can help you.");
 					}
 					// Ends the game.
-					if (userInput.equals("4")) {
+					else if (userInput.equals("4")) {
 						System.out.println("Returning to main menu.");
 						playing = false;
 						break;
@@ -142,6 +146,37 @@ public class Game {
 					}
 				}
 
+				/** This handles the basic commands in the game.
+				 * 		These actions can trigger events.
+				 */
+
+				if (userInput.equals("inventory")) {
+					System.out.print(PC.printInventory());
+					//TODO let them do anything with it.
+
+				} else if (userInput.equals("me")) {
+					System.out.println("You looked for your qualities left and right, but could not fine them.");
+					//TODO actually give them the stats, you dick
+
+				} else if (userInput.equals("go")) {
+					// TODO: Whenever we are in a room/area, get an arraylist of directions we can go.
+
+					// Get the second part: direction
+					userInput = scan.next();
+					System.out.println("Actually, you can't go anywhere.");
+
+				} else if (userInput.equals("look")) {
+					// TODO: Whenever we are in a room/area, get an arraylist of things in it.
+					userInput = scan.next();
+					System.out.println("That isn't here.");
+
+				} else if (userInput.equals("take")) {
+					// TODO: Whenever we are in a room/area, get an arraylist of things in it.
+					userInput = scan.next();
+					System.out.println("That isn't here.");
+				}
+
+				/*
 				if (userInput.equals("g")) {
 					System.out.println("You don't have a cookie. The goblin is disappointed.");
 					Battle bat = new Battle();
@@ -159,11 +194,7 @@ public class Game {
 				} else {
 					System.out.println("Command not recognized.");
 				}
-
-
-				// TODO: Detect new Input other than menu. (the sort of thing help is designed to show)
-
-				// TODO: Handle Game Events (response to the Input)
+				 */
 
 				// TODO: Detect game over conditions*/
 				// 	System.out.println("\n\t GAME OVER\n\n");

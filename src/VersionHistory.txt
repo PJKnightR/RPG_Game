@@ -19,6 +19,8 @@ Version 1.02.00 11/11/18
 -Tweaks to most classes (Patrick)
 -Restructured game class x2 (Kellan)
 -Fixed a bug where the enemies name would not properly appear (Patrick)
+-Fleshed out Item, Created Weapon child class, added Inventory to Player (Kellan)
+-Added Controls and help to Game (Kellan)
 
 Version 1.01.00 11/9/18
 -Created the Item Class (Nathan)
