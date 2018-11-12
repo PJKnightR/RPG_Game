@@ -1,52 +1,55 @@
 package game;
 
-import enemies.Enemy;
+import enemies.*;
 import java.util.Scanner;
 
 public class Battle {
     public Enemy enemy;
-    public Scanner scan = new Scanner(System.in);
+    public Scanner scan;
+    public int selectedMove;
 
-    public void startBattle(Player PC){
-        //enemy = generateEnemy();
-        System.out.println("A " + enemy.getName() + " appeared. Engage the " + enemy.getName() + " " + PC.getName());
+    public void startBattle(Player PC, Scanner s){
+        this.enemy = generateEnemy();
+        this.scan = s;
+        System.out.println("A " + enemy.getName() + " appeared. Engage the " + enemy.getName() + " " + PC.getName() + "!");
         doBattle(PC);
     }
 
-    //public Enemy generateEnemy(){
-        //waiting for Paul to finish enemy child class
-    //}
+    public Enemy generateEnemy(){
+        return new Base_Enemy();
+    }
 
     public void doBattle(Player PC){
         boolean battling = true, playerLoss = false, enemyLoss = false;
 
         while (battling){
-            playerMove();
+            playerMove(PC);
             enemyMove();
-            if (PC.getSpeed() < enemy.getSpeed()){
-                playerAttack();
-                battling = checkEnemyLoss();
+            if (PC.getSpeed() >= enemy.getSpeed()){
+                enemy.setHealthLeft(enemy.getHealthLeft() - playerAttack(PC));
+                battling = checkEnemyStatus();
                 if (!battling){
+                    System.out.println("You defeated the " + enemy.getName() + "!");
                     enemyLoss = true;
                 }
                 enemyAttack();
-                battling = checkPlayerLoss(PC);
+                battling = checkPlayerStatus(PC);
                 if (!battling){
                     playerLoss = true;
                 }
-            } else if (PC.getSpeed() >= enemy.getSpeed()){
+            } else if (PC.getSpeed() < enemy.getSpeed()){
                 enemyAttack();
-                battling = checkPlayerLoss(PC);
+                battling = checkPlayerStatus(PC);
                 if (!battling){
                     playerLoss = true;
                 }
-                playerAttack();
-                battling = checkEnemyLoss();
+                enemy.setHealthLeft(enemy.getHealthLeft() - playerAttack(PC));
+                battling = checkEnemyStatus();
                 if (!battling){
+                    System.out.println("You defeated the " + enemy.getName() + "!");
                     enemyLoss = true;
                 }
             }
-
         }
 
         if (playerLoss){
@@ -56,21 +59,24 @@ public class Battle {
         }
     }
 
-    public void playerMove(){
+    public void playerMove(Player PC){
         boolean action = false;
-        String move = "";
+        String move;
 
         System.out.println("What would you like to do?\n 1. Fight\n 2. Use an item\n 3. Run");
         while (!action){
             move = scan.nextLine();
             if (move.equalsIgnoreCase("1")){
-
                 action = true;
+                this.selectedMove = selectAttack(PC);
             } else if (move.equalsIgnoreCase("2")){
-
                 action = true;
+                this.selectedMove = 0;
+                System.out.println("This feature is coming soon!");
+                //need to implement items
             } else if (move.equalsIgnoreCase("3")){
                 action = true;
+                this.selectedMove = 0;
                 double run = getChance();
                 if (run > 50){
                     System.out.print("You escaped from the " + enemy.getName());
@@ -84,32 +90,60 @@ public class Battle {
         }
     }
 
-    public void enemyMove(){
+    public int selectAttack(Player PC){
 
+        for(int i = 0; i < PC.att.size(); i++){
+            System.out.print(i + 1 + ". " + PC.att.get(i).getAttackName());
+        }
+        System.out.println("\nEnter -1 to go back");
+
+        int attack = scan.nextInt();
+        if (attack == -1){
+            playerMove(PC);
+        } else if (attack < -2  || attack > PC.att.size() || attack == 0) {
+            System.out.println("Please enter an applicable number!");
+            selectAttack(PC);
+        }
+
+        return attack;
     }
 
-    public void playerAttack(){
+    public void enemyMove(){
+        //random selection of the enemies move
+    }
 
+    public int playerAttack(Player PC){
+        if (selectedMove == 0){
+            return 0;
+        } else {
+            int att = selectedMove - 1;
+            double damage;
+
+            damage = (2 * PC.getLevel() + 10) / 250 * (PC.getAttack() / enemy.getDefense()) * (PC.att.get(att).getPower() + 2);
+            System.out.println("You attack using " + PC.att.get(att).getAttackName() + ". It did " + (int)damage + ".");
+
+            return (int) damage;
+        }
     }
 
     public void enemyAttack(){
-
+        //damage calculation for the enemy and display message for their attack
     }
 
     public void displayHealth(){
 
     }
 
-    public boolean checkPlayerLoss(Player PC){
-        if (PC.getHealth() > 0){
+    public boolean checkPlayerStatus(Player PC){
+        if (PC.getHealthLeft() > 0){
             return true;
         } else {
             return false;
         }
     }
 
-    public boolean checkEnemyLoss(){
-        if (enemy.getHealth() > 0){
+    public boolean checkEnemyStatus(){
+        if (enemy.getHealthLeft() > 0){
             return true;
         } else {
             return false;

@@ -1,30 +1,47 @@
 package game;
 
-import game.Actor;
+import attack.*;
 
-import java.util.Scanner;
- 
+import java.util.ArrayList;
 
 public class Player extends Actor {
 	private static final Readable IOStream = null;
+	protected double experience;
 
 	public Player(String name){
 		setName(name);
+		setLevel();
+		setAttack();
+		setDefense();
+		setSpeed();
+
+		atts = new ArrayList<>();
+		att = new ArrayList<>();
+
+		atts.add(new genericAttack1());
+		atts.add(new genericAttack2());
+
+		attLevel = new int[]{1,20};
+
+		getInitialAttacks();
+	}
+
+	public void getInitialAttacks(){
+		int currentAtt = 0, levelCount = 1;
+		while(levelCount <= this.level){
+			if (levelCount == attLevel[currentAtt]){
+				att.add(atts.get(currentAtt));
+				currentAtt++;
+			}
+
+			levelCount++;
+		}
 	}
 
     /**
      * We are going to want initial statistic values set in the constructor for this class and later on in the ones for
      * each class
      */
-
-	/**
-	 * This will ask the Player to type in their name.
-	 */
-	//public void getName() {
-		//Scanner in = new Scanner(IOStream);
-		//name = in.next();
-		//in.close();
-	//}
 	
 	/**
 	 * This will set the health of the player. This will change later
@@ -83,68 +100,4 @@ public class Player extends Actor {
 		}
 		else{};
 	}
-
-	//@Override
-	/**
-	 * This will get the health of the player
-	 */
-	/*protected void getHealth() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	/**
-	 * This will get the health of the player left after an attack is dealt to the player
-	 */
-	/*protected void getHealthLeft() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	/**
-	 * This will get the health of the player
-	 */
-	/*protected void getDefence() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	/**
-	 * This will get the health of the player based on other variables
-	 */
-	/*protected void getAttack() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	/**
-	 * This will get the health of the player based on other variables
-	 */
-	/*protected void getDamage() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	/**
-	 * This will get the speed of the player
-	 */
-	/*protected void getSpeed() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	/**
-	 * This will get the level of the player
-	 */
-	/*protected void getLevel() {
-
-	}*/
-	
-	
 }

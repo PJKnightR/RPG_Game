@@ -13,15 +13,20 @@ To-do aka ? (In order of priority):
 -Implement base actor class (Nathan)
 -Implement base player class (Nathan)
 -Add different enemies (Paul)
+-Implementing attacks (Different attack for each class, power modifier, arraylist of known attacks, a reason to use all
+    attacks (mana system), attacks stored in different classes, attacks implemented like pokemon program (Patrick & TJ)
 
 -Add different player classes (Knight, Archer, Wizard)
 -Add Critical Hits
+-Implementing equipment (equipment slots in player, stats recalculated when put on or off, a very simple equipment
+    modifier can be used)
+
 
 Ideas:
 -Able to do more then just fight enemies with game class (find towns, shops, dungeons, spikepits, ect)
 -Pets
 -Items
--item.Item Shop
+-Item Shop
 -Power ups/better weapons and armor
 -Background music
 -GUI?!?! (Maybe, no, probably not)
