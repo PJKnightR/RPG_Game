@@ -61,9 +61,9 @@ public class Game {
 			if (!playing) {
 				// Print Main Menu
 				System.out.print(this.getTitle());
-				System.out.println("1. New Game\n" +
-						"2. Load Game" +
-						"3. Quit");
+				System.out.println("1. New Game" +
+						"\n2. Load Game" +
+						"\n3. Quit");
 
 				// Handle Main Menu
 				switch (scan.nextInt()) {
@@ -95,7 +95,10 @@ public class Game {
 					// Create a new Player Character
 					this.PC = createCharacter();
 
-					//TODO: Introduction
+					System.out.println("There is a goblin in your closet. What do you do?");
+					System.out.println("'g' Give it a cookie" +
+										"\n'f' run away screaming" +
+										"\n'k' kill it");
 
 					start = false;
 				}
@@ -104,10 +107,10 @@ public class Game {
 				String userInput = scan.next();
 
 				// User is kept in the menu until they exit it.
-				if (userInput.equals("menu") || menu == true) {
+				if (userInput.equals("menu") || menu) {
 
 					// Print the menu the first time menu is called, or when asked for again.
-					if (menu == false || userInput.equals("menu")) {
+					if (!menu || userInput.equals("menu")) {
 						System.out.println("'1' continue\n" +
 								"'2' save\n" +
 								"'3' help\n" +
@@ -137,6 +140,24 @@ public class Game {
 					} else {
 						System.out.printf("'%s' not recognized.\n", userInput);
 					}
+				}
+
+				if (userInput.equals("g")) {
+					System.out.println("You don't have a cookie. The goblin is disappointed.");
+					Battle bat = new Battle();
+					bat.startBattle(PC, scan);
+
+				} else if (userInput.equals("f")) {
+					System.out.println("The crafty goblin has a rope around your leg.");
+					Battle bat = new Battle();
+					bat.startBattle(PC, scan);
+
+				} else if (userInput.equals("k")) {
+					System.out.println("The goblin predicted this");
+					Battle bat = new Battle();
+					bat.startBattle(PC, scan);
+				} else {
+					System.out.println("Command not recognized.");
 				}
 
 
