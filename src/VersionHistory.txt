@@ -20,7 +20,7 @@ Version 1.02.00 11/11/18
 -Reimplementation of get/set methods from player into actor (Patrick)
 -Fixed name implementation for the player (Patrick)
 -Tweaks to most classes (Patrick)
--Restructured game class (Kellan)
+-Restructured game class x2 (Kellan)
 -Fixed a bug where the enemies name would not properly appear (Patrick)
 
 Version 1.01.00 11/9/18
