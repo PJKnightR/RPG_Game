@@ -2,7 +2,7 @@ package attack;
 
 abstract public class Attack {
     protected String name, description;
-    //protected boolean physical; damage types???
+    //protected boolean physical; damage types??
     protected int power, accuracy;
 
     public String getAttackName(){
