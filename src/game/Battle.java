@@ -7,6 +7,7 @@ public class Battle {
     public Enemy enemy;
     public Scanner scan;
     public int selectedMove;
+    public int enemySelectedMove;
 
     public void startBattle(Player PC, Scanner s){
         this.enemy = generateEnemy();
@@ -126,8 +127,19 @@ public class Battle {
         }
     }
 
-    public void enemyAttack(){
+    public int enemyAttack(){
         //damage calculation for the enemy and display message for their attack
+        if (enemySelectedMove == 0){
+            return 0;
+        }
+        else{
+            int att = enemySelectedMove - 1;
+            double damage;
+            damage = (2 * enemy.getLevel() + 10) / 250 * (enemy.getAttack() / enemy.getDefense()) * enemy.att.get(att).getPower() + 2);
+            System.out.println("The " + enemy.getName() + " attacked you using " enemy.att.get(att).getAttackName() + ". It did " + (int)damage + ".");
+
+            return (int) damage;
+        }
     }
 
     public void displayHealth(){
