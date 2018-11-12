@@ -128,7 +128,7 @@ public class Battle {
     }
 
     public int enemyAttack(){
-        //damage calculation for the enemy and display message for their attack
+        //damage calculation for enemy and display message for their attack
         if (enemySelectedMove == 0){
             return 0;
         }
