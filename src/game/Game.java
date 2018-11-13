@@ -2,20 +2,21 @@ package game;
 
 import java.util.Scanner;
 
+/**	This class contains everything need to run a new game.
+ *  To play, a new instance of this class must be initialized.
+ */
 public class Game {
 
-	// this can be extended to create a new game. 
-
-	// Variables
-	private String name;
-	private Scanner scan;
+	// Private Variables
+	private String name;			// This is the name of the game being played
+	private Scanner scan;			// This is a scanner that reads user Input
+	private Player PC;				// This is avatar of the user in the game
 	// private Module module;
-	private Player PC;
+
 
 	/**
 	 * Constructor Class
 	 * This constructor creates a new game.
-	 *
 	 * @param name Str: name
 	 * @param scan Scanner: to receive user Input.
 	 */
@@ -26,17 +27,15 @@ public class Game {
 		// this.module = module;
 	}
 
-	/**
+	/** Get Method
 	 * @return The name of the game in dramatic font
 	 */
 	public String getTitle() {
 		return "\n\t" + this.name.toUpperCase() + "\n\n";
 	}
 
-	/**
-	 * Creates a new character based on userInput.
-	 *
-	 * @return a new Player object
+	/** Creates a new character based on userInput.
+	 *  @return a new Player object
 	 */
 	private Player createCharacter() {
 		System.out.println("Please enter character name: ");
@@ -47,64 +46,93 @@ public class Game {
 		return PC;
 	}
 
-	/**
-	 * Runs the game.
+	/** Since we have not yet implement module, this monstrosity will have to do
+	 *  It can also serve as a template for how the module classes should be constructed.
+	 *
+	 * @return the whole game. Yes, you heard me.
+	 */
+
+	/** Runs the game.
+	 * 	Handles all events, such as userInput, game events, battles, ect.
 	 */
 	public void runGame() {
 
-		boolean running = true;
-		boolean playing = false;
-		boolean start = false;
+		// Booleans
+		boolean running = true;		// This indicates whether the game is still running, e.g. menu or game.
+		boolean playing = false;	// This indicates whether the game is being played. (not main menu).
+		boolean start = false;		// This indicates whether game has just been started or not.
 
+		// Main Loop of the Entire Game. Continue until quit in the main menu.
 		while (running) {
-			// Default value, enters the main menu.
-			if (!playing) {
-				// Print Main Menu
+			if (!playing) { // Start menu.
+				// If we are not playing, bring the user to the main menu of the game.
+				// Print the title and the menu options.
 				System.out.print(this.getTitle());
-				System.out.println("1. New Game" +
-						"\n2. Load Game" +
-						"\n3. Quit");
+				System.out.println(" 1. New Game" +
+						         "\n 2. Load Game" +
+						         "\n 3. Quit");
+				// Print the prompt
+				System.out.print(" > ");
 
-				// Handle Main Menu
-				switch (scan.nextInt()) {
+				// Handle Main Menu choices
+				switch (scan.nextInt()) {  // Can directly reference input here.
 					case 1:
+						// Starting a new game. Set playing to exit the main menu, set start since it is a new game.
 						playing = true;
 						start = true;
 						break;
+
 					case 2:
+						// Loading a previous save. See text below.
+						// We'll need to call this.PC = something.getCharacter(), and some other stuff.
 						System.out.println("This feature is not yet implemented");
 						// playing = true;
 						start = false;
 						break;
 					case 3:
+						// Exit the game. Set running, close the scanner, and exit.
+						// NOTE: if closing scanner here, may want to ensure it is not needed in main.
 						System.out.println("Thanks for playing.");
 						running = false;
 						scan.close();
+						break;
+					// None of the above, misunderstood command
+					case 4:
+						// This is an easter egg as a joke. Plz ignore.
+						System.out.println("4 is the cosmic number.");
 						break;
 					default:
 						System.out.println("Command not recognized.");
 						break;
 				}
+			}  // End menu.
 
-				// When the game begins.
-			} else if (playing) {
+
+			else if (playing) { // Start in-game.
+
+				// This boolean is not to be confused with the main menu. This is the in-game menu.
+				// Normally in games this would likely be accessed with esc.
 				boolean menu = false;
 
-				// If this is a new game
+
+				// If this is a fresh game, than we have to initialize it.
 				if (start) {
 					// Create a new Player Character
 					this.PC = createCharacter();
 
-					/*
-					System.out.println("There is a goblin in your closet. What do you do?");
-					System.out.println("'g' Give it a cookie" +
-										"\n'f' run away screaming" +
-										"\n'k' kill it");
+					// TODO:  Here we might load a module for the rooms, ect.
+					// Instead we'll use a method we'll depreciate later.
 
-					*/
+					// Initial game conditions
+					System.out.println("Flavor text.txt");
+
+
 					start = false;
 				}
 
+				// Otherwise, continue the game as normal.
+
+				// Prompt and receive player input.
 				System.out.print(" > ");
 				String userInput = scan.next();
 
@@ -198,7 +226,7 @@ public class Game {
 
 				// TODO: Detect game over conditions*/
 				// 	System.out.println("\n\t GAME OVER\n\n");
-			}
+			} // End in-game.
 
 		}
 	}

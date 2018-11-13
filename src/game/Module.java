@@ -1,6 +1,9 @@
 package game;
 
-public class Module {
+import item.*;
+import java.util.ArrayList;
+
+abstract public class Module {
 
     /**     This class is designed to hold all the information required for running a game.
      *
@@ -12,6 +15,7 @@ public class Module {
      */
 
     // variables
+    protected ArrayList<ArrayList<Object>> rooms;
 
     public Module () {
 
