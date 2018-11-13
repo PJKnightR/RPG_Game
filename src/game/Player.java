@@ -1,14 +1,17 @@
 package game;
 
 import attack.*;
+import item.*;
 
 import java.util.ArrayList;
 
 public class Player extends Actor {
 	private static final Readable IOStream = null;
 	protected double experience;
+	private ArrayList<Item> inventory;			// Added
 
 	public Player(String name){
+		inventory = new ArrayList<>();
 		setName(name);
 		setLevel();
 		setAttack();
@@ -24,6 +27,22 @@ public class Player extends Actor {
 		attLevel = new int[]{1,20};
 
 		getInitialAttacks();
+	}
+
+	public void addInventory(Item i) {
+		this.inventory.add(i);
+	}
+
+	public Item getInv(int index) {
+		return this.inventory.get(index);
+	}
+
+	public String printInventory() {
+		String inv = this.name + "'s Inventory:\n";
+		for (int i = 0; i < inventory.size(); i++) {
+			inv += " " + i + ". " + inventory.get(i).getName() + "\n";
+		}
+		return inv;
 	}
 
 	public void getInitialAttacks(){
