@@ -8,6 +8,9 @@ To make versions numbers easier:
 
 Version Version # Month/Day/Year
 
+Version 1.02.03 11/14/18
+-Added the word "damage" when the player attacks an enemy (Patrick)
+
 Version 1.02.02 11/13/18
 -Changed method types for enemy methods in battle (Patrick)
 -Temporarily just made all enemy stuff 0 (Patrick)

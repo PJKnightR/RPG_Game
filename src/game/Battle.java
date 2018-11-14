@@ -121,7 +121,7 @@ public class Battle {
             double damage;
 
             damage = (2 * PC.getLevel() + 10) / 250 * (PC.getAttack() / enemy.getDefense()) * (PC.att.get(att).getPower() + 2);
-            System.out.println("You attack using " + PC.att.get(att).getAttackName() + ". It did " + (int)damage + ".");
+            System.out.println("You attack using " + PC.att.get(att).getAttackName() + ". It did " + (int)damage + "damage.");
 
             return (int) damage;
         }
