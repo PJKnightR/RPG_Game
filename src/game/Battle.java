@@ -109,9 +109,10 @@ public class Battle {
         return attack;
     }
 
-    public int enemyMove(){
+    public void enemyMove(){
         //random selection of the enemies move
-        return 0;
+        double enemyMove = Math.random() * (enemy.att.size() - 1);
+        enemySelectedMove = (int)enemyMove;
     }
 
     public int playerAttack(Player PC){
