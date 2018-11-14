@@ -127,7 +127,7 @@ public class Battle {
         }
     }
 
-    public int enemyAttack(){
+    public int enemyAttack(Player PC){
         //damage calculation for enemy and display message for their attack
         if (enemySelectedMove == 0){
             return 0;
@@ -135,8 +135,8 @@ public class Battle {
         else{
             int att = enemySelectedMove - 1;
             double damage;
-            damage = (2 * enemy.getLevel() + 10) / 250 * (enemy.getAttack() / enemy.getDefense()) * enemy.att.get(att).getPower() + 2);
-            System.out.println("The " + enemy.getName() + " attacked you using " enemy.att.get(att).getAttackName() + ". It did " + (int)damage + ".");
+            damage = (2 * enemy.getLevel() + 10) / 250 * (enemy.getAttack() / PC.getDefense()) * enemy.att.get(att).getPower() + 2);
+            System.out.println("The " + enemy.getName() + " attacked you using " + enemy.att.get(att).getAttackName() + ". It did " + (int)damage + ".");
 
             return (int) damage;
         }
