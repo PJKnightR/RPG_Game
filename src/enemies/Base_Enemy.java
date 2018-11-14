@@ -12,6 +12,8 @@ public class Base_Enemy extends Enemy {
         diff = "easy";
         name = "Goblin";
         player = new Player(getName());
+        defense = 0;
+        health_left = 100;
     }
 
     // Should set their health to 80% of player's health

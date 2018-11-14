@@ -8,6 +8,11 @@ To make versions numbers easier:
 
 Version Version # Month/Day/Year
 
+Version 1.02.02 11/13/18
+-Changed method types for enemy methods in battle (Patrick)
+-Temporarily just made all enemy stuff 0 (Patrick)
+-Misc small tweaks to battle (Patrick)
+
 Version 1.02.01 11/12/18
 -Fixed the naming issue with enemies again but better (Patrick)
 

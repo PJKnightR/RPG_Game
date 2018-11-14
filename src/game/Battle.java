@@ -32,13 +32,13 @@ public class Battle {
                     System.out.println("You defeated the " + enemy.getName() + "!");
                     enemyLoss = true;
                 }
-                enemyAttack();
+                PC.setHealthLeft(PC.getHealthLeft() - enemyAttack());
                 battling = checkPlayerStatus(PC);
                 if (!battling){
                     playerLoss = true;
                 }
             } else if (PC.getSpeed() < enemy.getSpeed()){
-                enemyAttack();
+                PC.setHealthLeft(PC.getHealthLeft() - enemyAttack());
                 battling = checkPlayerStatus(PC);
                 if (!battling){
                     playerLoss = true;
@@ -79,10 +79,10 @@ public class Battle {
                 this.selectedMove = 0;
                 double run = getChance();
                 if (run > 50){
-                    System.out.print("You escaped from the " + enemy.getName());
+                    System.out.println("You escaped from the " + enemy.getName());
                     //end the battle here
                 } else {
-                    System.out.print("The " + enemy.getName() + " blocks your escape path!");
+                    System.out.println("The " + enemy.getName() + " blocks your escape path!");
                 }
             } else {
                 System.out.println("Please enter a valid move");
@@ -108,8 +108,9 @@ public class Battle {
         return attack;
     }
 
-    public void enemyMove(){
+    public int enemyMove(){
         //random selection of the enemies move
+        return 0;
     }
 
     public int playerAttack(Player PC){
@@ -126,8 +127,9 @@ public class Battle {
         }
     }
 
-    public void enemyAttack(){
+    public int enemyAttack(){
         //damage calculation for the enemy and display message for their attack
+        return 0;
     }
 
     public void displayHealth(){
