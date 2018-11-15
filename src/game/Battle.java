@@ -4,10 +4,10 @@ import enemies.*;
 import java.util.Scanner;
 
 public class Battle {
-    public Enemy enemy;
-    public Scanner scan;
-    public int selectedMove;
-    public int enemySelectedMove;
+    private Enemy enemy;
+    private Scanner scan;
+    private int selectedMove;
+    private int enemySelectedMove;
 
     public void startBattle(Player PC, Scanner s){
         this.enemy = generateEnemy();
@@ -17,11 +17,11 @@ public class Battle {
     }
 
     //this will later be randomized
-    public Enemy generateEnemy(){
+    private Enemy generateEnemy(){
         return new Base_Enemy();
     }
 
-    public void doBattle(Player PC){
+    private void doBattle(Player PC){
         boolean battling = true, playerLoss = false, enemyLoss = false;
 
         while (battling){
@@ -66,7 +66,7 @@ public class Battle {
         }
     }
 
-    public void playerMove(Player PC){
+    private void playerMove(Player PC){
         boolean action = false;
         String move;
 
@@ -98,7 +98,7 @@ public class Battle {
         }
     }
 
-    public int selectAttack(Player PC){
+    private int selectAttack(Player PC){
 
         for(int i = 0; i < PC.att.size(); i++){
             System.out.print(i + 1 + ". " + PC.att.get(i).getAttackName());
@@ -116,13 +116,13 @@ public class Battle {
         return attack;
     }
 
-    public void enemyMove(){
+    private void enemyMove(){
         //random selection of the enemies move
         double enemyMove = Math.random() * (enemy.att.size() - 1);
         enemySelectedMove = (int)enemyMove;
     }
 
-    public int playerAttack(Player PC){
+    private int playerAttack(Player PC){
         if (selectedMove == 0){
             return 0;
         } else {
@@ -136,7 +136,7 @@ public class Battle {
         }
     }
 
-    public int enemyAttack(Player PC){
+    private int enemyAttack(Player PC){
         //damage calculation for enemy and display message for their attack
         if (enemySelectedMove == 0){
             return 0;
@@ -155,7 +155,7 @@ public class Battle {
 
     }
 
-    public boolean checkPlayerStatus(Player PC){
+    private boolean checkPlayerStatus(Player PC){
         if (PC.getHealthLeft() > 0){
             return true;
         } else {
@@ -163,7 +163,7 @@ public class Battle {
         }
     }
 
-    public boolean checkEnemyStatus(){
+    private boolean checkEnemyStatus(){
         if (enemy.getHealthLeft() > 0){
             return true;
         } else {
@@ -171,7 +171,7 @@ public class Battle {
         }
     }
 
-    public void getCriticalHitModifier(){
+    private void getCriticalHitModifier(){
 
     }
 
