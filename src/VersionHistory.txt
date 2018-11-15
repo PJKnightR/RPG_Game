@@ -8,8 +8,14 @@ To make versions numbers easier:
 
 Version Version # Month/Day/Year
 
-Version 1.02.03 11/14/18
+Version 1.03.02 11/14/18
 -Added the word "damage" when the player attacks an enemy (Patrick)
+-Added enemy damage calculation to battle (TJ)
+-Added the random enemy move selection to battle (TJ)
+-Changed getInitialAttacks to the Actor Class instead of the player class (Patrick)
+-Temporarily added generic attacks to enemy (Patrick)
+-Misc Tweaks to battle class (Patrick and TJ)
+-Fixed escaping a battle (probably temporarily) (Patrick)
 
 Version 1.02.02 11/13/18
 -Changed method types for enemy methods in battle (Patrick)
@@ -32,6 +38,7 @@ Version 1.02.00 11/11/18
 -Fixed a bug where the enemies name would not properly appear (Patrick)
 -Fleshed out Item, Created Weapon child class, added Inventory to Player (Kellan)
 -Added Controls and help to Game (Kellan)
+-Tweaking of Methods in Player (Nathan)
 
 Version 1.01.00 11/9/18
 -Created the Item Class (Nathan)

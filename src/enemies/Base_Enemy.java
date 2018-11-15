@@ -1,6 +1,10 @@
 package enemies;
 
+import attack.genericAttack1;
+import attack.genericAttack2;
 import game.Player;
+
+import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Base_Enemy extends Enemy {
@@ -14,6 +18,15 @@ public class Base_Enemy extends Enemy {
         player = new Player(getName());
         defense = 0;
         health_left = 100;
+        atts = new ArrayList<>();
+        att = new ArrayList<>();
+
+        atts.add(new genericAttack1());
+        atts.add(new genericAttack2());
+
+        attLevel = new int[]{1,20};
+
+        getInitialAttacks();
     }
 
     // Should set their health to 80% of player's health

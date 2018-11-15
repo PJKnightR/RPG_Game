@@ -16,6 +16,7 @@ public class Battle {
         doBattle(PC);
     }
 
+    //this will later be randomized
     public Enemy generateEnemy(){
         return new Base_Enemy();
     }
@@ -25,6 +26,9 @@ public class Battle {
 
         while (battling){
             playerMove(PC);
+            if (selectedMove == -1){
+                break;
+            }
             enemyMove();
             if (PC.getSpeed() >= enemy.getSpeed()){
                 enemy.setHealthLeft(enemy.getHealthLeft() - playerAttack(PC));
@@ -36,12 +40,14 @@ public class Battle {
                 PC.setHealthLeft(PC.getHealthLeft() - enemyAttack(PC));
                 battling = checkPlayerStatus(PC);
                 if (!battling){
+                    System.out.println("You were defeated by the " + enemy.getName() + "!");
                     playerLoss = true;
                 }
             } else if (PC.getSpeed() < enemy.getSpeed()){
                 PC.setHealthLeft(PC.getHealthLeft() - enemyAttack(PC));
                 battling = checkPlayerStatus(PC);
                 if (!battling){
+                    System.out.println("You were defeated by the " + enemy.getName() + "!");
                     playerLoss = true;
                 }
                 enemy.setHealthLeft(enemy.getHealthLeft() - playerAttack(PC));
@@ -81,6 +87,7 @@ public class Battle {
                 double run = getChance();
                 if (run > 50){
                     System.out.println("You escaped from the " + enemy.getName());
+                    this.selectedMove = -1;
                     //end the battle here
                 } else {
                     System.out.println("The " + enemy.getName() + " blocks your escape path!");
@@ -123,7 +130,7 @@ public class Battle {
             double damage;
 
             damage = (2 * PC.getLevel() + 10) / 250 * (PC.getAttack() / enemy.getDefense()) * (PC.att.get(att).getPower() + 2);
-            System.out.println("You attack using " + PC.att.get(att).getAttackName() + ". It did " + (int)damage + "damage.");
+            System.out.println("You attack using " + PC.att.get(att).getAttackName() + ". It did " + (int)damage + " damage.");
 
             return (int) damage;
         }

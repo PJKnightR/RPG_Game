@@ -7,25 +7,25 @@ To-do (overall):
 -DLC
 -Actually finish
 
-To-do aka ? (In order of priority):
--Implement base game and main class (initiate battles against enemy) (Kellan)
--Implement base battle class (Patrick & TJ)
--Implement base actor class (Nathan)
--Implement base player class (Nathan)
+To-do aka ? (In order of priority(sort of)):
+-Implement base game, main, and module class (initiate battles against enemy) (Kellan)
+-Finish base battle class (in regards how the battle ends and item usage)  (Patrick & TJ)
+-Implement base actor and player class (Nathan)
 -Add different enemies (Paul)
 -Implementing attacks (Different attack for each class, power modifier, arraylist of known attacks, a reason to use all
     attacks (mana system), attacks stored in different classes, attacks implemented like pokemon program (Patrick & TJ)
+-Add different player classes (Knight, Archer, Wizard) (Needs assigned, Nathan???)
+-Add Critical Hits (Patrick & TJ)
+-Add different in-game events (Kellan)
 
--Add different player classes (Knight, Archer, Wizard)
--Add Critical Hits
 -Implementing equipment (equipment slots in player, stats recalculated when put on or off, a very simple equipment
     modifier can be used)
+-Add basic, consumable items (???)
 
 
 Ideas:
--Able to do more then just fight enemies with game class (find towns, shops, dungeons, spikepits, ect)
+-Able to do more then just fight enemies with game class (find towns, shops, dungeons, spikepits, enemy kingdoms???, ect)
 -Pets
--Items
 -Item Shop
 -Power ups/better weapons and armor
 -Background music
@@ -36,6 +36,7 @@ Ideas:
 -Time cycle
 -Bosses
 -Other Players?
+
 
 Enemy types:
 Easy
@@ -52,3 +53,28 @@ Hard
 - Dragon
 - Rogue knight
 - Werewolf
+
+Other Enemy ideas (By Patrick)
+- Thief/Bandit
+- Zombie/Undead/Husk
+- Mummy
+- Wraith/Ghost
+- A joke enemy/easter egg (Long Slime)
+- Barbarian/Viking
+
+
+Player Classes and Attacks (Ideas) (I suck at attack names, feel free to add some):
+
+For Shizzle:
+-Knight- Attack, Defense, Speed, and Mana pretty balanced
+    -Sword Slash, Blunt Strike, Risky Lunge, Kings Beam
+-Archer- Attack and Mana average, speed higher, defense lower
+    -Arrow Volley, Flaming Arrows, Piercing Shots, Storm of Arrows
+-Wizard- Defense Average, Attack and Mana Higher, speed lower
+    -Fireball, Finger Lightening, Plasma Strike, Triple-Element Blast
+
+Other Ideas (By Patrick)
+-Gladiator aka a Tank- High Attack and defense, god-awful speed, meh mana
+-Hunter- High attack and speed, low defense and mana
+-Paladin- Amazing attack, meh defense and mana, low speed
+-Ninja/Stealth- Amazing speed, high attack, sucky defense, meh mana

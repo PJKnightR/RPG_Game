@@ -8,7 +8,7 @@ public class Main {
 	 */
 
     public static void main(String[] args) {
-		TestGame test = new TestGame();
+    	TestGame test = new TestGame();
 		test.battleTest();
 
 		Scanner scan = new Scanner(System.in);

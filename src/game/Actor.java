@@ -16,6 +16,18 @@ abstract public class Actor {
     //protected String Class;
 
 
+    public void getInitialAttacks(){
+        int currentAtt = 0, levelCount = 1;
+        while(levelCount <= this.level){
+            if (levelCount == attLevel[currentAtt]){
+                att.add(atts.get(currentAtt));
+                currentAtt++;
+            }
+
+            levelCount++;
+        }
+    }
+
     /**
      * This method sets the name and is used only for Player
      * @param n

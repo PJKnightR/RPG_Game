@@ -9,6 +9,8 @@ public class Player extends Actor {
 	private static final Readable IOStream = null;
 	protected double experience;
 	private ArrayList<Item> inventory;			// Added
+	//inventory should be its own class
+	//keep track of mana
 
 	public Player(String name){
 		inventory = new ArrayList<>();
@@ -17,6 +19,8 @@ public class Player extends Actor {
 		setAttack();
 		setDefense();
 		setSpeed();
+		setHealth();
+		setHealthLeft(health);
 
 		atts = new ArrayList<>();
 		att = new ArrayList<>();
@@ -28,6 +32,9 @@ public class Player extends Actor {
 
 		getInitialAttacks();
 	}
+
+	//((baseAtk * 2 + atkIV + atkEV / 4) * lev / 100 + 5)
+	//base stats can be different to each class, setting stats done in constructor, called upon each level up
 
 	public void addInventory(Item i) {
 		this.inventory.add(i);
@@ -45,17 +52,6 @@ public class Player extends Actor {
 		return inv;
 	}
 
-	public void getInitialAttacks(){
-		int currentAtt = 0, levelCount = 1;
-		while(levelCount <= this.level){
-			if (levelCount == attLevel[currentAtt]){
-				att.add(atts.get(currentAtt));
-				currentAtt++;
-			}
-
-			levelCount++;
-		}
-	}
 
     /**
      * We are going to want initial statistic values set in the constructor for this class and later on in the ones for
