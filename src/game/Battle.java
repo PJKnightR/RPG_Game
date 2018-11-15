@@ -70,6 +70,7 @@ public class Battle {
         boolean action = false;
         String move;
 
+        displayHealth(PC);
         System.out.println("What would you like to do?\n 1. Fight\n 2. Use an item\n 3. Run");
         while (!action){
             move = scan.nextLine();
@@ -151,8 +152,9 @@ public class Battle {
         }
     }
 
-    public void displayHealth(){
-
+    public void displayHealth(Player PC){
+        System.out.println("Your health is " + PC.getHealthLeft() + "/" + PC.getHealth());
+        System.out.println("The " + enemy.getName() + "'s health is " + enemy.getHealthLeft() + "/" + enemy.getHealth());
     }
 
     private boolean checkPlayerStatus(Player PC){
