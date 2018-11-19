@@ -18,7 +18,7 @@ public class Battle {
 
     //this will later be randomized
     private Enemy generateEnemy(){
-        return new Base_Enemy();
+        return new Goblin();
     }
 
     private void doBattle(Player PC){

@@ -2,7 +2,7 @@ package game;
 
 import java.util.Scanner;
 
-public class Main {
+public class 1Main {
 	/**
 	 * This class will be responsible for starting the game
 	 */
