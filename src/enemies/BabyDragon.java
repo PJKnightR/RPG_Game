@@ -1,24 +1,28 @@
 package enemies;
 
-import attack.*;
+import attack.FireBreath;
+import attack.SlashingClaw;
+import attack.genericAttack1;
+import attack.genericAttack2;
 import game.Player;
 
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Dragon extends Enemy {
+
+public class BabyDragon extends Enemy {
 
     // Indicates the enemy's difficulty
     private String diff;
 
-    public Dragon(Player PC) {
-        diff = "hard";
-        name = "Dragon";
+    public BabyDragon(Player PC) {
+        diff = "moderate";
+        name = "Baby Dragon";
 
-        baseAttack = 150;
-        baseDefense = 150;
-        baseSpeed = 150;
-        baseHealth = 150;
+        baseAttack = 100;
+        baseDefense = 100;
+        baseSpeed = 100;
+        baseHealth = 100;
 
         setLevel(PC);
         setAttack();
@@ -32,9 +36,8 @@ public class Dragon extends Enemy {
 
         atts.add(new SlashingClaw());
         atts.add(new FireBreath());
-        atts.add(new WingSlap());
 
-        attLevel = new int[]{1,1,1};
+        attLevel = new int[]{1,1};
 
         getInitialAttacks();
     }
@@ -42,5 +45,4 @@ public class Dragon extends Enemy {
     public void setLevel(Player PC) {
         level = PC.getLevel();
     }
-
 }

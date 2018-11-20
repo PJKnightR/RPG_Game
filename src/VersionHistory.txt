@@ -8,10 +8,30 @@ To make versions numbers easier:
 
 Version Version # Month/Day/Year
 
-Version 1.03.02 11/15/18
+Version 1.5.0 11/19/18
+-Added new enemy child classes BabyDragon, Dragon, Goblin, RogueKnight, Skeleton, Troll, Vampire, Werewolf, & Witch (Paul)
+-Added new attacks Arrow Volley, Club Bat, Cookie Throw, Finger Lightening, Fireball, Firebreath, Mysterious Brew
+Risky Lunge, Slashing Claw, Stick Slap, Sword Slash, Wing Slap (Patrick)
+-Added names and descriptions for implemented attacks (Patrick)
+-Added a temporary power of 50 to the majority of attacks (Patrick)
+-Added temporary base stats to all enemies purely based on difficulty (Patrick)
+-Added variables for base stats to Actor (Patrick)
+-Added random enemy generation to battle (Patrick)
+-Made it so all enemies are the same level as the player (for now) (Patrick)
+-Implemented available attacks to their corresponding enemies (Patrick)
+-Changed enemy stat calculations to match the players (Patrick)
+-Misc Tweaks to game (Kellan)
+-Misc Tweaks to new enemies and Actor (Patrick)
+-Disabled everything related to items and inventory (Patrick)
+
+Version 1.4.0 11/15/18
+-Added ability to get a critical hit for both the enemy and player in battle (Patrick & TJ)
+-Added health displays during battle (Patrick and TJ)
+
+Version 1.3.1 11/15/18
 -Made the majority of the battle classes methods and variables private (Patrick)
 
-Version 1.03.01 11/14/18
+Version 1.3.0 11/14/18
 -Added the word "damage" when the player attacks an enemy (Patrick)
 -Added enemy damage calculation to battle (TJ)
 -Added the random enemy move selection to battle (TJ)
@@ -20,15 +40,15 @@ Version 1.03.01 11/14/18
 -Misc Tweaks to battle class (Patrick and TJ)
 -Fixed escaping a battle (probably temporarily) (Patrick)
 
-Version 1.02.02 11/13/18
+Version 1.2.2 11/13/18
 -Changed method types for enemy methods in battle (Patrick)
 -Temporarily just made all enemy stats 0 (Patrick)
 -Misc small tweaks to battle (Patrick)
 
-Version 1.02.01 11/12/18
+Version 1.2.1 11/12/18
 -Fixed the naming issue with enemies again but better (Patrick)
 
-Version 1.02.00 11/11/18
+Version 1.2.0 11/11/18
 -Created base Attack class and two generic attack classes (Patrick)
 -Created Base_Enemy class as a foundation of future enemy classes (Paul)
 -Created TestGame class as an easy way to test various features within the game (Patrick)
@@ -43,7 +63,7 @@ Version 1.02.00 11/11/18
 -Added Controls and help to Game (Kellan)
 -Tweaking of Methods in Player (Nathan)
 
-Version 1.01.00 11/9/18
+Version 1.1.0 11/9/18
 -Created the Item Class (Nathan)
 -Created packages for items, enemies, and the rest of the game (Patrick)
 -Added basic statistic values and methods to Actor and Player (Nathan)
@@ -54,7 +74,7 @@ Version 1.01.00 11/9/18
 -Misc tweaks to Actor, Player, and Game class (Patrick)
 -Made Item Class abstract and player class not abstract (For now) (Patrick)
 
-Version 1.00.000 11/5/18
+Version 1.0.0 11/5/18
 -Created empty Actor, Battle, Enemy, Game, Main, and Player Classes (Patrick)
 -Created the VersionHistory and Readme (Master) documents (Patrick)
 -Added general comments to each class for their general functionality (Patrick)

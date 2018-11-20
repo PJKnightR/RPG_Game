@@ -181,7 +181,7 @@ public class Game {
 				 */
 
 				if (userInput.equals("inventory")) {
-					System.out.print(PC.printInventory());
+					//System.out.print(PC.printInventory());
 					//TODO let them do anything with it.
 
 				} else if (userInput.equals("me")) {

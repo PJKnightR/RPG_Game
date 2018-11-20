@@ -6,19 +6,13 @@ import java.util.Scanner;
 public class Battle {
     private Enemy enemy;
     private Scanner scan;
-    private int selectedMove;
-    private int enemySelectedMove;
+    private int selectedMove, enemySelectedMove;
 
     public void startBattle(Player PC, Scanner s){
-        this.enemy = generateEnemy();
+        this.enemy = generateEnemy(PC);
         this.scan = s;
         System.out.println("A " + enemy.getName() + " appeared. Engage the " + enemy.getName() + " " + PC.getName() + "!");
         doBattle(PC);
-    }
-
-    //this will later be randomized
-    private Enemy generateEnemy(){
-        return new Goblin();
     }
 
     private void doBattle(Player PC){
@@ -130,7 +124,7 @@ public class Battle {
             int att = selectedMove - 1;
             double damage;
 
-            damage = (2 * PC.getLevel() + 10) / 250 * (PC.getAttack() / enemy.getDefense()) * (PC.att.get(att).getPower() + 2);
+            damage = (2 * PC.getLevel() + 10) / 250 * (PC.getAttack() / enemy.getDefense()) * (PC.att.get(att).getPower() + 2) * getCriticalHitModifier();
             System.out.println("You attack using " + PC.att.get(att).getAttackName() + ". It did " + (int)damage + " damage.");
 
             return (int) damage;
@@ -145,7 +139,7 @@ public class Battle {
         else{
             int att = enemySelectedMove - 1;
             double damage;
-            damage = (2 * enemy.getLevel() + 10) / 250 * (enemy.getAttack() / PC.getDefense()) * (enemy.att.get(att).getPower() + 2);
+            damage = (2 * enemy.getLevel() + 10) / 250 * (enemy.getAttack() / PC.getDefense()) * (enemy.att.get(att).getPower() + 2) * getCriticalHitModifier();
             System.out.println("The " + enemy.getName() + " attacked you using " + enemy.att.get(att).getAttackName() + ". It did " + (int)damage + ".");
 
             return (int) damage;
@@ -173,8 +167,53 @@ public class Battle {
         }
     }
 
-    private void getCriticalHitModifier(){
+    private int getCriticalHitModifier(){
+        double c = Math.random() * (10);
+        int a = (int) Math.round(c);
+        if (a == 10){
+            a = 2;
+            System.out.println("It was a Critical Hit!");
+        } else {
+            a = 1;
+        }
+        return a;
+    }
 
+    //purely random generation of enemies, not based on player level
+    private Enemy generateEnemy(Player PC){
+        int id, amount;
+        double chance;
+        chance = getChance();
+        Enemy e;
+
+        if (chance <= 60){
+            amount = 2;
+            id = idGenerator(amount);
+            e = getDifficultyLev1(PC)[id];
+        } else if (chance <= 89){
+            amount = 2;
+            id = idGenerator(amount);
+            e = getDifficultyLev2(PC)[id];
+        } else {
+            amount = 2;
+            id = idGenerator(amount);
+            e = getDifficultyLev3(PC)[id];
+        }
+        assert e != null;
+
+        return e;
+    }
+
+    //idGenerator is a separate method lik this to allow easy changes to generate enemy if more enemies are added
+    //just change the amount variable as it contains the amount of enemies minus 1
+    private static int idGenerator(int amount){
+        double a;
+        int b;
+
+        a = Math.random() * (amount);
+        b = (int) Math.round(a);
+
+        return b;
     }
 
     private double getChance(){
@@ -182,6 +221,18 @@ public class Battle {
         chance = Math.round(chance);
 
         return chance;
+    }
+
+    private static Enemy[] getDifficultyLev1(Player PC){
+        return new Enemy[]{new Goblin(PC), new Skeleton(PC), new Troll(PC)};
+    }
+
+    private static Enemy[] getDifficultyLev2(Player PC){
+        return new Enemy[]{new Vampire(PC), new Witch(PC), new BabyDragon(PC)};
+    }
+
+    private static Enemy[] getDifficultyLev3(Player PC){
+        return new Enemy[]{new Dragon(PC), new Werewolf(PC), new RogueKnight(PC)};
     }
 
     /**startBattle()
