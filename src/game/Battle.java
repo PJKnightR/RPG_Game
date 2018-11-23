@@ -8,6 +8,11 @@ public class Battle {
     private Scanner scan;
     private int selectedMove, enemySelectedMove;
 
+    /**
+     * Initializes values needed to start the battle and declares what type of enemy has appeared
+     * @param PC the user's character
+     * @param s
+     */
     public void startBattle(Player PC, Scanner s){
         this.enemy = generateEnemy(PC);
         this.scan = s;
@@ -15,6 +20,12 @@ public class Battle {
         doBattle(PC);
     }
 
+    /**
+     * Runs the process of performing a battle by calling the move, attack and health methods for both the player and enemy.
+     * Compares the speed of the enemy and player. Whoever is faster gets to attack first.
+     * Prints out a message declaring a winner at the end of each battle.
+     * @param PC
+     */
     private void doBattle(Player PC){
         boolean battling = true, playerLoss = false, enemyLoss = false;
 
@@ -60,6 +71,10 @@ public class Battle {
         }
     }
 
+    /**
+     * Allows the user to choose their own move whenever an enemy appears. They may choose to fight, use an item, or run away
+     * @param PC
+     */
     private void playerMove(Player PC){
         boolean action = false;
         String move;
@@ -93,6 +108,11 @@ public class Battle {
         }
     }
 
+    /**
+     * Allows the player to select which attack they would like to use
+     * @param PC
+     * @return an integer representing the attack type
+     */
     private int selectAttack(Player PC){
 
         for(int i = 0; i < PC.att.size(); i++){
@@ -111,12 +131,21 @@ public class Battle {
         return attack;
     }
 
+    /**
+     * Returns a random element from an arraylist of possible enemy moves, based on the enemy type.
+     */
     private void enemyMove(){
         //random selection of the enemies move
         double enemyMove = Math.random() * (enemy.att.size() - 1);
         enemySelectedMove = (int)enemyMove;
     }
 
+    /**
+     * Calculates the amount of damage a single player move does against the opponent.
+     * Prints out the type of attack used and how much damage it inflicted.
+     * @param PC
+     * @return
+     */
     private int playerAttack(Player PC){
         if (selectedMove == 0){
             return 0;
@@ -131,6 +160,11 @@ public class Battle {
         }
     }
 
+    /**
+     * Same as the playerAttack method
+     * @param PC
+     * @return
+     */
     private int enemyAttack(Player PC){
         //damage calculation for enemy and display message for their attack
         if (enemySelectedMove == 0){
@@ -146,11 +180,21 @@ public class Battle {
         }
     }
 
+    /**
+     * Displays the player's and enemy's current health.
+     * Used at the start of a battle and after each move
+     * @param PC
+     */
     public void displayHealth(Player PC){
         System.out.println("Your health is " + PC.getHealthLeft() + "/" + PC.getHealth());
         System.out.println("The " + enemy.getName() + "'s health is " + enemy.getHealthLeft() + "/" + enemy.getHealth());
     }
 
+    /**
+     * Checks if the player still has health left.
+     * @param PC
+     * @return a boolean based on whether the player is still alive
+     */
     private boolean checkPlayerStatus(Player PC){
         if (PC.getHealthLeft() > 0){
             return true;
@@ -159,6 +203,10 @@ public class Battle {
         }
     }
 
+    /**
+     * Checks if the enemy still has health left.
+     * @return a boolean based on whether the enemy is still alive
+     */
     private boolean checkEnemyStatus(){
         if (enemy.getHealthLeft() > 0){
             return true;
@@ -167,6 +215,10 @@ public class Battle {
         }
     }
 
+    /**
+     * Determines whether a particular attack is a critical hit. If it is, then it deals extra damage
+     * @return
+     */
     private int getCriticalHitModifier(){
         double c = Math.random() * (10);
         int a = (int) Math.round(c);
@@ -179,6 +231,11 @@ public class Battle {
         return a;
     }
 
+    /**
+     * Generates an enemy for the player to engage based on the player's skill level
+     * @param PC
+     * @return
+     */
     //purely random generation of enemies, not based on player level
     private Enemy generateEnemy(Player PC){
         int id, amount;
@@ -204,7 +261,7 @@ public class Battle {
         return e;
     }
 
-    //idGenerator is a separate method lik this to allow easy changes to generate enemy if more enemies are added
+    //idGenerator is a separate method like this to allow easy changes to generate enemy if more enemies are added
     //just change the amount variable as it contains the amount of enemies minus 1
     private static int idGenerator(int amount){
         double a;
