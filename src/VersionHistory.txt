@@ -8,6 +8,10 @@ To make versions numbers easier:
 
 Version Version # Month/Day/Year
 
+Version 1.03.03 11/26/18
+- Updated Game to handle two gamemodes: Monster Mash and Adventure (Kellan)
+- Updated Main to remove test battle. (Kellan)
+
 Version 1.03.02 11/15/18
 -Made the majority of the battle classes methods and variables private (Patrick)
 
