@@ -8,6 +8,10 @@ To make versions numbers easier:
 
 Version Version # Month/Day/Year
 
+Version 1.5.1 11/26/18
+-Added updated java doc stuff to Battle (TJ)
+-Fixed Player stats (Nathan & Patrick)
+
 Version 1.5.0 11/19/18
 -Added new enemy child classes BabyDragon, Dragon, Goblin, RogueKnight, Skeleton, Troll, Vampire, Werewolf, & Witch (Paul)
 -Added new attacks Arrow Volley, Club Bat, Cookie Throw, Finger Lightening, Fireball, Firebreath, Mysterious Brew

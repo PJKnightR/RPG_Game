@@ -63,43 +63,36 @@ public class Player extends Actor {
 	 * This will set the health of the player. This will change later
 	 */
 	public void setHealth() {
-		health = Math.round(player.getHealth()-(player.getHealth()*mod));
+		health = Math.round(this.getHealth()-(this.getHealth()));
 	}
 	
 	/**
 	 * This will set the defense of the playe
 	 */
 	public void setDefense() {
-		defense = Math.round(player.getDefense()-(player.getDefense()*mod));
+		defense = Math.round(this.getDefense()-(this.getDefense()));
 	}
 	
 	/**
 	 * This will set the attack strength of the player's move. Changes based on other stats
 	 */
 	public void setAttack() {
-		attack = Math.round(player.getAttack()-(player.getAttack()*mod));
+		attack = Math.round(this.getAttack()-(this.getAttack()));
 
-	}
-	
-	/**
-	 * Damage will be changed in Battle
-	 */
-	public void damage() {
-		damage = Math.round(player.getDamage()-(player.getDamage()*mod));
 	}
 	
 	/**
 	 * This will set the speed of the player but will also change in Battle
 	 */
 	public void setSpeed() {
-		speed = Math.round(player.getSpeed()-(player.getSpeed()*mod));
+		speed = Math.round(this.getSpeed()-(this.getSpeed()));
 	}
 	
 	/**
 	 * This will set the Level of the player starting at 1
 	 */
 	public void setLevel() {
-		level = Math.round(player.getLevel()-(player.getLevel()*mod));
+		level = Math.round(this.getLevel()-(this.getLevel()));
 	}
 	
 	
