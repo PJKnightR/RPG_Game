@@ -33,7 +33,7 @@ public class Player extends Actor {
 		getInitialAttacks();
 	}
 
-	//((baseAtk * 2 + atkIV + atkEV / 4) * lev / 100 + 5)
+	//((baseAtk / 2 ) * (lev / 100) + 5)
 	//base stats can be different to each class, setting stats done in constructor, called upon each level up
 
 	public void addInventory(Item i) {
@@ -62,43 +62,43 @@ public class Player extends Actor {
 	 * This will set the health of the player. This will change later
 	 */
 	public void setHealth() {
-		health = 100;
+		health = Math.round(player.getHealth()-(player.getHealth()*mod));
 	}
 	
 	/**
 	 * This will set the defense of the player
 	 */
 	public void setDefense() {
-		defense = 100;
+		defense = Math.round(player.getDefense()-(player.getDefense()*mod));
 	}
 	
 	/**
 	 * This will set the attack strength of the player's move. Changes based on other stats
 	 */
 	public void setAttack() {
-		attack = 70;
+		attack = Math.round(player.getAttack()-(player.getAttack()*mod));
+
 	}
 	
 	/**
 	 * Damage will be changed in Battle
 	 */
 	public void damage() {
-		//damage = (((((2 * level)/5)+2)*power*(attack/defence))/50)+2; 
-		//What would Power be?
+		damage = Math.round(player.getDamage()-(player.getDamage()*mod));
 	}
 	
 	/**
 	 * This will set the speed of the player but will also change in Battle
 	 */
 	public void setSpeed() {
-		speed = 1.0;
+		speed = Math.round(player.getSpeed()-(player.getSpeed()*mod));
 	}
 	
 	/**
 	 * This will set the Level of the player starting at 1
 	 */
 	public void setLevel() {
-		level = 1;
+		level = Math.round(player.getLevel()-(player.getLevel()*mod));
 	}
 	
 	
@@ -113,6 +113,6 @@ public class Player extends Actor {
 			System.out.println("Level Up!!!");
 			level = level+1;
 		}
-		else{};
+		else{}
 	}
 }
