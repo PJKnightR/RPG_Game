@@ -22,6 +22,7 @@ public class Player extends Actor {
 		setSpeed();
 		setHealth();
 		setHealthLeft(health);
+		setExp(0);
 
 		atts = new ArrayList<>();
 		att = new ArrayList<>();
@@ -99,15 +100,34 @@ public class Player extends Actor {
 	
 	//Keeps track of Exp to level up with
 	public int Exp;
+
+	public void setExp(int Experience){ Exp += Experience; }
+
+	public int getExp(){ return Exp; }
 	
 	/**
-	 * This will set the check if the player has enough Exp to level up
+	 * This will check if the player has enough Exp to level up
+	 */
+	public boolean checkLevelUp(){
+		if(this.getExp() > 100){
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * Levels up the player and prints out which level they have achieved
 	 */
 	public void levelUp(){
-		if (this.Exp > 100) {
-			System.out.println("Level Up!!!");
-			level = level+1;
-		}
-		else{}
+		level = level + 1;
+		System.out.println("Level Up!!! You have reached level " + level + "!");
+		this.setExp(getExp() - 100);
+		this.setName(name);
+		this.setLevel();
+		this.setAttack();
+		this.setDefense();
+		this.setSpeed();
+		this.setHealth();
+		this.setHealthLeft(health);
 	}
 }

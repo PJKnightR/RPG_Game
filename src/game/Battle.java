@@ -70,6 +70,10 @@ public class Battle {
             //game over
         } else if (enemyLoss){
             //stuff when you win a fight
+            PC.setExp(100);
+            if(PC.checkLevelUp()){
+                PC.levelUp();
+            }
         }
     }
 
