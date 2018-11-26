@@ -8,8 +8,6 @@ public class Main {
 	 */
 
     public static void main(String[] args) {
-    	TestGame test = new TestGame();
-		test.battleTest();
 
 		Scanner scan = new Scanner(System.in);
 		Game newGame = new Game("test", scan);
