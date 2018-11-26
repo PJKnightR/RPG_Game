@@ -67,7 +67,7 @@ public class Player extends Actor {
 	}
 	
 	/**
-	 * This will set the defense of the player
+	 * This will set the defense of the playe
 	 */
 	public void setDefense() {
 		defense = Math.round(player.getDefense()-(player.getDefense()*mod));
