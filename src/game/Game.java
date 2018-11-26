@@ -1,5 +1,7 @@
 package game;
 
+import players.Player;
+
 import java.util.Scanner;
 
 /**	This class contains everything need to run a new game.
@@ -41,7 +43,7 @@ public class Game {
 		System.out.println("Please enter character name: ");
 		scan.nextLine();
 		String name = scan.nextLine();
-		game.Player PC = new game.Player(name);
+		Player PC = new Player(name);
 		//Player PC = new Player();
 		return PC;
 	}
@@ -226,7 +228,7 @@ public class Game {
 					 */
 
 					if (userInput.equals("inventory")) {
-						System.out.print(PC.printInventory());
+						//System.out.print(PC.printInventory());
 						//TODO let them do anything with it.
 
 					} else if (userInput.equals("me")) {

@@ -1,6 +1,8 @@
 package game;
 
 import enemies.*;
+import players.Player;
+
 import java.util.Scanner;
 
 public class Battle {
@@ -75,6 +77,7 @@ public class Battle {
      * Allows the user to choose their own move whenever an enemy appears. They may choose to fight, use an item, or run away
      * @param PC
      */
+    //add being able to check your stats and attacks
     private void playerMove(Player PC){
         boolean action = false;
         String move;

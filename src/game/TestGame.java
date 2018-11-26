@@ -1,5 +1,7 @@
 package game;
 
+import players.Player;
+
 import java.util.Scanner;
 
 public class TestGame {

@@ -1,10 +1,9 @@
 package enemies;
 
 import attack.*;
-import game.Player;
+import players.Player;
 
 import java.util.ArrayList;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class Dragon extends Enemy {
 

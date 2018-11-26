@@ -10,9 +10,11 @@ Version Version # Month/Day/Year
 
 Version 1.5.1 11/26/18
 -Added updated java doc stuff to Battle (TJ)
+-Added empty inventory class (Patrick)
+-Added players package in preparation for creating multiple player classes (Patrick)
 -Fixed Player stats (Nathan & Patrick)
-- Updated Game to handle two gamemodes: Monster Mash and Adventure (Kellan)
-- Updated Main to remove test battle. (Kellan)
+-Updated Game to handle two gamemodes: Monster Mash and Adventure (Kellan)
+-Updated Main to remove test battle. (Kellan)
 
 Version 1.5.0 11/19/18
 -Added new enemy child classes BabyDragon, Dragon, Goblin, RogueKnight, Skeleton, Troll, Vampire, Werewolf, & Witch (Paul)
@@ -65,7 +67,7 @@ Version 1.2.0 11/11/18
 -Tweaks to most classes (Patrick)
 -Restructured game class x2 (Kellan)
 -Fixed a bug where the enemies name would not properly appear (Patrick)
--Fleshed out Item, Created Weapon child class, added Inventory to Player (Kellan)
+-Fleshed out Item, Created Weapon child class, added game.Inventory to Player (Kellan)
 -Added Controls and help to Game (Kellan)
 -Tweaking of Methods in Player (Nathan)
 

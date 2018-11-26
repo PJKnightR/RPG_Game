@@ -2,12 +2,9 @@ package enemies;
 
 import attack.MysteriousBrew;
 import attack.StickSlap;
-import attack.genericAttack1;
-import attack.genericAttack2;
-import game.Player;
+import players.Player;
 
 import java.util.ArrayList;
-import java.util.concurrent.ThreadLocalRandom;
 
 
 public class Witch extends Enemy {

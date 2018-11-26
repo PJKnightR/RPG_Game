@@ -1,6 +1,7 @@
-package game;
+package players;
 
 import attack.*;
+import game.Actor;
 import item.*;
 
 import java.util.ArrayList;
@@ -46,7 +47,7 @@ public class Player extends Actor {
 	}
 
 	public String printInventory() {
-		String inv = this.name + "'s Inventory:\n";
+		String inv = this.name + "'s game.Inventory:\n";
 		for (int i = 0; i < inventory.size(); i++) {
 			inv += " " + i + ". " + inventory.get(i).getName() + "\n";
 		}

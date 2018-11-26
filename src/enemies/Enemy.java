@@ -1,7 +1,7 @@
 package enemies;
 
 import game.Actor;
-import game.Player;
+import players.Player;
 
 abstract public class Enemy extends Actor {
 

@@ -12,7 +12,7 @@ abstract public class Actor {
     public double level;
     public ArrayList<Attack> att, atts;
     public int attLevel [];
-    //protected ArrayList<item.Item> Inventory = new ArrayList<>();
+    //protected ArrayList<item.Item> game.Inventory = new ArrayList<>();
     //protected String Class;
 
 

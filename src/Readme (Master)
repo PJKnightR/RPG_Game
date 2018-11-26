@@ -10,16 +10,15 @@ To-do (overall):
 To-do aka ? (In order of priority(sort of)):
 -Implement base game, main, and module class (initiate battles against enemy) (Kellan)
 -Finish base battle class (in regards how the battle ends and item usage)  (Patrick & TJ)
--Implement base actor and player class (Nathan)
--Add different enemies (Paul)
 -Implementing attacks (Different attack for each class, power modifier, arraylist of known attacks, a reason to use all
     attacks (mana system), attacks stored in different classes, attacks implemented like pokemon program (Patrick & TJ)
--Add different player classes (Knight, Archer, Wizard) (Needs assigned, Nathan???)
+-Add different player classes (Knight, Archer, Wizard) (Patrick)
 -Add different in-game events (Kellan)
+-Add ability to gain experience and level up (TJ)
+-Add basic, consumable items (Patrick)
 
 -Implementing equipment (equipment slots in player, stats recalculated when put on or off, a very simple equipment
     modifier can be used)
--Add basic, consumable items (???)
 
 
 Ideas:
