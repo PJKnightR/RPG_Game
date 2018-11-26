@@ -8,12 +8,12 @@ import java.util.ArrayList;
 public class Player extends Actor {
 	private static final Readable IOStream = null;
 	protected double experience;
-	private ArrayList<Item> inventory;			// Added
+	//private ArrayList<Item> inventory;			// Added
 	//inventory should be its own class
 	//keep track of mana
 
 	public Player(String name){
-		inventory = new ArrayList<>();
+		//inventory = new ArrayList<>();
 		setName(name);
 		setLevel();
 		setAttack();
@@ -25,18 +25,19 @@ public class Player extends Actor {
 		atts = new ArrayList<>();
 		att = new ArrayList<>();
 
-		atts.add(new genericAttack1());
-		atts.add(new genericAttack2());
+		atts.add(new SwordSlash());
+		atts.add(new RiskyLunge());
 
-		attLevel = new int[]{1,20};
+		attLevel = new int[]{1,5};
 
 		getInitialAttacks();
 	}
 
+	//((baseAttack / 2) * lev / 100 + 5)
 	//((baseAtk / 2 ) * (lev / 100) + 5)
 	//base stats can be different to each class, setting stats done in constructor, called upon each level up
 
-	public void addInventory(Item i) {
+	/*public void addInventory(Item i) {
 		this.inventory.add(i);
 	}
 
@@ -50,7 +51,7 @@ public class Player extends Actor {
 			inv += " " + i + ". " + inventory.get(i).getName() + "\n";
 		}
 		return inv;
-	}
+	}*/
 
 
     /**

@@ -120,6 +120,8 @@ public class Game {
 					// Create a new Player Character
 					this.PC = createCharacter();
 
+					System.out.println("You can open the menu at any time by entering 'menu'.");
+
 					// TODO:  Here we might load a module for the rooms, ect.
 					// Instead we'll use a method we'll depreciate later.
 
@@ -179,7 +181,7 @@ public class Game {
 				 */
 
 				if (userInput.equals("inventory")) {
-					System.out.print(PC.printInventory());
+					//System.out.print(PC.printInventory());
 					//TODO let them do anything with it.
 
 				} else if (userInput.equals("me")) {
@@ -202,27 +204,9 @@ public class Game {
 					// TODO: Whenever we are in a room/area, get an arraylist of things in it.
 					userInput = scan.next();
 					System.out.println("That isn't here.");
-				}
-
-				/*
-				if (userInput.equals("g")) {
-					System.out.println("You don't have a cookie. The goblin is disappointed.");
-					Battle bat = new Battle();
-					bat.startBattle(PC, scan);
-
-				} else if (userInput.equals("f")) {
-					System.out.println("The crafty goblin has a rope around your leg.");
-					Battle bat = new Battle();
-					bat.startBattle(PC, scan);
-
-				} else if (userInput.equals("k")) {
-					System.out.println("The goblin predicted this");
-					Battle bat = new Battle();
-					bat.startBattle(PC, scan);
 				} else {
-					System.out.println("Command not recognized.");
-				}
-				 */
+				    System.out.println("Command not recognized.");
+                }
 
 				// TODO: Detect game over conditions*/
 				// 	System.out.println("\n\t GAME OVER\n\n");

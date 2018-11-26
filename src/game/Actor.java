@@ -8,7 +8,7 @@ import java.util.ArrayList;
 abstract public class Actor {
     public String name;
     public String e_name;
-    public double health, defense, attack, speed, health_left;
+    public double health, defense, attack, speed, healthLeft, baseAttack, baseDefense, baseSpeed, baseHealth;
     public double level;
     public ArrayList<Attack> att, atts;
     public int attLevel [];
@@ -64,11 +64,11 @@ abstract public class Actor {
      * This method gets Health Left
      */
     public double getHealthLeft() {
-        return health_left;
+        return healthLeft;
     }
 
     public void setHealthLeft(double i){
-        health_left = i;
+        healthLeft = i;
     }
 
     /**

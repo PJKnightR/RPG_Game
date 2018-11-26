@@ -15,7 +15,6 @@ To-do aka ? (In order of priority(sort of)):
 -Implementing attacks (Different attack for each class, power modifier, arraylist of known attacks, a reason to use all
     attacks (mana system), attacks stored in different classes, attacks implemented like pokemon program (Patrick & TJ)
 -Add different player classes (Knight, Archer, Wizard) (Needs assigned, Nathan???)
--Add Critical Hits (Patrick & TJ)
 -Add different in-game events (Kellan)
 
 -Implementing equipment (equipment slots in player, stats recalculated when put on or off, a very simple equipment
@@ -38,22 +37,6 @@ Ideas:
 -Other Players?
 
 
-Enemy types:
-Easy
-- Goblin (base enemy)
-- Troll
-- Skeleton
-
-Medium
-- Baby dragon
-- Witch
-- Vampire
-
-Hard
-- Dragon
-- Rogue knight
-- Werewolf
-
 Other Enemy ideas (By Patrick)
 - Thief/Bandit
 - Zombie/Undead/Husk
@@ -71,7 +54,7 @@ For Shizzle:
 -Archer- Attack and Mana average, speed higher, defense lower
     -Arrow Volley, Flaming Arrows, Piercing Shots, Storm of Arrows
 -Wizard- Defense Average, Attack and Mana Higher, speed lower
-    -Fireball, Finger Lightening, Plasma Strike, Triple-Element Blast
+    -attack.Fireball, Finger Lightening, Plasma Strike, Triple-Element Blast
 
 Other Ideas (By Patrick)
 -Gladiator aka a Tank- High Attack and defense, god-awful speed, meh mana
