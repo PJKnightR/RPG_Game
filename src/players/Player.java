@@ -16,7 +16,7 @@ public class Player extends Actor {
 	public Player(String name){
 		//inventory = new ArrayList<>();
 		setName(name);
-		setLevel();
+		setLevel(1);
 		setAttack();
 		setDefense();
 		setSpeed();
@@ -93,16 +93,23 @@ public class Player extends Actor {
 	/**
 	 * This will set the Level of the player starting at 1
 	 */
-	public void setLevel() {
-		level = Math.round(this.getLevel()-(this.getLevel()));
+	public void setLevel(double l) {
+		level = l;
 	}
 	
 	
 	//Keeps track of Exp to level up with
 	public int Exp;
 
+	/**
+	 * This will set the experience of the player starting at 0
+	 * @param Experience the amount of experience to the player's current level of experience
+	 */
 	public void setExp(int Experience){ Exp += Experience; }
 
+	/**
+	 * @return the player's amount of experience
+	 */
 	public int getExp(){ return Exp; }
 	
 	/**
@@ -119,11 +126,10 @@ public class Player extends Actor {
 	 * Levels up the player and prints out which level they have achieved
 	 */
 	public void levelUp(){
-		level = level + 1;
-		System.out.println("Level Up!!! You have reached level " + level + "!");
+		this.setLevel(this.getLevel() + 1);
+		System.out.println("Level Up!!! You have reached level " + getLevel() + "!");
 		this.setExp(getExp() - 100);
 		this.setName(name);
-		this.setLevel();
 		this.setAttack();
 		this.setDefense();
 		this.setSpeed();
