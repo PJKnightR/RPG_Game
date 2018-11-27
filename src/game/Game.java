@@ -134,6 +134,8 @@ public class Game {		// Open Game{}
 
 				if (mash) {	// open mash
 
+					//TODO: Let them do anything besides kill stuff
+
 					switch (choice) {
 						case 1:
 							Battle batbat = new Battle();
