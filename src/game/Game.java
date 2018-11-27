@@ -1,6 +1,7 @@
 package game;
 
 import java.util.Scanner;
+import players.*;
 
 /** This class contains everything needed to run a new game.
  * To play, a new instance of this class must be intialized.
@@ -9,7 +10,7 @@ public class Game {		// Open Game{}
 	// private variables
 	private String name;	// This is the name of the game being played.
 	private Scanner scan;	// This is a Scanner which handles user input
-	private game.Player PC;		// This is the avatar of the user in the game
+	private Player PC;		// This is the avatar of the user in the game
 	private String intro;
 
 	/** Constructor Method
@@ -36,7 +37,7 @@ public class Game {		// Open Game{}
 		System.out.print("[|] Please enter your character's name: ");
 		scan.nextLine();
 		String name = scan.nextLine();
-		this.PC = new game.Player(name);
+		this.PC = new Player(name);
 	}
 
 	/** Runs the game.
@@ -126,6 +127,10 @@ public class Game {		// Open Game{}
 					start = false;
 
 				}	// close tart
+
+				System.out.print(" > ");
+				choice = scan.nextInt();
+
 
 				if (mash) {	// open mash
 
