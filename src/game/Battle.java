@@ -67,7 +67,7 @@ public class Battle {
         }
 
         if (playerLoss){
-            //game over
+
         } else if (enemyLoss){
             PC.setExp(100);
             // check if the player is eligible to level up
@@ -82,7 +82,7 @@ public class Battle {
      * @param PC
      */
     //add being able to check your stats and attacks
-    private void playerMove(Player PC){
+    public void playerMove(Player PC){
         boolean action = false;
         String move;
 
@@ -96,8 +96,7 @@ public class Battle {
             } else if (move.equalsIgnoreCase("2")){
                 action = true;
                 this.selectedMove = 0;
-                System.out.println("This feature is coming soon!");
-                //need to implement items
+                PC.getInventory().useItem(PC,this);
             } else if (move.equalsIgnoreCase("3")){
                 action = true;
                 this.selectedMove = 0;
@@ -203,11 +202,11 @@ public class Battle {
      * @return a boolean based on whether the player is still alive
      */
     private boolean checkPlayerStatus(Player PC){
-        if (PC.getHealthLeft() > 0){
-            return true;
-        } else {
+        if (PC.getHealthLeft() <= 0){
             return false;
         }
+
+        return true;
     }
 
     /**

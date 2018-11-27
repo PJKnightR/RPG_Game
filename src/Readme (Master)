@@ -12,7 +12,8 @@ To-do aka ? (In order of priority(sort of)):
 -Finish base battle class (in regards how the battle ends and item usage)  (Patrick & TJ)
 -Implementing attacks (Different attack for each class, power modifier, arraylist of known attacks, a reason to use all
     attacks (mana system), attacks stored in different classes, attacks implemented like pokemon program (Patrick & TJ)
--Add different player classes (Knight, Archer, Wizard) (Patrick)
+-Add different player classes (Knight, Archer, Wizard) (Nathan)
+-Tweaks to enemies (Paul)
 -Add different in-game events (Kellan)
 -Add ability to gain experience and level up (TJ)
 -Add basic, consumable items (Patrick)

@@ -8,6 +8,11 @@ To make versions numbers easier:
 
 Version Version # Month/Day/Year
 
+Version 1.6.0 11/26/18
+-Added new base methods to item (Patrick)
+-Added base methods to inventory (Patrick)
+-Added classes for Health Potions including Health Potion, Frappe Potion, Grande Potion, Mongo Potion (Patrick)
+
 Version 1.5.1 11/26/18
 -Added basic experience/level up methods to the player and battle classes (TJ)
 -Added updated java doc stuff to Battle (TJ)
