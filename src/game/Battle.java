@@ -69,8 +69,8 @@ public class Battle {
         if (playerLoss){
             //game over
         } else if (enemyLoss){
-            //stuff when you win a fight
             PC.setExp(100);
+            // check if the player is eligible to level up
             if(PC.checkLevelUp()){
                 PC.levelUp();
             }

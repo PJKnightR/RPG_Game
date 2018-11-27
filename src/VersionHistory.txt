@@ -9,6 +9,7 @@ To make versions numbers easier:
 Version Version # Month/Day/Year
 
 Version 1.5.1 11/26/18
+-Added basic experience/level up methods to the player class (TJ)
 -Added updated java doc stuff to Battle (TJ)
 -Added empty inventory class (Patrick)
 -Added players package in preparation for creating multiple player classes (Patrick)
