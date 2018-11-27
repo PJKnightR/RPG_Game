@@ -26,12 +26,16 @@ public class Goblin extends Enemy {
         setHealthLeft(health);
         setSpeed();
 
+        //arraylist of possible attacks
         atts = new ArrayList<>();
+        //arraylist of what level of character needs to be to unlock an attack
         att = new ArrayList<>();
 
-        atts.add(new StickSlap());
         atts.add(new CookieThrow());
+        atts.add(new StickSlap());
         atts.add(new ClubBat());
+        //spear stab
+        //spear chuck
 
         attLevel = new int[]{1,1,2};
 

@@ -1,7 +1,10 @@
 package enemies;
 
+import attack.CookieThrow;
 import attack.FireBreath;
 import attack.SlashingClaw;
+import attack.Bash;
+import attack.TailWhip;
 import players.Player;
 
 import java.util.ArrayList;
@@ -31,7 +34,10 @@ public class BabyDragon extends Enemy {
         atts = new ArrayList<>();
         att = new ArrayList<>();
 
+        atts.add(new CookieThrow());
         atts.add(new SlashingClaw());
+        atts.add(new TailWhip());
+        atts.add(new Bash());
         atts.add(new FireBreath());
 
         attLevel = new int[]{1,1};

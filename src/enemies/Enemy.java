@@ -43,4 +43,11 @@ abstract public class Enemy extends Actor {
 		speed = ((baseSpeed / 2) * level / 100 + 5);
 	}
 
+
+
+	/*Make different types of attacks for enemies; create and organize the different atts for Enemies;
+	implement different att for Enemies;
+	 */
+	//Change how enemy level is set
+
 }

@@ -1,7 +1,11 @@
 package enemies;
 
+import attack.CookieThrow;
 import attack.RiskyLunge;
 import attack.SwordSlash;
+import attack.StickSlap;
+import attack.MightyBlow;
+import attack.Bash;
 import players.Player;
 
 import java.util.ArrayList;
@@ -31,8 +35,12 @@ public class RogueKnight extends Enemy {
         atts = new ArrayList<>();
         att = new ArrayList<>();
 
+        atts.add(new CookieThrow());
+        atts.add(new StickSlap());
         atts.add(new SwordSlash());
+        atts.add(new Bash());
         atts.add(new RiskyLunge());
+        atts.add(new MightyBlow());
 
         attLevel = new int[]{1,1};
 
