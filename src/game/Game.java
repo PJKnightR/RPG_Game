@@ -16,6 +16,7 @@ public class Game {		// Open Game{}
 	 * This constructor creates a new game.
 	 * @param name String
 	 * @param scan Scanner: to receive user input
+	 */
 	public Game(String name, Scanner scan, String intro) {
 	this.name = name;
 	this.scan = scan;
@@ -50,7 +51,7 @@ public class Game {		// Open Game{}
 		boolean start = false;	// Whether this is a new Game or not
 
 		while (running) {	// open gameLoop
-			int choice;	// user's input
+			int choice = 0;	// user's input
 
 			if (mainMenu) {	// open mainMenu
 				// Print Title and menu options, and prompt
@@ -89,6 +90,7 @@ public class Game {		// Open Game{}
 								System.out.println("[|] Command not recognized.");
 								break;
 						}
+						break;
 					case 2:
 						System.out.println("[|] Coming Soon.");
 						break;
@@ -119,7 +121,7 @@ public class Game {		// Open Game{}
 					System.out.println(this.intro);
 					System.out.println("[|] You can open the menu at any time by entering 'menu'.");
 					if (mash) {
-						System.out.pritnln("[|] Search for enemies by typing '1'.");
+						System.out.println("[|] Search for enemies by typing '1'.");
 					}
 					start = false;
 
@@ -129,8 +131,8 @@ public class Game {		// Open Game{}
 
 					switch (choice) {
 						case 1:
-							Battle new = new Battle();
-							new.startBattle(PC, scan);
+							Battle batbat = new Battle();
+							batbat.startBattle(PC, scan);
 							if (PC.getHealthLeft() <= 0) {
 								System.out.print("\n\n\t\tGAME\tOVER\n\n\n");
 								mainMenu = true;
@@ -143,7 +145,6 @@ public class Game {		// Open Game{}
 
 							break;
 					}
-
 
 				}	// close mash
 				//else if (!mash) {}
