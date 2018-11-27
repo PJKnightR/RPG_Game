@@ -12,6 +12,16 @@ Version 1.6.0 11/26/18
 -Added new base methods to item (Patrick)
 -Added base methods to inventory (Patrick)
 -Added classes for Health Potions including Health Potion, Frappe Potion, Grande Potion, Mongo Potion (Patrick)
+-Added classes for Mana Potions including Mana Potion, Frappe Mana Potion, Grande Mana Potion, and Mongo Mana Potion (Patrick)
+-Added mana functionality in battle for the player (Patrick)
+-Implementation of mana stats in player (Patrick)
+-Misc tweaks to battle (Patrick)
+-Fixed Player Stats calculations (Patrick)
+-Fixed issue with battle immediately asking for a valid move (Patrick)
+-Fixed enemies not dying (Patrick)
+-Fixed enemies not attacking (Patrick)
+-Disabled Weapons class due to time constraints (Kellan)
+-Complete reworking of game class (Kellan)
 
 Version 1.5.1 11/26/18
 -Added basic experience/level up methods to the player and battle classes (TJ)

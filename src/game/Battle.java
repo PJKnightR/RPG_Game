@@ -43,12 +43,14 @@ public class Battle {
                 if (!battling){
                     System.out.println("You defeated the " + enemy.getName() + "!");
                     enemyLoss = true;
+                    break;
                 }
                 PC.setHealthLeft(PC.getHealthLeft() - enemyAttack(PC));
                 battling = checkPlayerStatus(PC);
                 if (!battling){
                     System.out.println("You were defeated by the " + enemy.getName() + "!");
                     playerLoss = true;
+                    break;
                 }
             } else if (PC.getSpeed() < enemy.getSpeed()){
                 PC.setHealthLeft(PC.getHealthLeft() - enemyAttack(PC));
@@ -56,24 +58,25 @@ public class Battle {
                 if (!battling){
                     System.out.println("You were defeated by the " + enemy.getName() + "!");
                     playerLoss = true;
+                    break;
                 }
                 enemy.setHealthLeft(enemy.getHealthLeft() - playerAttack(PC));
                 battling = checkEnemyStatus();
                 if (!battling){
                     System.out.println("You defeated the " + enemy.getName() + "!");
                     enemyLoss = true;
+                    break;
                 }
             }
         }
 
-        if (playerLoss){
-
-        } else if (enemyLoss){
-            PC.setExp(100);
+        if (enemyLoss){
+            PC.gainExp(100);
             // check if the player is eligible to level up
             if(PC.checkLevelUp()){
                 PC.levelUp();
             }
+
         }
     }
 
@@ -89,7 +92,7 @@ public class Battle {
         displayHealth(PC);
         System.out.println("What would you like to do?\n 1. Fight\n 2. Use an item\n 3. Run");
         while (!action){
-            move = scan.nextLine();
+            move = scan.next();
             if (move.equalsIgnoreCase("1")){
                 action = true;
                 this.selectedMove = selectAttack(PC);
@@ -132,17 +135,20 @@ public class Battle {
         } else if (attack < -2  || attack > PC.att.size() || attack == 0) {
             System.out.println("Please enter an applicable number!");
             selectAttack(PC);
+        } else if (PC.getManaLeft() < PC.att.get(attack - 1).getManaCost()){
+            System.out.println("Not enough mana for this attack! Please enter an applicable number!");
+            selectAttack(PC);
         }
 
         return attack;
     }
 
     /**
-     * Returns a random element from an arraylist of possible enemy moves, based on the enemy type.
+     * Returns a random element from an arrayList of possible enemy moves, based on the enemy type.
      */
     private void enemyMove(){
         //random selection of the enemies move
-        double enemyMove = Math.random() * (enemy.att.size() - 1);
+        double enemyMove = 1 + Math.random() * (enemy.att.size() - 1);
         enemySelectedMove = (int)enemyMove;
     }
 
@@ -158,6 +164,8 @@ public class Battle {
         } else {
             int att = selectedMove - 1;
             double damage;
+
+            PC.setManaLeft(PC.getManaLeft() - PC.att.get(att).getManaCost());
 
             damage = (2 * PC.getLevel() + 10) / 250 * (PC.getAttack() / enemy.getDefense()) * (PC.att.get(att).getPower() + 2) * getCriticalHitModifier();
             System.out.println("You attack using " + PC.att.get(att).getAttackName() + ". It did " + (int)damage + " damage.");
@@ -180,7 +188,7 @@ public class Battle {
             int att = enemySelectedMove - 1;
             double damage;
             damage = (2 * enemy.getLevel() + 10) / 250 * (enemy.getAttack() / PC.getDefense()) * (enemy.att.get(att).getPower() + 2) * getCriticalHitModifier();
-            System.out.println("The " + enemy.getName() + " attacked you using " + enemy.att.get(att).getAttackName() + ". It did " + (int)damage + ".");
+            System.out.println("The " + enemy.getName() + " attacked you using " + enemy.att.get(att).getAttackName() + ". It did " + (int)damage + " damage.");
 
             return (int) damage;
         }
@@ -192,7 +200,7 @@ public class Battle {
      * @param PC
      */
     public void displayHealth(Player PC){
-        System.out.println("Your health is " + PC.getHealthLeft() + "/" + PC.getHealth());
+        System.out.println("Your health is " + PC.getHealthLeft() + "/" + PC.getHealth() + ". Your mana is " + PC.getManaLeft() + "/" + PC.getMana() + ".");
         System.out.println("The " + enemy.getName() + "'s health is " + enemy.getHealthLeft() + "/" + enemy.getHealth());
     }
 
@@ -214,11 +222,11 @@ public class Battle {
      * @return a boolean based on whether the enemy is still alive
      */
     private boolean checkEnemyStatus(){
-        if (enemy.getHealthLeft() > 0){
-            return true;
-        } else {
+        if (enemy.getHealthLeft() <= 0){
             return false;
         }
+
+        return true;
     }
 
     /**

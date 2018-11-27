@@ -9,7 +9,7 @@ abstract public class Enemy extends Actor {
 	 * Sets the health of the enemy
 	 */
 	public void setHealth(){
-		health = ((baseHealth / 2) * level / 100 + 5);
+		health = ((baseHealth / 2) * level / 100 + 10);
 	}
 
 	/**

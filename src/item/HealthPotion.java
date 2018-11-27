@@ -2,7 +2,7 @@ package item;
 
 import players.Player;
 
-public class HealthPotion extends Item{
+abstract public class HealthPotion extends Item{
     private double healthRestore;
 
     public HealthPotion(int num){
@@ -11,12 +11,12 @@ public class HealthPotion extends Item{
     }
 
     public int use(Player user){
-        double h = user.getHealth(), hM;
+        double h = user.getHealthLeft(), hM;
         user.setHealthLeft(user.getHealthLeft() + healthRestore);
         if (user.getHealthLeft() > user.getHealth()){
             user.setHealthLeft(user.getHealth());
         }
-        hM = user.getHealth();
+        hM = user.getHealthLeft();
         System.out.println("You have regained " + (hM - h) + " HP.");
         setStack(getStack() - 1);
         return 0;

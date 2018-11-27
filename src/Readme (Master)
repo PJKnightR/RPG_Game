@@ -17,9 +17,14 @@ To-do aka ? (In order of priority(sort of)):
 -Add different in-game events (Kellan)
 -Add ability to gain experience and level up (TJ)
 -Add basic, consumable items (Patrick)
+-Add moves on level up
 
 -Implementing equipment (equipment slots in player, stats recalculated when put on or off, a very simple equipment
     modifier can be used)
+
+Bugs:
+-Crashing enemies when the player levels up
+-Items display a lot of extra text when multiple are added at the same time
 
 
 Ideas:

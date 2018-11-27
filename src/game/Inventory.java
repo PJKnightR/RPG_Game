@@ -36,6 +36,7 @@ public class Inventory {
         if (itemList.size() == 0){
             System.out.println("No items in Inventory");
             position = -1;
+            bat.playerMove(user);
         }
         while(position != -1){
             System.out.println("What item do you want to use?");
