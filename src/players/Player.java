@@ -2,6 +2,7 @@ package players;
 
 import attack.*;
 import game.Actor;
+import game.Inventory;
 import item.*;
 
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 public class Player extends Actor {
 	private static final Readable IOStream = null;
 	protected double experience;
+	Inventory inventory = new Inventory();
 	//private ArrayList<Item> inventory;			// Added
 	//inventory should be its own class
 	//keep track of mana
@@ -17,6 +19,12 @@ public class Player extends Actor {
 		//inventory = new ArrayList<>();
 		setName(name);
 		setLevel(1);
+
+		baseAttack = 50;
+		baseDefense = 50;
+		baseSpeed = 50;
+		baseHealth = 50;
+
 		setAttack();
 		setDefense();
 		setSpeed();
@@ -33,6 +41,10 @@ public class Player extends Actor {
 		attLevel = new int[]{1,5};
 
 		getInitialAttacks();
+	}
+
+	public Inventory getInventory(){
+		return inventory;
 	}
 
 	//((baseAttack / 2) * lev / 100 + 5)
@@ -65,21 +77,21 @@ public class Player extends Actor {
 	 * This will set the health of the player. This will change later
 	 */
 	public void setHealth() {
-		health = Math.round(this.getHealth()-(this.getHealth()));
+		health = ((baseHealth / 2) * level / 100 + 5);
 	}
 	
 	/**
 	 * This will set the defense of the playe
 	 */
 	public void setDefense() {
-		defense = Math.round(this.getDefense()-(this.getDefense()));
+		defense = ((baseDefense / 2) * level / 100 + 5);
 	}
 	
 	/**
 	 * This will set the attack strength of the player's move. Changes based on other stats
 	 */
 	public void setAttack() {
-		attack = Math.round(this.getAttack()-(this.getAttack()));
+		attack = ((baseAttack / 2) * level / 100 + 5);
 
 	}
 	
@@ -87,7 +99,7 @@ public class Player extends Actor {
 	 * This will set the speed of the player but will also change in Battle
 	 */
 	public void setSpeed() {
-		speed = Math.round(this.getSpeed()-(this.getSpeed()));
+		speed = ((baseSpeed / 2) * level / 100 + 5);
 	}
 	
 	/**
