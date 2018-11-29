@@ -125,10 +125,11 @@ public class Battle {
     private int selectAttack(Player PC){
 
         for(int i = 0; i < PC.att.size(); i++){
-            System.out.print(i + 1 + ". " + PC.att.get(i).getAttackName());
+            System.out.print(i + 1 + ". " + PC.att.get(i).getAttackName() + " ");
         }
         System.out.println("\nEnter -1 to go back");
 
+        //need a try catch here or convert to a string
         int attack = scan.nextInt();
         if (attack == -1){
             playerMove(PC);

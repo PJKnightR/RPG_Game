@@ -1,14 +1,15 @@
 package players;
 
+import attack.Fireball;
 import players.Player;
 import java.util.ArrayList;
 
 
 public class Wizard extends Player {
 
-    public Wizard (Player pl){
+    public Wizard (String name){
 
-        super(pl.name);
+        setName(name);
 
         attack = 90;
         baseDefense = 70;
@@ -16,20 +17,22 @@ public class Wizard extends Player {
         baseHealth = 100;
         baseMana = 90;
 
-        setLevel();
         setAttack();
         setDefense();
-        setHealth();
-        setMana();
-        setHealthLeft(health);
         setSpeed();
+        setHealth();
+        setHealthLeft(health);
+        setMana();
+        setManaLeft(mana);
+        setExp(0);
 
 
         atts = new ArrayList<>();
         att = new ArrayList<>();
 
+        atts.add(new Fireball());
 
-        attLevel = new int[]{1,1};
+        attLevel = new int[]{1};
         getInitialAttacks();
 
     }

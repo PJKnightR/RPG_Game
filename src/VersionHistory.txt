@@ -8,6 +8,15 @@ To make versions numbers easier:
 
 Version Version # Month/Day/Year
 
+Version 1.7.0 11/28/18
+-Added Archer, Knight, and Wizard classes (Nathan)
+-Misc Tweaks to player and the player classes (Patrick)
+-Fixed Player (Nathan)
+
+Version 1.6.1 11/28/18
+-Fixed the getInitialAttacks Method in Actor (Patrick)
+-Small changes to player and some attacks for testing purposes (Patrick)
+
 Version 1.6.0 11/26/18
 -Added new base methods to item (Patrick)
 -Added base methods to inventory (Patrick)

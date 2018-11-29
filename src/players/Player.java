@@ -1,56 +1,13 @@
 package players;
 
-import attack.*;
 import game.Actor;
 import game.Inventory;
-import item.*;
 
-import java.util.ArrayList;
-
-public class Player extends Actor {
-	private static final Readable IOStream = null;
+abstract public class Player extends Actor {
 	protected double experience;
 	Inventory inventory = new Inventory();
 	public double mana, manaLeft, baseMana;
-
-/*	public Player(){
-		String name;
-		String e_name;
-		double health, defense, attack, speed, healthLeft, baseAttack, baseDefense, baseSpeed, baseHealth;
-		double level;
-		ArrayList<Attack> att, atts;
-		int attLevel [];
-	}*/
-
-	public Player(String name){
-		setName(name);
-		setLevel(1);
-
-		baseAttack = 50;
-		baseDefense = 50;
-		baseSpeed = 50;
-		baseHealth = 50;
-		baseMana = 50;
-
-		setAttack();
-		setDefense();
-		setSpeed();
-		setHealth();
-		setHealthLeft(health);
-		setMana();
-		setManaLeft(mana);
-		gainExp(0);
-
-		atts = new ArrayList<>();
-		att = new ArrayList<>();
-
-		atts.add(new SwordSlash());
-		atts.add(new RiskyLunge());
-
-		attLevel = new int[]{1,5};
-
-		getInitialAttacks();
-	}
+	public int Exp;
 
 	public Inventory getInventory(){
 		return inventory;
@@ -65,15 +22,13 @@ public class Player extends Actor {
 	 * This will set the health of the player. This will change later
 	 */
 	public void setHealth() {
-		//health = Math.round(this.getHealth()-(this.getHealth()));
 		health = ((baseHealth / 2) * level / 100 + 10);
 	}
 	
 	/**
-	 * This will set the defense of the playe
+	 * This will set the defense of the player
 	 */
 	public void setDefense() {
-		//defense = Math.round(this.getDefense()-(this.getDefense()));
 		defense = ((baseDefense / 2) * level / 100 + 5);
 	}
 	
@@ -114,10 +69,6 @@ public class Player extends Actor {
 	public void setLevel(double l) {
 		level = l;
 	}
-	
-	
-	//Keeps track of Exp to level up with
-	public int Exp;
 
 	/**
 	 * This will set the experience of the player starting at 0

@@ -1,14 +1,15 @@
 package players;
 
+import attack.ArrowVolley;
 import players.Player;
 import java.util.ArrayList;
 
 
 public class Archer extends Player {
 
-    public Archer (Player pl){
+    public Archer (String name){
 
-        super(pl.name);
+        setName(name);
 
         attack = 60;
         baseDefense = 50;
@@ -16,20 +17,22 @@ public class Archer extends Player {
         baseHealth = 100;
         baseMana = 60;
 
-        setLevel();
         setAttack();
         setDefense();
-        setHealth();
-        setMana();
-        setHealthLeft(health);
         setSpeed();
+        setHealth();
+        setHealthLeft(health);
+        setMana();
+        setManaLeft(mana);
+        setExp(0);
 
 
         atts = new ArrayList<>();
         att = new ArrayList<>();
 
+        atts.add(new ArrowVolley());
 
-        attLevel = new int[]{1,1};
+        attLevel = new int[]{1};
         getInitialAttacks();
 
     }

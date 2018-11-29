@@ -15,9 +15,8 @@ To-do aka ? (In order of priority(sort of)):
 -Add different player classes (Knight, Archer, Wizard) (Nathan)
 -Tweaks to enemies (Paul)
 -Add different in-game events (Kellan)
--Add ability to gain experience and level up (TJ)
--Add basic, consumable items (Patrick)
--Add moves on level up
+-Add ability to gain experience and level up (TJ) (Possibly Broken)
+-Add moves on level up (Patrick)
 
 -Implementing equipment (equipment slots in player, stats recalculated when put on or off, a very simple equipment
     modifier can be used)

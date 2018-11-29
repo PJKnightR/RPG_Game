@@ -17,11 +17,14 @@ abstract public class Actor {
 
 
     public void getInitialAttacks(){
-        int currentAtt = 0, levelCount = 1;
-        while(levelCount <= this.level){
-            if (levelCount == attLevel[currentAtt]){
-                att.add(atts.get(currentAtt));
+        int currentAtt = 0, levelCount = 0;
+        while(levelCount <= this.getLevel()){
+            while (levelCount == attLevel[currentAtt]){
+                this.att.add(atts.get(currentAtt));
                 currentAtt++;
+                if (currentAtt == attLevel.length){
+                    break;
+                }
             }
 
             levelCount++;

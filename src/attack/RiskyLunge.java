@@ -5,5 +5,6 @@ public class RiskyLunge extends Attack{
         name = "Risky Lunge";
         power = 100;
         description = "The user riskily lunges at their opponent to deal a large amount of damage.";
+        manaCost = 5;
     }
 }
