@@ -9,20 +9,22 @@ To-do (overall):
 
 To-do aka ? (In order of priority(sort of)):
 -Implement base game, main, and module class (initiate battles against enemy) (Kellan)
--Finish base battle class (in regards how the battle ends and item usage)  (Patrick & TJ)
 -Implementing attacks (Different attack for each class, power modifier, arraylist of known attacks, a reason to use all
     attacks (mana system), attacks stored in different classes, attacks implemented like pokemon program (Patrick & TJ)
--Add different player classes (Knight, Archer, Wizard) (Nathan)
 -Tweaks to enemies (Paul)
 -Add different in-game events (Kellan)
--Add ability to gain experience and level up (TJ)
--Add basic, consumable items (Patrick)
+-Add moves on level up (Patrick)
+-Rebalancing and bug fixes (Patrick)
 
--Implementing equipment (equipment slots in player, stats recalculated when put on or off, a very simple equipment
-    modifier can be used)
+Bugs:
+-Items display a lot of extra text when multiple are added at the same time (Found by Patrick, not nessecary to fix)
+-Entering an invalid move and then a valid move causes a crash, referencing the line where mana is calculated. When a move
+is entered, it will always use the first number entered (Found by Patrick)
 
 
 Ideas:
+-Implementing equipment (equipment slots in player, stats recalculated when put on or off, a very simple equipment
+     modifier can be used)
 -Able to do more then just fight enemies with game class (find towns, shops, dungeons, spikepits, enemy kingdoms???, ect)
 -Pets
 -Item Shop
@@ -30,7 +32,6 @@ Ideas:
 -Background music
 -GUI?!?! (Maybe, no, probably not)
 -Damage types
--Randomize Enemy stats
 -Missed attacks
 -Time cycle
 -Bosses

@@ -30,6 +30,7 @@ public class Battle {
      */
     private void doBattle(Player PC){
         boolean battling = true, playerLoss = false, enemyLoss = false;
+        double itemChance;
 
         while (battling){
             playerMove(PC);
@@ -43,37 +44,44 @@ public class Battle {
                 if (!battling){
                     System.out.println("You defeated the " + enemy.getName() + "!");
                     enemyLoss = true;
+                    break;
                 }
                 PC.setHealthLeft(PC.getHealthLeft() - enemyAttack(PC));
                 battling = checkPlayerStatus(PC);
                 if (!battling){
                     System.out.println("You were defeated by the " + enemy.getName() + "!");
-                    playerLoss = true;
+                    //playerLoss = true;
+                    break;
                 }
             } else if (PC.getSpeed() < enemy.getSpeed()){
                 PC.setHealthLeft(PC.getHealthLeft() - enemyAttack(PC));
                 battling = checkPlayerStatus(PC);
                 if (!battling){
                     System.out.println("You were defeated by the " + enemy.getName() + "!");
-                    playerLoss = true;
+                    //playerLoss = true;
+                    break;
                 }
                 enemy.setHealthLeft(enemy.getHealthLeft() - playerAttack(PC));
                 battling = checkEnemyStatus();
                 if (!battling){
                     System.out.println("You defeated the " + enemy.getName() + "!");
                     enemyLoss = true;
+                    break;
                 }
             }
         }
 
-        if (playerLoss){
-
-        } else if (enemyLoss){
-            PC.setExp(100);
+        if (enemyLoss){
+            itemChance = getChance();
+            if (itemChance > 50){
+                PC.getInventory().addRandomItem();
+            }
+            PC.gainExp(100);
             // check if the player is eligible to level up
             if(PC.checkLevelUp()){
                 PC.levelUp();
             }
+
         }
     }
 
@@ -89,7 +97,7 @@ public class Battle {
         displayHealth(PC);
         System.out.println("What would you like to do?\n 1. Fight\n 2. Use an item\n 3. Run");
         while (!action){
-            move = scan.nextLine();
+            move = scan.next();
             if (move.equalsIgnoreCase("1")){
                 action = true;
                 this.selectedMove = selectAttack(PC);
@@ -122,15 +130,19 @@ public class Battle {
     private int selectAttack(Player PC){
 
         for(int i = 0; i < PC.att.size(); i++){
-            System.out.print(i + 1 + ". " + PC.att.get(i).getAttackName());
+            System.out.print(i + 1 + ". " + PC.att.get(i).getAttackName() + " ");
         }
         System.out.println("\nEnter -1 to go back");
 
+        //need a try catch here or convert to a string
         int attack = scan.nextInt();
         if (attack == -1){
             playerMove(PC);
         } else if (attack < -2  || attack > PC.att.size() || attack == 0) {
             System.out.println("Please enter an applicable number!");
+            selectAttack(PC);
+        } else if (PC.getManaLeft() < PC.att.get(attack - 1).getManaCost()){
+            System.out.println("Not enough mana for this attack! Please enter an applicable number!");
             selectAttack(PC);
         }
 
@@ -138,11 +150,11 @@ public class Battle {
     }
 
     /**
-     * Returns a random element from an arraylist of possible enemy moves, based on the enemy type.
+     * Returns a random element from an arrayList of possible enemy moves, based on the enemy type.
      */
     private void enemyMove(){
         //random selection of the enemies move
-        double enemyMove = Math.random() * (enemy.att.size() - 1);
+        double enemyMove = 1 + Math.random() * (enemy.att.size() - 1);
         enemySelectedMove = (int)enemyMove;
     }
 
@@ -158,6 +170,8 @@ public class Battle {
         } else {
             int att = selectedMove - 1;
             double damage;
+
+            PC.setManaLeft(PC.getManaLeft() - PC.att.get(att).getManaCost());
 
             damage = (2 * PC.getLevel() + 10) / 250 * (PC.getAttack() / enemy.getDefense()) * (PC.att.get(att).getPower() + 2) * getCriticalHitModifier();
             System.out.println("You attack using " + PC.att.get(att).getAttackName() + ". It did " + (int)damage + " damage.");
@@ -180,7 +194,7 @@ public class Battle {
             int att = enemySelectedMove - 1;
             double damage;
             damage = (2 * enemy.getLevel() + 10) / 250 * (enemy.getAttack() / PC.getDefense()) * (enemy.att.get(att).getPower() + 2) * getCriticalHitModifier();
-            System.out.println("The " + enemy.getName() + " attacked you using " + enemy.att.get(att).getAttackName() + ". It did " + (int)damage + ".");
+            System.out.println("The " + enemy.getName() + " attacked you using " + enemy.att.get(att).getAttackName() + ". It did " + (int)damage + " damage.");
 
             return (int) damage;
         }
@@ -192,7 +206,7 @@ public class Battle {
      * @param PC
      */
     public void displayHealth(Player PC){
-        System.out.println("Your health is " + PC.getHealthLeft() + "/" + PC.getHealth());
+        System.out.println("Your health is " + PC.getHealthLeft() + "/" + PC.getHealth() + ". Your mana is " + PC.getManaLeft() + "/" + PC.getMana() + ".");
         System.out.println("The " + enemy.getName() + "'s health is " + enemy.getHealthLeft() + "/" + enemy.getHealth());
     }
 
@@ -214,11 +228,11 @@ public class Battle {
      * @return a boolean based on whether the enemy is still alive
      */
     private boolean checkEnemyStatus(){
-        if (enemy.getHealthLeft() > 0){
-            return true;
-        } else {
+        if (enemy.getHealthLeft() <= 0){
             return false;
         }
+
+        return true;
     }
 
     /**
@@ -298,45 +312,4 @@ public class Battle {
         return new Enemy[]{new Dragon(PC), new Werewolf(PC), new RogueKnight(PC)};
     }
 
-    /**startBattle()
-     * -Initializes values needed to start the battle. Will most likely be where the players current health is imported
-     *
-     * generateEnemy()
-     * -may do this in a separate method somewhere, easier to implement things like bosses, may put in game (unless
-     * fighting more than one enemy at a time is a thing). Will be using the players level in some fashion.
-     *
-     * playerMove()
-     * -Where player chooses their move, this value will be sent to methods following this. This is also where items and
-     * whatnot can be used during battle, and actions other than attacks will have their own specific numbers sent to
-     * playerAttack() where that methods will determine if the player attack or did not. This will allow a smoother
-     * implementation of being able to use items immediately
-     *
-     * enemyMove()
-     * -Where enemy chooses their move, this value will be sent to methods following this. By implementing this as a
-     * separate method this time, it could allow enemies to get an attack in before a player uses an item or runs if
-     * attacks like that are implemented ie Pursuit from Pokemon. Maybe a weak "Quick Jab" move idk
-     *
-     * compareSpeeds()
-     * -Figures out who will attack first by comparing the enemy and player speeds
-     *
-     * playerAttack()
-     * -does the action of attacking the enemy and damage calculation. Will determine if the player even attacked or not.
-     * This method will do nothing if the player did not choose an attack
-     *
-     * enemyAttack()
-     * -does the action of attacking the player and damage calculation. Attacks for enemies and players should be stored
-     * in arrayList. This will make them less buggy and prevent people from using attacks they don't have/don't exist.
-     *
-     * displayHealth()
-     * -displays the current health of the player and the enemy
-     *
-     * checkPlayerLoss()
-     * -makes sure the player is still alive. If not then game over.
-     *
-     * checkEnemyLoss()
-     * -makes sure the enemy is still alive. Deals out experience, possible items, ect. Will partially handle level ups.
-     *
-     * getCriticalHitModifier()
-     * -determines if the attack is critical or not
-     */
 }

@@ -1,4 +1,4 @@
-package item;
+/*package item;
 
 public class Weapon extends Item {
 
@@ -37,4 +37,4 @@ public class Weapon extends Item {
         return result;
     }
 
-}
+}*/

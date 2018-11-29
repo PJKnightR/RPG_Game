@@ -19,7 +19,7 @@ abstract public class Item {
 	}
 
 	public static Item[] itemList(){
-		return new Item[]{new ItemEmpty(0)};
+		return new Item[]{new ItemEmpty(1), new FrappePotion(1), new GrandePotion(1), new MongoPotion(1), new FrappeManaPotion(1), new GrandeManaPotion(1), new MongoManaPotion(1)};
 	}
 
 	public abstract int use(Player PC);

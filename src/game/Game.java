@@ -37,7 +37,7 @@ public class Game {		// Open Game{}
 		System.out.print("[|] Please enter your character's name: ");
 		scan.nextLine();
 		String name = scan.nextLine();
-		this.PC = new Player(name);
+		this.PC = new Knight(name);
 	}
 
 	/** Runs the game.

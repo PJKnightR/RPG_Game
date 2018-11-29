@@ -8,10 +8,34 @@ To make versions numbers easier:
 
 Version Version # Month/Day/Year
 
+Version 1.7.0 11/28/18
+-Added Archer, Knight, and Wizard classes (Nathan)
+-Added ability to have a random chance of finding an item after a battle (Patrick)
+-Misc Tweaks to player and the player classes (Patrick)
+-Fixed Player (Nathan)
+-Fixed a bug where the players stats were not being set properly (Patrick)
+-Fixed a bug where the game would crash when generating an enemy over level 1 (Patrick)
+-Fixed a naming issue with the Grande Mana Potion (Patrick)
+-Deleted both generic attack classes and testGame (Patrick)
+
+Version 1.6.1 11/28/18
+-Fixed the getInitialAttacks Method in Actor (Patrick)
+-Small changes to player and some attacks for testing purposes (Patrick)
+
 Version 1.6.0 11/26/18
 -Added new base methods to item (Patrick)
 -Added base methods to inventory (Patrick)
 -Added classes for Health Potions including Health Potion, Frappe Potion, Grande Potion, Mongo Potion (Patrick)
+-Added classes for Mana Potions including Mana Potion, Frappe Mana Potion, Grande Mana Potion, and Mongo Mana Potion (Patrick)
+-Added mana functionality in battle for the player (Patrick)
+-Implementation of mana stats in player (Patrick)
+-Misc tweaks to battle (Patrick)
+-Fixed Player Stats calculations (Patrick)
+-Fixed issue with battle immediately asking for a valid move (Patrick)
+-Fixed enemies not dying (Patrick)
+-Fixed enemies not attacking (Patrick)
+-Disabled Weapons class due to time constraints (Kellan)
+-Complete reworking of game class (Kellan)
 
 Version 1.5.1 11/26/18
 -Added basic experience/level up methods to the player and battle classes (TJ)
