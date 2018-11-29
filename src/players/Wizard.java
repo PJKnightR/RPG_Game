@@ -10,11 +10,11 @@ public class Wizard extends Player {
 
         super(pl.name);
 
-        attack = 100;
-        baseDefense = 100;
-        baseSpeed = 100;
+        attack = 90;
+        baseDefense = 70;
+        baseSpeed = 60;
         baseHealth = 100;
-        baseMana = 100;
+        baseMana = 90;
 
         setLevel();
         setAttack();

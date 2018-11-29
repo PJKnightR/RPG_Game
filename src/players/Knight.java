@@ -10,11 +10,11 @@ public class Knight extends Player {
 
         super(pl.name);
 
-        attack = 100;
-        baseDefense = 100;
-        baseSpeed = 100;
-        baseHealth = 100;
-        baseMana = 30;
+        attack = 70;
+        baseDefense = 800;
+        baseSpeed = 70;
+        baseHealth = 80;
+        baseMana = 70;
 
         setLevel();
         setAttack();

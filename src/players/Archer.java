@@ -10,11 +10,11 @@ public class Archer extends Player {
 
         super(pl.name);
 
-        attack = 100;
-        baseDefense = 100;
-        baseSpeed = 100;
+        attack = 60;
+        baseDefense = 50;
+        baseSpeed = 90;
         baseHealth = 100;
-        baseMana = 50;
+        baseMana = 60;
 
         setLevel();
         setAttack();
