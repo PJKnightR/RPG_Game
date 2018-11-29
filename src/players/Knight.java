@@ -12,8 +12,8 @@ public class Knight extends Player {
 
         setName(name);
 
-        attack = 70;
-        baseDefense = 800;
+        baseAttack = 70;
+        baseDefense = 80;
         baseSpeed = 70;
         baseHealth = 80;
         baseMana = 70;

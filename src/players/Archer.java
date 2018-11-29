@@ -11,7 +11,7 @@ public class Archer extends Player {
 
         setName(name);
 
-        attack = 60;
+        baseAttack = 60;
         baseDefense = 50;
         baseSpeed = 90;
         baseHealth = 100;

@@ -11,7 +11,7 @@ public class Wizard extends Player {
 
         setName(name);
 
-        attack = 90;
+        baseAttack = 90;
         baseDefense = 70;
         baseSpeed = 60;
         baseHealth = 100;

@@ -4,7 +4,6 @@ import game.Actor;
 import game.Inventory;
 
 abstract public class Player extends Actor {
-	protected double experience;
 	Inventory inventory = new Inventory();
 	public double mana, manaLeft, baseMana;
 	public int Exp;
@@ -83,7 +82,7 @@ abstract public class Player extends Actor {
 
 
 	public void setExp(int i){
-		this.experience = i;
+		this.Exp = i;
 	}
 	/**
 	 * This will check if the player has enough Exp to level up
@@ -108,5 +107,7 @@ abstract public class Player extends Actor {
 		this.setSpeed();
 		this.setHealth();
 		this.setHealthLeft(health);
+		this.setMana();
+		this.setManaLeft(mana);
 	}
 }

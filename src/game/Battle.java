@@ -30,6 +30,7 @@ public class Battle {
      */
     private void doBattle(Player PC){
         boolean battling = true, playerLoss = false, enemyLoss = false;
+        double itemChance;
 
         while (battling){
             playerMove(PC);
@@ -49,7 +50,7 @@ public class Battle {
                 battling = checkPlayerStatus(PC);
                 if (!battling){
                     System.out.println("You were defeated by the " + enemy.getName() + "!");
-                    playerLoss = true;
+                    //playerLoss = true;
                     break;
                 }
             } else if (PC.getSpeed() < enemy.getSpeed()){
@@ -57,7 +58,7 @@ public class Battle {
                 battling = checkPlayerStatus(PC);
                 if (!battling){
                     System.out.println("You were defeated by the " + enemy.getName() + "!");
-                    playerLoss = true;
+                    //playerLoss = true;
                     break;
                 }
                 enemy.setHealthLeft(enemy.getHealthLeft() - playerAttack(PC));
@@ -71,6 +72,10 @@ public class Battle {
         }
 
         if (enemyLoss){
+            itemChance = getChance();
+            if (itemChance > 50){
+                PC.getInventory().addRandomItem();
+            }
             PC.gainExp(100);
             // check if the player is eligible to level up
             if(PC.checkLevelUp()){
