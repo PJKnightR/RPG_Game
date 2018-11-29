@@ -11,6 +11,7 @@ public class Knight extends Player {
     public Knight(String name){
 
         setName(name);
+        setLevel(1);
 
         baseAttack = 70;
         baseDefense = 80;

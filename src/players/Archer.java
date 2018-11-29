@@ -10,6 +10,7 @@ public class Archer extends Player {
     public Archer (String name){
 
         setName(name);
+        setLevel(1);
 
         baseAttack = 60;
         baseDefense = 50;

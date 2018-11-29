@@ -13,6 +13,10 @@ Version 1.7.0 11/28/18
 -Added ability to have a random chance of finding an item after a battle (Patrick)
 -Misc Tweaks to player and the player classes (Patrick)
 -Fixed Player (Nathan)
+-Fixed a bug where the players stats were not being set properly (Patrick)
+-Fixed a bug where the game would crash when generating an enemy over level 1 (Patrick)
+-Fixed a naming issue with the Grande Mana Potion (Patrick)
+-Deleted both generic attack classes and testGame (Patrick)
 
 Version 1.6.1 11/28/18
 -Fixed the getInitialAttacks Method in Actor (Patrick)

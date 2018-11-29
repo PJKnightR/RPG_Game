@@ -2,7 +2,7 @@ package item;
 
 import players.Player;
 
-public class ManaPotion extends Item{
+abstract public class ManaPotion extends Item{
     private double manaRestore;
 
     public ManaPotion(int num){

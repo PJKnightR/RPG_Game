@@ -5,8 +5,8 @@ import game.Inventory;
 
 abstract public class Player extends Actor {
 	Inventory inventory = new Inventory();
-	public double mana, manaLeft, baseMana;
-	public int Exp;
+	protected double mana, manaLeft, baseMana;
+	protected int Exp;
 
 	public Inventory getInventory(){
 		return inventory;

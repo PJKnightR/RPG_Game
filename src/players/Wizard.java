@@ -10,6 +10,7 @@ public class Wizard extends Player {
     public Wizard (String name){
 
         setName(name);
+        setLevel(1);
 
         baseAttack = 90;
         baseDefense = 70;

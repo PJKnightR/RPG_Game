@@ -8,17 +8,17 @@ import java.util.ArrayList;
 abstract public class Actor {
     public String name;
     public String e_name;
-    public double health, defense, attack, speed, healthLeft, baseAttack, baseDefense, baseSpeed, baseHealth;
-    public double level;
-    public ArrayList<Attack> att, atts;
-    public int attLevel [];
+    protected double health, defense, attack, speed, healthLeft, baseAttack, baseDefense, baseSpeed, baseHealth;
+    protected double level;
+    protected ArrayList<Attack> att, atts;
+    protected int attLevel [];
     //protected ArrayList<item.Item> game.Inventory = new ArrayList<>();
     //protected String Class;
 
 
     public void getInitialAttacks(){
         int currentAtt = 0, levelCount = 0;
-        while(levelCount <= this.getLevel()){
+        while(levelCount <= this.getLevel() && currentAtt < attLevel.length){
             while (levelCount == attLevel[currentAtt]){
                 this.att.add(atts.get(currentAtt));
                 currentAtt++;
