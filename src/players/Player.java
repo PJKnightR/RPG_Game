@@ -21,7 +21,7 @@ abstract public class Player extends Actor {
 	 * This will set the health of the player. This will change later
 	 */
 	public void setHealth() {
-		health = ((baseHealth / 2) * level / 100 + 10);
+		health = ((baseHealth / 2) * level / 100 + 20);
 	}
 	
 	/**

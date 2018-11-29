@@ -14,7 +14,7 @@ To-do aka ? (In order of priority(sort of)):
 -Tweaks to enemies (Paul)
 -Add different in-game events (Kellan)
 -Add moves on level up (Patrick)
--Rebalancing and bug fixes (Patrick)
+-Re-balancing and bug fixes (Patrick)
 
 Bugs:
 -Items display a lot of extra text when multiple are added at the same time (Found by Patrick, not nessecary to fix)
@@ -55,7 +55,7 @@ For Shizzle:
 -Archer- Attack and Mana average, speed higher, defense lower
     -Arrow Volley, Flaming Arrows, Piercing Shots, Storm of Arrows
 -Wizard- Defense Average, Attack and Mana Higher, speed lower
-    -attack.Fireball, Finger Lightening, Plasma Strike, Triple-Element Blast
+    -Fireball, Finger Lightening, Plasma Strike, Triple-Element Blast
 
 Other Ideas (By Patrick)
 -Gladiator aka a Tank- High Attack and defense, god-awful speed, meh mana

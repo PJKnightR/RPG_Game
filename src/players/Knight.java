@@ -1,7 +1,9 @@
 package players;
 
 import attack.RiskyLunge;
+import attack.SpinningStrike;
 import attack.SwordSlash;
+import attack.WarriorsBeam;
 import players.Player;
 import java.util.ArrayList;
 
@@ -33,9 +35,11 @@ public class Knight extends Player {
         att = new ArrayList<>();
 
         atts.add(new SwordSlash());
+        atts.add(new SpinningStrike());
         atts.add(new RiskyLunge());
+        atts.add(new WarriorsBeam());
 
-        attLevel = new int[]{1,1};
+        attLevel = new int[]{1,5,10,25};
         getInitialAttacks();
 
     }

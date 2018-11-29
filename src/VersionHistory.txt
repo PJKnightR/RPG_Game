@@ -8,6 +8,12 @@ To make versions numbers easier:
 
 Version Version # Month/Day/Year
 
+Version 1.7.1 11/29/18
+-Added the attacks SpinningStrike, WarriorsBeam (Patrick)
+-Added some needed Math.round calls to battle (Patrick)
+-Re-balancing of some stats and attack powers (Patrick)
+-Began implementation of method to use items outside of battle (Patrick)
+
 Version 1.7.0 11/28/18
 -Added Archer, Knight, and Wizard classes (Nathan)
 -Added ability to have a random chance of finding an item after a battle (Patrick)

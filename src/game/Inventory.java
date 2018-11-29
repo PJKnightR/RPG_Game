@@ -53,7 +53,7 @@ public class Inventory {
                 default:
                     position--;
                     try{
-                        itemList.get(position).use(user); //something around here is broken
+                        itemList.get(position).use(user);
                     } catch (IndexOutOfBoundsException blarg){
                         System.out.println("No item in that slot");
                         break;
@@ -65,17 +65,37 @@ public class Inventory {
         }
     }
 
-    public void listItemsOutside(){
+    public void useItemsOutside(Player user){
         Scanner scan = new Scanner(System.in);
-        if (itemList.isEmpty()){
-            System.out.println("The Bag is empty");
-        } else {
-            int num = 1;
-            for(Item i : itemList){
-                System.out.println(num + ". " + i.getItemName() + " (x" + i.getStack() + ")");
-                num++;
+        int position = 0;
+        if (itemList.size() == 0){
+            System.out.println("No items in Inventory");
+            position = -1;
+            //call back to menu
+        }
+        while(position != -1){
+            System.out.println("What item do you want to use?");
+            listItems();
+            System.out.println("Enter -1 to go back");
+            position = scan.nextInt();
+            switch(position){
+                case -1:
+                    //call back to menu
+                    break;
+                case -2:
+                    System.out.println("Enter the item number, not the item name!");
+                    break;
+                default:
+                    position--;
+                    try{
+                        itemList.get(position).use(user);
+                    } catch (IndexOutOfBoundsException blarg){
+                        System.out.println("No item in that slot");
+                        break;
+                    }
+                    removeItems();
+                    position = -1;
             }
-            //useItem(); items outside of battle need to be added
         }
 
     }

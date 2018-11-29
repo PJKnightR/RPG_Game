@@ -1,5 +1,6 @@
 package players;
 
+import attack.FingerLightening;
 import attack.Fireball;
 import players.Player;
 import java.util.ArrayList;
@@ -32,8 +33,9 @@ public class Wizard extends Player {
         att = new ArrayList<>();
 
         atts.add(new Fireball());
+        atts.add(new FingerLightening());
 
-        attLevel = new int[]{1};
+        attLevel = new int[]{1,5};
         getInitialAttacks();
 
     }
