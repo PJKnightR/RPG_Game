@@ -4,7 +4,7 @@ import java.util.Scanner;
 import players.*;
 
 /** This class contains everything needed to run a new game.
- * To play, a new instance of this class must be intialized.
+ * To play, a new instance of this class must be initialized.
  */
 public class Game {		// Open Game{}
 	// private variables
@@ -37,7 +37,25 @@ public class Game {		// Open Game{}
 		System.out.print("[|] Please enter your character's name: ");
 		scan.nextLine();
 		String name = scan.nextLine();
-		this.PC = new Knight(name);
+
+
+		System.out.print("[|] Please Choose your class:\n 1. Archer\n 2. Knight\n 3. Wizard");
+		int choice = scan.nextInt();
+
+		switch (choice) {
+			case 1:
+				this.PC = new Archer(name);
+				break;
+			case 2:
+				this.PC = new Knight(name);
+				break;
+			case 3:
+				this.PC = new Wizard(name);
+				break;
+			default:
+				System.out.println("[|] Command not recognized.");
+				break;
+		}
 	}
 
 	/** Runs the game.
@@ -48,7 +66,7 @@ public class Game {		// Open Game{}
 		boolean running = true;	// Whether or not the game is being played.
 		boolean mainMenu = true;	// Whether or not the game is in the main menu
 		boolean mash = true;	// Whether playing mash or adventure
-		boolean gameMenu = false;	// Whether or not the in-game menu is open
+		// boolean gameMenu = false;	// Whether or not the in-game menu is open
 		boolean start = false;	// Whether this is a new Game or not
 
 		while (running) {	// open gameLoop
@@ -115,14 +133,14 @@ public class Game {		// Open Game{}
 			}	// close mainMenu
 			else if (!mainMenu) {	// open in-game
 				// If this is a new game
-				if (start) {		// open tart
+				if (start) {		// open start
 					this.createCharacter();
 
 					// Initializing the Game.
 					System.out.println(this.intro);
 					System.out.println("[|] You can open the menu at any time by entering 'menu'.");
 					if (mash) {
-						System.out.println("[|] Search for enemies by typing '1'.");
+						System.out.println("[|] Search for enemies by typing '1'. Open the menu by typing '2'.");
 					}
 					start = false;
 
@@ -148,8 +166,40 @@ public class Game {		// Open Game{}
 								System.out.println("[!] You won!\n[|] type '1' to seek another target.");
 							}
 							break;
-						default:
+						case 2:
 
+								// Print Menu
+								System.out.print(	"Menu:\n" +
+													" 1. Continue\n" +
+													" 2. Inventory\n" +
+													" 3. Stats\n" +
+													" 4. Quit\n" +
+													" > "
+								);
+
+								choice = scan.nextInt();
+								switch (choice) {
+									case 1:
+										break;
+									case 2:
+										PC.getInventory().listItems();
+										//TODO: Let player's interact with it?
+										break;
+									case 3:
+										System.out.println("Method not implemented");
+										break;
+									case 4:
+										mainMenu = true;
+										break;
+									default:
+										System.out.println("[|] Command not recognized.");
+										break;
+								}
+
+
+							break;
+						default:
+							System.out.println("[|] Command not recognized.");
 							break;
 					}
 
