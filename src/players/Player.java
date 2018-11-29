@@ -13,6 +13,15 @@ public class Player extends Actor {
 	Inventory inventory = new Inventory();
 	public double mana, manaLeft, baseMana;
 
+/*	public Player(){
+		String name;
+		String e_name;
+		double health, defense, attack, speed, healthLeft, baseAttack, baseDefense, baseSpeed, baseHealth;
+		double level;
+		ArrayList<Attack> att, atts;
+		int attLevel [];
+	}*/
+
 	public Player(String name){
 		setName(name);
 		setLevel(1);
@@ -56,6 +65,7 @@ public class Player extends Actor {
 	 * This will set the health of the player. This will change later
 	 */
 	public void setHealth() {
+		//health = Math.round(this.getHealth()-(this.getHealth()));
 		health = ((baseHealth / 2) * level / 100 + 10);
 	}
 	
@@ -63,6 +73,7 @@ public class Player extends Actor {
 	 * This will set the defense of the playe
 	 */
 	public void setDefense() {
+		//defense = Math.round(this.getDefense()-(this.getDefense()));
 		defense = ((baseDefense / 2) * level / 100 + 5);
 	}
 	
