@@ -39,7 +39,4 @@ public class Weapon  { // extends Item
 <<<<<<< Updated upstream
 
 }*/
-=======
-*/
-}
->>>>>>> Stashed changes
+

@@ -9,9 +9,12 @@ To make versions numbers easier:
 Version Version # Month/Day/Year
 
 Version 1.7.1 11/29/18
--Added the attacks SpinningStrike, WarriorsBeam (Patrick)
--Added some needed Math.round calls to battle (Patrick)
+-Added the attacks SpinningStrike, WarriorsBeam, ArrowStorm, FlamingArrows, PiercingShots, PlasmaStrike, and
+TripleElementBlast (Patrick)
+-Added ability to change classes (Kellan)
+-Added GarlicBread (Patrick)
 -Re-balancing of some stats and attack powers (Patrick)
+-Minor tweaks to game (Patrick)
 -Began implementation of method to use items outside of battle (Patrick)
 
 Version 1.7.0 11/28/18

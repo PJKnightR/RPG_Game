@@ -39,15 +39,15 @@ public class Game {		// Open Game{}
 		String name = scan.nextLine();
 
 
-		System.out.print("[|] Please Choose your class:\n 1. Archer\n 2. Knight\n 3. Wizard");
+		System.out.print("[|] Please Choose your class:\n 1. Knight\n 2. Archer\n 3. Wizard\n");
 		int choice = scan.nextInt();
 
 		switch (choice) {
 			case 1:
-				this.PC = new Archer(name);
+				this.PC = new Knight(name);
 				break;
 			case 2:
-				this.PC = new Knight(name);
+				this.PC = new Archer(name);
 				break;
 			case 3:
 				this.PC = new Wizard(name);
@@ -140,7 +140,7 @@ public class Game {		// Open Game{}
 					System.out.println(this.intro);
 					System.out.println("[|] You can open the menu at any time by entering 'menu'.");
 					if (mash) {
-						System.out.println("[|] Search for enemies by typing '1'. Open the menu by typing '2'.");
+						System.out.println("[|] Continue your adventure by typing '1'. Open the menu by typing '2'.");
 					}
 					start = false;
 
@@ -163,7 +163,7 @@ public class Game {		// Open Game{}
 								mainMenu = true;
 								break;
 							} else {
-								System.out.println("[!] You won!\n[|] type '1' to seek another target.");
+								System.out.println("[!] You won!\n[|] type '1' to continue your adventure.");
 							}
 							break;
 						case 2:

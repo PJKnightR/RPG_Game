@@ -1,6 +1,9 @@
 package players;
 
+import attack.ArrowStorm;
 import attack.ArrowVolley;
+import attack.FlamingArrows;
+import attack.PiercingShots;
 import players.Player;
 import java.util.ArrayList;
 
@@ -32,8 +35,11 @@ public class Archer extends Player {
         att = new ArrayList<>();
 
         atts.add(new ArrowVolley());
+        atts.add(new FlamingArrows());
+        atts.add(new PiercingShots());
+        atts.add(new ArrowStorm());
 
-        attLevel = new int[]{1};
+        attLevel = new int[]{1,5,10,25};
         getInitialAttacks();
 
     }

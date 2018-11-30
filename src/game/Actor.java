@@ -12,8 +12,6 @@ abstract public class Actor {
     protected double level;
     protected ArrayList<Attack> att, atts;
     protected int attLevel [];
-    //protected ArrayList<item.Item> game.Inventory = new ArrayList<>();
-    //protected String Class;
 
 
     public void getInitialAttacks(){

@@ -2,6 +2,8 @@ package players;
 
 import attack.FingerLightening;
 import attack.Fireball;
+import attack.PlasmaStrike;
+import attack.TripleElementBlast;
 import players.Player;
 import java.util.ArrayList;
 
@@ -34,8 +36,10 @@ public class Wizard extends Player {
 
         atts.add(new Fireball());
         atts.add(new FingerLightening());
+        atts.add(new PlasmaStrike());
+        atts.add(new TripleElementBlast());
 
-        attLevel = new int[]{1,5};
+        attLevel = new int[]{1,5,10,25};
         getInitialAttacks();
 
     }
