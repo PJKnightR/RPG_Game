@@ -1,7 +1,7 @@
-package item;
+/*package item;
 
-public class Weapon extends Item {
-
+public class Weapon  { // extends Item
+/**
     private int dmg;
 
     public Weapon(String name, String description, int dmg) {
@@ -36,5 +36,7 @@ public class Weapon extends Item {
         // TODO: check that the hash of dmg is correct.
         return result;
     }
+<<<<<<< Updated upstream
 
-}
+}*/
+
