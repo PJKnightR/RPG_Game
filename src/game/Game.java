@@ -185,7 +185,10 @@ public class Game {		// Open Game{}
 							}
 
 							// Free Garlic Bread for restart
-							if (1 + Math.random()*(4 - 1) == 4 ) {
+                            double chanceGarlic = 1 + (Math.random()*(2 - 1));
+							chanceGarlic = Math.round(chanceGarlic);
+							//System.out.println("Chance of Garlic was " + chanceGarlic);
+							if (chanceGarlic == 1 ) {
 								System.out.println(" Free Garlic Bread, compliments of the dungeon");
 								PC.inventory.addNewItem(new GarlicBread(1));
 							}
@@ -232,8 +235,6 @@ public class Game {		// Open Game{}
 								System.out.print("\n\n\t\tGAME\tOVER\n\n\n");
 								mainMenu = true;
 								break;
-							} else {
-								System.out.println("[!] You won!\n[|] type '1' to continue your adventure.");
 							}
 							break;
 						case 2:
