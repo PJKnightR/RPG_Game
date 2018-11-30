@@ -1,6 +1,8 @@
 package game;
 
 import java.util.Scanner;
+
+import item.GarlicBread;
 import players.*;
 
 /** This class contains everything needed to run a new game.
@@ -11,7 +13,8 @@ public class Game {		// Open Game{}
 	private String name;	// This is the name of the game being played.
 	private Scanner scan;	// This is a Scanner which handles user input
 	private Player PC;		// This is the avatar of the user in the game
-	private String intro;
+	private String intro;	// This is the introduction text.
+	private int PC_class; // This is temporary to make restarts possible
 
 	/** Constructor Method
 	 * This constructor creates a new game.
@@ -39,18 +42,21 @@ public class Game {		// Open Game{}
 		String name = scan.nextLine();
 
 
-		System.out.print("[|] Please Choose your class:\n 1. Knight\n 2. Archer\n 3. Wizard\n");
+		System.out.print("[|] Please Choose your class:\n 1. Archer\n 2. Knight\n 3. Wizard\n > ");
 		int choice = scan.nextInt();
 
 		switch (choice) {
 			case 1:
-				this.PC = new Knight(name);
+				this.PC = new Archer(name);
+				this.PC_class = 0;
 				break;
 			case 2:
-				this.PC = new Archer(name);
+				this.PC = new Knight (name);
+				this.PC_class = 1;
 				break;
 			case 3:
 				this.PC = new Wizard(name);
+				this.PC_class = 2;
 				break;
 			default:
 				System.out.println("[|] Command not recognized.");
@@ -66,7 +72,7 @@ public class Game {		// Open Game{}
 		boolean running = true;	// Whether or not the game is being played.
 		boolean mainMenu = true;	// Whether or not the game is in the main menu
 		boolean mash = true;	// Whether playing mash or adventure
-		// boolean gameMenu = false;	// Whether or not the in-game menu is open
+		boolean gameMenu = false;	// Whether or not the in-game menu is open
 		boolean start = false;	// Whether this is a new Game or not
 
 		while (running) {	// open gameLoop
@@ -98,6 +104,8 @@ public class Game {		// Open Game{}
 								mainMenu = false;
 								mash = true;
 								start = true;
+
+								this.createCharacter(); // doing this here makes restarts more smooth
 								break;
 							case 2:
 								System.out.println("[|] Coming Soon.");
@@ -131,14 +139,76 @@ public class Game {		// Open Game{}
 						break;
 				}
 			}	// close mainMenu
-			else if (!mainMenu) {	// open in-game
+
+			else if (gameMenu) {
+				while (gameMenu) {
+					// Print Menu
+					System.out.print("Menu:\n" +
+							" 1. Continue\n" +
+							" 2. Inventory\n" +
+							" 3. Stats\n" +
+							" 4. Restart\n" +
+							" 5. Quit\n" +
+							" > "
+					);
+
+					choice = scan.nextInt();
+					switch (choice) {
+						case 1:
+							gameMenu = false;
+							break;
+						case 2:
+							PC.getInventory().useItemsOutside(PC);
+							break;
+						case 3:
+							System.out.println("Method not implemented");
+							break;
+						case 4:
+							gameMenu = false;
+							start = true;
+
+							switch(PC_class) {
+								case 0:
+									PC = new Archer(PC.getName());
+									break;
+								case 1:
+									PC = new Knight (PC.getName());
+									break;
+								case 2:
+									PC = new Wizard(PC.getName());
+									break;
+								default:
+									PC = new Knight(PC.getName());
+									break;
+									// IF YOU'RE WONDERING WHY ITS ALWAYS KNIGHT,
+									// IT'S BECAUSE YOU DIDN'T UPDATE FOR NEW CLASSES HERE AND IN CREATE_CHARACTER
+							}
+
+							// Free Garlic Bread for restart
+							if (1 + Math.random()*(4 - 1) == 4 ) {
+								System.out.println(" Free Garlic Bread, compliments of the dungeon");
+								PC.inventory.addNewItem(new GarlicBread(1));
+							}
+
+							gameMenu = false;
+							break;
+						case 5:
+							mainMenu = true;
+							gameMenu = false;
+							break;
+						default:
+							System.out.println("[|] Command not recognized.");
+							break;
+					}
+				}
+			}
+
+			else if (!mainMenu && !gameMenu) {	// open in-game
 				// If this is a new game
 				if (start) {		// open start
-					this.createCharacter();
 
 					// Initializing the Game.
 					System.out.println(this.intro);
-					System.out.println("[|] You can open the menu at any time by entering 'menu'.");
 					if (mash) {
 						System.out.println("[|] Continue your adventure by typing '1'. Open the menu by typing '2'.");
 					}
@@ -167,37 +237,8 @@ public class Game {		// Open Game{}
 							}
 							break;
 						case 2:
-
-								// Print Menu
-								System.out.print(	"Menu:\n" +
-													" 1. Continue\n" +
-													" 2. Inventory\n" +
-													" 3. Stats\n" +
-													" 4. Quit\n" +
-													" > "
-								);
-
-								choice = scan.nextInt();
-								switch (choice) {
-									case 1:
-										break;
-									case 2:
-										PC.getInventory().listItems();
-										//TODO: Let player's interact with it?
-										break;
-									case 3:
-										System.out.println("Method not implemented");
-										break;
-									case 4:
-										mainMenu = true;
-										break;
-									default:
-										System.out.println("[|] Command not recognized.");
-										break;
-								}
-
-
-							break;
+								gameMenu = true;
+								break;
 						default:
 							System.out.println("[|] Command not recognized.");
 							break;
