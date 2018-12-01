@@ -42,7 +42,7 @@ public class RogueKnight extends Enemy {
         atts.add(new RiskyLunge());
         atts.add(new MightyBlow());
 
-        attLevel = new int[]{1,1};
+        attLevel = new int[]{1,2,4,5,7,9};
 
         getInitialAttacks();
     }

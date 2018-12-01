@@ -41,7 +41,7 @@ public class Dragon extends Enemy {
         atts.add(new Roar());
         atts.add(new FireBreath());
 
-        attLevel = new int[]{1,1,1};
+        attLevel = new int[]{1,2,3,5,6,8,10};
 
         getInitialAttacks();
     }

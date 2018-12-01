@@ -40,7 +40,7 @@ public class BabyDragon extends Enemy {
         atts.add(new Bash());
         atts.add(new FireBreath());
 
-        attLevel = new int[]{1,1};
+        attLevel = new int[]{1,2,4,6,10};
 
         getInitialAttacks();
     }

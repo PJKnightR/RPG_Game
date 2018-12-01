@@ -40,7 +40,7 @@ public class Werewolf extends Enemy {
         atts.add(new Bash());
         atts.add(new Roar());
 
-        attLevel = new int[]{1};
+        attLevel = new int[]{1,2,4,6,8};
 
         getInitialAttacks();
     }

@@ -40,7 +40,7 @@ public class Witch extends Enemy {
         atts.add(new Fireball());
         atts.add(new WickedCurse());
 
-        attLevel = new int[]{1,1};
+        attLevel = new int[]{1,2,4,8,10};
 
         getInitialAttacks();
     }

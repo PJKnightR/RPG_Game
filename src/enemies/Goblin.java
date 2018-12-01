@@ -1,6 +1,7 @@
 package enemies;
 
 import attack.*;
+import attack.SpearChuck;
 import players.Player;
 
 import java.util.ArrayList;
@@ -26,18 +27,17 @@ public class Goblin extends Enemy {
         setHealthLeft(health);
         setSpeed();
 
-        //arraylist of possible attacks
+        //Arraylist of possible attacks
         atts = new ArrayList<>();
-        //arraylist of what level of character needs to be to unlock an attack
+        //Arraylist of what level of character needs to be to unlock an attack
         att = new ArrayList<>();
 
         atts.add(new CookieThrow());
         atts.add(new StickSlap());
         atts.add(new ClubBat());
-        //spear stab
-        //spear chuck
+        atts.add(new SpearChuck());
 
-        attLevel = new int[]{1,1,2};
+        attLevel = new int[]{1,2,4,10};
 
         getInitialAttacks();
     }

@@ -37,7 +37,7 @@ public class Skeleton extends Enemy {
         atts.add(new SlingShot());
         atts.add(new Bow());
 
-        attLevel = new int[]{1};
+        attLevel = new int[]{1,2,4,8};
 
         getInitialAttacks();
     }

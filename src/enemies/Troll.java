@@ -37,7 +37,7 @@ public class Troll extends Enemy {
         atts.add(new ClubBat());
         atts.add(new TreeBash());
 
-        attLevel = new int[]{1,1};
+        attLevel = new int[]{1,2,4,10};
 
         getInitialAttacks();
     }
