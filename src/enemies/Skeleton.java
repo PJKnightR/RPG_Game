@@ -1,6 +1,9 @@
 package enemies;
 
+import attack.CookieThrow;
 import attack.StickSlap;
+import attack.SlingShot;
+import attack.Bow;
 import players.Player;
 
 import java.util.ArrayList;
@@ -29,9 +32,12 @@ public class Skeleton extends Enemy {
         atts = new ArrayList<>();
         att = new ArrayList<>();
 
+        atts.add(new CookieThrow());
         atts.add(new StickSlap());
+        atts.add(new SlingShot());
+        atts.add(new Bow());
 
-        attLevel = new int[]{1};
+        attLevel = new int[]{1,2,4,8};
 
         getInitialAttacks();
     }

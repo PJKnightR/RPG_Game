@@ -1,7 +1,11 @@
 package enemies;
 
+import attack.CookieThrow;
 import attack.SlashingClaw;
 import attack.WingSlap;
+import attack.SwordSlash;
+import attack.Fireball;
+import attack.Bite;
 import players.Player;
 
 import java.util.ArrayList;
@@ -31,10 +35,14 @@ public class Vampire extends Enemy {
         atts = new ArrayList<>();
         att = new ArrayList<>();
 
+        atts.add(new CookieThrow());
         atts.add(new SlashingClaw());
+        atts.add(new Bite());
         atts.add(new WingSlap());
+        atts.add(new Fireball());
+        atts.add(new SwordSlash());
 
-        attLevel = new int[]{1,1};
+        attLevel = new int[]{1,2,3,5,8,10};
 
         getInitialAttacks();
     }

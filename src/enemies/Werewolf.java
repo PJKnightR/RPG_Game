@@ -1,6 +1,10 @@
 package enemies;
 
+import attack.CookieThrow;
 import attack.SlashingClaw;
+import attack.Bash;
+import attack.Bite;
+import attack.Roar;
 import players.Player;
 
 import java.util.ArrayList;
@@ -30,9 +34,13 @@ public class Werewolf extends Enemy {
         atts = new ArrayList<>();
         att = new ArrayList<>();
 
+        atts.add(new CookieThrow());
         atts.add(new SlashingClaw());
+        atts.add(new Bite());
+        atts.add(new Bash());
+        atts.add(new Roar());
 
-        attLevel = new int[]{1};
+        attLevel = new int[]{1,2,4,6,8};
 
         getInitialAttacks();
     }
