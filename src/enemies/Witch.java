@@ -1,7 +1,10 @@
 package enemies;
 
+import attack.CookieThrow;
 import attack.MysteriousBrew;
 import attack.StickSlap;
+import attack.Fireball;
+import attack.WickedCurse;
 import players.Player;
 
 import java.util.ArrayList;
@@ -31,10 +34,13 @@ public class Witch extends Enemy {
         atts = new ArrayList<>();
         att = new ArrayList<>();
 
+        atts.add(new CookieThrow());
         atts.add(new StickSlap());
         atts.add(new MysteriousBrew());
+        atts.add(new Fireball());
+        atts.add(new WickedCurse());
 
-        attLevel = new int[]{1,1};
+        attLevel = new int[]{1,2,4,8,10};
 
         getInitialAttacks();
     }
