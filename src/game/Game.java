@@ -213,9 +213,9 @@ public class Game {		// Open Game{}
 
 					// Initializing the Game.
 					System.out.println(this.intro);
-					if (mash) {
+					//if (mash) {
 						System.out.println("[|] Start your adventure by typing '1'. Open the menu by typing '2'.");
-					}
+					//}
 					start = false;
 
 				}	// close tart
