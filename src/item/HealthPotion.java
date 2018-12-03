@@ -17,7 +17,7 @@ abstract public class HealthPotion extends Item{
             user.setHealthLeft(user.getHealth());
         }
         hM = user.getHealthLeft();
-        System.out.println("You have regained " + (hM - h) + " HP.");
+        System.out.println("You have regained " + (hM - h) + " Health Points.");
         setStack(getStack() - 1);
         return 0;
     }

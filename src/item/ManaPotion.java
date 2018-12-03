@@ -17,7 +17,7 @@ abstract public class ManaPotion extends Item{
             user.setManaLeft(user.getMana());
         }
         mP = user.getManaLeft();
-        System.out.println("You have regained " + (mP - m) + " MP.");
+        System.out.println("You have regained " + (mP - m) + " Mana Points.");
         setStack(getStack() - 1);
         return 0;
     }

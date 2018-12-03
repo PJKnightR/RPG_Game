@@ -8,6 +8,14 @@ To make versions numbers easier:
 
 Version Version # Month/Day/Year
 
+Version 1.8.1 12/3/18
+-Added message prompting the player to continue or go to the menu after being in the menu (Patrick)
+-Buffed the player and enemies (Patrick)
+-Changed events to adventure mode only (Kellan)
+-Fixed a bug where you could get stuck in a dungeon (Patrick)
+-Small tweaks to some output messages (Patrick)
+-Lots of misc java comment stuff (Patrick & TJ & Kellan)
+
 Version 1.8.0 12/1/18-12/2/18
 -Added mana costs to all attacks (Patrick)
 -Added ability to learn new moves upon level up (Patrick)
@@ -15,7 +23,7 @@ Version 1.8.0 12/1/18-12/2/18
 -Added a mana cost display for attacks (Patrick)
 -Added a message for when you gain experience (Patrick)
 -Added level parameters for facing enemies of a higher difficulty (Patrick)
--Added ability to view stats during battle (Patrck)
+-Added ability to view stats during battle (Patrick)
 -Added exception detection to methods in battle that require input for the user (Patrick)
 -Added an integer parse to all stat calculations to make them all effectively integers (Patrick)
 -Added the item Ultimate Cheesy Garlic Bread (Patrick)

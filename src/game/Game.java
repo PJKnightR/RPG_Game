@@ -207,6 +207,7 @@ public class Game {		// Open Game{}
 							break;
 					}
 				}
+				System.out.println("Continue your adventure by typing '1'. Open the menu by typing '2'.");
 			}
 
 			else if (!mainMenu && !gameMenu) {	// open in-game
@@ -266,9 +267,10 @@ public class Game {		// Open Game{}
 									mainMenu = true;
 									break;
 								} else {
-									System.out.println("Enter '1' to continue your adventure!");
+									System.out.println("Enter '1' to continue your adventure! Enter '2' to go to the menu.");
 								}
 							} else {
+								dungeon = false;
 								getEvent(PC);
 								if (dungeon){
 									String dun;
@@ -289,7 +291,7 @@ public class Game {		// Open Game{}
 												dun = scan.next();
 											}
 										} else {
-											System.out.println("You have completed the dungeon and found some Ultimate" +
+											System.out.println("You have completed the dungeon and found some Ultimate " +
 													"Cheesy Garlic Bread at the end of it.");
 											PC.getInventory().addNewItem(new UltimateCheesyGarlicBread(1));
 										}
@@ -301,7 +303,7 @@ public class Game {		// Open Game{}
 									mainMenu = true;
 									break;
 								} else {
-									System.out.println("Enter '1' to continue your adventure!");
+									System.out.println("Enter '1' to continue your adventure! Enter '2' to go to the menu.");
 								}
 							}
 							break;
@@ -354,7 +356,7 @@ public class Game {		// Open Game{}
 				PC.getInventory().addRandomItem();
 				break;
 			case 5:
-				System.out.println("You found a roadside inn!\n Your health and mana were fully restored after a nights rest");
+				System.out.println("You found a roadside inn!\n Your health and mana were fully restored after a nights rest.");
 				PC.setHealthLeft(PC.getHealth());
 				PC.setManaLeft(PC.getMana());
 				break;

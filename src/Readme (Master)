@@ -12,6 +12,8 @@ To-do aka ? (In order of priority(sort of)):
 
 Bugs:
 -Enemies possibly learn attacks one level to late (Found by Patrick)
+-Can have a battle followed immediatly by an event when checking the menu (Found by Patrick)
+-Prompt to continue the dungeon when not in a dungeon (though after one was entered) (Found by Patrick)
 
 
 Ideas:

@@ -3,21 +3,27 @@ package game;
 import item.Item;
 import players.Player;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 
 public class Inventory {
     ArrayList<Item> itemList = new ArrayList<Item>();
+    Map<String, Integer> itemMap;
 
 
     public Inventory() {
+        itemMap = new HashMap<>();
     }
 
     public void addRandomItem(){
         if (itemList.size() < 60) {
             Item item = Item.itemList()[idGenerator()];
             System.out.println("You found a " + item.getItemName());
+            if(itemMap.containsKey(item.getItemName())){
+                itemMap.put(item.getItemName(),1 + itemMap.get(item.getItemName()));
+            } else {
+                itemMap.put(item.getItemName(), 1);
+            }
+            //itemList.add(item);
             itemList.add(item);
         } else {
             System.out.println("Your inventory is full");

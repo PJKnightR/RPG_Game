@@ -16,21 +16,21 @@ abstract public class Player extends Actor {
 	 * This will set the health of the player. This will change later
 	 */
 	public void setHealth() {
-		health = (int) ((baseHealth / 2) * level / 100 + 25);
+		health = (int) (((baseHealth + 31 + level * 4) / 2) * level / 100 + 25);
 	}
 	
 	/**
 	 * This will set the defense of the player
 	 */
 	public void setDefense() {
-		defense = (int) ((baseDefense / 2) * level / 100 + 5);
+		defense = (int) (((baseDefense + 31 + level * 4) / 2) * level / 100 + 5);
 	}
 	
 	/**
 	 * This will set the attack strength of the player's move. Changes based on other stats
 	 */
 	public void setAttack() {
-		attack = (int) ((baseAttack / 2) * level / 100 + 5);
+		attack = (int) (((baseAttack + 31 + level * 4) / 2) * level / 100 + 5);
 
 	}
 	
@@ -38,11 +38,11 @@ abstract public class Player extends Actor {
 	 * This will set the speed of the player but will also change in Battle
 	 */
 	public void setSpeed() {
-		speed = (int) ((baseSpeed / 2) * level / 100 + 5);
+		speed = (int) (((baseSpeed + 31 + level * 4) / 2) * level / 100 + 5);
 	}
 
 	public void setMana(){
-		mana = (int) ((baseMana / 2) * level / 100 + 10);
+		mana = (int) (((baseMana + 31 + level * 4) / 2) * level / 100 + 10);
 	}
 
 	public void setManaLeft(double m){

@@ -11,21 +11,21 @@ abstract public class Enemy extends Actor {
 	 * Sets the health of the enemy
 	 */
 	public void setHealth(){
-		health = (int)((baseHealth / 2) * level / 100 + 10);
+		health = (int)(((baseHealth + 31 + level * 4) / 2) * level / 100 + 10);
 	}
 
 	/**
 	 * Sets the defense stat of the enemy
 	 */
 	public void setDefense(){
-		defense = (int) ((baseDefense / 2) * level / 100 + 5);
+		defense = (int) (((baseDefense + 31 + level * 4) / 2) * level / 100 + 5);
 	}
 
 	/**
 	 * Sets the attack stat of the enemy
 	 */
 	public void setAttack(){
-		attack = (int) ((baseAttack / 2) * level / 100 + 5);
+		attack = (int) (((baseAttack + 31 + level * 4) / 2) * level / 100 + 5);
 	}
 
 	/**
@@ -41,7 +41,7 @@ abstract public class Enemy extends Actor {
 	 * Set the speed of the enemy
 	 */
 	public void setSpeed() {
-		speed = (int)((baseSpeed / 2) * level / 100 + 5);
+		speed = (int)(((baseSpeed + 31 + level * 4) / 2) * level / 100 + 5);;
 	}
 
 	/**

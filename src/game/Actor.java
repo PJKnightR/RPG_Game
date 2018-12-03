@@ -14,6 +14,9 @@ abstract public class Actor {
     protected int attLevel [];
     protected Queue<Attack> atts;
 
+    /**
+     * This method generates the initial attacks for both players and enemies
+     */
     public void getInitialAttacks(){
         int currentAtt = 0, levelCount = 0;
         while(levelCount <= this.getLevel()){

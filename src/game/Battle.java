@@ -100,7 +100,7 @@ public class Battle {
         String move;
 
         displayHealth(PC);
-        System.out.println("What would you like to do (Enter the corresponding number):\n 1. Fight\n 2. Use an item\n 3. View Your Stats\n 4. Run");
+        System.out.println("What would you like to do? (Enter the corresponding number):\n 1. Fight\n 2. Use an item\n 3. View Your Stats\n 4. Run");
         while (!action){
             move = scan.next();
             if (move.equals("1")){
