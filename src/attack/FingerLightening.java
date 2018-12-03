@@ -5,5 +5,6 @@ public class FingerLightening extends Attack{
         name = "Finger Lightening";
         power = 75;
         description = "The user fires powerful lightening bolts from their fingers at their opponent.";
+        manaCost = 5;
     }
 }

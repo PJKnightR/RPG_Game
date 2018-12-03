@@ -3,6 +3,7 @@ package game;
 import java.util.Scanner;
 
 import item.GarlicBread;
+import item.UltimateCheesyGarlicBread;
 import players.*;
 
 /** This class contains everything needed to run a new game.
@@ -15,6 +16,7 @@ public class Game {		// Open Game{}
 	private Player PC;		// This is the avatar of the user in the game
 	private String intro;	// This is the introduction text.
 	private int PC_class; // This is temporary to make restarts possible
+	private boolean dungeon;
 
 	/** Constructor Method
 	 * This constructor creates a new game.
@@ -213,7 +215,7 @@ public class Game {		// Open Game{}
 					// Initializing the Game.
 					System.out.println(this.intro);
 					if (mash) {
-						System.out.println("[|] Continue your adventure by typing '1'. Open the menu by typing '2'.");
+						System.out.println("[|] Start your adventure by typing '1'. Open the menu by typing '2'.");
 					}
 					start = false;
 
@@ -229,12 +231,52 @@ public class Game {		// Open Game{}
 
 					switch (choice) {
 						case 1:
-							Battle batbat = new Battle();
-							batbat.startBattle(PC, scan);
-							if (PC.getHealthLeft() <= 0) {
-								System.out.print("\n\n\t\tGAME\tOVER\n\n\n");
-								mainMenu = true;
-								break;
+							int c = getChance();
+							if (c <= 65){
+								Battle batbat = new Battle();
+								batbat.startBattle(PC, scan);
+								if (PC.getHealthLeft() <= 0) {
+									System.out.print("\n\n\t\tGAME\tOVER\n\n\n");
+									mainMenu = true;
+									break;
+								} else {
+									System.out.println("Enter '1' to continue your adventure!");
+								}
+							} else {
+								getEvent(PC);
+								if (dungeon){
+									String dun;
+									double l = 3 + Math.random() * (5 - 3);
+									int j = (int) Math.round(l);
+									for(int i = 0; i < j; i++){
+										Battle batbat = new Battle();
+										batbat.startBattle(PC, scan);
+										if (PC.getHealthLeft() <= 0) {
+											System.out.print("You have failed the dungeon and lost.");
+											break;
+										}
+										if (i + 1 != j){
+											System.out.println("Enter '1' to continue the dungeon.");
+											dun = scan.next();
+											while (!dun.equals("1")){
+												System.out.println("Enter '1' to continue the dungeon.");
+												dun = scan.next();
+											}
+										} else {
+											System.out.println("You have completed the dungeon and found some Ultimate" +
+													"Cheesy Garlic Bread at the end of it.");
+											PC.getInventory().addNewItem(new UltimateCheesyGarlicBread(1));
+										}
+
+									}
+								}
+								if (PC.getHealthLeft() <= 0) {
+									System.out.print("\n\n\t\tGAME\tOVER\n\n\n");
+									mainMenu = true;
+									break;
+								} else {
+									System.out.println("Enter '1' to continue your adventure!");
+								}
 							}
 							break;
 						case 2:
@@ -254,4 +296,79 @@ public class Game {		// Open Game{}
 
 
 	} 	// Close runGame()
+
+	private int getChance(){
+		double chance;
+		int i;
+
+		chance = Math.random() * 100;
+		i = (int) Math.round(chance);
+
+		return i;
+	}
+
+	private void getEvent(Player PC){
+		double l = 1 + Math.random() * (9 - 1);
+		int j = (int) Math.round(l);
+
+		switch (j){
+			case 1:
+				System.out.println("You found a small village!");
+				PC.getInventory().addRandomItem();
+				break;
+			case 2:
+				System.out.println("You found a forest!");
+				PC.getInventory().addRandomItem();
+				break;
+			case 3:
+				System.out.println("You found a cave!");
+				PC.getInventory().addRandomItem();
+				break;
+			case 4:
+				System.out.println("You found a river!");
+				PC.getInventory().addRandomItem();
+				break;
+			case 5:
+				System.out.println("You found a roadside inn!\n Your health and mana were fully restored after a nights rest");
+				PC.setHealthLeft(PC.getHealth());
+				PC.setManaLeft(PC.getMana());
+				break;
+			case 6:
+				System.out.println("You found a lake!");
+				PC.getInventory().addRandomItem();
+				break;
+			case 7:
+				System.out.println("You fell into a pit of spikes someone set. Luckily, it was not fatal, but you took 5 damage");
+				PC.setHealthLeft(PC.getHealthLeft() - 5);
+				break;
+			case 8:
+				String s;
+				boolean complete = false;
+				dungeon = false;
+				System.out.println("You have stumbled upon a dungeon, do you wish to proceed in search of treasure? Enter '1' for yes or '2' for no." +
+						"\n(You will need to fight at least 3 - 5 consecutive battles to beat the dungeon).");
+				s = scan.next();
+				while (!complete){
+					dungeon = false;
+					if (s.equals("1")){
+						System.out.println("You have chosen to enter the dungeon");
+						dungeon = true;
+						complete = true;
+					} else if (s.equals("2")){
+						System.out.println("You have chosen not to enter the dungeon");
+						complete = true;
+					} else {
+						System.out.println("Invalid input entered. Please enter '1' for yes or '2' for no.");
+						s = scan.next();
+					}
+				}
+				break;
+			case 9:
+				System.out.println("It began to rain garlic bread, and you managed to pick some up before it hit the ground!");
+				double k = 1 + Math.random() * (2);
+				int f = (int) Math.round(k);
+				PC.getInventory().addNewItem(new GarlicBread(f));
+				break;
+		}
+	}
 }	// Close Game{}

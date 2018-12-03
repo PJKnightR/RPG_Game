@@ -4,26 +4,28 @@ import game.Actor;
 import players.Player;
 
 abstract public class Enemy extends Actor {
+	// Indicates the enemy's difficulty
+	public String diff;
 
 	/**
 	 * Sets the health of the enemy
 	 */
 	public void setHealth(){
-		health = ((baseHealth / 2) * level / 100 + 10);
+		health = (int)((baseHealth / 2) * level / 100 + 10);
 	}
 
 	/**
 	 * Sets the defense stat of the enemy
 	 */
 	public void setDefense(){
-		defense = ((baseDefense / 2) * level / 100 + 5);
+		defense = (int) ((baseDefense / 2) * level / 100 + 5);
 	}
 
 	/**
 	 * Sets the attack stat of the enemy
 	 */
 	public void setAttack(){
-		attack = ((baseAttack / 2) * level / 100 + 5);
+		attack = (int) ((baseAttack / 2) * level / 100 + 5);
 	}
 
 	/**
@@ -35,12 +37,14 @@ abstract public class Enemy extends Actor {
 		healthLeft = h;
 	}
 
-	//Speed is determined in game.Battle
 	/**
 	 * Set the speed of the enemy
 	 */
 	public void setSpeed() {
-		speed = ((baseSpeed / 2) * level / 100 + 5);
+		speed = (int)((baseSpeed / 2) * level / 100 + 5);
 	}
 
+	public String getDifficulty(){
+		return diff;
+	}
 }

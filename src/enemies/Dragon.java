@@ -8,11 +8,9 @@ import attack.TailWhip;
 import players.Player;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class Dragon extends Enemy {
-
-    // Indicates the enemy's difficulty
-    private String diff;
 
     public Dragon(Player PC) {
         diff = "hard";
@@ -30,7 +28,7 @@ public class Dragon extends Enemy {
         setHealthLeft(health);
         setSpeed();
 
-        atts = new ArrayList<>();
+        atts = new LinkedList<>();
         att = new ArrayList<>();
 
         atts.add(new SlashingClaw());

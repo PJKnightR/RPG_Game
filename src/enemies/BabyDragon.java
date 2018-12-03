@@ -8,12 +8,10 @@ import attack.TailWhip;
 import players.Player;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 
 public class BabyDragon extends Enemy {
-
-    // Indicates the enemy's difficulty
-    private String diff;
 
     public BabyDragon(Player PC) {
         diff = "moderate";
@@ -31,16 +29,15 @@ public class BabyDragon extends Enemy {
         setHealthLeft(health);
         setSpeed();
 
-        atts = new ArrayList<>();
+        atts = new LinkedList<>();
         att = new ArrayList<>();
 
-        atts.add(new CookieThrow());
         atts.add(new SlashingClaw());
         atts.add(new TailWhip());
         atts.add(new Bash());
         atts.add(new FireBreath());
 
-        attLevel = new int[]{1,2,4,6,10};
+        attLevel = new int[]{1,4,6,10};
 
         getInitialAttacks();
     }

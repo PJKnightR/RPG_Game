@@ -8,18 +8,10 @@ To-do (overall):
 -Actually finish
 
 To-do aka ? (In order of priority(sort of)):
--Implement base game, main, and module class (initiate battles against enemy) (Kellan)
--Implementing attacks (Different attack for each class, power modifier, arraylist of known attacks, a reason to use all
-    attacks (mana system), attacks stored in different classes, attacks implemented like pokemon program (Patrick & TJ)
--Tweaks to enemies (Paul)
--Add different in-game events (Kellan)
--Add moves on level up (Patrick)
--Re-balancing and bug fixes (Patrick)
+-Nothing for before initial due date
 
 Bugs:
--Items display a lot of extra text when multiple are added at the same time (Found by Patrick, not nessecary to fix)
--Entering an invalid move and then a valid move causes a crash, referencing the line where mana is calculated. When a move
-is entered, it will always use the first number entered (Found by Patrick)
+-Enemies possibly learn attacks one level to late (Found by Patrick)
 
 
 Ideas:
@@ -49,7 +41,7 @@ Other Enemy ideas (By Patrick)
 
 Player Classes and Attacks (Ideas) (I suck at attack names, feel free to add some):
 
-For Shizzle:
+For Sure:
 -Knight- Attack, Defense, Speed, and Mana pretty balanced
     -Sword Slash, Blunt Strike, Risky Lunge, Kings Beam
 -Archer- Attack and Mana average, speed higher, defense lower

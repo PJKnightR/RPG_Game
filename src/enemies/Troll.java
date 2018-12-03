@@ -7,11 +7,9 @@ import attack.TreeBash;
 import players.Player;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class Troll extends Enemy {
-
-    // Indicates the enemy's difficulty
-    private String diff;
 
     public Troll(Player PC) {
         diff = "easy";
@@ -29,15 +27,14 @@ public class Troll extends Enemy {
         setHealthLeft(health);
         setSpeed();
 
-        atts = new ArrayList<>();
+        atts = new LinkedList<>();
         att = new ArrayList<>();
 
-        atts.add(new CookieThrow());
         atts.add(new SlashingClaw());
         atts.add(new ClubBat());
         atts.add(new TreeBash());
 
-        attLevel = new int[]{1,2,4,10};
+        attLevel = new int[]{1,4,10};
 
         getInitialAttacks();
     }

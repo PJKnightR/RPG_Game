@@ -9,12 +9,10 @@ import attack.Bite;
 import players.Player;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 
 public class Vampire extends Enemy {
-
-    // Indicates the enemy's difficulty
-    private String diff;
 
     public Vampire(Player PC) {
         diff = "moderate";
@@ -32,17 +30,16 @@ public class Vampire extends Enemy {
         setHealthLeft(health);
         setSpeed();
 
-        atts = new ArrayList<>();
+        atts = new LinkedList<>();
         att = new ArrayList<>();
 
-        atts.add(new CookieThrow());
         atts.add(new SlashingClaw());
         atts.add(new Bite());
         atts.add(new WingSlap());
         atts.add(new Fireball());
         atts.add(new SwordSlash());
 
-        attLevel = new int[]{1,2,3,5,8,10};
+        attLevel = new int[]{1,3,5,8,10};
 
         getInitialAttacks();
     }

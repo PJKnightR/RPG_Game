@@ -5,6 +5,7 @@ import attack.SpinningStrike;
 import attack.SwordSlash;
 import attack.WarriorsBeam;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 
 public class Knight extends Player {
@@ -30,7 +31,7 @@ public class Knight extends Player {
         setExp(0);
 
 
-        atts = new ArrayList<>();
+        atts = new LinkedList<>();
         att = new ArrayList<>();
 
         atts.add(new SwordSlash());

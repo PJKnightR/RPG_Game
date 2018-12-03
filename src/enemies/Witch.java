@@ -8,12 +8,10 @@ import attack.WickedCurse;
 import players.Player;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 
 public class Witch extends Enemy {
-
-    // Indicates the enemy's difficulty
-    private String diff;
 
     public Witch(Player PC) {
         diff = "moderate";
@@ -31,16 +29,15 @@ public class Witch extends Enemy {
         setHealthLeft(health);
         setSpeed();
 
-        atts = new ArrayList<>();
+        atts = new LinkedList<>();
         att = new ArrayList<>();
 
-        atts.add(new CookieThrow());
         atts.add(new StickSlap());
         atts.add(new MysteriousBrew());
         atts.add(new Fireball());
         atts.add(new WickedCurse());
 
-        attLevel = new int[]{1,2,4,8,10};
+        attLevel = new int[]{1,4,8,10};
 
         getInitialAttacks();
     }

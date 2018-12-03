@@ -9,12 +9,9 @@ import attack.Bash;
 import players.Player;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class RogueKnight extends Enemy {
-
-    // Indicates the enemy's difficulty
-    private String diff;
-    private Player player;
 
     public RogueKnight(Player PC) {
         diff = "hard";
@@ -32,17 +29,16 @@ public class RogueKnight extends Enemy {
         setHealthLeft(health);
         setSpeed();
 
-        atts = new ArrayList<>();
+        atts = new LinkedList<>();
         att = new ArrayList<>();
 
-        atts.add(new CookieThrow());
         atts.add(new StickSlap());
         atts.add(new SwordSlash());
         atts.add(new Bash());
         atts.add(new RiskyLunge());
         atts.add(new MightyBlow());
 
-        attLevel = new int[]{1,2,4,5,7,9};
+        attLevel = new int[]{1,4,5,7,9};
 
         getInitialAttacks();
     }

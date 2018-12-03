@@ -3,14 +3,8 @@ package item;
 import players.Player;
 
 abstract public class Item {
-	/**
-	 * This class is not currently doing anything as of this point, will be implemented
-	 * later. Once finished, this class will handle all items and their functions. 
-	 */
-
 	protected String description;
 	private String itemName;
-	private int value;
 	private boolean stackable;
 	private int stack;
 
@@ -30,14 +24,6 @@ abstract public class Item {
 
 	protected void setItemName(String itemName) {
 		this.itemName = itemName;
-	}
-
-	public int getValue() {
-		return value;
-	}
-
-	protected void setValue(int value) {
-		this.value = value;
 	}
 
 	public boolean isStackable() {
@@ -68,8 +54,6 @@ abstract public class Item {
 	public String examine() {
 		return this.description;
 	}
-
-	// abstract public void use();
 
 	@Override
 	public boolean equals(Object o) {
