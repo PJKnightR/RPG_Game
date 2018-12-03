@@ -111,6 +111,10 @@ abstract public class Player extends Actor {
 		checkNewAttack();
 	}
 
+	/**
+	 * Checks to see if your player is eligible to learn new attack(s). If it is, then the new attack(s)
+	 * are added to the arraylist containing the player's current available attacks.
+	 */
 	public void checkNewAttack(){
 		if (this.att.size() < 4){
 			if (this.getLevel() == this.attLevel[att.size()]){

@@ -44,6 +44,9 @@ abstract public class Enemy extends Actor {
 		speed = (int)((baseSpeed / 2) * level / 100 + 5);
 	}
 
+	/**
+	 * @return the difficulty level of the enemy
+	 */
 	public String getDifficulty(){
 		return diff;
 	}

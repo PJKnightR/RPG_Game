@@ -95,7 +95,6 @@ public class Battle {
      * Allows the user to choose their own move whenever an enemy appears. They may choose to fight, use an item, or run away
      * @param PC
      */
-    //add being able to check your stats and attacks
     public void playerMove(Player PC){
         boolean action = false;
         String move;
@@ -131,6 +130,11 @@ public class Battle {
         }
     }
 
+    /**
+     * Prints out all of the player's current stats including their name, health, skill level, attack strength
+     * defensive strength, speed, mana, and amount of experience.
+     * @param PC the player whose stats the method needs to print out
+     */
     public void displayPlayerStats(Player PC){
         String i;
 
@@ -346,8 +350,12 @@ public class Battle {
         return e;
     }
 
-    //idGenerator is a separate method like this to allow easy changes to generate enemy if more enemies are added
-    //just change the amount variable as it contains the amount of enemies minus 1
+    /**
+     * Takes in an amount and generates a random number based on that amount. Used elsewhere to
+     * represent a position in an arraylist.
+     * @param amount
+     * @return
+     */
     private static int idGenerator(int amount){
         double a;
         int b;
@@ -358,6 +366,9 @@ public class Battle {
         return b;
     }
 
+    /**
+     * @return a random number between 1 and 100
+     */
     private double getChance(){
         double chance = 1 + Math.random() * (100 - 1);
         chance = Math.round(chance);
@@ -365,6 +376,12 @@ public class Battle {
         return chance;
     }
 
+    /**
+     * Each of these methods returns different types of enemies based on the player's
+     * skill level.
+     * @param PC
+     * @return
+     */
     private static Enemy[] getDifficultyLev1(Player PC){
         return new Enemy[]{new Goblin(PC), new Skeleton(PC), new Troll(PC)};
     }
