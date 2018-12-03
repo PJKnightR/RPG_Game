@@ -20,7 +20,7 @@ public class Inventory {
             System.out.println("You found a " + item.getItemName());
             itemList.add(item);
         } else {
-            System.out.println("Bag is full");
+            System.out.println("Your inventory is full");
         }
         stackItem();
     }
@@ -117,7 +117,7 @@ public class Inventory {
         if(stacking.length > 1) {
             for (Item i : stacking) {
                 for (byte j = num; j > num1; j--) {
-                    System.out.println(i.getItemName() + " | " + stacking[j].getItemName() + " | " + j);
+                    //System.out.println(i.getItemName() + " | " + stacking[j].getItemName() + " | " + j);
                     if (i.isStackable() && stacking[j].isStackable() && stacking[j].getStack() > 0 && i.getItemName().equals(stacking[j].getItemName())) {
                         i.setStack(i.getStack() + 1);
                         stacking[j].setStack(0);
@@ -143,7 +143,7 @@ public class Inventory {
         double a;
         int b;
 
-        a = 1 + Math.random() * (6 - 1);
+        a = 1 + Math.random() * (7 - 1);
         b = (int) Math.round(a);
 
         return b;

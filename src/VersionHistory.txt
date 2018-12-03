@@ -8,6 +8,29 @@ To make versions numbers easier:
 
 Version Version # Month/Day/Year
 
+Version 1.8.0 12/1/18-12/2/18
+-Added mana costs to all attacks (Patrick)
+-Added ability to learn new moves upon level up (Patrick)
+-Added varying levels of experience gained depending of enemy difficulty (Patrick)
+-Added a mana cost display for attacks (Patrick)
+-Added a message for when you gain experience (Patrick)
+-Added level parameters for facing enemies of a higher difficulty (Patrick)
+-Added ability to view stats during battle (Patrck)
+-Added exception detection to methods in battle that require input for the user (Patrick)
+-Added an integer parse to all stat calculations to make them all effectively integers (Patrick)
+-Added the item Ultimate Cheesy Garlic Bread (Patrick)
+-Added random events aside from battles (Patrick)
+-Changed atts to a queue of attacks (Patrick)
+-Fixed the bug where you could use mana attacks when you didn't have enough mana (Patrick)
+-Fixed the bug where a lot of extra text was being displayed when the player finds an item (Patrick)
+-Re-balancing of enemies (Patrick and Paul)
+-Misc Tweaks and Cleaning of code (Patrick)
+
+Version 1.7.2 11/30/18
+-Added chance for garlic bread upon restart (Kellan)
+-Added the ability for Cookie Throw to have a 1% chance of doing Integer Max damage (Patrick)
+-Fixed a bug with Cookie Throw having the wrong name (Patrick)
+
 Version 1.7.1 11/29/18
 -Added the attacks SpinningStrike, WarriorsBeam, ArrowStorm, FlamingArrows, PiercingShots, PlasmaStrike, and
 TripleElementBlast (Patrick)

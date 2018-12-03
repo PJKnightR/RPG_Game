@@ -6,6 +6,7 @@ import attack.PlasmaStrike;
 import attack.TripleElementBlast;
 import players.Player;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 
 public class Wizard extends Player {
@@ -31,7 +32,7 @@ public class Wizard extends Player {
         setExp(0);
 
 
-        atts = new ArrayList<>();
+        atts = new LinkedList<>();
         att = new ArrayList<>();
 
         atts.add(new Fireball());

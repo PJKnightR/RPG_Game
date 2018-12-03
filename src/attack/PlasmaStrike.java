@@ -5,5 +5,6 @@ public class PlasmaStrike extends Attack{
         name = "Plasma Strike";
         power = 100;
         description = "The user uses magic summon plasma upon their opponent.";
+        manaCost = 10;
     }
 }

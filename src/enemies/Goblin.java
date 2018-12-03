@@ -5,11 +5,9 @@ import attack.SpearChuck;
 import players.Player;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class Goblin extends Enemy {
-
-    // Indicates the enemy's difficulty
-    private String diff;
 
     public Goblin(Player PC) {
         diff = "easy";
@@ -28,7 +26,7 @@ public class Goblin extends Enemy {
         setSpeed();
 
         //Arraylist of possible attacks
-        atts = new ArrayList<>();
+        atts = new LinkedList<>();
         //Arraylist of what level of character needs to be to unlock an attack
         att = new ArrayList<>();
 

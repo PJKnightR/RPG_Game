@@ -2,7 +2,6 @@ package game;
 
 import enemies.*;
 import players.Player;
-
 import java.util.Scanner;
 
 public class Battle {
@@ -29,7 +28,7 @@ public class Battle {
      * @param PC
      */
     private void doBattle(Player PC){
-        boolean battling = true, playerLoss = false, enemyLoss = false;
+        boolean battling = true, enemyLoss = false;
         double itemChance;
 
         while (battling){
@@ -76,12 +75,19 @@ public class Battle {
             if (itemChance > 50){
                 PC.getInventory().addRandomItem();
             }
-            PC.gainExp(100);
+            if (enemy.getDifficulty().equalsIgnoreCase("easy")){
+                PC.gainExp(50);
+            } else if (enemy.getDifficulty().equalsIgnoreCase("moderate")){
+                PC.gainExp(100);
+            } else if (enemy.getDifficulty().equalsIgnoreCase("hard")){
+                PC.gainExp(250);
+            } else {
+                PC.gainExp(100);
+            }
             // check if the player is eligible to level up
             if(PC.checkLevelUp()){
                 PC.levelUp();
             }
-
         }
     }
 
@@ -95,17 +101,20 @@ public class Battle {
         String move;
 
         displayHealth(PC);
-        System.out.println("What would you like to do?\n 1. Fight\n 2. Use an item\n 3. Run");
+        System.out.println("What would you like to do (Enter the corresponding number):\n 1. Fight\n 2. Use an item\n 3. View Your Stats\n 4. Run");
         while (!action){
             move = scan.next();
-            if (move.equalsIgnoreCase("1")){
+            if (move.equals("1")){
                 action = true;
-                this.selectedMove = selectAttack(PC);
-            } else if (move.equalsIgnoreCase("2")){
+                selectAttack(PC);
+            } else if (move.equals("2")){
                 action = true;
                 this.selectedMove = 0;
                 PC.getInventory().useItem(PC,this);
-            } else if (move.equalsIgnoreCase("3")){
+            } else if(move.equals("3")){
+               displayPlayerStats(PC);
+                System.out.println("What would you like to do?\n 1. Fight\n 2. Use an item\n 3. View Your Stats\n 4. Run");
+            } else if (move.equals("4")){
                 action = true;
                 this.selectedMove = 0;
                 double run = getChance();
@@ -122,31 +131,63 @@ public class Battle {
         }
     }
 
+    public void displayPlayerStats(Player PC){
+        String i;
+
+        System.out.print("Name: " + PC.getName() + " Level: " + PC.getLevel() + "\nHealth: " + PC.getHealthLeft() + "/" + PC.getHealth() + "\nAttack: "
+        + PC.getAttack() + "\nDefense: " + PC.getDefense() + "\nSpeed: " + PC.getSpeed() + "\nMana: " + PC.getManaLeft()
+        + "/" + PC.getMana() + "\nExperience: " + PC.getExp() + "/" + 100 * PC.getLevel() + "\nEnter -1 to go back.\n");
+
+        i = scan.next();
+        while (!i.equals("-1")){
+            System.out.println("Please enter a valid number!");
+            i = scan.next();
+        }
+    }
+
     /**
      * Allows the player to select which attack they would like to use
      * @param PC
      * @return an integer representing the attack type
      */
-    private int selectAttack(Player PC){
+    private void selectAttack(Player PC){
+        int attack, r;
+        String a;
+        boolean done = false;
 
         for(int i = 0; i < PC.att.size(); i++){
-            System.out.print(i + 1 + ". " + PC.att.get(i).getAttackName() + " ");
+            System.out.print(i + 1 + ". " + PC.att.get(i).getAttackName() + " (Mana Cost: " + PC.att.get(i).getManaCost() + ") ");
         }
         System.out.println("\nEnter -1 to go back");
 
-        //need a try catch here or convert to a string
-        int attack = scan.nextInt();
-        if (attack == -1){
-            playerMove(PC);
-        } else if (attack < -2  || attack > PC.att.size() || attack == 0) {
-            System.out.println("Please enter an applicable number!");
-            selectAttack(PC);
-        } else if (PC.getManaLeft() < PC.att.get(attack - 1).getManaCost()){
-            System.out.println("Not enough mana for this attack! Please enter an applicable number!");
-            selectAttack(PC);
+
+        while (!done){
+            r = 0;
+            a = scan.next();
+            try
+            {
+                Integer.parseInt(a);
+            } catch (NumberFormatException ex) {
+                r = 1;
+                System.out.println("Please enter an appropriate move number!");
+            }
+            if (r == 0){
+                attack = Integer.parseInt(a);
+                if (attack == -1){
+                    done = true;
+                    playerMove(PC);
+                } else if (attack < -2  || attack > PC.att.size() || attack == 0) {
+                    System.out.println("Please enter an applicable number!");
+                } else if (PC.getManaLeft() < PC.att.get(attack - 1).getManaCost()){
+                    System.out.println("Not enough mana for this attack! Please enter an applicable number!");
+                } else {
+                    done = true;
+                    selectedMove = attack;
+                }
+            }
+
         }
 
-        return attack;
     }
 
     /**
@@ -181,14 +222,22 @@ public class Battle {
     }
 
     /**
-     * Same as the playerAttack method
+     * Same as the playerAttack method but for the enemy
      * @param PC
      * @return
      */
     private int enemyAttack(Player PC){
-        //damage calculation for enemy and display message for their attack
         if (enemySelectedMove == 0){
             return 0;
+        } else if (enemy.att.get(enemySelectedMove - 1).getAttackName().equalsIgnoreCase("Cookie Throw")){
+            int i = (int) getChance();
+            if (i == 50){
+                System.out.println("The Goblin attacked you using Cookie Throw. It did " + Integer.MAX_VALUE + " damage. The Goblin got you fam.");
+                return Integer.MAX_VALUE;
+            } else {
+                System.out.println("The Goblin attacked you using Cookie Throw. It was as usless as always.");
+                return 0;
+            }
         }
         else{
             int att = enemySelectedMove - 1;
@@ -256,27 +305,43 @@ public class Battle {
      * @param PC
      * @return
      */
-    //purely random generation of enemies, not based on player level
     private Enemy generateEnemy(Player PC){
         int id, amount;
         double chance;
         chance = getChance();
         Enemy e;
 
-        if (chance <= 60){
+        if (PC.getLevel() < 5){
             amount = 2;
             id = idGenerator(amount);
             e = getDifficultyLev1(PC)[id];
-        } else if (chance <= 89){
-            amount = 2;
-            id = idGenerator(amount);
-            e = getDifficultyLev2(PC)[id];
+        } else if (PC.getLevel() < 10){
+            if (chance <= 80){
+                amount = 2;
+                id = idGenerator(amount);
+                e = getDifficultyLev1(PC)[id];
+            } else {
+                amount = 2;
+                id = idGenerator(amount);
+                e = getDifficultyLev2(PC)[id];
+            }
+            assert e != null;
         } else {
-            amount = 2;
-            id = idGenerator(amount);
-            e = getDifficultyLev3(PC)[id];
+            if (chance <= 60){
+                amount = 2;
+                id = idGenerator(amount);
+                e = getDifficultyLev1(PC)[id];
+            } else if (chance <= 89){
+                amount = 2;
+                id = idGenerator(amount);
+                e = getDifficultyLev2(PC)[id];
+            } else {
+                amount = 2;
+                id = idGenerator(amount);
+                e = getDifficultyLev3(PC)[id];
+            }
+            assert e != null;
         }
-        assert e != null;
 
         return e;
     }

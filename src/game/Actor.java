@@ -4,27 +4,30 @@ package game;
 
 import attack.Attack;
 import java.util.ArrayList;
+import java.util.Queue;
 
 abstract public class Actor {
     public String name;
-    public String e_name;
     protected double health, defense, attack, speed, healthLeft, baseAttack, baseDefense, baseSpeed, baseHealth;
     protected double level;
-    protected ArrayList<Attack> att, atts;
+    protected ArrayList<Attack> att;
     protected int attLevel [];
-
+    protected Queue<Attack> atts;
 
     public void getInitialAttacks(){
         int currentAtt = 0, levelCount = 0;
-        while(levelCount <= this.getLevel() && currentAtt < attLevel.length){
-            while (levelCount == attLevel[currentAtt]){
-                this.att.add(atts.get(currentAtt));
-                currentAtt++;
-                if (currentAtt == attLevel.length){
-                    break;
+        while(levelCount <= this.getLevel()){
+            if (atts.size() == 0){
+                break;
+            } else {
+                while (levelCount == attLevel[currentAtt] && atts.size() > 0){
+                    this.att.add(atts.poll());
+                    currentAtt++;
+                    if (currentAtt == attLevel.length){
+                        break;
+                    }
                 }
             }
-
             levelCount++;
         }
     }
@@ -44,17 +47,6 @@ abstract public class Actor {
     public String getName(){
         return name;
     }
-
-    /**
-     * This method should return the name of the enemy
-     * @param foe --> should be the name of a subclass of 'Enemy'
-     * @return e_name
-     */
-    public String getEnemyName(String foe){
-        //this.e_name = foe.name;
-        return e_name;
-    }
-
 
     /**
      * This method gets Health

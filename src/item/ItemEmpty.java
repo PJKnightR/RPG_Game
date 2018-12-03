@@ -6,7 +6,6 @@ public class ItemEmpty extends Item{
     public ItemEmpty(int num){
         super(num);
         setItemName("Error");
-        setValue(1000000000);
         setStackable(true);
     }
 

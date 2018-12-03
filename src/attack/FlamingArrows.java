@@ -5,5 +5,6 @@ public class FlamingArrows extends Attack{
         name = "Flaming Arrows";
         power = 75;
         description = "The user uses magic to shoot flaming arrows at their opponents.";
+        manaCost = 5;
     }
 }
