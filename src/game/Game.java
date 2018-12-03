@@ -113,6 +113,8 @@ public class Game {		// Open Game{}
 								mainMenu = false;
 								mash = false;
 								start = true;
+
+								this.createCharacter(); // doing this here makes restarts more smooth
 								break;
 							default:
 								System.out.println("[|] Command not recognized.");
