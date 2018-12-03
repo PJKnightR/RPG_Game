@@ -8,12 +8,12 @@ To-do (overall):
 -Actually finish
 
 To-do aka ? (In order of priority(sort of)):
--Nothing for before initial due date
+-Nothing for before initial project due date
 
 Bugs:
 -Enemies possibly learn attacks one level to late (Found by Patrick)
--Can have a battle followed immediatly by an event when checking the menu (Found by Patrick)
--Prompt to continue the dungeon when not in a dungeon (though after one was entered) (Found by Patrick)
+-Can have a battle followed immediately by an event when checking the menu (Not consistent, possibly
+fixed) (Found by Patrick)
 
 
 Ideas:

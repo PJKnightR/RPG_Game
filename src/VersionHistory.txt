@@ -8,14 +8,13 @@ To make versions numbers easier:
 
 Version Version # Month/Day/Year
 
-Version 1.8.1 12/3/18
+Version 1.8.1 12/3/18 *Version Note: Everything done after project is turned in will be version 2.***
 -Added message prompting the player to continue or go to the menu after being in the menu (Patrick)
 -Buffed the player and enemies (Patrick)
 -Changed events to adventure mode only (Kellan)
 -Fixed a bug where you could get stuck in a dungeon (Patrick)
 -Small tweaks to some output messages (Patrick)
 -Lots of misc java comment stuff (Patrick & TJ & Kellan)
--Added JavaDoc to Game() class
 
 Version 1.8.0 12/1/18-12/2/18
 -Added mana costs to all attacks (Patrick)

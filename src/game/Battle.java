@@ -135,7 +135,7 @@ public class Battle {
      * defensive strength, speed, mana, and amount of experience.
      * @param PC the player whose stats the method needs to print out
      */
-    public void displayPlayerStats(Player PC){
+    private void displayPlayerStats(Player PC){
         String i;
 
         System.out.print("Name: " + PC.getName() + " Level: " + PC.getLevel() + "\nHealth: " + PC.getHealthLeft() + "/" + PC.getHealth() + "\nAttack: "
@@ -258,7 +258,7 @@ public class Battle {
      * Used at the start of a battle and after each move
      * @param PC
      */
-    public void displayHealth(Player PC){
+    private void displayHealth(Player PC){
         System.out.println("Your health is " + PC.getHealthLeft() + "/" + PC.getHealth() + ". Your mana is " + PC.getManaLeft() + "/" + PC.getMana() + ".");
         System.out.println("The " + enemy.getName() + "'s health is " + enemy.getHealthLeft() + "/" + enemy.getHealth());
     }

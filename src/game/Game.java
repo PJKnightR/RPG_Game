@@ -32,7 +32,7 @@ public class Game {		// Open Game{}
 	/** Get Method
 	 * @return the name of the game in dramatic font
 	 */
-	public String getTitle() {
+	private String getTitle() {
 		return "\n\t" + this.name.toUpperCase() + "\n\n";
 	}
 
@@ -240,7 +240,7 @@ public class Game {		// Open Game{}
 								mainMenu = true;
 								break;
 							} else {
-								System.out.println("Enter '1' to continue your adventure!");
+								System.out.println("Enter '1' to continue your adventure! Enter '2' to go to the menu.");
 							}
 							break;
 
