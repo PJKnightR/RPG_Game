@@ -20,7 +20,7 @@ public class Game {		// Open Game{}
 
 	/** Constructor Method
 	 * This constructor creates a new game.
-	 * @param name String
+	 * @param name String: the name of the game.
 	 * @param scan Scanner: to receive user input
 	 */
 	public Game(String name, Scanner scan, String intro) {
@@ -36,7 +36,7 @@ public class Game {		// Open Game{}
 		return "\n\t" + this.name.toUpperCase() + "\n\n";
 	}
 
-	/** Creates a new character based on parameters received
+	/** Creates a new character based on parameters received through user input.
 	 */
 	private void createCharacter() {
 		System.out.print("[|] Please enter your character's name: ");
@@ -324,6 +324,9 @@ public class Game {		// Open Game{}
 
 	} 	// Close runGame()
 
+	/** Used to get random chance of events
+	 * @return an integer between 1 and 100.
+	 */
 	private int getChance(){
 		double chance;
 		int i;
@@ -334,6 +337,9 @@ public class Game {		// Open Game{}
 		return i;
 	}
 
+	/** Gets a random event during play
+	 * @param PC the player character
+	 */
 	private void getEvent(Player PC){
 		double l = 1 + Math.random() * (9 - 1);
 		int j = (int) Math.round(l);
