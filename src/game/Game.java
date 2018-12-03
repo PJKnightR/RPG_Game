@@ -110,10 +110,9 @@ public class Game {		// Open Game{}
 								this.createCharacter(); // doing this here makes restarts more smooth
 								break;
 							case 2:
-								System.out.println("[|] Coming Soon.");
-								// mainMenu = false;
-								// mash = false;
-								// start = true;
+								mainMenu = false;
+								mash = false;
+								start = true;
 								break;
 							default:
 								System.out.println("[|] Command not recognized.");
