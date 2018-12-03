@@ -110,10 +110,9 @@ public class Game {		// Open Game{}
 								this.createCharacter(); // doing this here makes restarts more smooth
 								break;
 							case 2:
-								System.out.println("[|] Coming Soon.");
-								// mainMenu = false;
-								// mash = false;
-								// start = true;
+								mainMenu = false;
+								mash = false;
+								start = true;
 								break;
 							default:
 								System.out.println("[|] Command not recognized.");
@@ -214,20 +213,45 @@ public class Game {		// Open Game{}
 
 					// Initializing the Game.
 					System.out.println(this.intro);
-					if (mash) {
+					//if (mash) {
 						System.out.println("[|] Start your adventure by typing '1'. Open the menu by typing '2'.");
-					}
+					//}
 					start = false;
 
 				}	// close tart
 
+
+				// Main Branch opener
 				System.out.print(" > ");
 				choice = scan.nextInt();
 
+				if (mash) { // open mash
 
-				if (mash) {	// open mash
+					switch (choice) {
 
-					//TODO: Let them do anything besides kill stuff
+						case 1:
+							Battle batbat = new Battle();
+							batbat.startBattle(PC, scan);
+							if (PC.getHealthLeft() <= 0) {
+								System.out.print("\n\n\t\tGAME\tOVER\n\n\n");
+								mainMenu = true;
+								break;
+							} else {
+								System.out.println("Enter '1' to continue your adventure!");
+							}
+							break;
+
+						case 2:
+							gameMenu = true;
+							break;
+						default:
+							System.out.println("[|] Command not recognized.");
+							break;
+					}
+
+				} // close mash
+
+				else if (!mash) {	// open adventure
 
 					switch (choice) {
 						case 1:
@@ -287,8 +311,7 @@ public class Game {		// Open Game{}
 							break;
 					}
 
-				}	// close mash
-				//else if (!mash) {}
+				}	// close adventure
 
 			}	// close in-game
 
