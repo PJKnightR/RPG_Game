@@ -7,5 +7,6 @@ public class MongoManaPotion extends ManaPotion {
         super(num);
         setItemName("Mongo Mana Potion");
         setManaRestore(200);
+        setValue(1000);
     }
 }

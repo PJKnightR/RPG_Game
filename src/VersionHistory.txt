@@ -12,6 +12,10 @@ Version 2.1.0 12/10/18
 -Added the armor class
 -Added the armor classes OldDirtyClothing, LeatherChaps, Chainmail, IronPlatemail, SilverPlatemail, Titanium Platemail,
 SteelPlatemail, and DragonScalePlatemail
+-Added local shops that can be found in small villages
+-Added defense bonus and gold when looking at stats
+-Added gold that can be used in shops and is dropped from enemies
+-Imported the shop package and the LocalShop and Shop classes from the Pokemon program
 -Given the player old, dirty clothes when they start the game
 -Changed findNewWeapon method to a more general findNewEquipment method that works with armor and weapons
 -Changed the frequency you can find harder enemies to be equal to that of easier ones once the player reachs the correct
@@ -34,6 +38,7 @@ Version 2.0.3 12/9/18
 -Fixed a bug where you could find weapons not after a battle
 
 Version 2.0.2 12/8/18
+-Added attack stat bonus when viewing stats
 -Added the weapon classes standard, soldiers, warriors, guardians, heros, and legends
 -Added ability to find weapons after battles only (based on player level)
 

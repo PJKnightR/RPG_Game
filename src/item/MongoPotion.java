@@ -7,5 +7,6 @@ public class MongoPotion extends HealthPotion {
         super(num);
         setItemName("Mongo Potion");
         setHealthRestore(200);
+        setValue(900);
     }
 }

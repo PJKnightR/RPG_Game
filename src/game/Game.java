@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 import item.*;
 import players.*;
+import shop.LocalShop;
+import shop.Shop;
 
 /** This class contains everything needed to run a new game.
  * To play, a new instance of this class must be initialized.
@@ -168,7 +170,7 @@ public class Game {		// Open Game{}
 
 							System.out.print("Name: " + PC.getName() + " Level: " + PC.getLevel() + "\nHealth: " + PC.getHealthLeft() + "/" + PC.getHealth() + "\nAttack: "
 									+ PC.getAttack() + " (+" + PC.getEquipped().getDamage() + " from " + PC.getEquipped().getItemName() + ")\nDefense: " + PC.getDefense() + " (+" + PC.getWorn().getProtection() + " from " + PC.getWorn().getItemName() + ")\nSpeed: " + PC.getSpeed() + "\nMana: " + PC.getManaLeft()
-									+ "/" + PC.getMana() + "\nExperience: " + PC.getExp() + "/" + 100 * PC.getLevel() + "\nEnter -1 to go back.\n");
+									+ "/" + PC.getMana() + "\nExperience: " + PC.getExp() + "/" + 100 * PC.getLevel() + "Gold:" + PC.getGold() + "\nEnter -1 to go back.\n");
 
 							i = scan.next();
 							while (!i.equals("-1")){
@@ -359,8 +361,9 @@ public class Game {		// Open Game{}
 
 		switch (j){
 			case 1:
-				System.out.println("You found a small village!");
-				PC.getInventory().addRandomItem();
+				System.out.println("You found a small village! In the village you find a local shop.");
+				Shop shop = new LocalShop();
+				shop.shop(PC);
 				break;
 			case 2:
 				System.out.println("You found a forest!");

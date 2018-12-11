@@ -7,5 +7,6 @@ public class GarlicBread extends HealthPotion {
         super(num);
         setItemName("Garlic Bread");
         setHealthRestore(35);
+        setValue(750);
     }
 }

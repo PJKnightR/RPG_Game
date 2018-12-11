@@ -6,7 +6,7 @@ abstract public class Item {
 	protected String description;
 	private String itemName;
 	private boolean stackable;
-	private int stack;
+	private int stack, value;
 
 	public Item(int num){
 		stack = num;
@@ -32,6 +32,14 @@ abstract public class Item {
 
 	protected void setStackable(boolean stackable) {
 		this.stackable = stackable;
+	}
+
+	public int getValue() {
+		return value;
+	}
+
+	protected void setValue(int value) {
+		this.value = value;
 	}
 
 	public int getStack() {

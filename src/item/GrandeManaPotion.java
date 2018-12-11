@@ -7,5 +7,6 @@ public class GrandeManaPotion extends ManaPotion {
         super(num);
         setItemName("Grande Mana Potion");
         setManaRestore(50);
+        setValue(550);
     }
 }

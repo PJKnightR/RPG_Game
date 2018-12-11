@@ -15,8 +15,6 @@ To-do aka ? (In order of priority(sort of)):
 -Add a less random story mode
 -Add dungeon bosses
 -Add more to dungeons
--Some kind of currency
--Item shops (maybe an option when in a town)
 -More items (stat boost potions)
 -Attack types
 -Status Effects

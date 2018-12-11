@@ -9,8 +9,7 @@ abstract public class Player extends Actor {
 	public Inventory inventory = new Inventory();
 	public Weapon equipped;
 	public Armor worn;
-	protected int mana, manaLeft, baseMana;
-	protected int Exp;
+	protected int mana, manaLeft, baseMana, Exp, gold;
 	String weaponType;
 
 	public Armor getWorn(){
@@ -81,13 +80,26 @@ abstract public class Player extends Actor {
 		this.worn = a;
 	}
 
+	public void gainGold(int g){
+		gold += g;
+		System.out.print("You gained " + g + " gold! ");
+	}
+
+	public void spendGold(int g){
+		gold = gold - g;
+	}
+
+	public int getGold(){
+		return gold;
+	}
+
 	/**
 	 * This will set the experience of the player starting at 0
 	 * @param Experience the amount of experience to the player's current level of experience
 	 */
 	public void gainExp(int Experience){
 		Exp += Experience;
-		System.out.println("You gained " + Experience + " experience points!");
+		System.out.print("You gained " + Experience + " experience points! ");
 	}
 
 	/**
