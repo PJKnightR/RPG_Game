@@ -4,6 +4,7 @@ import attack.FingerLightening;
 import attack.Fireball;
 import attack.PlasmaStrike;
 import attack.TripleElementBlast;
+import item.OldDirtyClothing;
 import item.Wooden;
 
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ public class Wizard extends Player {
         setLevel(1);
         weaponType = "Wand";
         equipped = new Wooden(1, weaponType);
+        worn = new OldDirtyClothing(1);
 
         baseAttack = 90;
         baseDefense = 70;

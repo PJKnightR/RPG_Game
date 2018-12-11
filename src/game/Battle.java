@@ -276,11 +276,7 @@ public class Battle {
      * @return a boolean based on whether the player is still alive
      */
     private boolean checkPlayerStatus(Player PC){
-        if (PC.getHealthLeft() <= 0){
-            return false;
-        }
-
-        return true;
+        return PC.getHealthLeft() > 0;
     }
 
     /**
@@ -288,11 +284,7 @@ public class Battle {
      * @return a boolean based on whether the enemy is still alive
      */
     private boolean checkEnemyStatus(){
-        if (enemy.getHealthLeft() <= 0){
-            return false;
-        }
-
-        return true;
+        return enemy.getHealthLeft() > 0;
     }
 
     /**
@@ -324,6 +316,16 @@ public class Battle {
 
         if (PC.getLevel() < 5){
             amount = 2;
+        } else if (PC.getLevel() < 10){
+            amount = 5;
+        } else {
+            amount = 8;
+        }
+        id = idGenerator(amount);
+        e = getEnemy(PC)[id];
+
+        /*if (PC.getLevel() < 5){
+            amount = 2;
             id = idGenerator(amount);
             e = getDifficultyLev1(PC)[id];
         } else if (PC.getLevel() < 10){
@@ -352,7 +354,7 @@ public class Battle {
                 e = getDifficultyLev3(PC)[id];
             }
             assert e != null;
-        }
+        }*/
 
         return e;
     }
@@ -399,5 +401,9 @@ public class Battle {
 
     private static Enemy[] getDifficultyLev3(Player PC){
         return new Enemy[]{new Dragon(PC.getLevel()), new Werewolf(PC.getLevel()), new RogueKnight(PC.getLevel())};
+    }
+
+    private static Enemy[] getEnemy(Player PC){
+        return new Enemy[]{new Goblin(PC.getLevel()), new Skeleton(PC.getLevel()), new Troll(PC.getLevel()), new Vampire(PC.getLevel()), new Witch(PC.getLevel()), new BabyDragon(PC.getLevel()), new Dragon(PC.getLevel()), new Werewolf(PC.getLevel()), new RogueKnight(PC.getLevel())};
     }
 }

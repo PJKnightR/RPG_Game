@@ -12,7 +12,11 @@ Version 2.1.0 12/10/18
 -Added the armor class
 -Added the armor classes OldDirtyClothing, LeatherChaps, Chainmail, IronPlatemail, SilverPlatemail, Titanium Platemail,
 SteelPlatemail, and DragonScalePlatemail
+-Given the player old, dirty clothes when they start the game
 -Changed findNewWeapon method to a more general findNewEquipment method that works with armor and weapons
+-Changed the frequency you can find harder enemies to be equal to that of easier ones once the player reachs the correct
+ level
+-Changed the chances of battling an enemy and find new equipment to global variables in game
 -Buffed easy enemies to compensate for armor being a thing because they couldn't do damage anymore, +20-25 attack,
 +0-5 defense
 -Nerfed the amount cookie throw can one shot by a lot
@@ -22,6 +26,7 @@ SteelPlatemail, and DragonScalePlatemail
 -Fixed a bug where the player had to refresh their inventory after using an item outside battle by sending them back to
 the menu
 -Fixed a bug where the incorrect spikepit message was being displayed
+-Tweaks to game and battle class
 
 Version 2.0.3 12/9/18
 -Added a different spiketrap message if it kills the player
@@ -40,6 +45,7 @@ Version 2.0.0 12/6/18
 -Added the item and class WoodenSword, TravelersSword
 -Added the ability to equip different weapons
 -Added the ability to view and toss items outside of battle
+-Given the player a wooden sword when they start the game
 -Updated Attack calculation to include weapon type
 -Re-enabled the weapons class
 -Fixed Player stats not being displayed outside of battle

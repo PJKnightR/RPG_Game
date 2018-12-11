@@ -16,6 +16,7 @@ public class Game {		// Open Game{}
 	private String intro;	// This is the introduction text.
 	private int PC_class; // This is temporary to make restarts possible
 	private boolean dungeon;
+	private final int battleChance = 75, equipmentChance = 10;
 
 	/** Constructor Method
 	 * This constructor creates a new game.
@@ -269,7 +270,7 @@ public class Game {		// Open Game{}
 					switch (choice) {
 						case 1:
 							int c = getChance();
-							if (c <= 75){
+							if (c <= battleChance){
 								Battle batbat = new Battle();
 								batbat.startBattle(PC, scan);
 								if (PC.getHealthLeft() <= 0) {
@@ -423,9 +424,9 @@ public class Game {		// Open Game{}
 
 	private void findNewEquipment(){
 		int type = 0;
-		if (getChance() > 90){
+		if (getChance() < equipmentChance){
 			type = 1;
-		} else if (getChance() < 10){
+		} else if (getChance() < equipmentChance){
 			type = 2;
 		}
 		if (type != 0) {
