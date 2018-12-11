@@ -1,12 +1,10 @@
 package enemies;
 
-import attack.CookieThrow;
 import attack.SlashingClaw;
 import attack.WingSlap;
 import attack.SwordSlash;
 import attack.Fireball;
 import attack.Bite;
-import players.Player;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -14,7 +12,7 @@ import java.util.LinkedList;
 
 public class Vampire extends Enemy {
 
-    public Vampire(Player PC) {
+    public Vampire(double l) {
         diff = "moderate";
         name = "Vampire";
 
@@ -23,7 +21,7 @@ public class Vampire extends Enemy {
         baseSpeed = 100;
         baseHealth = 100;
 
-        setLevel(PC);
+        setLevel(l);
         setAttack();
         setDefense();
         setHealth();
@@ -44,7 +42,4 @@ public class Vampire extends Enemy {
         getInitialAttacks();
     }
 
-    public void setLevel(Player PC) {
-        level = PC.getLevel();
-    }
 }

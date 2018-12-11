@@ -2,8 +2,7 @@ package game;
 
 import java.util.Scanner;
 
-import item.GarlicBread;
-import item.UltimateCheesyGarlicBread;
+import item.*;
 import players.*;
 
 /** This class contains everything needed to run a new game.
@@ -164,7 +163,17 @@ public class Game {		// Open Game{}
 							PC.getInventory().useItemsOutside(PC);
 							break;
 						case 3:
-							System.out.println("Method not implemented");
+							String i;
+
+							System.out.print("Name: " + PC.getName() + " Level: " + PC.getLevel() + "\nHealth: " + PC.getHealthLeft() + "/" + PC.getHealth() + "\nAttack: "
+									+ PC.getAttack() + " (+" + PC.getEquipped().getDamage() + " from " + PC.getEquipped().getItemName() + ")\nDefense: " + PC.getDefense() + " (+" + PC.getWorn().getProtection() + " from " + PC.getWorn().getItemName() + ")\nSpeed: " + PC.getSpeed() + "\nMana: " + PC.getManaLeft()
+									+ "/" + PC.getMana() + "\nExperience: " + PC.getExp() + "/" + 100 * PC.getLevel() + "\nEnter -1 to go back.\n");
+
+							i = scan.next();
+							while (!i.equals("-1")){
+								System.out.println("Please enter a valid number!");
+								i = scan.next();
+							}
 							break;
 						case 4:
 							gameMenu = false;
@@ -240,6 +249,7 @@ public class Game {		// Open Game{}
 								mainMenu = true;
 								break;
 							} else {
+								findNewEquipment();
 								System.out.println("Enter '1' to continue your adventure! Enter '2' to go to the menu.");
 							}
 							break;
@@ -259,7 +269,7 @@ public class Game {		// Open Game{}
 					switch (choice) {
 						case 1:
 							int c = getChance();
-							if (c <= 65){
+							if (c <= 75){
 								Battle batbat = new Battle();
 								batbat.startBattle(PC, scan);
 								if (PC.getHealthLeft() <= 0) {
@@ -267,6 +277,7 @@ public class Game {		// Open Game{}
 									mainMenu = true;
 									break;
 								} else {
+									findNewEquipment();
 									System.out.println("Enter '1' to continue your adventure! Enter '2' to go to the menu.");
 								}
 							} else {
@@ -284,6 +295,7 @@ public class Game {		// Open Game{}
 											break;
 										}
 										if (i + 1 != j){
+											findNewEquipment();
 											System.out.println("Enter '1' to continue the dungeon.");
 											dun = scan.next();
 											while (!dun.equals("1")){
@@ -371,7 +383,11 @@ public class Game {		// Open Game{}
 				PC.getInventory().addRandomItem();
 				break;
 			case 7:
-				System.out.println("You fell into a pit of spikes someone set. Luckily, it was not fatal, but you took 5 damage");
+				if (PC.getHealthLeft() > 0){
+					System.out.println("You fell into a pit of spikes someone set. Luckily, it was not fatal, but you took 5 damage");
+				} else {
+			   		System.out.println("You fell into a pit of spikes someone set. Unfortunatly, it was fatal.");
+				}
 				PC.setHealthLeft(PC.getHealthLeft() - 5);
 				break;
 			case 8:
@@ -403,5 +419,55 @@ public class Game {		// Open Game{}
 				PC.getInventory().addNewItem(new GarlicBread(f));
 				break;
 		}
+	}
+
+	private void findNewEquipment(){
+		int type = 0;
+		if (getChance() > 90){
+			type = 1;
+		} else if (getChance() < 10){
+			type = 2;
+		}
+		if (type != 0) {
+			int amount, id;
+			if (PC.getLevel() < 10) {
+				amount = 1;
+			} else if (PC.getLevel() < 25) {
+				amount = 3;
+			} else if (PC.getLevel() < 50) {
+				amount = 5;
+			} else {
+				amount = 6;
+			}
+			id = idGenerator(amount);
+			if (type == 1){
+				Item item = weaponList()[id];
+				System.out.println("You found a " + item.getItemName());
+				PC.getInventory().addNewItem(item);
+			} else {
+				Item item = armorList()[id];
+				System.out.println("You found a " + item.getItemName());
+				PC.getInventory().addNewItem(item);
+			}
+
+		}
+	}
+
+	private Weapon[] weaponList(){
+		return new Weapon[]{new Travelers(1,PC.getWeaponType()), new Standard(1,PC.getWeaponType()), new Soldiers(1,PC.getWeaponType()), new Warriors(1,PC.getWeaponType()), new Guardians(1,PC.getWeaponType()), new Heros(1,PC.getWeaponType()), new Legends(1,PC.getWeaponType())};
+	}
+
+	private Armor[] armorList(){
+		return new Armor[]{new LeatherChaps(1), new Chainmail(1), new IronPlatemail(1), new SilverPlatemail(1), new TitaniumPlatemail(1), new SteelPlatemail(1), new DragonScalePlatemail(1)};
+	}
+
+	private static int idGenerator(int amount){
+		double a;
+		int b;
+
+		a = Math.random() * (amount);
+		b = (int) Math.round(a);
+
+		return b;
 	}
 }	// Close Game{}

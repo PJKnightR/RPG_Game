@@ -6,24 +6,24 @@ import players.Player;
 import java.util.*;
 
 public class Inventory {
-    ArrayList<Item> itemList = new ArrayList<Item>();
-    Map<String, Integer> itemMap;
+    ArrayList<Item> itemList;
+    //Map<String, Integer> itemMap;
 
 
     public Inventory() {
-        itemMap = new HashMap<>();
+        //itemMap = new HashMap<>();
+        itemList = new ArrayList<>();
     }
 
     public void addRandomItem(){
         if (itemList.size() < 60) {
             Item item = Item.itemList()[idGenerator()];
             System.out.println("You found a " + item.getItemName());
-            if(itemMap.containsKey(item.getItemName())){
-                itemMap.put(item.getItemName(),1 + itemMap.get(item.getItemName()));
-            } else {
-                itemMap.put(item.getItemName(), 1);
-            }
-            //itemList.add(item);
+            //if(itemMap.containsKey(item.getItemName())){
+                //itemMap.put(item.getItemName(),1 + itemMap.get(item.getItemName()));
+            //} else {
+                //itemMap.put(item.getItemName(), 1);
+            //}
             itemList.add(item);
         } else {
             System.out.println("Your inventory is full");
@@ -73,14 +73,14 @@ public class Inventory {
 
     public void useItemsOutside(Player user){
         Scanner scan = new Scanner(System.in);
-        int position = 0;
+        int position = 0, choice = 0;
         if (itemList.size() == 0){
             System.out.println("No items in Inventory");
             position = -1;
             //call back to menu
         }
         while(position != -1){
-            System.out.println("What item do you want to use?");
+            System.out.println("What item do you want to view?");
             listItems();
             System.out.println("Enter -1 to go back");
             position = scan.nextInt();
@@ -94,11 +94,42 @@ public class Inventory {
                 default:
                     position--;
                     try{
-                        itemList.get(position).use(user);
+                        itemList.get(position).getItemName();
                     } catch (IndexOutOfBoundsException blarg){
                         System.out.println("No item in that slot");
+                        choice = -1;
                         break;
                     }
+
+                    if (choice != -1){
+                        System.out.println("What would you like to do with " + itemList.get(position).getItemName() + " 1. Use" +
+                                " 2. Examine 3. Toss Enter -1 to go back.");
+
+                        while (choice != -1){
+                            try {
+                                choice = scan.nextInt();
+                            } catch (InputMismatchException yarg){
+                                System.out.println("Please enter a valid number");
+                                choice = -2;
+                            }
+                            if (choice != -2){
+                                if (choice == 1){
+                                    itemList.get(position).use(user);
+                                    choice = -1;
+                                } else if (choice == 2){
+                                    System.out.println("Not currently implemented");
+                                    choice = -1;
+                                } else if (choice == 3) {
+                                    System.out.print("You threw away a " + itemList.get(position).getItemName() + " ");
+                                    itemList.get(position).setStack(itemList.get(position).getStack() - 1);
+                                    choice = -1;
+                                }
+                            }
+
+                        }
+                    }
+
+
                     removeItems();
                     position = -1;
             }

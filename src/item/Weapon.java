@@ -1,42 +1,31 @@
-/*package item;
+package item;
 
-public class Weapon  { // extends Item
-/**
-    private int dmg;
+import players.Player;
 
-    public Weapon(String name, String description, int dmg) {
-        super(name, description);
-        this.dmg = dmg;
+abstract public class Weapon extends Item{ // extends Item
+    private int damage;
+
+    public Weapon(int num, String n){
+        super(num);
+        setStackable(true);
     }
 
-    public int getDmg() {
-        return this.dmg;
+    public int getDamage() {
+        return this.damage;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (o == this) {
-            return true;
-        }
-        if (!(o instanceof Item)) {
-            return false;
-        }
-        Weapon other = (Weapon) o;
-        return (this.name.equals(other.name)
-                && this.description.equals(other.description)
-                && this.dmg == other.dmg);
+    public void setDamage(int d){
+        this.damage = d;
     }
 
-    @Override
-    public int hashCode() {
-        int result = 37;
-        result = 37 * result + name.hashCode();
-        result = 37 * result + description.hashCode();
-        result = 37 * result + dmg;
-        // TODO: check that the hash of dmg is correct.
-        return result;
+    public int use(Player user){
+        user.getInventory().addNewItem(user.equipped);
+        user.setEquipped(this);
+        user.setAttack();
+        System.out.println("You equipped the " + this.getItemName());
+        setStack(getStack() - 1);
+        return 0;
     }
-<<<<<<< Updated upstream
 
-}*/
+}
 

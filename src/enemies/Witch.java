@@ -1,11 +1,9 @@
 package enemies;
 
-import attack.CookieThrow;
 import attack.MysteriousBrew;
 import attack.StickSlap;
 import attack.Fireball;
 import attack.WickedCurse;
-import players.Player;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -13,7 +11,7 @@ import java.util.LinkedList;
 
 public class Witch extends Enemy {
 
-    public Witch(Player PC) {
+    public Witch(double l) {
         diff = "moderate";
         name = "Witch";
 
@@ -22,7 +20,7 @@ public class Witch extends Enemy {
         baseSpeed = 100;
         baseHealth = 100;
 
-        setLevel(PC);
+        setLevel(l);
         setAttack();
         setDefense();
         setHealth();
@@ -42,7 +40,4 @@ public class Witch extends Enemy {
         getInitialAttacks();
     }
 
-    public void setLevel(Player PC) {
-        level = PC.getLevel();
-    }
 }

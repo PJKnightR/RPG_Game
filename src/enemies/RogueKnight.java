@@ -13,7 +13,7 @@ import java.util.LinkedList;
 
 public class RogueKnight extends Enemy {
 
-    public RogueKnight(Player PC) {
+    public RogueKnight(double l) {
         diff = "hard";
         name = "Rogue Knight";
 
@@ -22,7 +22,7 @@ public class RogueKnight extends Enemy {
         baseSpeed = 150;
         baseHealth = 150;
 
-        setLevel(PC);
+        setLevel(l);
         setAttack();
         setDefense();
         setHealth();
@@ -43,7 +43,4 @@ public class RogueKnight extends Enemy {
         getInitialAttacks();
     }
 
-    public void setLevel(Player PC) {
-        level = PC.getLevel();
-    }
 }

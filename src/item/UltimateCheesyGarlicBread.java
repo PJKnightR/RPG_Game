@@ -1,6 +1,8 @@
 package item;
 
-public class UltimateCheesyGarlicBread extends HealthPotion{
+import item.HealthPotion;
+
+public class UltimateCheesyGarlicBread extends HealthPotion {
     public UltimateCheesyGarlicBread(int num){
         super(num);
         setItemName("Ultimate Cheesy Garlic Bread");

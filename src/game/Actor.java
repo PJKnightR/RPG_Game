@@ -8,7 +8,7 @@ import java.util.Queue;
 
 abstract public class Actor {
     public String name;
-    protected double health, defense, attack, speed, healthLeft, baseAttack, baseDefense, baseSpeed, baseHealth;
+    protected int health, defense, attack, speed, healthLeft, baseAttack, baseDefense, baseSpeed, baseHealth;
     protected double level;
     protected ArrayList<Attack> att;
     protected int attLevel [];
@@ -54,37 +54,37 @@ abstract public class Actor {
     /**
      * This method gets Health
      */
-    public double getHealth() { return health; }
+    public int getHealth() { return health; }
 
     /**
      * This method gets Health Left
      */
-    public double getHealthLeft() {
+    public int getHealthLeft() {
         return healthLeft;
     }
 
-    public void setHealthLeft(double i){
+    public void setHealthLeft(int i){
         healthLeft = i;
     }
 
     /**
      * This method gets Defense
      */
-    public double getDefense() {
+    public int getDefense() {
         return defense;
     }
 
     /**
      * This method gets attack
      */
-    public double getAttack() {
+    public int getAttack() {
         return attack;
     }
 
     /**
      * This method gets Speed
      */
-    public double getSpeed() {
+    public int getSpeed() {
         return speed;
     }
 
@@ -93,5 +93,9 @@ abstract public class Actor {
      */
     public double getLevel() {
         return level;
+    }
+
+    public void setLevel(double l){
+        this.level = l;
     }
 }

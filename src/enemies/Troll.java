@@ -11,16 +11,16 @@ import java.util.LinkedList;
 
 public class Troll extends Enemy {
 
-    public Troll(Player PC) {
+    public Troll(double l) {
         diff = "easy";
         name = "Troll";
 
-        baseAttack = 50;
+        baseAttack = 75;
         baseDefense = 50;
         baseSpeed = 50;
         baseHealth = 50;
 
-        setLevel(PC);
+        setLevel(l);
         setAttack();
         setDefense();
         setHealth();
@@ -37,10 +37,6 @@ public class Troll extends Enemy {
         attLevel = new int[]{1,4,10};
 
         getInitialAttacks();
-    }
-
-    public void setLevel(Player PC) {
-        level = PC.getLevel();
     }
 
 }

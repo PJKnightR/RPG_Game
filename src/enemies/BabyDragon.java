@@ -1,6 +1,5 @@
 package enemies;
 
-import attack.CookieThrow;
 import attack.FireBreath;
 import attack.SlashingClaw;
 import attack.Bash;
@@ -13,7 +12,7 @@ import java.util.LinkedList;
 
 public class BabyDragon extends Enemy {
 
-    public BabyDragon(Player PC) {
+    public BabyDragon(double l) {
         diff = "moderate";
         name = "Baby Dragon";
 
@@ -22,7 +21,7 @@ public class BabyDragon extends Enemy {
         baseSpeed = 100;
         baseHealth = 100;
 
-        setLevel(PC);
+        setLevel(l);
         setAttack();
         setDefense();
         setHealth();
@@ -42,7 +41,4 @@ public class BabyDragon extends Enemy {
         getInitialAttacks();
     }
 
-    public void setLevel(Player PC) {
-        level = PC.getLevel();
-    }
 }

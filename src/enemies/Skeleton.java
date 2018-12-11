@@ -11,16 +11,16 @@ import java.util.LinkedList;
 
 public class Skeleton extends Enemy {
 
-    public Skeleton(Player PC) {
+    public Skeleton(double l) {
         diff = "easy";
         name = "Skeleton";
 
-        baseAttack = 50;
-        baseDefense = 50;
+        baseAttack = 70;
+        baseDefense = 55;
         baseSpeed = 50;
         baseHealth = 50;
 
-        setLevel(PC);
+        setLevel(l);
         setAttack();
         setDefense();
         setHealth();
@@ -37,10 +37,6 @@ public class Skeleton extends Enemy {
         attLevel = new int[]{1,4,8};
 
         getInitialAttacks();
-    }
-
-    public void setLevel(Player PC) {
-        level = PC.getLevel();
     }
 
 }

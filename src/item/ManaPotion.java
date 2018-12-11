@@ -1,9 +1,10 @@
 package item;
 
+import item.Item;
 import players.Player;
 
-abstract public class ManaPotion extends Item{
-    private double manaRestore;
+abstract public class ManaPotion extends Item {
+    private int manaRestore;
 
     public ManaPotion(int num){
         super(num);
@@ -22,7 +23,7 @@ abstract public class ManaPotion extends Item{
         return 0;
     }
 
-    protected void setManaRestore(double manaRestore){
+    protected void setManaRestore(int manaRestore){
         this.manaRestore = manaRestore;
     }
 }

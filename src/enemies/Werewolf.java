@@ -1,18 +1,16 @@
 package enemies;
 
-import attack.CookieThrow;
 import attack.SlashingClaw;
 import attack.Bash;
 import attack.Bite;
 import attack.Roar;
-import players.Player;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Werewolf extends Enemy {
 
-    public Werewolf(Player PC) {
+    public Werewolf(double l) {
         diff = "hard";
         name = "Werewolf";
 
@@ -21,7 +19,7 @@ public class Werewolf extends Enemy {
         baseSpeed = 150;
         baseHealth = 150;
 
-        setLevel(PC);
+        setLevel(l);
         setAttack();
         setDefense();
         setHealth();
@@ -41,7 +39,4 @@ public class Werewolf extends Enemy {
         getInitialAttacks();
     }
 
-    public void setLevel(Player PC) {
-        level = PC.getLevel();
-    }
 }

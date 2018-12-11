@@ -12,7 +12,7 @@ import java.util.LinkedList;
 
 public class Dragon extends Enemy {
 
-    public Dragon(Player PC) {
+    public Dragon(double l) {
         diff = "hard";
         name = "Dragon";
 
@@ -21,7 +21,7 @@ public class Dragon extends Enemy {
         baseSpeed = 150;
         baseHealth = 150;
 
-        setLevel(PC);
+        setLevel(l);
         setAttack();
         setDefense();
         setHealth();
@@ -42,10 +42,6 @@ public class Dragon extends Enemy {
         attLevel = new int[]{1,2,3,5,6,8,10};
 
         getInitialAttacks();
-    }
-
-    public void setLevel(Player PC) {
-        level = PC.getLevel();
     }
 
 }

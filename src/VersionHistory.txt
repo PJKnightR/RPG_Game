@@ -8,6 +8,46 @@ To make versions numbers easier:
 
 Version Version # Month/Day/Year
 
+Version 2.1.0 12/10/18
+-Added the armor class
+-Added the armor classes OldDirtyClothing, LeatherChaps, Chainmail, IronPlatemail, SilverPlatemail, Titanium Platemail,
+SteelPlatemail, and DragonScalePlatemail
+-Changed findNewWeapon method to a more general findNewEquipment method that works with armor and weapons
+-Buffed easy enemies to compensate for armor being a thing because they couldn't do damage anymore, +20-25 attack,
++0-5 defense
+-Nerfed the amount cookie throw can one shot by a lot
+-Nerfed the frequency the player finds weapons or armor after a battle, down by 10% each
+-Nerfed the frequency of events in Adventure mode down 10%
+-Updated defense calculation to include armor type
+-Fixed a bug where the player had to refresh their inventory after using an item outside battle by sending them back to
+the menu
+-Fixed a bug where the incorrect spikepit message was being displayed
+
+Version 2.0.3 12/9/18
+-Added a different spiketrap message if it kills the player
+-Fixed a bug with using items outside of battle
+-Fixed a bug where you could find weapons not after a battle
+
+Version 2.0.2 12/8/18
+-Added the weapon classes standard, soldiers, warriors, guardians, heros, and legends
+-Added ability to find weapons after battles only (based on player level)
+
+Version 2.0.1 12/7/18
+-Changed the equippable items classes to be the same for every player, but the name of the item changes depending on the
+Players class type
+
+Version 2.0.0 12/6/18
+-Added the item and class WoodenSword, TravelersSword
+-Added the ability to equip different weapons
+-Added the ability to view and toss items outside of battle
+-Updated Attack calculation to include weapon type
+-Re-enabled the weapons class
+-Fixed Player stats not being displayed outside of battle
+-Reworking of how setting the enemies level works, sends the players level only instead of the whole player
+-Reworking player stats in that now they are integers (except player level)
+-Buffed the players mana stat
+-Put the setLevel method in the actor class
+
 Version 1.8.1 12/3/18 *Version Note: Everything done after project is turned in will be version 2.***
 -Added message prompting the player to continue or go to the menu after being in the menu (Patrick)
 -Buffed the player and enemies (Patrick)

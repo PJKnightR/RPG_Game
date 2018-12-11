@@ -139,7 +139,7 @@ public class Battle {
         String i;
 
         System.out.print("Name: " + PC.getName() + " Level: " + PC.getLevel() + "\nHealth: " + PC.getHealthLeft() + "/" + PC.getHealth() + "\nAttack: "
-        + PC.getAttack() + "\nDefense: " + PC.getDefense() + "\nSpeed: " + PC.getSpeed() + "\nMana: " + PC.getManaLeft()
+        + PC.getAttack() + " (+" + PC.getEquipped().getDamage() + " from " + PC.getEquipped().getItemName() + ")\nDefense: " + PC.getDefense() + " (+" + PC.getWorn().getProtection() + " from " + PC.getWorn().getItemName() + ")\nSpeed: " + PC.getSpeed() + "\nMana: " + PC.getManaLeft()
         + "/" + PC.getMana() + "\nExperience: " + PC.getExp() + "/" + 100 * PC.getLevel() + "\nEnter -1 to go back.\n");
 
         i = scan.next();
@@ -235,13 +235,20 @@ public class Battle {
             return 0;
         } else if (enemy.att.get(enemySelectedMove - 1).getAttackName().equalsIgnoreCase("Cookie Throw")){
             int i = (int) getChance();
-            if (i == 50){
-                System.out.println("The Goblin attacked you using Cookie Throw. It did " + Integer.MAX_VALUE + " damage. The Goblin got you fam.");
-                return Integer.MAX_VALUE;
+            if (i == 20){
+                i = (int) getChance();
+                if (i == 50){
+                    System.out.println("The Goblin attacked you using Cookie Throw. It did " + Integer.MAX_VALUE + " damage. The Goblin got you fam.");
+                    return Integer.MAX_VALUE;
+                } else {
+                    System.out.println("The Goblin attacked you using Cookie Throw. It was as usless as always.");
+                    return 0;
+                }
             } else {
                 System.out.println("The Goblin attacked you using Cookie Throw. It was as usless as always.");
                 return 0;
             }
+
         }
         else{
             int att = enemySelectedMove - 1;
@@ -383,15 +390,14 @@ public class Battle {
      * @return
      */
     private static Enemy[] getDifficultyLev1(Player PC){
-        return new Enemy[]{new Goblin(PC), new Skeleton(PC), new Troll(PC)};
+        return new Enemy[]{new Goblin(PC.getLevel()), new Skeleton(PC.getLevel()), new Troll(PC.getLevel())};
     }
 
     private static Enemy[] getDifficultyLev2(Player PC){
-        return new Enemy[]{new Vampire(PC), new Witch(PC), new BabyDragon(PC)};
+        return new Enemy[]{new Vampire(PC.getLevel()), new Witch(PC.getLevel()), new BabyDragon(PC.getLevel())};
     }
 
     private static Enemy[] getDifficultyLev3(Player PC){
-        return new Enemy[]{new Dragon(PC), new Werewolf(PC), new RogueKnight(PC)};
+        return new Enemy[]{new Dragon(PC.getLevel()), new Werewolf(PC.getLevel()), new RogueKnight(PC.getLevel())};
     }
-
 }

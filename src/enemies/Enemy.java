@@ -18,22 +18,17 @@ abstract public class Enemy extends Actor {
 	 * Sets the defense stat of the enemy
 	 */
 	public void setDefense(){
-		defense = (int) (((baseDefense + 31 + level * 4) / 2) * level / 100 + 5);
+		defense = (int)(((baseDefense + 31 + level * 4) / 2) * level / 100 + 5);
 	}
 
 	/**
 	 * Sets the attack stat of the enemy
 	 */
 	public void setAttack(){
-		attack = (int) (((baseAttack + 31 + level * 4) / 2) * level / 100 + 5);
+		attack = (int)(2 *(((baseAttack + 31 + level * 4) / 2) * level / 100 + 5));
 	}
 
-	/**
-	 * Should set the enemy level based on the player level
-	 */
-	abstract public void setLevel(Player PC);
-
-	public void setHealthLeft(double h){
+	public void setHealthLeft(int h){
 		healthLeft = h;
 	}
 

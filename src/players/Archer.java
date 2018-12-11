@@ -4,7 +4,8 @@ import attack.ArrowStorm;
 import attack.ArrowVolley;
 import attack.FlamingArrows;
 import attack.PiercingShots;
-import players.Player;
+import item.Wooden;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -15,6 +16,8 @@ public class Archer extends Player {
 
         setName(name);
         setLevel(1);
+        weaponType = "Bow";
+        equipped = new Wooden(1, weaponType);
 
         baseAttack = 60;
         baseDefense = 50;
@@ -44,5 +47,5 @@ public class Archer extends Player {
         getInitialAttacks();
 
     }
-    public void setLevel(Player pl) { level = pl.getLevel(); }
+
 }

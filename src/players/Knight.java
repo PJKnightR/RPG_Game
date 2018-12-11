@@ -4,6 +4,9 @@ import attack.RiskyLunge;
 import attack.SpinningStrike;
 import attack.SwordSlash;
 import attack.WarriorsBeam;
+import item.OldDirtyClothing;
+import item.Wooden;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -14,6 +17,9 @@ public class Knight extends Player {
 
         setName(name);
         setLevel(1);
+        weaponType = "Sword";
+        equipped = new Wooden(1, weaponType);
+        worn = new OldDirtyClothing(1);
 
         baseAttack = 70;
         baseDefense = 80;
@@ -43,5 +49,5 @@ public class Knight extends Player {
         getInitialAttacks();
 
     }
-    public void setLevel(Player pl) { level = pl.getLevel(); }
+
 }

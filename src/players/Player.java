@@ -2,11 +2,28 @@ package players;
 
 import game.Actor;
 import game.Inventory;
+import item.Armor;
+import item.Weapon;
 
 abstract public class Player extends Actor {
 	public Inventory inventory = new Inventory();
-	protected double mana, manaLeft, baseMana;
+	public Weapon equipped;
+	public Armor worn;
+	protected int mana, manaLeft, baseMana;
 	protected int Exp;
+	String weaponType;
+
+	public Armor getWorn(){
+		return worn;
+	}
+
+	public Weapon getEquipped(){
+		return equipped;
+	}
+
+	public String getWeaponType(){
+		return weaponType;
+	}
 
 	public Inventory getInventory(){
 		return inventory;
@@ -16,22 +33,21 @@ abstract public class Player extends Actor {
 	 * This will set the health of the player. This will change later
 	 */
 	public void setHealth() {
-		health = (int) (((baseHealth + 31 + level * 4) / 2) * level / 100 + 25);
+		health = (int)(((baseHealth + 31 + level * 4) / 2) * level / 100 + 25);
 	}
 	
 	/**
 	 * This will set the defense of the player
 	 */
 	public void setDefense() {
-		defense = (int) (((baseDefense + 31 + level * 4) / 2) * level / 100 + 5);
+		defense =(int) (((baseDefense + 31 + level * 4) / 2) * level / 100 + 5) + worn.getProtection();
 	}
 	
 	/**
 	 * This will set the attack strength of the player's move. Changes based on other stats
 	 */
 	public void setAttack() {
-		attack = (int) (((baseAttack + 31 + level * 4) / 2) * level / 100 + 5);
-
+		attack = (int)(((baseAttack + 31 + level * 4) / 2) * level / 100 + 5) + equipped.getDamage();
 	}
 	
 	/**
@@ -42,26 +58,27 @@ abstract public class Player extends Actor {
 	}
 
 	public void setMana(){
-		mana = (int) (((baseMana + 31 + level * 4) / 2) * level / 100 + 10);
+		mana = (int)(((baseMana + 31 + level * 4) / 2) * level / 100 + 20);
 	}
 
-	public void setManaLeft(double m){
+	public void setManaLeft(int m){
 		manaLeft = m;
 	}
 
-	public double getMana(){
+	public int getMana(){
 		return mana;
 	}
 
-	public double getManaLeft(){
+	public int getManaLeft(){
 		return manaLeft;
 	}
 
-	/**
-	 * This will set the Level of the player starting at 1
-	 */
-	public void setLevel(double l) {
-		level = l;
+	public void setEquipped(Weapon w){
+		this.equipped = w;
+	}
+
+	public void setWorn(Armor a){
+		this.worn = a;
 	}
 
 	/**

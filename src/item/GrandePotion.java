@@ -1,6 +1,8 @@
 package item;
 
-public class GrandePotion extends HealthPotion{
+import item.HealthPotion;
+
+public class GrandePotion extends HealthPotion {
     public GrandePotion(int num){
         super(num);
         setItemName("Grande Potion");

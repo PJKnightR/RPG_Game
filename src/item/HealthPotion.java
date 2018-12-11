@@ -1,9 +1,10 @@
 package item;
 
+import item.Item;
 import players.Player;
 
-abstract public class HealthPotion extends Item{
-    private double healthRestore;
+abstract public class HealthPotion extends Item {
+    private int healthRestore;
 
     public HealthPotion(int num){
         super(num);
@@ -22,7 +23,7 @@ abstract public class HealthPotion extends Item{
         return 0;
     }
 
-    protected void setHealthRestore(double healthRestore){
+    protected void setHealthRestore(int healthRestore){
         this.healthRestore = healthRestore;
     }
 }

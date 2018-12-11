@@ -8,27 +8,41 @@ To-do (overall):
 -Actually finish
 
 To-do aka ? (In order of priority(sort of)):
--Nothing for before initial project due date
+-Reworking of stats (using a base player and multipliers maybe)
+-Reworking of Game class
+-Rework things with a random chance by using global variables for easier access
+-Add more events (enemy kingdoms, strongholds, mountains, valleys, fields, caves)
+-Add a less random story mode
+-Add dungeon bosses
+-Add more to dungeons
+-Some kind of currency
+-Item shops (maybe an option when in a town)
+-More items (stat boost potions)
+-Attack types
+-Status Effects
+-Ability to miss an attack
+-More enemies
+-GUI
+-More Player Classes
+-Pets
 
 Bugs:
 -Enemies possibly learn attacks one level to late (Found by Patrick)
 -Can have a battle followed immediately by an event when checking the menu (Not consistent, possibly
 fixed) (Found by Patrick)
-
+-Trying to make levels an integer just breaks stuff
+-Trying to put different kinds of items in different packages breaks stuff
+-Prompted to enter dungeons until you stop entering them
+-The weakest enemies still cannot hurt you if you get the strongest armor for your level. They are also really easy to defeat
+-It would be nice if harder enemies were easier to find
 
 Ideas:
 -Implementing equipment (equipment slots in player, stats recalculated when put on or off, a very simple equipment
-     modifier can be used)
--Able to do more then just fight enemies with game class (find towns, shops, dungeons, spikepits, enemy kingdoms???, ect)
--Pets
--Item Shop
+     modifier can be used, modifier can depend on player class to encourage usage of better weapons)
 -Power ups/better weapons and armor
 -Background music
 -GUI?!?! (Maybe, no, probably not)
--Damage types
--Missed attacks
 -Time cycle
--Bosses
 -Other Players?
 
 
@@ -56,3 +70,15 @@ Other Ideas (By Patrick)
 -Hunter- High attack and speed, low defense and mana
 -Paladin- Amazing attack, meh defense and mana, low speed
 -Ninja/Stealth- Amazing speed, high attack, sucky defense, meh mana
+
+Armor Tiers
+Old Dirty -> Leather -> Chainmail -> Iron Platemail -> Silver Platemail -> Titanium Platemail -> Steel Platemail -> DragonScale
+
+Weapon Tiers
+Wooden -> Travelers -> Standard -> Soldiers -> Warriors -> Guardians -> Heros -> Legends
+
+Pet Ideas
+-Dragon
+-Doggo/Catto
+-Blue Footed Boobie
+-Wolf

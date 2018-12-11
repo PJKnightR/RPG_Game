@@ -4,7 +4,8 @@ import attack.FingerLightening;
 import attack.Fireball;
 import attack.PlasmaStrike;
 import attack.TripleElementBlast;
-import players.Player;
+import item.Wooden;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -15,6 +16,8 @@ public class Wizard extends Player {
 
         setName(name);
         setLevel(1);
+        weaponType = "Wand";
+        equipped = new Wooden(1, weaponType);
 
         baseAttack = 90;
         baseDefense = 70;
@@ -44,5 +47,5 @@ public class Wizard extends Player {
         getInitialAttacks();
 
     }
-    public void setLevel(Player pl) { level = pl.getLevel(); }
+
 }
