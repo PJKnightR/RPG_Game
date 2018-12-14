@@ -8,6 +8,11 @@ To-do (overall):
 -Actually finish
 
 To-do aka ? (In order of priority(sort of)):
+-Finish implementation of heart canisters
+-Heart Canisters ID's and add them to the master item list
+
+-Custom mode
+-Difficulty options
 -Reworking of stats (using a base player and multipliers maybe)
 -Rework things with a random chance by using global variables for easier access
 -Add more events (enemy kingdoms, strongholds, mountains, valleys, fields, caves)
@@ -22,7 +27,7 @@ To-do aka ? (In order of priority(sort of)):
 -GUI
 -More Player Classes
 -Pets
--Speed boost itenm
+-Speed boost item
 -Mana boost item
 -Exp boost item
 -gold boost item
@@ -36,11 +41,8 @@ fixed) (Found by Patrick)
 -Prompted to enter dungeons until you stop entering them (Possibly, they like appearing in groups of 3)
 -The weakest enemies still cannot hurt you if you get the strongest armor for your level. They are also really easy to defeat
 -You can get negative amounts of items after buying them (This may be in general from buying items)
--Previously equipped items not being added back into your inventory (excluding what you start with)
 
 Ideas:
--Implementing equipment (equipment slots in player, stats recalculated when put on or off, a very simple equipment
-     modifier can be used, modifier can depend on player class to encourage usage of better weapons)
 -Power ups/better weapons and armor
 -Background music
 -GUI?!?! (Maybe, no, probably not)

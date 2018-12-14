@@ -7,5 +7,6 @@ public class Legends extends Weapon {
         super(num, name);
         setItemName("Legends " + name);
         setDamage(100);
+        setID(16);
     }
 }

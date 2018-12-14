@@ -19,7 +19,7 @@ abstract public class Armor extends Item{
     }
 
     public int use(Player user){
-        user.getInventory().addNewItem(user.worn);
+        user.getInventory().addNewItem(user.getWorn().getID(), user.getWeaponType());
         user.setWorn(this);
         user.setDefense();
         System.out.println("You equipped the " + this.getItemName());

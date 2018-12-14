@@ -5,5 +5,6 @@ public class LeatherChaps extends Armor{
         super(num);
         setItemName("Leather Chaps");
         setProtection(5);
+        setID(18);
     }
 }

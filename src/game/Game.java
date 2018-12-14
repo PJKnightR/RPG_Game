@@ -1,27 +1,26 @@
 package game;
 
 import item.*;
-import players.Archer;
-import players.Knight;
-import players.Player;
-import players.Wizard;
-import shop.LocalShop;
-import shop.Shop;
+import players.*;
+import shop.*;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class Game {
-    public Scanner scan = new Scanner(System.in);
+    private Scanner scan;
     private int gameMode;
     private Player PC;
     private boolean dungeon, running;
     private final int battleChance = 75, equipmentChance = 10;
 
     public Game(){
-
+        scan = new Scanner(System.in);
     }
 
-    public void runGame(){
+    public void runGame() {
         String choice;
         running = true;
         System.out.print("RPG_Game\n\n 1. New Game\n 2. Load Game\n 3. About\n 4. Quit\n > ");
@@ -34,13 +33,17 @@ public class Game {
         if (choice.equals("1")){
             chooseGamemode();
         } else if (choice.equals("2")){
-            System.out.println("This feature is still in development");
-            runGame();
+            try{
+                loadPlayer();
+            } catch(FileNotFoundException flarg){
+                System.out.println("Load Failed");
+                runGame();
+            }
         } else if (choice.equals("3")){
             System.out.println("This feature is still in development");
             runGame();
         } else {
-            System.out.println("Goodbye.");
+            System.out.println("See ya next time!.");
             System.exit(0);
         }
     }
@@ -144,31 +147,7 @@ public class Game {
                         dungeon = false;
                         getEvent(PC);
                         if (dungeon) {
-                            String dun;
-                            double l = 3 + Math.random() * (5 - 3);
-                            int j = (int) Math.round(l);
-                            for (int i = 0; i < j; i++) {
-                                Battle batbat = new Battle();
-                                batbat.startBattle(PC, scan);
-                                if (PC.getHealthLeft() <= 0) {
-                                    System.out.print("You have failed the dungeon and lost.");
-                                    break;
-                                }
-                                if (i + 1 != j) {
-                                    findNewEquipment();
-                                    System.out.println("Enter '1' to continue the dungeon.");
-                                    dun = scan.next();
-                                    while (!dun.equals("1")) {
-                                        System.out.println("Enter '1' to continue the dungeon.");
-                                        dun = scan.next();
-                                    }
-                                } else {
-                                    System.out.println("You have completed the dungeon and found some Ultimate " +
-                                            "Cheesy Garlic Bread at the end of it.");
-                                    PC.getInventory().addNewItem(new UltimateCheesyGarlicBread(1));
-                                }
-
-                            }
+                            runDungeon();
                         }
                     }
                     if (PC.getHealthLeft() <= 0) {
@@ -187,22 +166,56 @@ public class Game {
         }
     }
 
+    private void runDungeon(){
+        String dun;
+        double l = 3 + Math.random() * (5 - 3);
+        int j = (int) Math.round(l);
+        for (int i = 0; i < j; i++) {
+            Battle batbat = new Battle();
+            batbat.startBattle(PC, scan);
+            if (PC.getHealthLeft() <= 0) {
+                System.out.print("You have failed the dungeon and lost.");
+                break;
+            }
+            if (i + 1 != j) {
+                findNewEquipment();
+                System.out.println("Enter '1' to continue the dungeon.");
+                dun = scan.next();
+                while (!dun.equals("1")) {
+                    System.out.println("Enter '1' to continue the dungeon.");
+                    dun = scan.next();
+                }
+            } else {
+                System.out.println("You have completed the dungeon and found some Ultimate " +
+                        "Cheesy Garlic Bread at the end of it.");
+                PC.getInventory().addNewItem(new UltimateCheesyGarlicBread(1));
+            }
+
+        }
+    }
+
+    private void runCustomMode(){
+        //A mode that allows the user to tweak certain aspects of the game such as chance to find events, new equipment,
+        //ect
+    }
+
     private void playerMenu(){
         boolean menu;
         String choice;
         int c;
         menu = true;
         while (menu){
-            System.out.print("Menu:\n" +
+            System.out.print("\nMenu:\n" +
                     " 1. Continue\n" +
                     " 2. Inventory\n" +
                     " 3. Stats\n" +
                     " 4. Restart\n" +
-                    " 5. Quit\n" +
+                    " 5. Save\n" +
+                    " 6. Quit\n" +
                     " > "
             );
             choice = scan.next();
-            while (!choice.equals("1") && !choice.equals("2") && !choice.equals("3") && !choice.equals("4") && !choice.equals("5")){
+            while (!choice.equals("1") && !choice.equals("2") && !choice.equals("3") && !choice.equals("4") && !choice.equals("5") && !choice.equals("6")){
                 System.out.println("Please enter a valid option");
                 choice = scan.next();
             }
@@ -217,7 +230,7 @@ public class Game {
 
                 System.out.print("Name: " + PC.getName() + " Level: " + PC.getLevel() + "\nHealth: " + PC.getHealthLeft() + "/" + PC.getHealth() + "\nAttack: "
                         + PC.getAttack() + " (+" + PC.getEquipped().getDamage() + " from " + PC.getEquipped().getItemName() + ")\nDefense: " + PC.getDefense() + " (+" + PC.getWorn().getProtection() + " from " + PC.getWorn().getItemName() + ")\nSpeed: " + PC.getSpeed() + "\nMana: " + PC.getManaLeft()
-                        + "/" + PC.getMana() + "\nExperience: " + PC.getExp() + "/" + 100 * PC.getLevel() + " Gold:" + PC.getGold() + "\nEnter -1 to go back.\n");
+                        + "/" + PC.getMana() + "\nExperience: " + PC.getExp() + "/" + 100 * PC.getLevel() + " Gold: " + PC.getGold() + "\nEnter -1 to go back.\n");
 
                 i = scan.next();
                 while (!i.equals("-1")){
@@ -227,12 +240,86 @@ public class Game {
             } else if (c == 4){
                 menu = false;
                 running = false;
+            } else if (c == 5){
+                try{
+                    savePlayer();
+                } catch (FileNotFoundException blarg){
+                    System.out.println("Save failed");
+                }
             } else {
-                System.out.println("Goodbye.");
+                System.out.println("See ya next time!.");
                 running = false;
                 System.exit(0);
             }
         }
+    }
+
+    private void loadPlayer() throws FileNotFoundException{
+        System.out.println("Enter the file name with your character in it.");
+        String choice = scan.next();
+
+        String playerName;
+        int classType, gold, exp, equipped, worn, itemID, quantity, itemCount, currentHealth, currentMana;
+        double level;
+        File inputFile = new File(choice);
+        Scanner in = new Scanner(inputFile);
+
+        playerName = in.nextLine();
+        level = in.nextDouble();
+        classType = in.nextInt();
+        gold = in.nextInt();
+        gameMode = in.nextInt();
+        exp = in.nextInt();
+        currentHealth = in.nextInt();
+        currentMana = in.nextInt();
+        equipped = in.nextInt();
+        worn = in.nextInt();
+
+
+        if (classType == 1){
+            this.PC = new Archer(playerName, level, gold, exp, equipped, worn, currentHealth, currentMana);
+        } else if (classType == 2){
+            this.PC = new Knight(playerName, level, gold, exp, equipped, worn, currentHealth, currentMana);
+        } else if (classType == 3){
+            this.PC = new Wizard(playerName, level, gold, exp, equipped, worn, currentHealth, currentMana);
+        } else {
+            throw new FileNotFoundException();
+        }
+
+        while(in.hasNextInt()){
+            itemCount = 0;
+            itemID = in.nextInt();
+            quantity = in.nextInt();
+            while (itemCount < quantity){
+                PC.getInventory().addNewItem(itemID, PC.getWeaponType());
+                itemCount++;
+            }
+        }
+
+        in.close();
+
+        System.out.println("Enter '1' to continue your adventure! Enter '2' to go to the menu.");
+        if (gameMode == 1){
+            runMosterMash();
+        } else if (gameMode == 2) {
+            runAdventure();
+        }
+    }
+
+    private void savePlayer() throws FileNotFoundException{
+        System.out.println("Enter the file name for this save.");
+        String choice = scan.next();
+
+        PrintWriter output = new PrintWriter(choice);
+        output.print(PC.getName() + "\n" + PC.getLevel() + "\n" + PC.getClassType() + "\n" + PC.getGold() + "\n" + gameMode
+        + "\n" + PC.getExp() + "\n" + PC.getHealthLeft() + "\n" + PC.getManaLeft() + "\n" + PC.getEquipped().getID()
+                + "\n" + PC.getWorn().getID() + "\n");
+        for(int i = 0; i < PC.getInventory().itemList.size(); i++){
+            output.print(PC.getInventory().itemList.get(i).getID() + " " + PC.getInventory().itemList.get(i).getStack() + "\n");
+        }
+        output.flush();
+        output.close();
+        System.out.println("The game has been saved");
     }
 
     private int getChance(){

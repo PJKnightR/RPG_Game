@@ -36,6 +36,12 @@ public class Inventory {
         stackItem();
     }
 
+    public void addNewItem(int ID, String s){
+        Item item = Item.itemListMaster(s)[ID];
+        itemList.add(item);
+        stackItem();
+    }
+
     public void useItem(Player user, Battle bat){ //need methods during and not during battle
         Scanner scan = new Scanner(System.in);
         int position = 0;

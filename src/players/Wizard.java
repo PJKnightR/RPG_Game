@@ -4,9 +4,7 @@ import attack.FingerLightening;
 import attack.Fireball;
 import attack.PlasmaStrike;
 import attack.TripleElementBlast;
-import item.EmptyHeartCanister;
-import item.OldDirtyClothing;
-import item.Wooden;
+import item.*;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -18,6 +16,7 @@ public class Wizard extends Player {
 
         setName(name);
         setLevel(1);
+        classType = 3;
         weaponType = "Wand";
         equipped = new Wooden(1, weaponType);
         worn = new OldDirtyClothing(1);
@@ -50,6 +49,46 @@ public class Wizard extends Player {
         attLevel = new int[]{1,5,10,25};
         getInitialAttacks();
 
+    }
+
+    public Wizard(String name, double level, int gold, int exp, int w, int a, int curHealth, int curMana){
+
+        setName(name);
+        setLevel(level);
+        this.gold = gold;
+        setExp(exp);
+        classType = 3;
+        weaponType = "Wand";
+        equipped = (Weapon) Weapon.itemListMaster(this.getWeaponType())[w];
+        worn = (Armor) Armor.itemListMaster(this.getWeaponType())[a];
+        canister = new EmptyHeartCanister(1);
+
+        baseAttack = 90;
+        baseDefense = 70;
+        baseSpeed = 60;
+        baseHealth = 100;
+        baseMana = 90;
+
+        setAttack();
+        setDefense();
+        setSpeed();
+        setHealth();
+        setHealthLeft(curHealth);
+        setMana();
+        setManaLeft(curMana);
+        setExp(0);
+
+
+        atts = new LinkedList<>();
+        att = new ArrayList<>();
+
+        atts.add(new Fireball());
+        atts.add(new FingerLightening());
+        atts.add(new PlasmaStrike());
+        atts.add(new TripleElementBlast());
+
+        attLevel = new int[]{1,5,10,25};
+        getInitialAttacks();
     }
 
 }

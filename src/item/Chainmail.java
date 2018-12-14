@@ -5,5 +5,6 @@ public class Chainmail extends Armor{
         super(num);
         setItemName("Chainmail Armor");
         setProtection(10);
+        setID(19);
     }
 }

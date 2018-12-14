@@ -3,7 +3,8 @@ package item;
 public class SilverPlatemail extends Armor{
     public SilverPlatemail(int num){
         super(num);
-        setItemName("SilverPlatemail");
+        setItemName("Silver Platemail");
         setProtection(30);
+        setID(21);
     }
 }

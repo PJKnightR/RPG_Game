@@ -7,5 +7,6 @@ public class Soldiers extends Weapon {
         super(num, name);
         setItemName("Soldiers " + name);
         setDamage(20);
+        setID(12);
     }
 }

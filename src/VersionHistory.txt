@@ -8,10 +8,25 @@ To make versions numbers easier:
 
 Version Version # Month/Day/Year
 
+Version 2.2.2 12/14/18
+-Added item ID's to all weapons and armor
+-Added armor and weapons to masterList so that they can be gotten from loading a character
+-Added ability to load in equipped item in Player Load
+-Added ability to load in a player of any class
+-Added current Health and Mana being saved with the player so they can't just full heal by reloading
+-Added an additional random number between 1-100 for all gold/exp gains after battle
+-Added ability to fully save the current player
+-Misc tweaks
+-Fixed the bug where you would lose equipment when switching to different equipment
+-Moved the dungeon process in game to its own method
+
 Version 2.2.1 12/13/18
 -Added Orange, Green, Blue, Purple, and Crystal Heart Canisters
 -Added item ID numbers to all consumable items
 -Added a new Game class that completely replaces the old one and is much more organized
+-Added a new Master Item List in item that uses Item ID's to create items
+-Added a basic version of being able to load a player
+-Added a basic version of being able to save a player
 
 Version 2.2.0 12/12/18
 -Added HeartCanisters that boost max health

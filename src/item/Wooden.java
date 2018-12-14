@@ -7,5 +7,6 @@ public class Wooden extends Weapon {
         super(num, name);
         setItemName("Wooden " + name);
         setDamage(1);
+        setID(9);
     }
 }

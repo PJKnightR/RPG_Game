@@ -7,5 +7,6 @@ public class Standard extends Weapon {
         super(num, name);
         setItemName("Standard " + name);
         setDamage(10);
+        setID(11);
     }
 }

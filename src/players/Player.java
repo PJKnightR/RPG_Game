@@ -11,7 +11,7 @@ abstract public class Player extends Actor {
 	public Weapon equipped;
 	public Armor worn;
 	public HeartCanister canister;
-	protected int mana, manaLeft, baseMana, Exp, gold;
+	protected int mana, manaLeft, baseMana, Exp, gold, classType;
 	String weaponType;
 
 	public HeartCanister getCanister() {
@@ -88,6 +88,10 @@ abstract public class Player extends Actor {
 
 	public void setCanister(HeartCanister c){
 		canister = c;
+	}
+
+	public int getClassType(){
+		return classType;
 	}
 
 	public void gainGold(int g){

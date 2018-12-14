@@ -76,14 +76,14 @@ public class Battle {
                 PC.getInventory().addRandomItem();
             }
             if (enemy.getDifficulty().equalsIgnoreCase("easy")){
-                PC.gainExp(50);
+                PC.gainExp(50 + (int)getChance());
                 PC.gainGold(100 + (int)getChance());
             } else if (enemy.getDifficulty().equalsIgnoreCase("moderate")){
                 PC.gainExp(100 + (int)getChance());
-                PC.gainGold(150);
+                PC.gainGold(150 + (int)getChance());
             } else if (enemy.getDifficulty().equalsIgnoreCase("hard")){
                 PC.gainExp(250 + (int)getChance());
-                PC.gainGold(200);
+                PC.gainGold(200 + (int)getChance());
             } else {
                 PC.gainExp(100);
                 PC.gainGold(100);
@@ -144,7 +144,7 @@ public class Battle {
 
         System.out.print("Name: " + PC.getName() + " Level: " + PC.getLevel() + "\nHealth: " + PC.getHealthLeft() + "/" + PC.getHealth() + "\nAttack: "
         + PC.getAttack() + " (+" + PC.getEquipped().getDamage() + " from " + PC.getEquipped().getItemName() + ")\nDefense: " + PC.getDefense() + " (+" + PC.getWorn().getProtection() + " from " + PC.getWorn().getItemName() + ")\nSpeed: " + PC.getSpeed() + "\nMana: " + PC.getManaLeft()
-        + "/" + PC.getMana() + "\nExperience: " + PC.getExp() + "/" + 100 * PC.getLevel() + " Gold:" + PC.getGold() + "\nEnter -1 to go back.\n");
+        + "/" + PC.getMana() + "\nExperience: " + PC.getExp() + "/" + 100 * PC.getLevel() + " Gold: " + PC.getGold() + "\nEnter -1 to go back.\n");
 
         i = scan.next();
         while (!i.equals("-1")){

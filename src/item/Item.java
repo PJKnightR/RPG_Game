@@ -16,6 +16,16 @@ abstract public class Item {
 		return new Item[]{new ItemEmpty(1), new FrappePotion(1), new GrandePotion(1), new MongoPotion(1), new FrappeManaPotion(1), new GrandeManaPotion(1), new MongoManaPotion(1), new GarlicBread(1)};
 	}
 
+	public static Item[] itemListMaster(String s){
+		return new Item[]{new ItemEmpty(1), new FrappePotion(1), new GrandePotion(1), new MongoPotion(1),
+				new FrappeManaPotion(1), new GrandeManaPotion(1), new MongoManaPotion(1), new GarlicBread(1),
+				new UltimateCheesyGarlicBread(1), new Wooden(1, s), new Travelers(1, s),
+				new Standard(1, s), new Soldiers(1, s), new Warriors(1, s), new Guardians(1, s),
+				new Heros(1, s), new Legends(1, s), new OldDirtyClothing(1), new LeatherChaps(1),
+				new Chainmail(1), new IronPlatemail(1), new SilverPlatemail(1), new TitaniumPlatemail(1),
+				new SteelPlatemail(1), new DragonScalePlatemail(1)};
+	}
+
 	public abstract int use(Player PC);
 
 	public String getItemName() {
