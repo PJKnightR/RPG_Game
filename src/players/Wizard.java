@@ -4,6 +4,7 @@ import attack.FingerLightening;
 import attack.Fireball;
 import attack.PlasmaStrike;
 import attack.TripleElementBlast;
+import item.EmptyHeartCanister;
 import item.OldDirtyClothing;
 import item.Wooden;
 
@@ -20,6 +21,7 @@ public class Wizard extends Player {
         weaponType = "Wand";
         equipped = new Wooden(1, weaponType);
         worn = new OldDirtyClothing(1);
+        canister = new EmptyHeartCanister(1);
 
         baseAttack = 90;
         baseDefense = 70;

@@ -6,7 +6,7 @@ abstract public class Item {
 	protected String description;
 	private String itemName;
 	private boolean stackable;
-	private int stack, value;
+	private int stack, value, ID;
 
 	public Item(int num){
 		stack = num;
@@ -57,6 +57,14 @@ abstract public class Item {
 	public Item(Item i) {
 		this.itemName = i.itemName;
 		this.description = i.description;
+	}
+
+	public int getID(){
+		return ID;
+	}
+
+	public void setID(int i){
+		this.ID = i;
 	}
 
 	public String examine() {

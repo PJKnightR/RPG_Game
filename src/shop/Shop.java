@@ -1,6 +1,5 @@
 package shop;
 
-import game.Game;
 import players.Player;
 import item.Item;
 

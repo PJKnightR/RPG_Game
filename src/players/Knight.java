@@ -4,6 +4,7 @@ import attack.RiskyLunge;
 import attack.SpinningStrike;
 import attack.SwordSlash;
 import attack.WarriorsBeam;
+import item.EmptyHeartCanister;
 import item.OldDirtyClothing;
 import item.Wooden;
 
@@ -20,6 +21,7 @@ public class Knight extends Player {
         weaponType = "Sword";
         equipped = new Wooden(1, weaponType);
         worn = new OldDirtyClothing(1);
+        canister = new EmptyHeartCanister(1);
 
         baseAttack = 70;
         baseDefense = 80;

@@ -8,5 +8,6 @@ public class MongoPotion extends HealthPotion {
         setItemName("Mongo Potion");
         setHealthRestore(200);
         setValue(900);
+        setID(3);
     }
 }

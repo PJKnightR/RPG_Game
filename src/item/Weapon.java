@@ -19,7 +19,7 @@ abstract public class Weapon extends Item{ // extends Item
     }
 
     public int use(Player user){
-        user.getInventory().addNewItem(user.equipped);
+        user.inventory.addNewItem(user.getEquipped());
         user.setEquipped(this);
         user.setAttack();
         System.out.println("You equipped the " + this.getItemName());

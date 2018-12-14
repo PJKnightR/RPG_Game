@@ -8,5 +8,6 @@ public class GrandePotion extends HealthPotion {
         setItemName("Grande Potion");
         setHealthRestore(50);
         setValue(500);
+        setID(2);
     }
 }

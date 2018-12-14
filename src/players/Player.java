@@ -3,14 +3,20 @@ package players;
 import game.Actor;
 import game.Inventory;
 import item.Armor;
+import item.HeartCanister;
 import item.Weapon;
 
 abstract public class Player extends Actor {
 	public Inventory inventory = new Inventory();
 	public Weapon equipped;
 	public Armor worn;
+	public HeartCanister canister;
 	protected int mana, manaLeft, baseMana, Exp, gold;
 	String weaponType;
+
+	public HeartCanister getCanister() {
+		return canister;
+	}
 
 	public Armor getWorn(){
 		return worn;
@@ -32,7 +38,7 @@ abstract public class Player extends Actor {
 	 * This will set the health of the player. This will change later
 	 */
 	public void setHealth() {
-		health = (int)(((baseHealth + 31 + level * 4) / 2) * level / 100 + 25);
+		health = (int)(((baseHealth + 31 + level * 4) / 2) * level / 100 + 25) + canister.getHealthBoost();
 	}
 	
 	/**
@@ -73,16 +79,20 @@ abstract public class Player extends Actor {
 	}
 
 	public void setEquipped(Weapon w){
-		this.equipped = w;
+		equipped = w;
 	}
 
 	public void setWorn(Armor a){
-		this.worn = a;
+		worn = a;
+	}
+
+	public void setCanister(HeartCanister c){
+		canister = c;
 	}
 
 	public void gainGold(int g){
 		gold += g;
-		System.out.print("You gained " + g + " gold! ");
+		System.out.print("You gained " + g + " gold!\n");
 	}
 
 	public void spendGold(int g){

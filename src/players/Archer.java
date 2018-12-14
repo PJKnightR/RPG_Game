@@ -4,6 +4,7 @@ import attack.ArrowStorm;
 import attack.ArrowVolley;
 import attack.FlamingArrows;
 import attack.PiercingShots;
+import item.EmptyHeartCanister;
 import item.OldDirtyClothing;
 import item.Wooden;
 
@@ -20,6 +21,7 @@ public class Archer extends Player {
         weaponType = "Bow";
         equipped = new Wooden(1, weaponType);
         worn = new OldDirtyClothing(1);
+        canister = new EmptyHeartCanister(1);
 
         baseAttack = 60;
         baseDefense = 50;

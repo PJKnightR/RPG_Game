@@ -8,5 +8,6 @@ public class FrappeManaPotion extends ManaPotion {
         setItemName("Frappe Mana Potion");
         setManaRestore(20);
         setValue(250);
+        setID(4);
     }
 }

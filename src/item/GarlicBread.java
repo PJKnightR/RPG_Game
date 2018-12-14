@@ -8,5 +8,6 @@ public class GarlicBread extends HealthPotion {
         setItemName("Garlic Bread");
         setHealthRestore(35);
         setValue(750);
+        setID(7);
     }
 }

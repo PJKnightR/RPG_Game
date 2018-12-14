@@ -8,6 +8,19 @@ To make versions numbers easier:
 
 Version Version # Month/Day/Year
 
+Version 2.2.1 12/13/18
+-Added Orange, Green, Blue, Purple, and Crystal Heart Canisters
+-Added item ID numbers to all consumable items
+-Added a new Game class that completely replaces the old one and is much more organized
+
+Version 2.2.0 12/12/18
+-Added HeartCanisters that boost max health
+-Added HeartCanisters empty, red, and yellow
+
+Version 2.1.1 12/12/18
+-Added a call to display health after viewing your stats
+-Changed the damage calculation in battle to help re-balance things
+
 Version 2.1.0 12/10/18
 -Added the armor class
 -Added the armor classes OldDirtyClothing, LeatherChaps, Chainmail, IronPlatemail, SilverPlatemail, Titanium Platemail,

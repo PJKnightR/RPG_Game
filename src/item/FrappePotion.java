@@ -8,5 +8,6 @@ public class FrappePotion extends HealthPotion {
         setItemName("Frappe Potion");
         setHealthRestore(20);
         setValue(200);
+        setID(1);
     }
 }

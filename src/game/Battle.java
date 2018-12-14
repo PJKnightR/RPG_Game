@@ -144,13 +144,14 @@ public class Battle {
 
         System.out.print("Name: " + PC.getName() + " Level: " + PC.getLevel() + "\nHealth: " + PC.getHealthLeft() + "/" + PC.getHealth() + "\nAttack: "
         + PC.getAttack() + " (+" + PC.getEquipped().getDamage() + " from " + PC.getEquipped().getItemName() + ")\nDefense: " + PC.getDefense() + " (+" + PC.getWorn().getProtection() + " from " + PC.getWorn().getItemName() + ")\nSpeed: " + PC.getSpeed() + "\nMana: " + PC.getManaLeft()
-        + "/" + PC.getMana() + "\nExperience: " + PC.getExp() + "/" + 100 * PC.getLevel() + "Gold:" + PC.getGold() + "\nEnter -1 to go back.\n");
+        + "/" + PC.getMana() + "\nExperience: " + PC.getExp() + "/" + 100 * PC.getLevel() + " Gold:" + PC.getGold() + "\nEnter -1 to go back.\n");
 
         i = scan.next();
         while (!i.equals("-1")){
             System.out.println("Please enter a valid number!");
             i = scan.next();
         }
+        displayHealth(PC);
     }
 
     /**
@@ -222,7 +223,7 @@ public class Battle {
 
             PC.setManaLeft(PC.getManaLeft() - PC.att.get(att).getManaCost());
 
-            damage = (2 * PC.getLevel() + 10) / 250 * (PC.getAttack() / enemy.getDefense()) * (PC.att.get(att).getPower() + 2) * getCriticalHitModifier();
+            damage = (((((2 * PC.getLevel() / 5) + 2) * (PC.getAttack() / enemy.getDefense()) * (PC.att.get(att).getPower())) / 50) + 2) * getCriticalHitModifier();
             System.out.println("You attack using " + PC.att.get(att).getAttackName() + ". It did " + (int)damage + " damage.");
 
             return (int) damage;
@@ -257,7 +258,7 @@ public class Battle {
         else{
             int att = enemySelectedMove - 1;
             double damage;
-            damage = (2 * enemy.getLevel() + 10) / 250 * (enemy.getAttack() / PC.getDefense()) * (enemy.att.get(att).getPower() + 2) * getCriticalHitModifier();
+            damage = (((((2 * enemy.getLevel() / 5) + 2) * (enemy.getAttack() / PC.getDefense()) * (enemy.att.get(att).getPower())) / 50) + 2) * getCriticalHitModifier();
             System.out.println("The " + enemy.getName() + " attacked you using " + enemy.att.get(att).getAttackName() + ". It did " + (int)damage + " damage.");
 
             return (int) damage;
