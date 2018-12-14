@@ -46,7 +46,7 @@ public abstract class Shop {
         } else if (user.getGold() >= shopList.get(choiceNum - 1).getValue()){
             user.spendGold(shopList.get(choiceNum - 1).getValue());
             System.out.println("You got a " + shopList.get(choiceNum - 1).getItemName() + "!");
-            user.getInventory().addNewItem(shopList.get(choiceNum - 1));
+            user.getInventory().addNewItem(shopList.get(choiceNum - 1).getID(), user.getWeaponType());
             shop(user);
         } else {
             System.out.println("Not enough Gold for that.");

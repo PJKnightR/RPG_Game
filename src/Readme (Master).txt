@@ -40,7 +40,6 @@ fixed) (Found by Patrick)
 -Trying to put different kinds of items in different packages breaks stuff
 -Prompted to enter dungeons until you stop entering them (Possibly, they like appearing in groups of 3)
 -The weakest enemies still cannot hurt you if you get the strongest armor for your level. They are also really easy to defeat
--You can get negative amounts of items after buying them (This may be in general from buying items)
 
 Ideas:
 -Power ups/better weapons and armor
