@@ -1,7 +1,7 @@
 package attack;
 
-public class ClubBat extends Attack{
-    public ClubBat(){
+public class ClubClobber extends Attack{
+    public ClubClobber(){
         name = "Club Bat";
         power = 50;
         description = "The user strikes an enemy with a large club.";

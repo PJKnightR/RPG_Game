@@ -2,7 +2,6 @@ package enemies;
 
 import attack.*;
 import attack.SpearChuck;
-import players.Player;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -32,7 +31,7 @@ public class Goblin extends Enemy {
 
         atts.add(new CookieThrow());
         atts.add(new StickSlap());
-        atts.add(new ClubBat());
+        atts.add(new ClubClobber());
         atts.add(new SpearChuck());
 
         attLevel = new int[]{1,2,4,10};

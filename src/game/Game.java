@@ -14,7 +14,8 @@ public class Game {
     private int gameMode;
     private Player PC;
     private boolean dungeon, running;
-    private final int battleChance = 75, equipmentChance = 10;
+    private int battleChance, equipmentChance;
+    private String difficulty;
 
     public Game(){
         scan = new Scanner(System.in);
@@ -50,6 +51,7 @@ public class Game {
 
     private void chooseGamemode(){
         String choice;
+        int diff = 0;
         System.out.print(	"\n 1. Monster Mash" +
                 "\n 2. Adventure" +
                 "\n > ");
@@ -60,11 +62,46 @@ public class Game {
         }
         this.gameMode = Integer.parseInt(choice);
         createCharacter();
-        System.out.println("Start your adventure by entering '1', access the menu by entering '2'.");
+        setDifficulty(diff);
+        System.out.println("As you begin your quest, you've been given a Wooden " + PC.getWeaponType() + ". With this weapon" +
+                " and clothes on your back, you begin your epic quest.\nStart your adventure by entering '1', access the menu by entering '2'.");
         if (gameMode == 1){
             runMosterMash();
         } else {
             runAdventure();
+        }
+    }
+
+    private void setDifficulty(int i){
+        String choice;
+
+        if (i == 0){
+            System.out.print(	"Enter your desired difficulty:\n 1. Easy" +
+                    "\n 2. Normal" +
+                    "\n 3. Hard" +
+                    "\n > ");
+            choice = scan.nextLine();
+            while (!choice.equals("1") && !choice.equals("2") && !choice.equals("3")){
+                System.out.println("Please enter a valid option");
+                choice = scan.nextLine();
+            }
+            difficulty = choice;
+        } else {
+            difficulty = Integer.toString(i);
+        }
+
+        if (difficulty.equals("1")){
+            battleChance = 65;
+            equipmentChance = 20;
+        } else if (difficulty.equals("2")){
+            battleChance = 75;
+            equipmentChance = 10;
+        } else if (difficulty.equals("3")){
+            battleChance = 85;
+            equipmentChance = 7;
+        } else {
+            battleChance = 75;
+            equipmentChance = 10;
         }
     }
 
@@ -80,16 +117,20 @@ public class Game {
             choice = scan.nextLine();
         }
 
-        if (choice.equals("1")){
-            this.PC = new Archer(name);
-        } else if (choice.equals("2")){
-            this.PC = new Knight(name);
-        } else if (choice.equals("3")){
-            this.PC = new Wizard(name);
+        if (name.equalsIgnoreCase("RiskyLungeLiskyRunge")){
+            this.PC = new RiskyLungeKLnight(name);
+            System.out.println("Welcome back, master.");
         } else {
-            this.PC = new Knight(name);
+            if (choice.equals("1")){
+                this.PC = new Archer(name);
+            } else if (choice.equals("2")){
+                this.PC = new Knight(name);
+            } else if (choice.equals("3")){
+                this.PC = new Wizard(name);
+            } else {
+                this.PC = new Knight(name);
+            }
         }
-
     }
 
     private void runMosterMash(){
@@ -259,7 +300,7 @@ public class Game {
         String choice = scan.next();
 
         String playerName;
-        int classType, gold, exp, equipped, worn, itemID, quantity, itemCount, currentHealth, currentMana;
+        int classType, gold, exp, equipped, worn, itemID, quantity, itemCount, currentHealth, currentMana, difficulty;
         double level;
         File inputFile = new File(choice);
         Scanner in = new Scanner(inputFile);
@@ -269,6 +310,9 @@ public class Game {
         classType = in.nextInt();
         gold = in.nextInt();
         gameMode = in.nextInt();
+        difficulty = in.nextInt();
+        setDifficulty(difficulty);
+
         exp = in.nextInt();
         currentHealth = in.nextInt();
         currentMana = in.nextInt();
@@ -312,14 +356,14 @@ public class Game {
 
         PrintWriter output = new PrintWriter(choice);
         output.print(PC.getName() + "\n" + PC.getLevel() + "\n" + PC.getClassType() + "\n" + PC.getGold() + "\n" + gameMode
-        + "\n" + PC.getExp() + "\n" + PC.getHealthLeft() + "\n" + PC.getManaLeft() + "\n" + PC.getEquipped().getID()
+        + "\n" + difficulty + "\n" + PC.getExp() + "\n" + PC.getHealthLeft() + "\n" + PC.getManaLeft() + "\n" + PC.getEquipped().getID()
                 + "\n" + PC.getWorn().getID() + "\n");
         for(int i = 0; i < PC.getInventory().itemList.size(); i++){
             output.print(PC.getInventory().itemList.get(i).getID() + " " + PC.getInventory().itemList.get(i).getStack() + "\n");
         }
         output.flush();
         output.close();
-        System.out.println("The game has been saved");
+        System.out.println("The game has been saved.");
     }
 
     private int getChance(){

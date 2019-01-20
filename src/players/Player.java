@@ -159,11 +159,14 @@ abstract public class Player extends Actor {
 	 * are added to the arraylist containing the player's current available attacks.
 	 */
 	public void checkNewAttack(){
-		if (this.att.size() < 4){
-			if (this.getLevel() == this.attLevel[att.size()]){
-				this.att.add(atts.poll());
-				System.out.print("Congratulations, you learned the attack " + att.get(att.size() - 1).getAttackName() + "! ");
+		if (!this.getName().equalsIgnoreCase("RiskyLungeLiskyRunge")){
+			if (this.att.size() < 4){
+				if (this.getLevel() == this.attLevel[att.size()]){
+					this.att.add(atts.poll());
+					System.out.print("Congratulations, you learned the attack " + att.get(att.size() - 1).getAttackName() + "! ");
+				}
 			}
 		}
+
 	}
 }

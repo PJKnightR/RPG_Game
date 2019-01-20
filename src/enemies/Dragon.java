@@ -3,9 +3,8 @@ package enemies;
 import attack.*;
 import attack.Bash;
 import attack.Bite;
-import attack.Roar;
+import attack.ThreateningRoar;
 import attack.TailWhip;
-import players.Player;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -36,7 +35,7 @@ public class Dragon extends Enemy {
         atts.add(new Bite());
         atts.add(new Bash());
         atts.add(new WingSlap());
-        atts.add(new Roar());
+        atts.add(new ThreateningRoar());
         atts.add(new FireBreath());
 
         attLevel = new int[]{1,2,3,5,6,8,10};

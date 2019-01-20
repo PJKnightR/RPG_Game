@@ -49,7 +49,6 @@ public class Battle {
                 battling = checkPlayerStatus(PC);
                 if (!battling){
                     System.out.println("You were defeated by the " + enemy.getName() + "!");
-                    //playerLoss = true;
                     break;
                 }
             } else if (PC.getSpeed() < enemy.getSpeed()){
@@ -57,7 +56,6 @@ public class Battle {
                 battling = checkPlayerStatus(PC);
                 if (!battling){
                     System.out.println("You were defeated by the " + enemy.getName() + "!");
-                    //playerLoss = true;
                     break;
                 }
                 enemy.setHealthLeft(enemy.getHealthLeft() - playerAttack(PC));
@@ -124,7 +122,6 @@ public class Battle {
                 if (run > 50){
                     System.out.println("You escaped from the " + enemy.getName());
                     this.selectedMove = -1;
-                    //end the battle here
                 } else {
                     System.out.println("The " + enemy.getName() + " blocks your escape path!");
                 }
@@ -315,8 +312,6 @@ public class Battle {
      */
     private Enemy generateEnemy(Player PC){
         int id, amount;
-        double chance;
-        chance = getChance();
         Enemy e;
 
         if (PC.getLevel() < 5){
@@ -328,38 +323,6 @@ public class Battle {
         }
         id = idGenerator(amount);
         e = getEnemy(PC)[id];
-
-        /*if (PC.getLevel() < 5){
-            amount = 2;
-            id = idGenerator(amount);
-            e = getDifficultyLev1(PC)[id];
-        } else if (PC.getLevel() < 10){
-            if (chance <= 80){
-                amount = 2;
-                id = idGenerator(amount);
-                e = getDifficultyLev1(PC)[id];
-            } else {
-                amount = 2;
-                id = idGenerator(amount);
-                e = getDifficultyLev2(PC)[id];
-            }
-            assert e != null;
-        } else {
-            if (chance <= 60){
-                amount = 2;
-                id = idGenerator(amount);
-                e = getDifficultyLev1(PC)[id];
-            } else if (chance <= 89){
-                amount = 2;
-                id = idGenerator(amount);
-                e = getDifficultyLev2(PC)[id];
-            } else {
-                amount = 2;
-                id = idGenerator(amount);
-                e = getDifficultyLev3(PC)[id];
-            }
-            assert e != null;
-        }*/
 
         return e;
     }
@@ -396,17 +359,6 @@ public class Battle {
      * @param PC
      * @return
      */
-    private static Enemy[] getDifficultyLev1(Player PC){
-        return new Enemy[]{new Goblin(PC.getLevel()), new Skeleton(PC.getLevel()), new Troll(PC.getLevel())};
-    }
-
-    private static Enemy[] getDifficultyLev2(Player PC){
-        return new Enemy[]{new Vampire(PC.getLevel()), new Witch(PC.getLevel()), new BabyDragon(PC.getLevel())};
-    }
-
-    private static Enemy[] getDifficultyLev3(Player PC){
-        return new Enemy[]{new Dragon(PC.getLevel()), new Werewolf(PC.getLevel()), new RogueKnight(PC.getLevel())};
-    }
 
     private static Enemy[] getEnemy(Player PC){
         return new Enemy[]{new Goblin(PC.getLevel()), new Skeleton(PC.getLevel()), new Troll(PC.getLevel()), new Vampire(PC.getLevel()), new Witch(PC.getLevel()), new BabyDragon(PC.getLevel()), new Dragon(PC.getLevel()), new Werewolf(PC.getLevel()), new RogueKnight(PC.getLevel())};

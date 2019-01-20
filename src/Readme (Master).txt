@@ -12,7 +12,6 @@ To-do aka ? (In order of priority(sort of)):
 -Heart Canisters ID's and add them to the master item list
 
 -Custom mode
--Difficulty options
 -Reworking of stats (using a base player and multipliers maybe)
 -Rework things with a random chance by using global variables for easier access
 -Add more events (enemy kingdoms, strongholds, mountains, valleys, fields, caves)

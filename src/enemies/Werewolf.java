@@ -3,7 +3,7 @@ package enemies;
 import attack.SlashingClaw;
 import attack.Bash;
 import attack.Bite;
-import attack.Roar;
+import attack.ThreateningRoar;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -32,7 +32,7 @@ public class Werewolf extends Enemy {
         atts.add(new SlashingClaw());
         atts.add(new Bite());
         atts.add(new Bash());
-        atts.add(new Roar());
+        atts.add(new ThreateningRoar());
 
         attLevel = new int[]{1,4,6,8};
 

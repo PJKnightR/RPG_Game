@@ -8,8 +8,20 @@ To make versions numbers easier:
 
 Version Version # Month/Day/Year
 
+Version 2.3.0 1/20/18
+-Added easy, medium, and hard difficulty options (currently changes the chances of finding items adn events)
+-Added selected difficulty to be saved with the player
+-Changed when some story messages are displayed
+
 Version 2.2.3 12/14/18
+-Added new story messages to game
+-Added the attack SpookyDance
+-Added SpookyDance to the skeletons moveset
+-Added a new surprise
+-Removed some older/unused code and put it in its own folder
 -Fixed the bug where you could get a negative amount of an item when buying stuff from the shop
+-Renamed attack ClubSlap to ClubClobber, Roar to ThreateningRoar
+-Renamed attack Bow to BoneThrow and buffed power to 75
 
 Version 2.2.2 12/14/18
 -Added item ID's to all weapons and armor
@@ -90,7 +102,8 @@ Version 2.0.0 12/6/18
 -Buffed the players mana stat
 -Put the setLevel method in the actor class
 
-Version 1.8.1 12/3/18 *Version Note: Everything done after project is turned in will be version 2.***
+Version 1.8.1 12/3/18 *Version Note: Everything done after project is turned in will be version 2.*** and will be done by
+Patrick
 -Added message prompting the player to continue or go to the menu after being in the menu (Patrick)
 -Buffed the player and enemies (Patrick)
 -Changed events to adventure mode only (Kellan)
