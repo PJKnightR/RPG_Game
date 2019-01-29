@@ -8,12 +8,22 @@ To make versions numbers easier:
 
 Version Version # Month/Day/Year
 
-Version 2.3.0 1/20/18
+Version 2.4.0 1/28/19 Boardmode Update
+-Added the board and tile classes
+-Added ability to find forests, deserts, and plains in board mode
+-Added ability to examine an area in board mode
+-Added ability to battle enemies in board mode
+-Added map that can be displayed in board mode
+-Added movement in board mode
+-Began development of new "boardmode" where you traverse a randomly generated world
+-Fixed a bug where the archers Bow became bone throw for some reason
+
+Version 2.3.0 1/20/19 Difficulty Update
 -Added easy, medium, and hard difficulty options (currently changes the chances of finding items adn events)
 -Added selected difficulty to be saved with the player
 -Changed when some story messages are displayed
 
-Version 2.2.3 12/14/18
+Version 2.2.3 12/14/18 Spooky Update
 -Added new story messages to game
 -Added the attack SpookyDance
 -Added SpookyDance to the skeletons moveset
@@ -23,7 +33,7 @@ Version 2.2.3 12/14/18
 -Renamed attack ClubSlap to ClubClobber, Roar to ThreateningRoar
 -Renamed attack Bow to BoneThrow and buffed power to 75
 
-Version 2.2.2 12/14/18
+Version 2.2.2 12/14/18 Save and Load Update
 -Added item ID's to all weapons and armor
 -Added armor and weapons to masterList so that they can be gotten from loading a character
 -Added ability to load in equipped item in Player Load
@@ -35,7 +45,7 @@ Version 2.2.2 12/14/18
 -Fixed the bug where you would lose equipment when switching to different equipment
 -Moved the dungeon process in game to its own method
 
-Version 2.2.1 12/13/18
+Version 2.2.1 12/13/18 Game Class Update
 -Added Orange, Green, Blue, Purple, and Crystal Heart Canisters
 -Added item ID numbers to all consumable items
 -Added a new Game class that completely replaces the old one and is much more organized
@@ -43,7 +53,7 @@ Version 2.2.1 12/13/18
 -Added a basic version of being able to load a player
 -Added a basic version of being able to save a player
 
-Version 2.2.0 12/12/18
+Version 2.2.0 12/12/18 Heart Canister Update
 -Added HeartCanisters that boost max health
 -Added HeartCanisters empty, red, and yellow
 
@@ -51,7 +61,7 @@ Version 2.1.1 12/12/18
 -Added a call to display health after viewing your stats
 -Changed the damage calculation in battle to help re-balance things
 
-Version 2.1.0 12/10/18
+Version 2.1.0 12/10/18 Armor Update
 -Added the armor class
 -Added the armor classes OldDirtyClothing, LeatherChaps, Chainmail, IronPlatemail, SilverPlatemail, Titanium Platemail,
 SteelPlatemail, and DragonScalePlatemail
@@ -80,16 +90,16 @@ Version 2.0.3 12/9/18
 -Fixed a bug with using items outside of battle
 -Fixed a bug where you could find weapons not after a battle
 
-Version 2.0.2 12/8/18
+Version 2.0.2 12/8/18 Weapons Update
 -Added attack stat bonus when viewing stats
 -Added the weapon classes standard, soldiers, warriors, guardians, heros, and legends
 -Added ability to find weapons after battles only (based on player level)
 
-Version 2.0.1 12/7/18
+Version 2.0.1 12/7/18 Weapons Update
 -Changed the equippable items classes to be the same for every player, but the name of the item changes depending on the
 Players class type
 
-Version 2.0.0 12/6/18
+Version 2.0.0 12/6/18 Weapons Update
 -Added the item and class WoodenSword, TravelersSword
 -Added the ability to equip different weapons
 -Added the ability to view and toss items outside of battle

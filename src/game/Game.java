@@ -54,9 +54,10 @@ public class Game {
         int diff = 0;
         System.out.print(	"\n 1. Monster Mash" +
                 "\n 2. Adventure" +
+                "\n 3. Board Adventure (Work in progress, unstable, cannot save or load)" +
                 "\n > ");
         choice = scan.nextLine();
-        while (!choice.equals("1") && !choice.equals("2")){
+        while (!choice.equals("1") && !choice.equals("2") && !choice.equals("3")){
             System.out.println("Please enter a valid option");
             choice = scan.nextLine();
         }
@@ -67,8 +68,10 @@ public class Game {
                 " and clothes on your back, you begin your epic quest.\nStart your adventure by entering '1', access the menu by entering '2'.");
         if (gameMode == 1){
             runMosterMash();
-        } else {
+        } else if (gameMode == 2 ){
             runAdventure();
+        } else {
+            runBoardMode();
         }
     }
 
@@ -204,6 +207,102 @@ public class Game {
             }
             scan.nextLine();
             runGame();
+        }
+    }
+
+    private void runBoardMode(){
+        Board board = new Board(0);
+        board.generateNewBoard();
+
+        board.setCurPosX(0);
+        board.setCurPosY(4);
+        board.setClear();
+        board.setEnemy();
+        board.setHidItem();
+        board.setExplored();
+        board.displayBoard();
+
+        board.getTile(0,4).setType("Home");
+
+        String choice;
+        int c;
+
+        while(running){
+            choice = scan.next();
+            while (!choice.equals("1") && !choice.equals("2") && !choice.equals("3") && !choice.equals("4")){
+                System.out.println("Please enter a valid option");
+                choice = scan.next();
+            }
+            c = Integer.parseInt(choice);
+            if(c == 1){
+                movePositions(board);
+            } else if (c == 2){
+                playerMenu();
+            } else if (c == 3) {
+                if (board.getCurrentTile().hidItem){
+                    PC.getInventory().addRandomItem();
+                    board.setHidItem();
+                    board.setClear();
+                } else {
+                    System.out.println("You examined the " + board.getCurrentTile().type + " but didn't find anything.");
+                    board.setClear();
+                }
+            } else {
+                board.displayBoard();
+            }
+            if (running){
+                System.out.println("Current Location: " + board.getCurrentTile().type + "\nEnter '1' to continue your adventure! Enter '2' to go to the menu. Enter '3' to examine" +
+                        " the area. Enter '4' to look at the map.");
+            }
+        }
+    }
+
+    private void movePositions(Board board){
+        System.out.println("Where would you like to move to? Enter -1 to go back.");
+        String choice;
+
+        if (board.getCurPosY() != 0){
+            System.out.println("'W' to move up a tile.");
+        }
+        if (board.getCurPosY() != 8){
+            System.out.println("'S' to move down a tile.");
+        }
+        if (board.getCurPosX() != 0){
+            System.out.println("'A' to move left a tile.");
+        }
+        if (board.getCurPosX() != 8){
+            System.out.println("'D' to move right a tile.");
+        }
+
+        choice = scan.next();
+        if (choice.equalsIgnoreCase("W") && board.getCurPosY() != 0){
+            board.setCurPosY(board.getCurPosY() - 1);
+        } else if (choice.equalsIgnoreCase("S") && board.getCurPosY() != 8){
+            board.setCurPosY(board.getCurPosY() + 1);
+        } else if (choice.equalsIgnoreCase("A") && board.getCurPosX() != 0){
+            board.setCurPosX(board.getCurPosX() - 1);
+        } else if (choice.equalsIgnoreCase("D") && board.getCurPosX() != 8){
+            board.setCurPosX(board.getCurPosX() + 1);
+        } else if (!choice.equals("-1")) {
+            System.out.println("Invalid input entered");
+            movePositions(board);
+        }
+
+        if (!choice.equals("-1")){
+            board.setExplored();
+
+            if (board.getCurrentTile().enemy){
+                Battle batbat = new Battle();
+                batbat.startBattle(PC, scan);
+                if (PC.getHealthLeft() <= 0) {
+                    System.out.print("\n\n\t\tGAME\tOVER\n\n\n");
+                    running = false;
+                } else {
+                    findNewEquipment();
+                    board.setEnemy();
+                    board.setClear();
+                }
+            }
         }
     }
 

@@ -17,7 +17,7 @@ public class Archer extends Player {
         setName(name);
         setLevel(1);
         classType = 1;
-        weaponType = "BoneThrow";
+        weaponType = "Bow";
         equipped = new Wooden(1, weaponType);
         worn = new OldDirtyClothing(1);
         canister = new EmptyHeartCanister(1);
@@ -58,7 +58,7 @@ public class Archer extends Player {
         this.gold = gold;
         setExp(exp);
         classType = 1;
-        weaponType = "BoneThrow";
+        weaponType = "Bow";
         equipped = (Weapon) Weapon.itemListMaster(this.getWeaponType())[w];
         worn = (Armor) Armor.itemListMaster(this.getWeaponType())[a];
         canister = new EmptyHeartCanister(1);

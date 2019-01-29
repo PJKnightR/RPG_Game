@@ -10,12 +10,14 @@ To-do (overall):
 To-do aka ? (In order of priority(sort of)):
 -Finish implementation of heart canisters
 -Heart Canisters ID's and add them to the master item list
+-Add enemy attack power modifier based on difficulty
 
 -Custom mode
+-Adventure Mode
 -Reworking of stats (using a base player and multipliers maybe)
 -Rework things with a random chance by using global variables for easier access
 -Add more events (enemy kingdoms, strongholds, mountains, valleys, fields, caves)
--Add a less random story mode
+-Story mode
 -Add dungeon bosses
 -Add more to dungeons
 -More items (stat boost potions)
