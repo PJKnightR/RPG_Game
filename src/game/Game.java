@@ -13,7 +13,7 @@ public class Game {
     private Scanner scan;
     private int gameMode;
     private Player PC;
-    private boolean dungeon, running;
+    private boolean running;
     private int battleChance, equipmentChance;
     private String difficulty;
 
@@ -93,19 +93,21 @@ public class Game {
             difficulty = Integer.toString(i);
         }
 
-        if (difficulty.equals("1")){
-            battleChance = 65;
-            equipmentChance = 20;
-        } else if (difficulty.equals("2")){
-            battleChance = 75;
-            equipmentChance = 10;
-        } else if (difficulty.equals("3")){
-            battleChance = 85;
-            equipmentChance = 7;
-        } else {
-            battleChance = 75;
-            equipmentChance = 10;
+        switch(Integer.parseInt(difficulty)){
+            case 1:
+                battleChance = 65;
+                equipmentChance = 20;
+                break;
+            case 2:
+                battleChance = 75;
+                equipmentChance = 10;
+                break;
+            case 3:
+                battleChance = 75;
+                equipmentChance = 10;
+                break;
         }
+
     }
 
     private void createCharacter(){
@@ -188,11 +190,7 @@ public class Game {
                             findNewEquipment();
                         }
                     } else {
-                        dungeon = false;
                         getEvent(PC);
-                        if (dungeon) {
-                            runDungeon();
-                        }
                     }
                     if (PC.getHealthLeft() <= 0) {
                         System.out.print("\n\n\t\tGAME\tOVER\n\n\n");
@@ -211,7 +209,7 @@ public class Game {
     }
 
     private void runBoardMode(){
-        Board board = new Board(0);
+        Board board = new Board(0, 9,9 );
         board.generateNewBoard();
 
         board.setCurPosX(0);
@@ -239,9 +237,14 @@ public class Game {
             } else if (c == 2){
                 playerMenu();
             } else if (c == 3) {
-                if (board.getCurrentTile().hidItem){
+                if (board.getCurrentTile().hidItem && !board.getCurrentTile().shop){
                     PC.getInventory().addRandomItem();
                     board.setHidItem();
+                    board.setClear();
+                } else if (board.getCurrentTile().shop){
+                    System.out.println("Upon examining the village, you discover a shop.");
+                    Shop shop = new LocalShop();
+                    shop.shop(PC);
                     board.setClear();
                 } else {
                     System.out.println("You examined the " + board.getCurrentTile().type + " but didn't find anything.");
@@ -260,6 +263,7 @@ public class Game {
     private void movePositions(Board board){
         System.out.println("Where would you like to move to? Enter -1 to go back.");
         String choice;
+        boolean complete;
 
         if (board.getCurPosY() != 0){
             System.out.println("'W' to move up a tile.");
@@ -291,47 +295,82 @@ public class Game {
         if (!choice.equals("-1")){
             board.setExplored();
 
-            if (board.getCurrentTile().enemy){
+            if (board.getCurrentTile().type.equals("Dungeon") && board.getCurrentTile().enemy){
+                complete = runDungeon();
+                if (complete){
+                    board.setEnemy();
+                    if (!board.getCurrentTile().hidItem){
+                        board.setClear();
+                    }
+                }
+            } else if (board.getCurrentTile().enemy){
                 Battle batbat = new Battle();
                 batbat.startBattle(PC, scan);
-                if (PC.getHealthLeft() <= 0) {
-                    System.out.print("\n\n\t\tGAME\tOVER\n\n\n");
-                    running = false;
-                } else {
+                if (PC.getHealthLeft() > 0) {
                     findNewEquipment();
                     board.setEnemy();
-                    board.setClear();
+                    if (!board.getCurrentTile().hidItem){
+                        board.setClear();
+                    }
                 }
             }
+            if (PC.getHealthLeft() <= 0) {
+                System.out.print("\n\n\t\tGAME\tOVER\n\n\n");
+                running = false;
+            }
+        }
+
+        if (board.getCurrentTile().shop){
+            System.out.println("You found a village!");
         }
     }
 
-    private void runDungeon(){
-        String dun;
-        double l = 3 + Math.random() * (5 - 3);
-        int j = (int) Math.round(l);
-        for (int i = 0; i < j; i++) {
-            Battle batbat = new Battle();
-            batbat.startBattle(PC, scan);
-            if (PC.getHealthLeft() <= 0) {
-                System.out.print("You have failed the dungeon and lost.");
-                break;
-            }
-            if (i + 1 != j) {
-                findNewEquipment();
-                System.out.println("Enter '1' to continue the dungeon.");
-                dun = scan.next();
-                while (!dun.equals("1")) {
-                    System.out.println("Enter '1' to continue the dungeon.");
-                    dun = scan.next();
-                }
-            } else {
-                System.out.println("You have completed the dungeon and found some Ultimate " +
-                        "Cheesy Garlic Bread at the end of it.");
-                PC.getInventory().addNewItem(new UltimateCheesyGarlicBread(1));
-            }
+    private boolean runDungeon(){
+        String s;
+        boolean complete = false;
+        System.out.println("You have stumbled upon a dungeon, do you wish to proceed in search of treasure? Enter '1' for yes or '2' for no." +
+                "\n(You will need to fight at least 3 - 5 consecutive battles to beat the dungeon).");
+        s = scan.next();
+        while (!complete){
+            if (s.equals("1")){
+                System.out.println("You have chosen to enter the dungeon");
+                complete = true;
+                String dun;
+                double l = 3 + Math.random() * (5 - 3);
+                int j = (int) Math.round(l);
+                for (int i = 0; i < j; i++) {
+                    Battle batbat = new Battle();
+                    batbat.startBattle(PC, scan);
+                    if (PC.getHealthLeft() <= 0) {
+                        System.out.print("You have failed the dungeon and lost.");
+                        return false;
+                    }
+                    if (i + 1 != j) {
+                        findNewEquipment();
+                        System.out.println("Enter '1' to continue the dungeon.");
+                        dun = scan.next();
+                        while (!dun.equals("1")) {
+                            System.out.println("Enter '1' to continue the dungeon.");
+                            dun = scan.next();
+                        }
+                    } else {
+                        System.out.println("You have completed the dungeon and found some Ultimate " +
+                                "Cheesy Garlic Bread at the end of it.");
+                        PC.getInventory().addNewItem(new UltimateCheesyGarlicBread(1));
+                        return true;
+                    }
 
+                }
+            } else if (s.equals("2")){
+                System.out.println("You have chosen not to enter the dungeon");
+                complete = true;
+            } else {
+                System.out.println("Invalid input entered. Please enter '1' for yes or '2' for no.");
+                s = scan.next();
+            }
         }
+
+        return false;
     }
 
     private void runCustomMode(){
@@ -518,26 +557,7 @@ public class Game {
                 PC.setHealthLeft(PC.getHealthLeft() - 5);
                 break;
             case 8:
-                String s;
-                boolean complete = false;
-                dungeon = false;
-                System.out.println("You have stumbled upon a dungeon, do you wish to proceed in search of treasure? Enter '1' for yes or '2' for no." +
-                        "\n(You will need to fight at least 3 - 5 consecutive battles to beat the dungeon).");
-                s = scan.next();
-                while (!complete){
-                    dungeon = false;
-                    if (s.equals("1")){
-                        System.out.println("You have chosen to enter the dungeon");
-                        dungeon = true;
-                        complete = true;
-                    } else if (s.equals("2")){
-                        System.out.println("You have chosen not to enter the dungeon");
-                        complete = true;
-                    } else {
-                        System.out.println("Invalid input entered. Please enter '1' for yes or '2' for no.");
-                        s = scan.next();
-                    }
-                }
+                runDungeon();
                 break;
             case 9:
                 System.out.println("It began to rain garlic bread, and you managed to pick some up before it hit the ground!");
@@ -554,6 +574,8 @@ public class Game {
             type = 1;
         } else if (getChance() < equipmentChance){
             type = 2;
+        } else if (getChance() < equipmentChance){
+            type = 3;
         }
         if (type != 0) {
             int amount, id;
@@ -571,8 +593,12 @@ public class Game {
                 Item item = weaponList()[id];
                 System.out.println("You found a " + item.getItemName());
                 PC.getInventory().addNewItem(item);
-            } else {
+            } else if (type == 2) {
                 Item item = armorList()[id];
+                System.out.println("You found a " + item.getItemName());
+                PC.getInventory().addNewItem(item);
+            } else {
+                Item item = canisterList()[id];
                 System.out.println("You found a " + item.getItemName());
                 PC.getInventory().addNewItem(item);
             }
@@ -586,6 +612,10 @@ public class Game {
 
     private Armor[] armorList(){
         return new Armor[]{new LeatherChaps(1), new Chainmail(1), new IronPlatemail(1), new SilverPlatemail(1), new TitaniumPlatemail(1), new SteelPlatemail(1), new DragonScalePlatemail(1)};
+    }
+
+    private HeartCanister[] canisterList(){
+        return new HeartCanister[]{new RedHeartCanister(1), new YellowHeartCanister(1), new OrangeHeartCanister(1), new GreenHeartCanister(1), new BlueHeartCanister(1), new PurpleHeartCanister(1), new WhiteHeartCanister(1)};
     }
 
     private static int idGenerator(int amount){

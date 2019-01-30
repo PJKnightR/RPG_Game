@@ -19,7 +19,9 @@ public class HeartCanister extends Item{
     }
 
     public int use(Player user){
-        user.getInventory().addNewItem(user.canister);
+        if (!user.canister.getItemName().equals("None")){
+            user.getInventory().addNewItem(user.canister);
+        }
         user.setCanister(this);
         user.setHealth();
         System.out.println("You equipped the " + this.getItemName());

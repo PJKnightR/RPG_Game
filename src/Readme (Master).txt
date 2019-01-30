@@ -8,30 +8,34 @@ To-do (overall):
 -Actually finish
 
 To-do aka ? (In order of priority(sort of)):
--Finish implementation of heart canisters
--Heart Canisters ID's and add them to the master item list
--Add enemy attack power modifier based on difficulty
+    Partially Implemented:
+        -Being pushed to previous position in board mode
+        -Add amount of given health statistic from heart canisters
+        -Disable running away in dungeons
+        -Add enemy attack power modifier based on difficulty
+        -Add generation of a new board when requirements are met
+        -Add saving and loading in board mode
+        -Rework things with a random chance by using global variables for easier access
+        -Reworking of stats (using a base player and multipliers maybe)
+        -More Player Classes
+        -More enemies
 
--Custom mode
--Adventure Mode
--Reworking of stats (using a base player and multipliers maybe)
--Rework things with a random chance by using global variables for easier access
--Add more events (enemy kingdoms, strongholds, mountains, valleys, fields, caves)
--Story mode
--Add dungeon bosses
--Add more to dungeons
--More items (stat boost potions)
--Attack types
--Status Effects
--Ability to miss an attack
--More enemies
--GUI
--More Player Classes
--Pets
--Speed boost item
--Mana boost item
--Exp boost item
--gold boost item
+    No Current Implementation:
+        -Custom mode
+        -Add more events (enemy kingdoms, strongholds, mountains, valleys, fields, caves)
+        -Story mode
+        -Add dungeon bosses
+        -Add more to dungeons
+        -More items (stat boost potions)
+        -Attack types
+        -Status Effects
+        -Ability to miss an attack
+        -GUI
+        -Pets
+        -Speed boost item
+        -Mana boost item
+        -Exp boost item
+        -Gold boost item
 
 Bugs:
 -Enemies possibly learn attacks one level to late (Found by Patrick)
@@ -74,6 +78,7 @@ Other Ideas (By Patrick)
 -Hunter- High attack and speed, low defense and mana
 -Paladin- Amazing attack, meh defense and mana, low speed
 -Ninja/Stealth- Amazing speed, high attack, sucky defense, meh mana
+-Sage
 
 Armor Tiers
 Old Dirty -> Leather -> Chainmail -> Iron Platemail -> Silver Platemail -> Titanium Platemail -> Steel Platemail -> DragonScale

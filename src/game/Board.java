@@ -1,17 +1,19 @@
 package game;
 
 public class Board {
-    int curPosX, curPosY, prevPosX, prevPosY, clearedTiles, boardNumber;
+    int curPosX, curPosY, prevPosX, prevPosY, clearedTiles, boardNumber, boardHeight, boardWidth;
     Tile curBoard [][];
 
-    public Board(int num){
+    public Board(int num, int height, int width){
         boardNumber = num + 1;
+        boardHeight = height;
+        boardWidth = width;
     }
 
     public void generateNewBoard(){
-        curBoard = new Tile[9][9];
-        for(int r = 0; r < 9; r++){
-            for(int c = 0; c < 9; c++){
+        curBoard = new Tile[boardWidth][boardHeight];
+        for(int r = 0; r < boardWidth; r++){
+            for(int c = 0; c < boardHeight; c++){
                 curBoard[r][c] = new Tile();
             }
         }
@@ -19,16 +21,20 @@ public class Board {
 
     public void displayBoard(){
         System.out.print("\n");
-        for(int c = 0; c < 9; c++){
-            for(int r = 0; r < 9; r++){
+        for(int c = 0; c < boardHeight; c++){
+            for(int r = 0; r < boardWidth; r++){
                 if(r == curPosX && c == curPosY){
                     System.out.print("H ");
+                } else if(curBoard[r][c].shop && curBoard[r][c].explored){
+                    System.out.print("V ");
                 } else if(curBoard[r][c].cleared){
                     System.out.print("O ");
                 } else if (!curBoard[r][c].enterable) {
                     System.out.print("- ");
                 } else if (!curBoard[r][c].explored){
                     System.out.print("? ");
+                } else if (curBoard[r][c].type.equals("Dungeon")){
+                    System.out.print("D ");
                 } else if (curBoard[r][c].enemy){
                     System.out.print("X ");
                 } else if (curBoard[r][c].hidItem){

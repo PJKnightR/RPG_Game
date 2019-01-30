@@ -8,6 +8,21 @@ To make versions numbers easier:
 
 Version Version # Month/Day/Year
 
+Version 2.4.1 1/29-30/19
+-Added Woods, Ruins, Village, and Dungeon tiles to board mode
+-Added a check for if there are hidden items when determining if a space has been cleared (mostly because of ruins)
+-Added the White Heart Canister
+-Added full functionality to heart canisters
+-Added dungeons to board mode
+-Added ability to go to a shop by examining village tiles in board mode
+-Added functionality to the tile class for creating non-random tiles
+-Changed some variables in the board class and tile class to make them more module and customizable
+-Reworking and reorganization of code for dungeons, making it more compact and in one place for more modular usage
+-Reworking of code for adventure mode (specifically dungeons)
+-Reworking of code for difficulty settings by making if statements switch cases
+-Fixed a bug where the player could get an empty heart canister when first equipping one
+-Fixed a bug where invalid tiles were being generated causing other issues when trying to call certain kinds of tiles
+
 Version 2.4.0 1/28/19 Boardmode Update
 -Added the board and tile classes
 -Added ability to find forests, deserts, and plains in board mode
