@@ -115,9 +115,9 @@ public class Game {
         System.out.print("Enter your characters name: ");
         name = scan.nextLine();
 
-        System.out.print("Please Choose your class:\n 1. Archer\n 2. Knight\n 3. Wizard\n > ");
+        System.out.print("Please Choose your class:\n 1. Archer\n 2. Knight\n 3. Wizard\n 4. Hunter\n > ");
         choice = scan.nextLine();
-        while (!choice.equals("1") && !choice.equals("2") && !choice.equals("3")){
+        while (!choice.equals("1") && !choice.equals("2") && !choice.equals("3") && !choice.equals("4")){
             System.out.println("Please enter a valid option");
             choice = scan.nextLine();
         }
@@ -132,6 +132,8 @@ public class Game {
                 this.PC = new Knight(name);
             } else if (choice.equals("3")){
                 this.PC = new Wizard(name);
+            } else if (choice.equals("4")){
+                this.PC = new Hunter(name);
             } else {
                 this.PC = new Knight(name);
             }
@@ -151,7 +153,7 @@ public class Game {
             c = Integer.parseInt(choice);
             if(c == 1){
                 Battle batbat = new Battle();
-                batbat.startBattle(PC, scan);
+                batbat.startBattle(PC, scan, true);
                 if (PC.getHealthLeft() <= 0) {
                     System.out.print("\n\n\t\tGAME\tOVER\n\n\n");
                     running = false;
@@ -185,7 +187,7 @@ public class Game {
                     int g = getChance();
                     if (g <= battleChance){
                         Battle batbat = new Battle();
-                        batbat.startBattle(PC, scan);
+                        batbat.startBattle(PC, scan, true);
                         if (PC.getHealthLeft() > 0) {
                             findNewEquipment();
                         }
@@ -265,6 +267,7 @@ public class Game {
         String choice;
         boolean complete;
 
+        //still need to be changed to use 1 - board sizes
         if (board.getCurPosY() != 0){
             System.out.println("'W' to move up a tile.");
         }
@@ -305,7 +308,7 @@ public class Game {
                 }
             } else if (board.getCurrentTile().enemy){
                 Battle batbat = new Battle();
-                batbat.startBattle(PC, scan);
+                batbat.startBattle(PC, scan, true);
                 if (PC.getHealthLeft() > 0) {
                     findNewEquipment();
                     board.setEnemy();
@@ -340,7 +343,7 @@ public class Game {
                 int j = (int) Math.round(l);
                 for (int i = 0; i < j; i++) {
                     Battle batbat = new Battle();
-                    batbat.startBattle(PC, scan);
+                    batbat.startBattle(PC, scan, false);
                     if (PC.getHealthLeft() <= 0) {
                         System.out.print("You have failed the dungeon and lost.");
                         return false;
@@ -464,6 +467,8 @@ public class Game {
             this.PC = new Knight(playerName, level, gold, exp, equipped, worn, currentHealth, currentMana);
         } else if (classType == 3){
             this.PC = new Wizard(playerName, level, gold, exp, equipped, worn, currentHealth, currentMana);
+        } else if (classType == 4){
+            this.PC = new Hunter(playerName, level, gold, exp, equipped, worn, currentHealth, currentMana);
         } else {
             throw new FileNotFoundException();
         }

@@ -5,5 +5,6 @@ public class SpearChuck extends Attack {
         name = "Spear Chuck";
         power = 50;
         description = "The user chucks a spear at their opponent.";
+        manaCost = 0;
     }
 }

@@ -8,6 +8,15 @@ To make versions numbers easier:
 
 Version Version # Month/Day/Year
 
+Version 2.5.0 1/31/19 Status Effects Update
+-Added Hunter player class
+-Added mana cost to SpearChuck (of 0)
+-Added the attacks Grenade and Piercing Blow
+-Added the status effects petrified and poisoned
+-Added poisoned, paralyzed, and petrified chances to all attacks (mostly 0's)
+-Added a counter for the amount of cleared tiles in board mode
+-Disabled running away from battles within dungeons
+
 Version 2.4.1 1/29-30/19
 -Added Woods, Ruins, Village, and Dungeon tiles to board mode
 -Added a check for if there are hidden items when determining if a space has been cleared (mostly because of ruins)

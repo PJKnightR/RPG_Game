@@ -9,9 +9,9 @@ To-do (overall):
 
 To-do aka ? (In order of priority(sort of)):
     Partially Implemented:
+        -Paralyzed Status Effect
         -Being pushed to previous position in board mode
         -Add amount of given health statistic from heart canisters
-        -Disable running away in dungeons
         -Add enemy attack power modifier based on difficulty
         -Add generation of a new board when requirements are met
         -Add saving and loading in board mode
@@ -28,7 +28,6 @@ To-do aka ? (In order of priority(sort of)):
         -Add more to dungeons
         -More items (stat boost potions)
         -Attack types
-        -Status Effects
         -Ability to miss an attack
         -GUI
         -Pets

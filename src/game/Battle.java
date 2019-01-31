@@ -8,15 +8,27 @@ public class Battle {
     private Enemy enemy;
     private Scanner scan;
     private int selectedMove, enemySelectedMove;
+    private boolean canRun, isPoisonedPlayer, isPoisonedEnemy, isPetrifiedPlayer, isPetrifiedEnemy, isParylizedPlayer, isParylizedEnemy;
+
+    public Battle(){
+        isParylizedEnemy = false;
+        isParylizedPlayer = false;
+        isPetrifiedEnemy = false;
+        isPetrifiedPlayer = false;
+        isPoisonedEnemy = false;
+        isPoisonedPlayer = false;
+
+    }
 
     /**
      * Initializes values needed to start the battle and declares what type of enemy has appeared
      * @param PC the user's character
      * @param s
      */
-    public void startBattle(Player PC, Scanner s){
+    public void startBattle(Player PC, Scanner s, Boolean r){
         this.enemy = generateEnemy(PC);
         this.scan = s;
+        canRun = r;
         System.out.println("A " + enemy.getName() + " appeared. Engage the " + enemy.getName() + " " + PC.getName() + "!");
         doBattle(PC);
     }
@@ -32,38 +44,106 @@ public class Battle {
         double itemChance;
 
         while (battling){
-            playerMove(PC);
-            if (selectedMove == -1){
-                break;
+            if (isPoisonedPlayer){
+                if (getChance() > 50){
+                    isPoisonedPlayer = false;
+                    System.out.println("You are no longer poisoned");
+                } else {
+                    PC.setHealthLeft(PC.getHealthLeft() - (int)(PC.getHealth() * .5));
+                    System.out.println("You took " + (int)(PC.getHealth() * .5) + " damage from poison.");
+                    battling = checkPlayerStatus(PC);
+                    if (!battling){
+                        System.out.println("You were defeated by the " + enemy.getName() + "!");
+                        break;
+                    }
+                }
             }
-            enemyMove();
-            if (PC.getSpeed() >= enemy.getSpeed()){
-                enemy.setHealthLeft(enemy.getHealthLeft() - playerAttack(PC));
-                battling = checkEnemyStatus();
-                if (!battling){
-                    System.out.println("You defeated the " + enemy.getName() + "!");
-                    enemyLoss = true;
+
+            if (isPoisonedEnemy){
+                if (getChance() > 50){
+                    isPoisonedEnemy = false;
+                    System.out.println("The " + enemy.getName() + " is no longer poisoned");
+                } else {
+                    enemy.setHealthLeft(enemy.getHealthLeft() - (int)(enemy.getHealth() * .5));
+                    System.out.println("The " + enemy.getName() + " took " + (int)(enemy.getHealth() * .5) + " damage from poison.");
+                    battling = checkEnemyStatus();
+                    if (!battling){
+                        System.out.println("You defeated the " + enemy.getName() + "!");
+                        enemyLoss = true;
+                        break;
+                    }
+                }
+            }
+
+            if (battling){
+                playerMove(PC);
+                if (selectedMove == -1){
                     break;
                 }
-                PC.setHealthLeft(PC.getHealthLeft() - enemyAttack(PC));
-                battling = checkPlayerStatus(PC);
-                if (!battling){
-                    System.out.println("You were defeated by the " + enemy.getName() + "!");
-                    break;
+                enemyMove();
+
+                if (isPetrifiedPlayer){
+                    if (getChance() > 50){
+                        isPetrifiedPlayer = false;
+                        System.out.println("You are no longer petrified");
+                    }
                 }
-            } else if (PC.getSpeed() < enemy.getSpeed()){
-                PC.setHealthLeft(PC.getHealthLeft() - enemyAttack(PC));
-                battling = checkPlayerStatus(PC);
-                if (!battling){
-                    System.out.println("You were defeated by the " + enemy.getName() + "!");
-                    break;
+                if (isPetrifiedEnemy){
+                    if (getChance() > 50){
+                        isPetrifiedEnemy = false;
+                        System.out.println("The " + enemy.getName() + " is no longer petrified");
+                    }
                 }
-                enemy.setHealthLeft(enemy.getHealthLeft() - playerAttack(PC));
-                battling = checkEnemyStatus();
-                if (!battling){
-                    System.out.println("You defeated the " + enemy.getName() + "!");
-                    enemyLoss = true;
-                    break;
+
+                if (PC.getSpeed() >= enemy.getSpeed()){
+                    if(!isPetrifiedPlayer){
+                        enemy.setHealthLeft(enemy.getHealthLeft() - playerAttack(PC));
+                        battling = checkEnemyStatus();
+                        if (!battling){
+                            System.out.println("You defeated the " + enemy.getName() + "!");
+                            enemyLoss = true;
+                            break;
+                        }
+                    }
+                    if (isPetrifiedPlayer){
+                        System.out.println("You are petrified and cannot move");
+                    }
+                    if(!isPetrifiedEnemy){
+                        PC.setHealthLeft(PC.getHealthLeft() - enemyAttack(PC));
+                        battling = checkPlayerStatus(PC);
+                        if (!battling){
+                            System.out.println("You were defeated by the " + enemy.getName() + "!");
+                            break;
+                        }
+                    }
+                    if (isPetrifiedEnemy){
+                        System.out.println("The " + enemy.getName() + " is petrified and cannot move");
+                    }
+                } else if (PC.getSpeed() < enemy.getSpeed()){
+                    if(!isPetrifiedEnemy){
+                        PC.setHealthLeft(PC.getHealthLeft() - enemyAttack(PC));
+                        battling = checkPlayerStatus(PC);
+                        if (!battling){
+                            System.out.println("You were defeated by the " + enemy.getName() + "!");
+                            break;
+                        }
+                    }
+                    if (isPetrifiedEnemy){
+                        System.out.println("The " + enemy.getName() + " is petrified and cannot move");
+                    }
+
+                    if(!isPetrifiedPlayer){
+                        enemy.setHealthLeft(enemy.getHealthLeft() - playerAttack(PC));
+                        battling = checkEnemyStatus();
+                        if (!battling){
+                            System.out.println("You defeated the " + enemy.getName() + "!");
+                            enemyLoss = true;
+                            break;
+                        }
+                    }
+                    if (isPetrifiedPlayer){
+                        System.out.println("You are petrified and cannot move");
+                    }
                 }
             }
         }
@@ -119,7 +199,7 @@ public class Battle {
                 action = true;
                 this.selectedMove = 0;
                 double run = getChance();
-                if (run > 50){
+                if (run > 50 && canRun){
                     System.out.println("You escaped from the " + enemy.getName());
                     this.selectedMove = -1;
                 } else {
@@ -223,6 +303,19 @@ public class Battle {
             damage = (((((2 * PC.getLevel() / 5) + 2) * (PC.getAttack() / enemy.getDefense()) * (PC.att.get(att).getPower())) / 50) + 2) * getCriticalHitModifier();
             System.out.println("You attack using " + PC.att.get(att).getAttackName() + ". It did " + (int)damage + " damage.");
 
+            if (PC.att.get(att).getPetrifyChance() > 0){
+                if (getChance() >= PC.att.get(att).getPetrifyChance()){
+                    isPetrifiedEnemy = true;
+                    System.out.println("The " + enemy.getName() + " has been petrified");
+                }
+            }
+            if (PC.att.get(att).getPoisonChance() > 0){
+                if (getChance() >= PC.att.get(att).getPoisonChance()){
+                    isPoisonedEnemy = true;
+                    System.out.println("The " + enemy.getName() + " has been poisoned");
+                }
+            }
+
             return (int) damage;
         }
     }
@@ -257,6 +350,19 @@ public class Battle {
             double damage;
             damage = (((((2 * enemy.getLevel() / 5) + 2) * (enemy.getAttack() / PC.getDefense()) * (enemy.att.get(att).getPower())) / 50) + 2) * getCriticalHitModifier();
             System.out.println("The " + enemy.getName() + " attacked you using " + enemy.att.get(att).getAttackName() + ". It did " + (int)damage + " damage.");
+
+            if (enemy.att.get(att).getPetrifyChance() > 0){
+                if (getChance() >= enemy.att.get(att).getPetrifyChance()){
+                    isPetrifiedPlayer = true;
+                    System.out.println("You have been petrified!");
+                }
+            }
+            if (enemy.att.get(att).getPoisonChance() > 0){
+                if (getChance() >= enemy.att.get(att).getPoisonChance()){
+                    isPoisonedPlayer = true;
+                    System.out.println("You have been poisoned!");
+                }
+            }
 
             return (int) damage;
         }

@@ -5,5 +5,8 @@ public class MysteriousBrew extends Attack{
         name = "Mysterious Brew";
         power = 50;
         description = "The user throws a harmful, homemade brew at their opponent.";
+        poisonChance = 50;
+        paralyzChance = 0;
+        petrifyChance = 0;
     }
 }

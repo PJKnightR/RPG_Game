@@ -6,5 +6,8 @@ public class Fireball extends Attack{
         power = 50;
         description = "The user conjures a fireball that they then throw at their opponent.";
         manaCost = 0;
+        poisonChance = 0;
+        paralyzChance = 0;
+        petrifyChance = 0;
     }
 }

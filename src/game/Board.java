@@ -1,8 +1,8 @@
 package game;
 
 public class Board {
-    int curPosX, curPosY, prevPosX, prevPosY, clearedTiles, boardNumber, boardHeight, boardWidth;
-    Tile curBoard [][];
+    private int curPosX, curPosY, prevPosX, prevPosY, clearedTiles = 0, boardNumber, boardHeight, boardWidth;
+    private Tile curBoard [][];
 
     public Board(int num, int height, int width){
         boardNumber = num + 1;
@@ -59,6 +59,7 @@ public class Board {
 
     public void setClear(){
         curBoard[curPosX][curPosY].setClear(true);
+        clearedTiles++;
     }
 
     public void setHidItem(){

@@ -6,5 +6,8 @@ public class FlamingArrows extends Attack{
         power = 75;
         description = "The user uses magic to shoot flaming arrows at their opponents.";
         manaCost = 5;
+        poisonChance = 0;
+        paralyzChance = 0;
+        petrifyChance = 0;
     }
 }
