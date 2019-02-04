@@ -21,6 +21,7 @@ public class Knight extends Player {
         equipped = new Wooden(1, weaponType);
         worn = new OldDirtyClothing(1);
         canister = new EmptyHeartCanister(1);
+        hasPet = false;
 
         baseAttack = 70;
         baseDefense = 80;
@@ -51,7 +52,7 @@ public class Knight extends Player {
 
     }
 
-    public Knight(String name, double level, int gold, int exp, int w, int a, int curHealth, int curMana){
+    public Knight(String name, double level, int gold, int exp, int w, int a, int c, int curHealth, int curMana){
 
         setName(name);
         setLevel(level);
@@ -61,7 +62,8 @@ public class Knight extends Player {
         weaponType = "Sword";
         equipped = (Weapon) Weapon.itemListMaster(this.getWeaponType())[w];
         worn = (Armor) Armor.itemListMaster(this.getWeaponType())[a];
-        canister = new EmptyHeartCanister(1);
+        canister = (HeartCanister) HeartCanister.itemListMaster(this.getWeaponType())[c];
+        hasPet = false;
 
         baseAttack = 70;
         baseDefense = 80;

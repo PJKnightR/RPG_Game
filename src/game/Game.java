@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class Game {
     private Scanner scan;
-    private int gameMode;
+    private int gameMode, boardHeight, boardWidth;
     private Player PC;
     private boolean running;
     private int battleChance, equipmentChance;
@@ -41,7 +41,11 @@ public class Game {
                 runGame();
             }
         } else if (choice.equals("3")){
-            System.out.println("This feature is still in development");
+            System.out.println("The RPG_Game is a game designed by Patrick Reagan primarily for the purpose of improving " +
+                    "programming skill by making a game. Though this started as a group project,\nPatrick is now the only " +
+                    "person actively working on the project. Credits to TJ York, Kellen Ferwerda, Paul Oram, and Nathan" +
+                    " Short for their contributions early on \nin development.\nEnter anything to continue");
+            scan.nextLine();
             runGame();
         } else {
             System.out.println("See ya next time!.");
@@ -54,7 +58,7 @@ public class Game {
         int diff = 0;
         System.out.print(	"\n 1. Monster Mash" +
                 "\n 2. Adventure" +
-                "\n 3. Board Adventure (Work in progress, unstable, cannot save or load)" +
+                "\n 3. Board Adventure (Work in progress, cannot save or load)" +
                 "\n > ");
         choice = scan.nextLine();
         while (!choice.equals("1") && !choice.equals("2") && !choice.equals("3")){
@@ -211,7 +215,9 @@ public class Game {
     }
 
     private void runBoardMode(){
-        Board board = new Board(0, 9,9 );
+        boardHeight = 9;
+        boardWidth = 9;
+        Board board = new Board(0, boardHeight,boardWidth );
         board.generateNewBoard();
 
         board.setCurPosX(0);
@@ -271,13 +277,13 @@ public class Game {
         if (board.getCurPosY() != 0){
             System.out.println("'W' to move up a tile.");
         }
-        if (board.getCurPosY() != 8){
+        if (board.getCurPosY() != boardHeight - 1){
             System.out.println("'S' to move down a tile.");
         }
         if (board.getCurPosX() != 0){
             System.out.println("'A' to move left a tile.");
         }
-        if (board.getCurPosX() != 8){
+        if (board.getCurPosX() != boardWidth - 1){
             System.out.println("'D' to move right a tile.");
         }
 
@@ -412,7 +418,15 @@ public class Game {
 
                 System.out.print("Name: " + PC.getName() + " Level: " + PC.getLevel() + "\nHealth: " + PC.getHealthLeft() + "/" + PC.getHealth() + "\nAttack: "
                         + PC.getAttack() + " (+" + PC.getEquipped().getDamage() + " from " + PC.getEquipped().getItemName() + ")\nDefense: " + PC.getDefense() + " (+" + PC.getWorn().getProtection() + " from " + PC.getWorn().getItemName() + ")\nSpeed: " + PC.getSpeed() + "\nMana: " + PC.getManaLeft()
-                        + "/" + PC.getMana() + "\nExperience: " + PC.getExp() + "/" + 100 * PC.getLevel() + " Gold: " + PC.getGold() + "\nEnter -1 to go back.\n");
+                        + "/" + PC.getMana() + "\nExperience: " + PC.getExp() + "/" + 100 * PC.getLevel() + " Gold: " + PC.getGold());
+                if(PC.hasPet){
+                    System.out.print("\n\nName: " + PC.getCurrentPet().getNickname() + "\nType: " + PC.getCurrentPet().getName() +
+                    "Level: " + PC.getCurrentPet().getLevel() + "\nHealth: " + PC.getCurrentPet().getHealthLeft() + "/" + PC.getCurrentPet().getHealth()
+                    + "\nAttack: " + PC.getCurrentPet().getAttack() + "\nDefense: " + PC.getCurrentPet().getDefense() +
+                    "\nSpeed: " + PC.getCurrentPet().getSpeed() + "\nExperience: " + PC.getCurrentPet().getExp() + "/" + 100 * PC.getCurrentPet().getLevel());
+                }
+
+                System.out.println("\nEnter -1 to go back");
 
                 i = scan.next();
                 while (!i.equals("-1")){
@@ -441,7 +455,7 @@ public class Game {
         String choice = scan.next();
 
         String playerName;
-        int classType, gold, exp, equipped, worn, itemID, quantity, itemCount, currentHealth, currentMana, difficulty;
+        int classType, gold, exp, equipped, worn, canister, itemID, quantity, itemCount, currentHealth, currentMana, difficulty;
         double level;
         File inputFile = new File(choice);
         Scanner in = new Scanner(inputFile);
@@ -459,16 +473,16 @@ public class Game {
         currentMana = in.nextInt();
         equipped = in.nextInt();
         worn = in.nextInt();
-
+        canister = in.nextInt();
 
         if (classType == 1){
-            this.PC = new Archer(playerName, level, gold, exp, equipped, worn, currentHealth, currentMana);
+            this.PC = new Archer(playerName, level, gold, exp, equipped, worn, canister, currentHealth, currentMana);
         } else if (classType == 2){
-            this.PC = new Knight(playerName, level, gold, exp, equipped, worn, currentHealth, currentMana);
+            this.PC = new Knight(playerName, level, gold, exp, equipped, worn, canister, currentHealth, currentMana);
         } else if (classType == 3){
-            this.PC = new Wizard(playerName, level, gold, exp, equipped, worn, currentHealth, currentMana);
+            this.PC = new Wizard(playerName, level, gold, exp, equipped, worn, canister, currentHealth, currentMana);
         } else if (classType == 4){
-            this.PC = new Hunter(playerName, level, gold, exp, equipped, worn, currentHealth, currentMana);
+            this.PC = new Hunter(playerName, level, gold, exp, equipped, worn, canister, currentHealth, currentMana);
         } else {
             throw new FileNotFoundException();
         }
@@ -500,7 +514,7 @@ public class Game {
         PrintWriter output = new PrintWriter(choice);
         output.print(PC.getName() + "\n" + PC.getLevel() + "\n" + PC.getClassType() + "\n" + PC.getGold() + "\n" + gameMode
         + "\n" + difficulty + "\n" + PC.getExp() + "\n" + PC.getHealthLeft() + "\n" + PC.getManaLeft() + "\n" + PC.getEquipped().getID()
-                + "\n" + PC.getWorn().getID() + "\n");
+                + "\n" + PC.getWorn().getID() + "\n"+ PC.getCanister().getID() + "\n");
         for(int i = 0; i < PC.getInventory().itemList.size(); i++){
             output.print(PC.getInventory().itemList.get(i).getID() + " " + PC.getInventory().itemList.get(i).getStack() + "\n");
         }
@@ -620,7 +634,7 @@ public class Game {
     }
 
     private HeartCanister[] canisterList(){
-        return new HeartCanister[]{new RedHeartCanister(1), new YellowHeartCanister(1), new OrangeHeartCanister(1), new GreenHeartCanister(1), new BlueHeartCanister(1), new PurpleHeartCanister(1), new WhiteHeartCanister(1)};
+        return new HeartCanister[]{new RedHeartCanister(1), new YellowHeartCanister(1), new OrangeHeartCanister(1), new GreenHeartCanister(1), new BlueHeartCanister(1), new PurpleHeartCanister(1), new WhiteHeartCanister(1), new CrystalHeartCanister(1)};
     }
 
     private static int idGenerator(int amount){

@@ -1,14 +1,19 @@
 package game;
 
 import enemies.*;
+import pets.Baboon;
+import pets.Pet;
+import pets.Phoenix;
+import pets.Wolf;
 import players.Player;
 import java.util.Scanner;
 
 public class Battle {
     private Enemy enemy;
+    private Pet pet;
     private Scanner scan;
     private int selectedMove, enemySelectedMove;
-    private boolean canRun, isPoisonedPlayer, isPoisonedEnemy, isPetrifiedPlayer, isPetrifiedEnemy, isParylizedPlayer, isParylizedEnemy;
+    private boolean petBattle, canRun, isPoisonedPlayer, isPoisonedEnemy, isPetrifiedPlayer, isPetrifiedEnemy, isParylizedPlayer, isParylizedEnemy;
 
     public Battle(){
         isParylizedEnemy = false;
@@ -30,6 +35,11 @@ public class Battle {
         this.scan = s;
         canRun = r;
         System.out.println("A " + enemy.getName() + " appeared. Engage the " + enemy.getName() + " " + PC.getName() + "!");
+        if (getChance() < 10 && !PC.hasPet){
+            petBattle = true;
+            this.pet = generatePet();
+            System.out.println("The " + enemy.getName() + " was attacking a " + pet.getName() + ". Save them!");
+        }
         doBattle(PC);
     }
 
@@ -41,7 +51,6 @@ public class Battle {
      */
     private void doBattle(Player PC){
         boolean battling = true, enemyLoss = false;
-        double itemChance;
 
         while (battling){
             if (isPoisonedPlayer){
@@ -76,11 +85,6 @@ public class Battle {
             }
 
             if (battling){
-                playerMove(PC);
-                if (selectedMove == -1){
-                    break;
-                }
-                enemyMove();
 
                 if (isPetrifiedPlayer){
                     if (getChance() > 50){
@@ -88,6 +92,22 @@ public class Battle {
                         System.out.println("You are no longer petrified");
                     }
                 }
+
+                if(!isPetrifiedPlayer){
+                    playerMove(PC);
+                    if (selectedMove == -1){
+                        break;
+                    }
+                    enemyMove();
+                }
+
+                if(isParylizedPlayer){
+                    if (getChance() > 50){
+                        isParylizedPlayer = false;
+                        System.out.println("The " + enemy.getName() + " is no longer petrified");
+                    }
+                }
+
                 if (isPetrifiedEnemy){
                     if (getChance() > 50){
                         isPetrifiedEnemy = false;
@@ -95,25 +115,71 @@ public class Battle {
                     }
                 }
 
+                if(isParylizedEnemy){
+                    if (getChance() > 50){
+                        isParylizedEnemy = false;
+                        System.out.println("The " + enemy.getName() + " is no longer paralized");
+                    }
+                }
+
                 if (PC.getSpeed() >= enemy.getSpeed()){
                     if(!isPetrifiedPlayer){
-                        enemy.setHealthLeft(enemy.getHealthLeft() - playerAttack(PC));
-                        battling = checkEnemyStatus();
-                        if (!battling){
-                            System.out.println("You defeated the " + enemy.getName() + "!");
-                            enemyLoss = true;
-                            break;
+                        if(isParylizedPlayer){
+                            if(getChance() > 50){
+                                System.out.println("You are paralyzed but managed to move");
+                                enemy.setHealthLeft(enemy.getHealthLeft() - playerAttack(PC));
+                                if(PC.hasPet){
+                                    if(!PC.getCurrentPet().isFainted()){
+                                        enemy.setHealthLeft(enemy.getHealthLeft() - petAttack(PC));
+                                    }
+                                }
+                                battling = checkEnemyStatus();
+                                if (!battling){
+                                    System.out.println("You defeated the " + enemy.getName() + "!");
+                                    enemyLoss = true;
+                                    break;
+                                }
+                            } else {
+                                System.out.println("You are paralyzed and cannot move!");
+                            }
+                        } else {
+                            enemy.setHealthLeft(enemy.getHealthLeft() - playerAttack(PC));
+                            if(PC.hasPet){
+                                if(!PC.getCurrentPet().isFainted()){
+                                    enemy.setHealthLeft(enemy.getHealthLeft() - petAttack(PC));
+                                }
+                            }
+                            battling = checkEnemyStatus();
+                            if (!battling){
+                                System.out.println("You defeated the " + enemy.getName() + "!");
+                                enemyLoss = true;
+                                break;
+                            }
                         }
                     }
                     if (isPetrifiedPlayer){
                         System.out.println("You are petrified and cannot move");
                     }
                     if(!isPetrifiedEnemy){
-                        PC.setHealthLeft(PC.getHealthLeft() - enemyAttack(PC));
-                        battling = checkPlayerStatus(PC);
-                        if (!battling){
-                            System.out.println("You were defeated by the " + enemy.getName() + "!");
-                            break;
+                        if(isParylizedEnemy){
+                            if(getChance() > 50){
+                                System.out.println("The enemy is paralyzed but managed to attack!");
+                                PC.setHealthLeft(PC.getHealthLeft() - enemyAttack(PC));
+                                battling = checkPlayerStatus(PC);
+                                if (!battling){
+                                    System.out.println("You were defeated by the " + enemy.getName() + "!");
+                                    break;
+                                }
+                            } else {
+                                System.out.println("The enemy is paralyzed and cannot move");
+                            }
+                        } else {
+                            PC.setHealthLeft(PC.getHealthLeft() - enemyAttack(PC));
+                            battling = checkPlayerStatus(PC);
+                            if (!battling){
+                                System.out.println("You were defeated by the " + enemy.getName() + "!");
+                                break;
+                            }
                         }
                     }
                     if (isPetrifiedEnemy){
@@ -121,11 +187,25 @@ public class Battle {
                     }
                 } else if (PC.getSpeed() < enemy.getSpeed()){
                     if(!isPetrifiedEnemy){
-                        PC.setHealthLeft(PC.getHealthLeft() - enemyAttack(PC));
-                        battling = checkPlayerStatus(PC);
-                        if (!battling){
-                            System.out.println("You were defeated by the " + enemy.getName() + "!");
-                            break;
+                        if(isParylizedEnemy){
+                            if(getChance() > 50){
+                                System.out.println("The enemy is paralyzed but managed to attack!");
+                                PC.setHealthLeft(PC.getHealthLeft() - enemyAttack(PC));
+                                battling = checkPlayerStatus(PC);
+                                if (!battling){
+                                    System.out.println("You were defeated by the " + enemy.getName() + "!");
+                                    break;
+                                }
+                            } else {
+                                System.out.println("The enemy is paralyzed and cannot move");
+                            }
+                        } else {
+                            PC.setHealthLeft(PC.getHealthLeft() - enemyAttack(PC));
+                            battling = checkPlayerStatus(PC);
+                            if (!battling){
+                                System.out.println("You were defeated by the " + enemy.getName() + "!");
+                                break;
+                            }
                         }
                     }
                     if (isPetrifiedEnemy){
@@ -133,12 +213,37 @@ public class Battle {
                     }
 
                     if(!isPetrifiedPlayer){
-                        enemy.setHealthLeft(enemy.getHealthLeft() - playerAttack(PC));
-                        battling = checkEnemyStatus();
-                        if (!battling){
-                            System.out.println("You defeated the " + enemy.getName() + "!");
-                            enemyLoss = true;
-                            break;
+                        if(isParylizedPlayer){
+                            if(getChance() > 50){
+                                System.out.println("You are paralyzed but managed to move");
+                                enemy.setHealthLeft(enemy.getHealthLeft() - playerAttack(PC));
+                                if(PC.hasPet){
+                                    if(!PC.getCurrentPet().isFainted()){
+                                        enemy.setHealthLeft(enemy.getHealthLeft() - petAttack(PC));
+                                    }
+                                }
+                                battling = checkEnemyStatus();
+                                if (!battling){
+                                    System.out.println("You defeated the " + enemy.getName() + "!");
+                                    enemyLoss = true;
+                                    break;
+                                }
+                            } else {
+                                System.out.println("You are paralyzed and cannot move!");
+                            }
+                        } else {
+                            enemy.setHealthLeft(enemy.getHealthLeft() - playerAttack(PC));
+                            if(PC.hasPet){
+                                if(!PC.getCurrentPet().isFainted()){
+                                    enemy.setHealthLeft(enemy.getHealthLeft() - petAttack(PC));
+                                }
+                            }
+                            battling = checkEnemyStatus();
+                            if (!battling){
+                                System.out.println("You defeated the " + enemy.getName() + "!");
+                                enemyLoss = true;
+                                break;
+                            }
                         }
                     }
                     if (isPetrifiedPlayer){
@@ -149,27 +254,56 @@ public class Battle {
         }
 
         if (enemyLoss){
-            itemChance = getChance();
-            if (itemChance > 50){
-                PC.getInventory().addRandomItem();
+            battleEnd(PC);
+        }
+    }
+
+    public void battleEnd(Player PC){
+        double itemChance;
+
+        if(petBattle){
+            PC.setPet(pet);
+            System.out.println("Upon defeating the " + enemy.getName() + " the " + pet.getName() + " wishes to join you " +
+                    "on your quest. Give a nickname to your new " + pet.getName() + "? Enter '1' for yes or -1 for no");
+            scan.nextLine();
+            String s = scan.nextLine();
+            while(!s.equals("1") && !s.equals("-1")){
+                System.out.println("Invalid input entered. Enter '1' for yes or '-1' for no");
+                s = scan.nextLine();
             }
-            if (enemy.getDifficulty().equalsIgnoreCase("easy")){
-                PC.gainExp(50 + (int)getChance());
-                PC.gainGold(100 + (int)getChance());
-            } else if (enemy.getDifficulty().equalsIgnoreCase("moderate")){
-                PC.gainExp(100 + (int)getChance());
-                PC.gainGold(150 + (int)getChance());
-            } else if (enemy.getDifficulty().equalsIgnoreCase("hard")){
-                PC.gainExp(250 + (int)getChance());
-                PC.gainGold(200 + (int)getChance());
-            } else {
-                PC.gainExp(100);
-                PC.gainGold(100);
+            if(s.equals("1")){
+                System.out.println("Enter nickname for your new " + pet.getName());
+                PC.getCurrentPet().setNickname(scan.nextLine());
             }
-            // check if the player is eligible to level up
-            if(PC.checkLevelUp()){
-                PC.levelUp();
+        }
+
+        itemChance = getChance();
+        if (itemChance > 50){
+            PC.getInventory().addRandomItem();
+        }
+        if (enemy.getDifficulty().equalsIgnoreCase("easy")){
+            PC.gainExp(50 + (int)getChance());
+            PC.gainGold(100 + (int)getChance());
+        } else if (enemy.getDifficulty().equalsIgnoreCase("moderate")){
+            PC.gainExp(100 + (int)getChance());
+            PC.gainGold(150 + (int)getChance());
+        } else if (enemy.getDifficulty().equalsIgnoreCase("hard")){
+            PC.gainExp(250 + (int)getChance());
+            PC.gainGold(200 + (int)getChance());
+        } else {
+            PC.gainExp(100);
+            PC.gainGold(100);
+        }
+
+        if(PC.hasPet){
+            PC.getCurrentPet().gainExp(50);
+            if(PC.getCurrentPet().checkLevelUp()){
+                PC.getCurrentPet().levelUp();
             }
+        }
+
+        if(PC.checkLevelUp()){
+            PC.levelUp();
         }
     }
 
@@ -203,7 +337,11 @@ public class Battle {
                     System.out.println("You escaped from the " + enemy.getName());
                     this.selectedMove = -1;
                 } else {
-                    System.out.println("The " + enemy.getName() + " blocks your escape path!");
+                    if (!canRun){
+                        System.out.println("You cannot run from this battle.");
+                    } else {
+                        System.out.println("The " + enemy.getName() + " blocks your escape path!");
+                    }
                 }
             } else {
                 System.out.println("Please enter a valid move");
@@ -220,9 +358,16 @@ public class Battle {
         String i;
 
         System.out.print("Name: " + PC.getName() + " Level: " + PC.getLevel() + "\nHealth: " + PC.getHealthLeft() + "/" + PC.getHealth() + "\nAttack: "
-        + PC.getAttack() + " (+" + PC.getEquipped().getDamage() + " from " + PC.getEquipped().getItemName() + ")\nDefense: " + PC.getDefense() + " (+" + PC.getWorn().getProtection() + " from " + PC.getWorn().getItemName() + ")\nSpeed: " + PC.getSpeed() + "\nMana: " + PC.getManaLeft()
-        + "/" + PC.getMana() + "\nExperience: " + PC.getExp() + "/" + 100 * PC.getLevel() + " Gold: " + PC.getGold() + "\nEnter -1 to go back.\n");
+                + PC.getAttack() + " (+" + PC.getEquipped().getDamage() + " from " + PC.getEquipped().getItemName() + ")\nDefense: " + PC.getDefense() + " (+" + PC.getWorn().getProtection() + " from " + PC.getWorn().getItemName() + ")\nSpeed: " + PC.getSpeed() + "\nMana: " + PC.getManaLeft()
+                + "/" + PC.getMana() + "\nExperience: " + PC.getExp() + "/" + 100 * PC.getLevel() + " Gold: " + PC.getGold());
+        if(PC.hasPet){
+            System.out.print("\n\nName: " + PC.getCurrentPet().getNickname() + "\nType: " + PC.getCurrentPet().getName() +
+                    "Level: " + PC.getCurrentPet().getLevel() + "\nHealth: " + PC.getCurrentPet().getHealthLeft() + "/" + PC.getCurrentPet().getHealth()
+                    + "\nAttack: " + PC.getCurrentPet().getAttack() + "\nDefense: " + PC.getCurrentPet().getDefense() +
+                    "\nSpeed: " + PC.getCurrentPet().getSpeed() + "\nExperience: " + PC.getCurrentPet().getExp() + "/" + 100 * PC.getCurrentPet().getLevel());
+        }
 
+        System.out.println("\nEnter -1 to go back");
         i = scan.next();
         while (!i.equals("-1")){
             System.out.println("Please enter a valid number!");
@@ -285,6 +430,14 @@ public class Battle {
         enemySelectedMove = (int)enemyMove;
     }
 
+    private void playerDamageStep(){
+
+    }
+
+    private void enemyDamageStep(){
+
+    }
+
     /**
      * Calculates the amount of damage a single player move does against the opponent.
      * Prints out the type of attack used and how much damage it inflicted.
@@ -306,13 +459,19 @@ public class Battle {
             if (PC.att.get(att).getPetrifyChance() > 0){
                 if (getChance() >= PC.att.get(att).getPetrifyChance()){
                     isPetrifiedEnemy = true;
-                    System.out.println("The " + enemy.getName() + " has been petrified");
+                    System.out.println("The " + enemy.getName() + " has been petrified!");
                 }
             }
             if (PC.att.get(att).getPoisonChance() > 0){
                 if (getChance() >= PC.att.get(att).getPoisonChance()){
                     isPoisonedEnemy = true;
-                    System.out.println("The " + enemy.getName() + " has been poisoned");
+                    System.out.println("The " + enemy.getName() + " has been poisoned!");
+                }
+            }
+            if (PC.att.get(att).getParalyzChance() > 0){
+                if (getChance() >= PC.att.get(att).getParalyzChance()){
+                    isParylizedEnemy = true;
+                    System.out.println("The " + enemy.getName() + " has been paralyzed!");
                 }
             }
 
@@ -363,9 +522,22 @@ public class Battle {
                     System.out.println("You have been poisoned!");
                 }
             }
+            if (enemy.att.get(att).getParalyzChance() > 0){
+                if (getChance() >= enemy.att.get(att).getParalyzChance()){
+                    isParylizedPlayer = true;
+                    System.out.println("You have been paralyzed!");
+                }
+            }
 
             return (int) damage;
         }
+    }
+
+    private int petAttack(Player PC){
+        double damage;
+        damage = (((((2 * PC.getCurrentPet().getLevel() / 5) + 2) * (PC.getCurrentPet().getAttack() / enemy.getDefense()) * (PC.getCurrentPet().att.get(0).getPower())) / 50) + 2) * getCriticalHitModifier();
+        System.out.println("Your " + PC.getCurrentPet().getNickname() + " attacked the " + enemy.getName() + " using " + PC.getCurrentPet().att.get(0).getAttackName() + ". It did " + (int)damage + " damage.");
+        return (int) damage;
     }
 
     /**
@@ -433,6 +605,16 @@ public class Battle {
         return e;
     }
 
+    private Pet generatePet(){
+        int id;
+        Pet p;
+
+        id = idGenerator(2);
+        p = getPet()[id];
+
+        return p;
+    }
+
     /**
      * Takes in an amount and generates a random number based on that amount. Used elsewhere to
      * represent a position in an arraylist.
@@ -468,5 +650,9 @@ public class Battle {
 
     private static Enemy[] getEnemy(Player PC){
         return new Enemy[]{new Goblin(PC.getLevel()), new Skeleton(PC.getLevel()), new Troll(PC.getLevel()), new Vampire(PC.getLevel()), new Witch(PC.getLevel()), new BabyDragon(PC.getLevel()), new Dragon(PC.getLevel()), new Werewolf(PC.getLevel()), new RogueKnight(PC.getLevel())};
+    }
+
+    private static Pet[] getPet(){
+        return new Pet[]{new Wolf(1), new Phoenix(1), new Baboon(1)};
     }
 }

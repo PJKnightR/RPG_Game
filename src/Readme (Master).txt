@@ -9,7 +9,12 @@ To-do (overall):
 
 To-do aka ? (In order of priority(sort of)):
     Partially Implemented:
-        -Paralyzed Status Effect
+        -Save/Load Heart Canisters
+        -Pets taking damage (some attacks could have splash damage) and fainting
+        -Pet snacks
+        -Having multiple pets
+        -Some sort of randomization to pets stats
+        -Saving/Loading Pets
         -Being pushed to previous position in board mode
         -Add amount of given health statistic from heart canisters
         -Add enemy attack power modifier based on difficulty
@@ -19,6 +24,10 @@ To-do aka ? (In order of priority(sort of)):
         -Reworking of stats (using a base player and multipliers maybe)
         -More Player Classes
         -More enemies
+        -More Pets
+        -Greater village functionality (options for places to go, towns contaning certain buildings, talking to people,
+        companions???)
+        -Boards having specific biomes
 
     No Current Implementation:
         -Custom mode
@@ -30,7 +39,6 @@ To-do aka ? (In order of priority(sort of)):
         -Attack types
         -Ability to miss an attack
         -GUI
-        -Pets
         -Speed boost item
         -Mana boost item
         -Exp boost item
@@ -44,6 +52,7 @@ fixed) (Found by Patrick)
 -Trying to put different kinds of items in different packages breaks stuff
 -Prompted to enter dungeons until you stop entering them (Possibly, they like appearing in groups of 3)
 -The weakest enemies still cannot hurt you if you get the strongest armor for your level. They are also really easy to defeat
+-Heart Canisters Disappear when new ones are equipped
 
 Ideas:
 -Power ups/better weapons and armor
@@ -89,8 +98,11 @@ Heart Canisters
 Red -> Yellow -> Orange -> Green -> Blue -> Purple -> White
 20      50         75       100     150      200        350
 
-Pet Ideas
--Dragon
+Pet Ideas (Snacks to level them up), (special battles to get them, they are being attack by enemies and you save them)
+-Fire Dragon
 -Doggo/Catto
 -Blue Footed Boobie
 -Wolf
+-Hob Goblin
+-Phoenix
+-Baboon

@@ -7,5 +7,6 @@ public class OrangeHeartCanister extends HeartCanister{
         super(num);
         setItemName("Orange Heart Canister");
         setHealthBoost(75);
+        setID(28);
     }
 }

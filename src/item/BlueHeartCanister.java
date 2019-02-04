@@ -5,5 +5,6 @@ public class BlueHeartCanister extends HeartCanister{
         super(num);
         setItemName("Blue Heart Canister");
         setHealthBoost(150);
+        setID(30);
     }
 }

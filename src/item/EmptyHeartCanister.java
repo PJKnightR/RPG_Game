@@ -5,5 +5,6 @@ public class EmptyHeartCanister extends HeartCanister{
         super(num);
         setItemName("None");
         setHealthBoost(0);
+        setID(25);
     }
 }

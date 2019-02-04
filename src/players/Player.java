@@ -5,14 +5,26 @@ import game.Inventory;
 import item.Armor;
 import item.HeartCanister;
 import item.Weapon;
+import pets.*;
 
 abstract public class Player extends Actor {
 	public Inventory inventory = new Inventory();
 	public Weapon equipped;
 	public Armor worn;
 	public HeartCanister canister;
+	public Pet currentPet;
 	protected int mana, manaLeft, baseMana, Exp, gold, classType;
-	String weaponType;
+	public String weaponType;
+	public boolean hasPet;
+
+	public void setPet(Pet p){
+		currentPet = p;
+		hasPet = true;
+	}
+
+	public Pet getCurrentPet(){
+		return currentPet;
+	}
 
 	public HeartCanister getCanister() {
 		return canister;

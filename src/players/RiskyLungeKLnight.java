@@ -16,10 +16,11 @@ public class RiskyLungeKLnight extends Player{
         setName(name);
         setLevel(1);
         classType = 2;
-        weaponType = "Sword";
+        weaponType = "Risky Sword";
         equipped = new Legends(1, weaponType);
         worn = new SilverPlatemail(1);
         canister = new CrystalHeartCanister(1);
+        hasPet = false;
 
         baseAttack = 9001;
         baseDefense = 9001;

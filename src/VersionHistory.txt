@@ -8,6 +8,29 @@ To make versions numbers easier:
 
 Version Version # Month/Day/Year
 
+Version 2.6.1 2/4/19
+-Added item IDs to all heart canisters
+-Added heart canisters when saving/loading a character
+-Fixed a bug where Crystal Heart Canisters were unused
+-Fixed some slight issues when displaying pet stats
+-Changed Pets class name to Pet
+
+Version 2.6.0 2/1/18 & 2/3/19 Pets Update
+-Added to the about section in the main menu
+-Added variables for set board height and width in board mode for more customization
+-Added the Pets class and package
+-Added basic functions to Pets class for pet stats
+-Added ability for pets to attack in battle
+-Added ability to find pets after special battles
+-Added ability to nickname pets after they join you
+-Added Wolf, Baboon, and Phoenix pets
+-Added pets stats being displayed with player stats
+-Added the paralyzed status effect
+-Added ability for pets to gain exp and level up after a battle
+-Changed the petrify status so that you don't even choose a move when petrified
+-Fixed a bug with nicknaming pets
+-Reworked part of battle to make code more organized
+
 Version 2.5.0 1/31/19 Status Effects Update
 -Added Hunter player class
 -Added mana cost to SpearChuck (of 0)
@@ -135,6 +158,7 @@ Version 2.0.0 12/6/18 Weapons Update
 -Reworking player stats in that now they are integers (except player level)
 -Buffed the players mana stat
 -Put the setLevel method in the actor class
+
 
 Version 1.8.1 12/3/18 *Version Note: Everything done after project is turned in will be version 2.*** and will be done by
 Patrick

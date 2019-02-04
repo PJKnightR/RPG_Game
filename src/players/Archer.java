@@ -21,6 +21,7 @@ public class Archer extends Player {
         equipped = new Wooden(1, weaponType);
         worn = new OldDirtyClothing(1);
         canister = new EmptyHeartCanister(1);
+        hasPet = false;
 
         baseAttack = 60;
         baseDefense = 50;
@@ -51,7 +52,7 @@ public class Archer extends Player {
 
     }
 
-    public Archer(String name, double level, int gold, int exp, int w, int a, int curHealth, int curMana){
+    public Archer(String name, double level, int gold, int exp, int w, int a, int c, int curHealth, int curMana){
 
         setName(name);
         setLevel(level);
@@ -61,7 +62,8 @@ public class Archer extends Player {
         weaponType = "Bow";
         equipped = (Weapon) Weapon.itemListMaster(this.getWeaponType())[w];
         worn = (Armor) Armor.itemListMaster(this.getWeaponType())[a];
-        canister = new EmptyHeartCanister(1);
+        canister = (HeartCanister) HeartCanister.itemListMaster(this.getWeaponType())[c];
+        hasPet = false;
 
         baseAttack = 60;
         baseDefense = 50;
