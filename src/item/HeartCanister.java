@@ -2,7 +2,7 @@ package item;
 
 import players.Player;
 
-public class HeartCanister extends Item{
+abstract public class HeartCanister extends Item{
     private int healthBoost;
 
     public HeartCanister(int num){
@@ -20,7 +20,7 @@ public class HeartCanister extends Item{
 
     public int use(Player user){
         if (!user.canister.getItemName().equals("None")){
-            user.getInventory().addNewItem(user.canister);
+            user.getInventory().addNewItem(user.getCanister().getID(), user.getWeaponType());
         }
         user.setCanister(this);
         user.setHealth();

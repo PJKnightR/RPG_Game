@@ -8,5 +8,6 @@ public class UltimateCheesyGarlicBread extends HealthPotion {
         setItemName("Ultimate Cheesy Garlic Bread");
         setHealthRestore(1000000);
         setID(8);
+        setSellValue(500);
     }
 }

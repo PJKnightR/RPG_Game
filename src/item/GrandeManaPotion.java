@@ -9,5 +9,6 @@ public class GrandeManaPotion extends ManaPotion {
         setManaRestore(50);
         setValue(550);
         setID(5);
+        setSellValue(275);
     }
 }

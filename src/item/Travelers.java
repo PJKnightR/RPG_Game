@@ -8,5 +8,6 @@ public class Travelers extends Weapon {
         setItemName("Travelers " + name);
         setDamage(5);
         setID(10);
+        setValue(100);
     }
 }

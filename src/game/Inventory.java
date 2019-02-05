@@ -175,11 +175,15 @@ public class Inventory {
 
     }
 
-    private void removeItems(){
+    public void removeItems(){
         for(byte i = 0; i < itemList.size(); i++){
             if(itemList.get(i).getStack() == 0)
                 itemList.remove(i);
         }
+    }
+
+    public ArrayList<Item> getItemList() {
+        return itemList;
     }
 
     private int idGenerator(){

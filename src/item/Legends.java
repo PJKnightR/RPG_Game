@@ -8,5 +8,6 @@ public class Legends extends Weapon {
         setItemName("Legends " + name);
         setDamage(100);
         setID(16);
+        setSellValue(400);
     }
 }

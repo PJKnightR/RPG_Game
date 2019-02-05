@@ -9,17 +9,15 @@ To-do (overall):
 
 To-do aka ? (In order of priority(sort of)):
     Partially Implemented:
-        -Save/Load Heart Canisters
         -Pets taking damage (some attacks could have splash damage) and fainting
         -Pet snacks
         -Having multiple pets
         -Some sort of randomization to pets stats
         -Saving/Loading Pets
         -Being pushed to previous position in board mode
-        -Add amount of given health statistic from heart canisters
         -Add enemy attack power modifier based on difficulty
         -Add generation of a new board when requirements are met
-        -Add saving and loading in board mode
+        -Add saving and loading boards in board mode
         -Rework things with a random chance by using global variables for easier access
         -Reworking of stats (using a base player and multipliers maybe)
         -More Player Classes
@@ -52,7 +50,7 @@ fixed) (Found by Patrick)
 -Trying to put different kinds of items in different packages breaks stuff
 -Prompted to enter dungeons until you stop entering them (Possibly, they like appearing in groups of 3)
 -The weakest enemies still cannot hurt you if you get the strongest armor for your level. They are also really easy to defeat
--Heart Canisters Disappear when new ones are equipped
+-You can find equipment when running from a battle
 
 Ideas:
 -Power ups/better weapons and armor

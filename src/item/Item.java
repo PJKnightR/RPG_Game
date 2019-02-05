@@ -6,7 +6,7 @@ abstract public class Item {
 	protected String description;
 	private String itemName;
 	private boolean stackable;
-	private int stack, value, ID;
+	private int stack, value, ID, sellValue;
 
 	public Item(int num){
 		stack = num;
@@ -52,6 +52,14 @@ abstract public class Item {
 
 	protected void setValue(int value) {
 		this.value = value;
+	}
+
+	public int getSellValue(){
+		return sellValue;
+	}
+
+	protected void setSellValue(int s){
+		this.sellValue = s;
 	}
 
 	public int getStack() {

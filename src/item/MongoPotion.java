@@ -9,5 +9,6 @@ public class MongoPotion extends HealthPotion {
         setHealthRestore(200);
         setValue(900);
         setID(3);
+        setSellValue(450);
     }
 }

@@ -6,5 +6,6 @@ public class TitaniumPlatemail extends Armor{
         setItemName("Titanium Platemail");
         setProtection(50);
         setID(22);
+        setValue(300);
     }
 }

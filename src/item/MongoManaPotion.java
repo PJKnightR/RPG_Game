@@ -9,5 +9,6 @@ public class MongoManaPotion extends ManaPotion {
         setManaRestore(200);
         setValue(1000);
         setID(6);
+        setSellValue(500);
     }
 }

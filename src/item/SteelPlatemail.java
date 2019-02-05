@@ -6,5 +6,6 @@ public class SteelPlatemail extends Armor{
         setItemName("Hardened Steel Platemail");
         setProtection(75);
         setID(23);
+        setSellValue(350);
     }
 }

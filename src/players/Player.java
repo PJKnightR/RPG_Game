@@ -108,7 +108,7 @@ abstract public class Player extends Actor {
 
 	public void gainGold(int g){
 		gold += g;
-		System.out.print("You gained " + g + " gold!\n");
+		System.out.print("You gained " + g + " gold");
 	}
 
 	public void spendGold(int g){

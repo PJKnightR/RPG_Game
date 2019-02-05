@@ -6,5 +6,6 @@ public class OldDirtyClothing extends Armor{
         setItemName("Old, Dirty Clothing");
         setProtection(1);
         setID(17);
+        setSellValue(50);
     }
 }

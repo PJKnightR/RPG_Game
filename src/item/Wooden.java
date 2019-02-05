@@ -8,5 +8,6 @@ public class Wooden extends Weapon {
         setItemName("Wooden " + name);
         setDamage(1);
         setID(9);
+        setSellValue(50);
     }
 }

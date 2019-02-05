@@ -6,5 +6,6 @@ public class IronPlatemail extends Armor{
         setItemName("Iron Platemail");
         setProtection(20);
         setID(20);
+        setSellValue(200);
     }
 }

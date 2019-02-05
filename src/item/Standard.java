@@ -8,5 +8,6 @@ public class Standard extends Weapon {
         setItemName("Standard " + name);
         setDamage(10);
         setID(11);
+        setSellValue(150);
     }
 }

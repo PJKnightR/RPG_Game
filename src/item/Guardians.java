@@ -8,5 +8,6 @@ public class Guardians extends Weapon {
         setItemName("Guardians " + name);
         setDamage(50);
         setID(14);
+        setSellValue(300);
     }
 }

@@ -6,5 +6,6 @@ public class CrystalHeartCanister extends HeartCanister{
         setItemName("Crystal Heart Canister");
         setHealthBoost(400);
         setID(33);
+        setSellValue(350);
     }
 }

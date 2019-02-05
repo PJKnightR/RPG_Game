@@ -8,10 +8,25 @@ To make versions numbers easier:
 
 Version Version # Month/Day/Year
 
+Version 2.7.0 2/4/19 Sellin' Stuff Update
+-Added detection for non-numerical/invalid inputs in the shop
+-Added sell values to all items
+-Added the ability to sell items in shops
+-Added the Hob-goblin pet
+-Added saving and loading in board mode
+-Added additional health from heart canisters statistic
+-Fixed the message when the player recovers from being paralyzed
+-Fixed a bug where heart canisters would disappear when you equipped new ones
+-Fixed a bug where the player and enemy could die in the same battle
+-Changed the Heart Canister class to be abstract
+-Reworking of the shop class
+-Reworking of some battle class methods that were messy and repeated code
+-Nerfed poison damage from half of your health to ten percent plus one because half is too much
+
 Version 2.6.1 2/4/19
 -Added item IDs to all heart canisters
--Added heart canisters when saving/loading a character
--Fixed a bug where Crystal Heart Canisters were unused
+-Added proper saving/loading for a characters heart canisters
+-Fixed a bug where Crystal Heart Canisters weren't unused
 -Fixed some slight issues when displaying pet stats
 -Changed Pets class name to Pet
 

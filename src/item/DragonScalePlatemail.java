@@ -6,5 +6,6 @@ public class DragonScalePlatemail extends Armor{
         setItemName("Dragon Scale Armor");
         setProtection(100);
         setID(24);
+        setSellValue(400);
     }
 }

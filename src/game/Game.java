@@ -74,8 +74,10 @@ public class Game {
             runMosterMash();
         } else if (gameMode == 2 ){
             runAdventure();
-        } else {
+        } else if (gameMode == 3) {
             runBoardMode();
+        } else {
+            runMosterMash();
         }
     }
 
@@ -416,7 +418,7 @@ public class Game {
             } else if (c == 3){
                 String i;
 
-                System.out.print("Name: " + PC.getName() + " Level: " + PC.getLevel() + "\nHealth: " + PC.getHealthLeft() + "/" + PC.getHealth() + "\nAttack: "
+                System.out.print("Name: " + PC.getName() + " Level: " + PC.getLevel() + "\nHealth: " + PC.getHealthLeft() + "/" + PC.getHealth() + " (+" + PC.getCanister().getHealthBoost() + " from " + PC.getCanister().getItemName() + ")\nAttack: "
                         + PC.getAttack() + " (+" + PC.getEquipped().getDamage() + " from " + PC.getEquipped().getItemName() + ")\nDefense: " + PC.getDefense() + " (+" + PC.getWorn().getProtection() + " from " + PC.getWorn().getItemName() + ")\nSpeed: " + PC.getSpeed() + "\nMana: " + PC.getManaLeft()
                         + "/" + PC.getMana() + "\nExperience: " + PC.getExp() + "/" + 100 * PC.getLevel() + " Gold: " + PC.getGold());
                 if(PC.hasPet){
@@ -504,6 +506,8 @@ public class Game {
             runMosterMash();
         } else if (gameMode == 2) {
             runAdventure();
+        } else if  (gameMode == 3){
+            runBoardMode();
         }
     }
 
