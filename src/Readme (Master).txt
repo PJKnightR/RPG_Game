@@ -29,7 +29,7 @@ To-do aka ? (In order of priority(sort of)):
 
     No Current Implementation:
         -Custom mode
-        -Add more events (enemy kingdoms, strongholds, mountains, valleys, fields, caves)
+        -Add more events (enemy kingdoms, strongholds, mountains, valleys, fields, caves, fortress)
         -Story mode
         -Add dungeon bosses
         -Add more to dungeons
@@ -53,7 +53,6 @@ fixed) (Found by Patrick)
 -You can find equipment when running from a battle
 
 Ideas:
--Power ups/better weapons and armor
 -Background music
 -GUI?!?! (Maybe, no, probably not)
 -Time cycle
@@ -61,12 +60,26 @@ Ideas:
 
 
 Other Enemy ideas (By Patrick)
-- Thief/Bandit
-- Zombie/Undead/Husk
-- Mummy
-- Wraith/Ghost
-- A joke enemy/easter egg (Long Slime)
-- Barbarian/Viking
+-Thief/Bandit
+-Zombie/Undead/Husk
+-Mummy
+-Wraith/Ghost/Ghoul
+-A joke enemy/easter egg (Long Slime)
+-Barbarian/Viking
+-Possessed
+-Centaur
+-Yeti
+-Basalisk
+-Hellhound
+-Golem
+
+
+Bosses
+-Evil/Undead King
+-Dracula
+-Skeleton Dragon
+-Sphinx
+-Chimera
 
 
 Player Classes and Attacks (Ideas) (I suck at attack names, feel free to add some):
@@ -100,7 +113,5 @@ Pet Ideas (Snacks to level them up), (special battles to get them, they are bein
 -Fire Dragon
 -Doggo/Catto
 -Blue Footed Boobie
--Wolf
--Hob Goblin
--Phoenix
--Baboon
+-Rhino
+-Hippogriff

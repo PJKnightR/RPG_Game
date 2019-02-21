@@ -560,7 +560,7 @@ public class Battle {
         int id;
         Pet p;
 
-        id = idGenerator(3);
+        id = idGenerator(4);
         p = getPet()[id];
 
         return p;
@@ -604,6 +604,6 @@ public class Battle {
     }
 
     private static Pet[] getPet(){
-        return new Pet[]{new Wolf(1), new Phoenix(1), new Baboon(1), new HobGoblin(1)};
+        return new Pet[]{new Wolf(1), new Phoenix(1), new Baboon(1), new HobGoblin(1), new Griffin(1)};
     }
 }

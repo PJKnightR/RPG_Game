@@ -8,6 +8,11 @@ To make versions numbers easier:
 
 Version Version # Month/Day/Year
 
+Version 2.7.1 2/12/19
+-Added the Griffin pet
+-Added classes for the enemies Reptilian Man, Imp, and Cave Spider
+-Added classes for the bosses Armored Dragon, Goblin King, Hydra, Leviathon, Minotaur, and King of Shadows
+
 Version 2.7.0 2/4/19 Sellin' Stuff Update
 -Added detection for non-numerical/invalid inputs in the shop
 -Added sell values to all items

@@ -44,7 +44,8 @@ public class Game {
             System.out.println("The RPG_Game is a game designed by Patrick Reagan primarily for the purpose of improving " +
                     "programming skill by making a game. Though this started as a group project,\nPatrick is now the only " +
                     "person actively working on the project. Credits to TJ York, Kellen Ferwerda, Paul Oram, and Nathan" +
-                    " Short for their contributions early on \nin development.\nEnter anything to continue");
+                    " Short for their contributions early on \nin development. Special thanks to" +
+                    " Jeremy Halt for the base inventory and item classes. \nEnter anything to continue");
             scan.nextLine();
             runGame();
         } else {
@@ -365,6 +366,7 @@ public class Game {
                             dun = scan.next();
                         }
                     } else {
+                        //boss fights would ocurr here
                         System.out.println("You have completed the dungeon and found some Ultimate " +
                                 "Cheesy Garlic Bread at the end of it.");
                         PC.getInventory().addNewItem(new UltimateCheesyGarlicBread(1));
