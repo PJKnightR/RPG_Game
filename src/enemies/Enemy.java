@@ -1,9 +1,9 @@
 package enemies;
 
-import game.Actor;
+import game.Entity;
 import players.Player;
 
-abstract public class Enemy extends Actor {
+abstract public class Enemy extends Entity {
 	// Indicates the enemy's difficulty
 	public String diff;
 

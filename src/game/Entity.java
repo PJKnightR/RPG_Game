@@ -6,7 +6,7 @@ import attack.Attack;
 import java.util.ArrayList;
 import java.util.Queue;
 
-abstract public class Actor {
+abstract public class Entity {
     public String name;
     protected int health, defense, attack, speed, healthLeft, baseAttack, baseDefense, baseSpeed, baseHealth;
     protected double level;

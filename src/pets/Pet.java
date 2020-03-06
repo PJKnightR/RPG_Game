@@ -1,8 +1,8 @@
 package pets;
 
-import game.Actor;
+import game.Entity;
 
-public class Pet extends Actor {
+public class Pet extends Entity {
     public boolean fainted;
     public String nickname;
     protected int Exp;

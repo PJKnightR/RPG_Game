@@ -9,6 +9,7 @@ To-do (overall):
 
 To-do aka ? (In order of priority(sort of)):
     Partially Implemented:
+        -Passive Health/Mana Regen
         -Pets taking damage (some attacks could have splash damage) and fainting
         -Pet snacks
         -Having multiple pets
@@ -50,8 +51,7 @@ fixed) (Found by Patrick)
 -Trying to put different kinds of items in different packages breaks stuff
 -Prompted to enter dungeons until you stop entering them (Possibly, they like appearing in groups of 3)
 -The weakest enemies still cannot hurt you if you get the strongest armor for your level. They are also really easy to defeat
--You can find equipment when running from a battle
-
+-You can find equipment when running from a battle (thought this was fixed?)
 Ideas:
 -Background music
 -GUI?!?! (Maybe, no, probably not)
@@ -111,7 +111,6 @@ Red -> Yellow -> Orange -> Green -> Blue -> Purple -> White
 
 Pet Ideas (Snacks to level them up), (special battles to get them, they are being attack by enemies and you save them)
 -Fire Dragon
--Doggo/Catto
--Blue Footed Boobie
+-Dog/Cat
 -Rhino
 -Hippogriff

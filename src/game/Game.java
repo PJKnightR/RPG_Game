@@ -21,6 +21,9 @@ public class Game {
         scan = new Scanner(System.in);
     }
 
+    /**
+     * Handles running a game after one has been created
+     **/
     public void runGame() {
         String choice;
         running = true;
@@ -42,7 +45,7 @@ public class Game {
             }
         } else if (choice.equals("3")){
             System.out.println("The RPG_Game is a game designed by Patrick Reagan primarily for the purpose of improving " +
-                    "programming skill by making a game. Though this started as a group project,\nPatrick is now the only " +
+                    "programming skill through application. Though this started as a group project,\nPatrick is now the only " +
                     "person actively working on the project. Credits to TJ York, Kellen Ferwerda, Paul Oram, and Nathan" +
                     " Short for their contributions early on \nin development. Special thanks to" +
                     " Jeremy Halt for the base inventory and item classes. \nEnter anything to continue");
@@ -54,6 +57,9 @@ public class Game {
         }
     }
 
+    /**
+     * Handles the player choosing a gamemode to play on
+     **/
     private void chooseGamemode(){
         String choice;
         int diff = 0;
@@ -82,6 +88,9 @@ public class Game {
         }
     }
 
+    /**
+     * Handles setting the diffuculty of a new game
+     **/
     private void setDifficulty(int i){
         String choice;
 
@@ -117,6 +126,9 @@ public class Game {
 
     }
 
+    /**
+     * Handles the creation of a new character
+     **/
     private void createCharacter(){
         String name, choice;
         System.out.print("Enter your characters name: ");
@@ -129,24 +141,22 @@ public class Game {
             choice = scan.nextLine();
         }
 
-        if (name.equalsIgnoreCase("RiskyLungeLiskyRunge")){
-            this.PC = new RiskyLungeKLnight(name);
-            System.out.println("Welcome back, master.");
+        if (choice.equals("1")){
+            this.PC = new Archer(name);
+        } else if (choice.equals("2")){
+            this.PC = new Knight(name);
+        } else if (choice.equals("3")){
+            this.PC = new Wizard(name);
+        } else if (choice.equals("4")){
+            this.PC = new Hunter(name);
         } else {
-            if (choice.equals("1")){
-                this.PC = new Archer(name);
-            } else if (choice.equals("2")){
-                this.PC = new Knight(name);
-            } else if (choice.equals("3")){
-                this.PC = new Wizard(name);
-            } else if (choice.equals("4")){
-                this.PC = new Hunter(name);
-            } else {
-                this.PC = new Knight(name);
-            }
+            this.PC = new Knight(name);
         }
     }
 
+    /**
+     * Handles running the game when in monster mash mode
+     **/
     private void runMosterMash(){
         String choice;
         int c;
@@ -178,6 +188,9 @@ public class Game {
         runGame();
     }
 
+    /**
+     * Handles running the game when in adventure mode
+     **/
     private void runAdventure(){
         while(running){
             String choice;
@@ -217,6 +230,9 @@ public class Game {
         }
     }
 
+    /**
+     * Handles running the game when in board mode
+     **/
     private void runBoardMode(){
         boardHeight = 9;
         boardWidth = 9;
@@ -271,6 +287,9 @@ public class Game {
         }
     }
 
+    /**
+     * Handles moving the player to a new tile in board mode
+     **/
     private void movePositions(Board board){
         System.out.println("Where would you like to move to? Enter -1 to go back.");
         String choice;
@@ -337,6 +356,9 @@ public class Game {
         }
     }
 
+    /**
+     * Handles running dungeons
+     **/
     private boolean runDungeon(){
         String s;
         boolean complete = false;
@@ -386,11 +408,17 @@ public class Game {
         return false;
     }
 
+    /**
+     * Handles running the game when in custom mode
+     **/
     private void runCustomMode(){
         //A mode that allows the user to tweak certain aspects of the game such as chance to find events, new equipment,
         //ect
     }
 
+    /**
+     * Handles displaying the player menu when not within a battle
+     **/
     private void playerMenu(){
         boolean menu;
         String choice;
@@ -454,6 +482,9 @@ public class Game {
         }
     }
 
+    /**
+     * Loads a player using a specified file
+     **/
     private void loadPlayer() throws FileNotFoundException{
         System.out.println("Enter the file name with your character in it.");
         String choice = scan.next();
@@ -513,6 +544,9 @@ public class Game {
         }
     }
 
+    /**
+     * Saves a player to a specified file
+     **/
     private void savePlayer() throws FileNotFoundException{
         System.out.println("Enter the file name for this save.");
         String choice = scan.next();
@@ -529,6 +563,9 @@ public class Game {
         System.out.println("The game has been saved.");
     }
 
+    /**
+     * Used for generating random values
+     **/
     private int getChance(){
         double chance;
         int i;
@@ -593,6 +630,9 @@ public class Game {
         }
     }
 
+    /**
+     * Randomlly generates equipment items when needed
+     **/
     private void findNewEquipment(){
         int type = 0;
         if (getChance() < equipmentChance){
@@ -631,18 +671,31 @@ public class Game {
         }
     }
 
+    /**
+     * A list of all weapons in the game
+     **/
     private Weapon[] weaponList(){
         return new Weapon[]{new Travelers(1,PC.getWeaponType()), new Standard(1,PC.getWeaponType()), new Soldiers(1,PC.getWeaponType()), new Warriors(1,PC.getWeaponType()), new Guardians(1,PC.getWeaponType()), new Heros(1,PC.getWeaponType()), new Legends(1,PC.getWeaponType())};
     }
 
+    /**
+     * A list of all armors in the game
+     **/
     private Armor[] armorList(){
         return new Armor[]{new LeatherChaps(1), new Chainmail(1), new IronPlatemail(1), new SilverPlatemail(1), new TitaniumPlatemail(1), new SteelPlatemail(1), new DragonScalePlatemail(1)};
     }
 
+    /**
+     * A list of all heart canisters in the game
+     **/
     private HeartCanister[] canisterList(){
         return new HeartCanister[]{new RedHeartCanister(1), new YellowHeartCanister(1), new OrangeHeartCanister(1), new GreenHeartCanister(1), new BlueHeartCanister(1), new PurpleHeartCanister(1), new WhiteHeartCanister(1), new CrystalHeartCanister(1)};
     }
 
+    /**
+     * Used for generating id values of a given amount
+     * @param amount
+     **/
     private static int idGenerator(int amount){
         double a;
         int b;

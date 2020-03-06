@@ -1,13 +1,13 @@
 package players;
 
-import game.Actor;
+import game.Entity;
 import game.Inventory;
 import item.Armor;
 import item.HeartCanister;
 import item.Weapon;
 import pets.*;
 
-abstract public class Player extends Actor {
+abstract public class Player extends Entity {
 	public Inventory inventory = new Inventory();
 	public Weapon equipped;
 	public Armor worn;

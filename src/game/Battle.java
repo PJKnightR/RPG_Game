@@ -21,7 +21,6 @@ public class Battle {
         isPoisonedPlayer = false;
         battling = true;
         enemyLoss = false;
-
     }
 
     /**
@@ -101,7 +100,7 @@ public class Battle {
                 if(isParylizedPlayer){
                     if (getChance() > 50){
                         isParylizedPlayer = false;
-                        System.out.println("You are no longer petrified!");
+                        System.out.println("You are no longer paralyzed!");
                     }
                 }
 

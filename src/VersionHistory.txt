@@ -6,7 +6,19 @@ To make versions numbers easier:
 -Unless we make a GUI or something that completely changes the program like that, then it will always remain Version 1.*
 
 
-Version Version # Month/Day/Year
+Version Version# Month/Day/Year
+
+Version 2.7.5 3/6/20
+-Added documentation to the Game class
+
+Version 2.7.4 9/16/19
+-Renamed the Actor class to Entity
+
+Version 2.7.3 8/8/19
+-Changed an incorrect message in battle
+
+Version 2.7.2 2/23/19
+-Removed unused code from main
 
 Version 2.7.1 2/12/19
 -Added the Griffin pet
@@ -94,7 +106,6 @@ Version 2.2.3 12/14/18 Spooky Update
 -Added new story messages to game
 -Added the attack SpookyDance
 -Added SpookyDance to the skeletons moveset
--Added a new surprise
 -Removed some older/unused code and put it in its own folder
 -Fixed the bug where you could get a negative amount of an item when buying stuff from the shop
 -Renamed attack ClubSlap to ClubClobber, Roar to ThreateningRoar
