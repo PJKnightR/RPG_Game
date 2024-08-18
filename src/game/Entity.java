@@ -8,22 +8,30 @@ import java.util.Queue;
 
 abstract public class Entity {
     public String name;
-    protected int health, defense, attack, speed, healthLeft, baseAttack, baseDefense, baseSpeed, baseHealth;
+    protected int health;
+    protected int defense;
+    protected int attack;
+    protected int speed;
+    protected int healthLeft;
+    protected int baseAttack;
+    protected int baseDefense;
+    protected int baseSpeed;
+    protected int baseHealth;
     protected double level;
     protected ArrayList<Attack> att;
     protected int attLevel [];
     protected Queue<Attack> atts;
 
     /**
-     * This method generates the initial attacks for both players and enemies
+     * Generates the initial attacks for both players and enemies
      */
     public void getInitialAttacks(){
         int currentAtt = 0, levelCount = 0;
         while(levelCount <= this.getLevel()){
-            if (atts.size() == 0){
+            if (atts.isEmpty()){
                 break;
             } else {
-                while (levelCount == attLevel[currentAtt] && atts.size() > 0){
+                while (levelCount == attLevel[currentAtt] && !atts.isEmpty()){
                     this.att.add(atts.poll());
                     currentAtt++;
                     if (currentAtt == attLevel.length){
@@ -36,15 +44,15 @@ abstract public class Entity {
     }
 
     /**
-     * This method sets the name and is used only for Player
-     * @param n
+     * Sets the name and is used only for Player
+     * @param name name to set the player's as
      */
-    public void setName(String n){
-        this.name = n;
+    public void setName(String name){
+        this.name = name;
     }
 
     /**
-     * This method gets the name of either the Player
+     * Gets the name of either the Player
      * @return name
      */
     public String getName(){
@@ -52,50 +60,58 @@ abstract public class Entity {
     }
 
     /**
-     * This method gets Health
+     * Gets Health
      */
     public int getHealth() { return health; }
 
     /**
-     * This method gets Health Left
+     * Gets Health Left
      */
     public int getHealthLeft() {
         return healthLeft;
     }
 
-    public void setHealthLeft(int i){
-        healthLeft = i;
+    /**
+     * Sets the health let
+     * @param healthLeft the amount of health left to set
+     */
+    public void setHealthLeft(int healthLeft){
+        this.healthLeft = healthLeft;
     }
 
     /**
-     * This method gets Defense
+     * Gets Defense
      */
     public int getDefense() {
         return defense;
     }
 
     /**
-     * This method gets attack
+     * Gets attack
      */
     public int getAttack() {
         return attack;
     }
 
     /**
-     * This method gets Speed
+     * Gets Speed
      */
     public int getSpeed() {
         return speed;
     }
 
     /**
-     * This method gets Level
+     * Gets Level
      */
     public double getLevel() {
         return level;
     }
 
-    public void setLevel(double l){
-        this.level = l;
+    /**
+     * Sets level
+     * @param level level to set to
+     */
+    public void setLevel(double level){
+        this.level = level;
     }
 }

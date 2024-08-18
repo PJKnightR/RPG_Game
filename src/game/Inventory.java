@@ -45,10 +45,10 @@ public class Inventory {
     public void useItem(Player user, Battle bat){ //need methods during and not during battle
         Scanner scan = new Scanner(System.in);
         int position = 0;
-        if (itemList.size() == 0){
+        if (itemList.isEmpty()){
             System.out.println("No items in Inventory");
             position = -1;
-            bat.playerMove(user);
+            bat.playerMove();
         }
         while(position != -1){
             System.out.println("What item do you want to use?");
@@ -57,7 +57,7 @@ public class Inventory {
             position = scan.nextInt();
             switch(position){
                 case -1:
-                    bat.playerMove(user);
+                    bat.playerMove();
                     break;
                 case -2:
                     System.out.println("Enter the item number, not the item name!");
@@ -66,7 +66,7 @@ public class Inventory {
                     position--;
                     try{
                         itemList.get(position).use(user);
-                    } catch (IndexOutOfBoundsException blarg){
+                    } catch (IndexOutOfBoundsException iob){
                         System.out.println("No item in that slot");
                         break;
                     }
@@ -80,7 +80,7 @@ public class Inventory {
     public void useItemsOutside(Player user){
         Scanner scan = new Scanner(System.in);
         int position = 0, choice = 0;
-        if (itemList.size() == 0){
+        if (itemList.isEmpty()){
             System.out.println("No items in Inventory");
             position = -1;
             //call back to menu
@@ -101,7 +101,7 @@ public class Inventory {
                     position--;
                     try{
                         itemList.get(position).getItemName();
-                    } catch (IndexOutOfBoundsException blarg){
+                    } catch (IndexOutOfBoundsException iob){
                         System.out.println("No item in that slot");
                         choice = -1;
                         break;
@@ -114,7 +114,7 @@ public class Inventory {
                         while (choice != -1){
                             try {
                                 choice = scan.nextInt();
-                            } catch (InputMismatchException yarg){
+                            } catch (InputMismatchException ime){
                                 System.out.println("Please enter a valid number");
                                 choice = -2;
                             }

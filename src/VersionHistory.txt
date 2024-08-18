@@ -8,6 +8,9 @@ To make versions numbers easier:
 
 Version Version# Month/Day/Year
 
+Version 2.8.0 8/28/24
+-Did an absolute ton of refactoring. Still a ton more to be done if I wanted to but not a priority. Mostly just teaching an old codebase a couple new tricks.
+
 Version 2.7.5 3/6/20
 -Added documentation to the Game class
 

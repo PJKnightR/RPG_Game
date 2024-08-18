@@ -10,12 +10,23 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class Game {
+    public static Player player;
+
     private Scanner scan;
-    private int gameMode, boardHeight, boardWidth;
-    private Player PC;
+    private int gameMode;
+    private int boardHeight;
+    private int boardWidth;
     private boolean running;
-    private int battleChance, equipmentChance;
+    private int battleChance;
+    private int equipmentChance;
     private String difficulty;
+
+    final int BATTLE_CHANCE_EASY = 65;
+    final int BATTLE_CHANCE_MEDIUM = 75;
+    final int BATTLE_CHANCE_HARD = 75;
+    final int EQUIPMENT_CHANCE_EASY = 20;
+    final int EQUIPMENT_CHANCE_MEDIUM = 10;
+    final int EQUIPMENT_CHANCE_HARD = 10;
 
     public Game(){
         scan = new Scanner(System.in);
@@ -34,26 +45,31 @@ public class Game {
             choice = scan.nextLine();
         }
 
-        if (choice.equals("1")){
-            chooseGamemode();
-        } else if (choice.equals("2")){
-            try{
-                loadPlayer();
-            } catch(FileNotFoundException flarg){
-                System.out.println("Load Failed");
+        switch (choice) {
+            case "1":
+                chooseGamemode();
+                break;
+            case "2":
+                try{
+                    loadPlayer();
+                } catch(FileNotFoundException fnf){
+                    System.out.println("Load Failed");
+                    runGame();
+                }
+                break;
+            case "3":
+                System.out.println("The RPG_Game is a game designed by Patrick Reagan primarily for the purpose of improving " +
+                        "programming skill through application. Though this started as a group project,\nPatrick is now the only " +
+                        "person actively working on the project. Credits to TJ York, Kellen Ferwerda, Paul Oram, and Nathan" +
+                        " Short for their contributions early on \nin development. Special thanks to" +
+                        " Jeremy Halt for the base inventory and item classes. \nEnter anything to continue");
+                scan.nextLine();
                 runGame();
-            }
-        } else if (choice.equals("3")){
-            System.out.println("The RPG_Game is a game designed by Patrick Reagan primarily for the purpose of improving " +
-                    "programming skill through application. Though this started as a group project,\nPatrick is now the only " +
-                    "person actively working on the project. Credits to TJ York, Kellen Ferwerda, Paul Oram, and Nathan" +
-                    " Short for their contributions early on \nin development. Special thanks to" +
-                    " Jeremy Halt for the base inventory and item classes. \nEnter anything to continue");
-            scan.nextLine();
-            runGame();
-        } else {
-            System.out.println("See ya next time!.");
-            System.exit(0);
+                break;
+            default:
+                System.out.println("See ya next time!.");
+                System.exit(0);
+                break;
         }
     }
 
@@ -75,21 +91,25 @@ public class Game {
         this.gameMode = Integer.parseInt(choice);
         createCharacter();
         setDifficulty(diff);
-        System.out.println("As you begin your quest, you've been given a Wooden " + PC.getWeaponType() + ". With this weapon" +
+        System.out.println("As you begin your quest, you've been given a Wooden " + player.getWeaponType() + ". With this weapon" +
                 " and clothes on your back, you begin your epic quest.\nStart your adventure by entering '1', access the menu by entering '2'.");
-        if (gameMode == 1){
-            runMosterMash();
-        } else if (gameMode == 2 ){
-            runAdventure();
-        } else if (gameMode == 3) {
-            runBoardMode();
-        } else {
-            runMosterMash();
+
+        switch (gameMode) {
+            case 2:
+                runAdventure();
+                break;
+            case 3:
+                runBoardMode();
+                break;
+            case 1:
+            default:
+                runMonsterMash();
+                break;
         }
     }
 
     /**
-     * Handles setting the diffuculty of a new game
+     * Handles setting the difficulty of a new game
      **/
     private void setDifficulty(int i){
         String choice;
@@ -111,16 +131,16 @@ public class Game {
 
         switch(Integer.parseInt(difficulty)){
             case 1:
-                battleChance = 65;
-                equipmentChance = 20;
+                battleChance = BATTLE_CHANCE_EASY;
+                equipmentChance = EQUIPMENT_CHANCE_EASY;
                 break;
             case 2:
-                battleChance = 75;
-                equipmentChance = 10;
+                battleChance = BATTLE_CHANCE_MEDIUM;
+                equipmentChance = EQUIPMENT_CHANCE_MEDIUM;
                 break;
             case 3:
-                battleChance = 75;
-                equipmentChance = 10;
+                battleChance = BATTLE_CHANCE_HARD;
+                equipmentChance = EQUIPMENT_CHANCE_HARD;
                 break;
         }
 
@@ -130,7 +150,9 @@ public class Game {
      * Handles the creation of a new character
      **/
     private void createCharacter(){
-        String name, choice;
+        String name;
+        String choice;
+
         System.out.print("Enter your characters name: ");
         name = scan.nextLine();
 
@@ -141,25 +163,27 @@ public class Game {
             choice = scan.nextLine();
         }
 
-        if (choice.equals("1")){
-            this.PC = new Archer(name);
-        } else if (choice.equals("2")){
-            this.PC = new Knight(name);
-        } else if (choice.equals("3")){
-            this.PC = new Wizard(name);
-        } else if (choice.equals("4")){
-            this.PC = new Hunter(name);
-        } else {
-            this.PC = new Knight(name);
+        switch (choice) {
+            case "1":
+                player = new Archer(name);
+                break;
+            case "3":
+                player = new Wizard(name);
+                break;
+            case "4":
+                player = new Hunter(name);
+                break;
+            case "2":
+            default:
+                player = new Knight(name);
         }
     }
 
     /**
      * Handles running the game when in monster mash mode
      **/
-    private void runMosterMash(){
+    private void runMonsterMash(){
         String choice;
-        int c;
 
         while(running){
             choice = scan.next();
@@ -167,11 +191,11 @@ public class Game {
                 System.out.println("Please enter a valid option");
                 choice = scan.next();
             }
-            c = Integer.parseInt(choice);
-            if(c == 1){
-                Battle batbat = new Battle();
-                batbat.startBattle(PC, scan, true);
-                if (PC.getHealthLeft() <= 0) {
+
+            if(choice.equals("1")){
+                Battle battle = new Battle();
+                battle.startBattle(scan, true);
+                if (player.getHealthLeft() <= 0) {
                     System.out.print("\n\n\t\tGAME\tOVER\n\n\n");
                     running = false;
                 } else {
@@ -192,29 +216,28 @@ public class Game {
      * Handles running the game when in adventure mode
      **/
     private void runAdventure(){
-        while(running){
+        while (running){
             String choice;
-            int c;
 
-            while(running){
+            while (running){
                 choice = scan.next();
                 while (!choice.equals("1") && !choice.equals("2")){
                     System.out.println("Please enter a valid option");
                     choice = scan.next();
                 }
-                c = Integer.parseInt(choice);
-                if(c == 1){
+
+                if(choice.equals("1")){
                     int g = getChance();
                     if (g <= battleChance){
-                        Battle batbat = new Battle();
-                        batbat.startBattle(PC, scan, true);
-                        if (PC.getHealthLeft() > 0) {
+                        Battle battle = new Battle();
+                        battle.startBattle(scan, true);
+                        if (player.getHealthLeft() > 0) {
                             findNewEquipment();
                         }
                     } else {
-                        getEvent(PC);
+                        getEvent();
                     }
-                    if (PC.getHealthLeft() <= 0) {
+                    if (player.getHealthLeft() <= 0) {
                         System.out.print("\n\n\t\tGAME\tOVER\n\n\n");
                         running = false;
                     }
@@ -250,7 +273,6 @@ public class Game {
         board.getTile(0,4).setType("Home");
 
         String choice;
-        int c;
 
         while(running){
             choice = scan.next();
@@ -258,27 +280,32 @@ public class Game {
                 System.out.println("Please enter a valid option");
                 choice = scan.next();
             }
-            c = Integer.parseInt(choice);
-            if(c == 1){
-                movePositions(board);
-            } else if (c == 2){
-                playerMenu();
-            } else if (c == 3) {
-                if (board.getCurrentTile().hidItem && !board.getCurrentTile().shop){
-                    PC.getInventory().addRandomItem();
-                    board.setHidItem();
-                    board.setClear();
-                } else if (board.getCurrentTile().shop){
-                    System.out.println("Upon examining the village, you discover a shop.");
-                    Shop shop = new LocalShop();
-                    shop.shop(PC);
-                    board.setClear();
-                } else {
-                    System.out.println("You examined the " + board.getCurrentTile().type + " but didn't find anything.");
-                    board.setClear();
-                }
-            } else {
-                board.displayBoard();
+
+            switch (choice) {
+                case "1":
+                    movePositions(board);
+                    break;
+                case "2":
+                    playerMenu();
+                    break;
+                case "3":
+                    if (board.getCurrentTile().hidItem && !board.getCurrentTile().shop) {
+                        player.getInventory().addRandomItem();
+                        board.setHidItem();
+                        board.setClear();
+                    } else if (board.getCurrentTile().shop) {
+                        System.out.println("Upon examining the village, you discover a shop.");
+                        Shop shop = new LocalShop();
+                        shop.shop();
+                        board.setClear();
+                    } else {
+                        System.out.println("You examined the " + board.getCurrentTile().type + " but didn't find anything.");
+                        board.setClear();
+                    }
+                    break;
+                default:
+                    board.displayBoard();
+                    break;
             }
             if (running){
                 System.out.println("Current Location: " + board.getCurrentTile().type + "\nEnter '1' to continue your adventure! Enter '2' to go to the menu. Enter '3' to examine" +
@@ -312,11 +339,11 @@ public class Game {
         choice = scan.next();
         if (choice.equalsIgnoreCase("W") && board.getCurPosY() != 0){
             board.setCurPosY(board.getCurPosY() - 1);
-        } else if (choice.equalsIgnoreCase("S") && board.getCurPosY() != 8){
+        } else if (choice.equalsIgnoreCase("S") && board.getCurPosY() != boardHeight - 1){
             board.setCurPosY(board.getCurPosY() + 1);
         } else if (choice.equalsIgnoreCase("A") && board.getCurPosX() != 0){
             board.setCurPosX(board.getCurPosX() - 1);
-        } else if (choice.equalsIgnoreCase("D") && board.getCurPosX() != 8){
+        } else if (choice.equalsIgnoreCase("D") && board.getCurPosX() != boardWidth - 1){
             board.setCurPosX(board.getCurPosX() + 1);
         } else if (!choice.equals("-1")) {
             System.out.println("Invalid input entered");
@@ -335,9 +362,9 @@ public class Game {
                     }
                 }
             } else if (board.getCurrentTile().enemy){
-                Battle batbat = new Battle();
-                batbat.startBattle(PC, scan, true);
-                if (PC.getHealthLeft() > 0) {
+                Battle battle = new Battle();
+                battle.startBattle(scan, true);
+                if (player.getHealthLeft() > 0) {
                     findNewEquipment();
                     board.setEnemy();
                     if (!board.getCurrentTile().hidItem){
@@ -345,7 +372,7 @@ public class Game {
                     }
                 }
             }
-            if (PC.getHealthLeft() <= 0) {
+            if (player.getHealthLeft() <= 0) {
                 System.out.print("\n\n\t\tGAME\tOVER\n\n\n");
                 running = false;
             }
@@ -373,9 +400,9 @@ public class Game {
                 double l = 3 + Math.random() * (5 - 3);
                 int j = (int) Math.round(l);
                 for (int i = 0; i < j; i++) {
-                    Battle batbat = new Battle();
-                    batbat.startBattle(PC, scan, false);
-                    if (PC.getHealthLeft() <= 0) {
+                    Battle battle = new Battle();
+                    battle.startBattle(scan, false);
+                    if (player.getHealthLeft() <= 0) {
                         System.out.print("You have failed the dungeon and lost.");
                         return false;
                     }
@@ -388,10 +415,10 @@ public class Game {
                             dun = scan.next();
                         }
                     } else {
-                        //boss fights would ocurr here
+                        //boss fights would occur here
                         System.out.println("You have completed the dungeon and found some Ultimate " +
                                 "Cheesy Garlic Bread at the end of it.");
-                        PC.getInventory().addNewItem(new UltimateCheesyGarlicBread(1));
+                        player.getInventory().addNewItem(new UltimateCheesyGarlicBread(1));
                         return true;
                     }
 
@@ -414,6 +441,7 @@ public class Game {
     private void runCustomMode(){
         //A mode that allows the user to tweak certain aspects of the game such as chance to find events, new equipment,
         //ect
+        //To-Do: Implement
     }
 
     /**
@@ -422,8 +450,8 @@ public class Game {
     private void playerMenu(){
         boolean menu;
         String choice;
-        int c;
         menu = true;
+
         while (menu){
             System.out.print("\nMenu:\n" +
                     " 1. Continue\n" +
@@ -439,45 +467,50 @@ public class Game {
                 System.out.println("Please enter a valid option");
                 choice = scan.next();
             }
-            c = Integer.parseInt(choice);
 
-            if (c == 1){
-                menu = false;
-            } else if (c == 2){
-                PC.getInventory().useItemsOutside(PC);
-            } else if (c == 3){
-                String i;
+            switch (choice) {
+                case "1":
+                    menu = false;
+                    break;
+                case "2":
+                    player.getInventory().useItemsOutside(player);
+                    break;
+                case "3":
+                    String i;
 
-                System.out.print("Name: " + PC.getName() + " Level: " + PC.getLevel() + "\nHealth: " + PC.getHealthLeft() + "/" + PC.getHealth() + " (+" + PC.getCanister().getHealthBoost() + " from " + PC.getCanister().getItemName() + ")\nAttack: "
-                        + PC.getAttack() + " (+" + PC.getEquipped().getDamage() + " from " + PC.getEquipped().getItemName() + ")\nDefense: " + PC.getDefense() + " (+" + PC.getWorn().getProtection() + " from " + PC.getWorn().getItemName() + ")\nSpeed: " + PC.getSpeed() + "\nMana: " + PC.getManaLeft()
-                        + "/" + PC.getMana() + "\nExperience: " + PC.getExp() + "/" + 100 * PC.getLevel() + " Gold: " + PC.getGold());
-                if(PC.hasPet){
-                    System.out.print("\n\nName: " + PC.getCurrentPet().getNickname() + "\nType: " + PC.getCurrentPet().getName() +
-                    "Level: " + PC.getCurrentPet().getLevel() + "\nHealth: " + PC.getCurrentPet().getHealthLeft() + "/" + PC.getCurrentPet().getHealth()
-                    + "\nAttack: " + PC.getCurrentPet().getAttack() + "\nDefense: " + PC.getCurrentPet().getDefense() +
-                    "\nSpeed: " + PC.getCurrentPet().getSpeed() + "\nExperience: " + PC.getCurrentPet().getExp() + "/" + 100 * PC.getCurrentPet().getLevel());
-                }
+                    System.out.print("Name: " + player.getName() + " Level: " + player.getLevel() + "\nHealth: " + player.getHealthLeft() + "/" + player.getHealth() + " (+" + player.getCanister().getHealthBoost() + " from " + player.getCanister().getItemName() + ")\nAttack: "
+                            + player.getAttack() + " (+" + player.getEquipped().getDamage() + " from " + player.getEquipped().getItemName() + ")\nDefense: " + player.getDefense() + " (+" + player.getWorn().getProtection() + " from " + player.getWorn().getItemName() + ")\nSpeed: " + player.getSpeed() + "\nMana: " + player.getManaLeft()
+                            + "/" + player.getMana() + "\nExperience: " + player.getExp() + "/" + 100 * player.getLevel() + " Gold: " + player.getGold());
+                    if (player.hasPet) {
+                        System.out.print("\n\nName: " + player.getCurrentPet().getNickname() + "\nType: " + player.getCurrentPet().getName() +
+                                "Level: " + player.getCurrentPet().getLevel() + "\nHealth: " + player.getCurrentPet().getHealthLeft() + "/" + player.getCurrentPet().getHealth()
+                                + "\nAttack: " + player.getCurrentPet().getAttack() + "\nDefense: " + player.getCurrentPet().getDefense() +
+                                "\nSpeed: " + player.getCurrentPet().getSpeed() + "\nExperience: " + player.getCurrentPet().getExp() + "/" + 100 * player.getCurrentPet().getLevel());
+                    }
 
-                System.out.println("\nEnter -1 to go back");
+                    System.out.println("\nEnter -1 to go back");
 
-                i = scan.next();
-                while (!i.equals("-1")){
-                    System.out.println("Please enter a valid number!");
                     i = scan.next();
-                }
-            } else if (c == 4){
-                menu = false;
-                running = false;
-            } else if (c == 5){
-                try{
-                    savePlayer();
-                } catch (FileNotFoundException blarg){
-                    System.out.println("Save failed");
-                }
-            } else {
-                System.out.println("See ya next time!.");
-                running = false;
-                System.exit(0);
+                    while (!i.equals("-1")) {
+                        System.out.println("Please enter a valid number!");
+                        i = scan.next();
+                    }
+                    break;
+                case "4":
+                    menu = false;
+                    running = false;
+                    break;
+                case "5":
+                    try {
+                        savePlayer();
+                    } catch (FileNotFoundException fnf) {
+                        System.out.println("Save failed");
+                    }
+                    break;
+                default:
+                    System.out.println("See ya next time!.");
+                    running = false;
+                    System.exit(0);
             }
         }
     }
@@ -511,13 +544,13 @@ public class Game {
         canister = in.nextInt();
 
         if (classType == 1){
-            this.PC = new Archer(playerName, level, gold, exp, equipped, worn, canister, currentHealth, currentMana);
+            player = new Archer(playerName, level, gold, exp, equipped, worn, canister, currentHealth, currentMana);
         } else if (classType == 2){
-            this.PC = new Knight(playerName, level, gold, exp, equipped, worn, canister, currentHealth, currentMana);
+            player = new Knight(playerName, level, gold, exp, equipped, worn, canister, currentHealth, currentMana);
         } else if (classType == 3){
-            this.PC = new Wizard(playerName, level, gold, exp, equipped, worn, canister, currentHealth, currentMana);
+            player = new Wizard(playerName, level, gold, exp, equipped, worn, canister, currentHealth, currentMana);
         } else if (classType == 4){
-            this.PC = new Hunter(playerName, level, gold, exp, equipped, worn, canister, currentHealth, currentMana);
+            player = new Hunter(playerName, level, gold, exp, equipped, worn, canister, currentHealth, currentMana);
         } else {
             throw new FileNotFoundException();
         }
@@ -527,7 +560,7 @@ public class Game {
             itemID = in.nextInt();
             quantity = in.nextInt();
             while (itemCount < quantity){
-                PC.getInventory().addNewItem(itemID, PC.getWeaponType());
+                player.getInventory().addNewItem(itemID, player.getWeaponType());
                 itemCount++;
             }
         }
@@ -536,7 +569,7 @@ public class Game {
 
         System.out.println("Enter '1' to continue your adventure! Enter '2' to go to the menu.");
         if (gameMode == 1){
-            runMosterMash();
+            runMonsterMash();
         } else if (gameMode == 2) {
             runAdventure();
         } else if  (gameMode == 3){
@@ -552,11 +585,11 @@ public class Game {
         String choice = scan.next();
 
         PrintWriter output = new PrintWriter(choice);
-        output.print(PC.getName() + "\n" + PC.getLevel() + "\n" + PC.getClassType() + "\n" + PC.getGold() + "\n" + gameMode
-        + "\n" + difficulty + "\n" + PC.getExp() + "\n" + PC.getHealthLeft() + "\n" + PC.getManaLeft() + "\n" + PC.getEquipped().getID()
-                + "\n" + PC.getWorn().getID() + "\n"+ PC.getCanister().getID() + "\n");
-        for(int i = 0; i < PC.getInventory().itemList.size(); i++){
-            output.print(PC.getInventory().itemList.get(i).getID() + " " + PC.getInventory().itemList.get(i).getStack() + "\n");
+        output.print(player.getName() + "\n" + player.getLevel() + "\n" + player.getClassType() + "\n" + player.getGold() + "\n" + gameMode
+        + "\n" + difficulty + "\n" + player.getExp() + "\n" + player.getHealthLeft() + "\n" + player.getManaLeft() + "\n" + player.getEquipped().getID()
+                + "\n" + player.getWorn().getID() + "\n"+ player.getCanister().getID() + "\n");
+        for(int i = 0; i < player.getInventory().itemList.size(); i++){
+            output.print(player.getInventory().itemList.get(i).getID() + " " + player.getInventory().itemList.get(i).getStack() + "\n");
         }
         output.flush();
         output.close();
@@ -577,9 +610,8 @@ public class Game {
     }
 
     /** Gets a random event during play
-     * @param PC the player character
      */
-    private void getEvent(Player PC){
+    private void getEvent(){
         double l = 1 + Math.random() * (9 - 1);
         int j = (int) Math.round(l);
 
@@ -587,51 +619,51 @@ public class Game {
             case 1:
                 System.out.println("You found a small village! In the village you find a local shop.");
                 Shop shop = new LocalShop();
-                shop.shop(PC);
+                shop.shop();
                 break;
             case 2:
                 System.out.println("You found a forest!");
-                PC.getInventory().addRandomItem();
+                player.getInventory().addRandomItem();
                 break;
             case 3:
                 System.out.println("You found a cave!");
-                PC.getInventory().addRandomItem();
+                player.getInventory().addRandomItem();
                 break;
             case 4:
                 System.out.println("You found a river!");
-                PC.getInventory().addRandomItem();
+                player.getInventory().addRandomItem();
                 break;
             case 5:
                 System.out.println("You found a roadside inn!\n Your health and mana were fully restored after a nights rest.");
-                PC.setHealthLeft(PC.getHealth());
-                PC.setManaLeft(PC.getMana());
+                player.setHealthLeft(player.getHealth());
+                player.setManaLeft(player.getMana());
                 break;
             case 6:
                 System.out.println("You found a lake!");
-                PC.getInventory().addRandomItem();
+                player.getInventory().addRandomItem();
                 break;
             case 7:
-                if (PC.getHealthLeft() > 0){
+                if (player.getHealthLeft() > 0){
                     System.out.println("You fell into a pit of spikes someone set. Luckily, it was not fatal, but you took 5 damage");
                 } else {
-                    System.out.println("You fell into a pit of spikes someone set. Unfortunatly, it was fatal.");
+                    System.out.println("You fell into a pit of spikes someone set. Unfortunately, it was fatal.");
                 }
-                PC.setHealthLeft(PC.getHealthLeft() - 5);
+                player.setHealthLeft(player.getHealthLeft() - 5);
                 break;
             case 8:
                 runDungeon();
                 break;
             case 9:
-                System.out.println("It began to rain garlic bread, and you managed to pick some up before it hit the ground!");
+                System.out.println("It began to rain garlic bread, and you managed to snag some out of the air before it hit the ground!");
                 double k = 1 + Math.random() * (2);
                 int f = (int) Math.round(k);
-                PC.getInventory().addNewItem(new GarlicBread(f));
+                player.getInventory().addNewItem(new GarlicBread(f));
                 break;
         }
     }
 
     /**
-     * Randomlly generates equipment items when needed
+     * Randomly generates equipment items when needed
      **/
     private void findNewEquipment(){
         int type = 0;
@@ -644,11 +676,11 @@ public class Game {
         }
         if (type != 0) {
             int amount, id;
-            if (PC.getLevel() < 10) {
+            if (player.getLevel() < 10) {
                 amount = 1;
-            } else if (PC.getLevel() < 25) {
+            } else if (player.getLevel() < 25) {
                 amount = 3;
-            } else if (PC.getLevel() < 50) {
+            } else if (player.getLevel() < 50) {
                 amount = 5;
             } else {
                 amount = 6;
@@ -657,15 +689,15 @@ public class Game {
             if (type == 1){
                 Item item = weaponList()[id];
                 System.out.println("You found a " + item.getItemName());
-                PC.getInventory().addNewItem(item);
+                player.getInventory().addNewItem(item);
             } else if (type == 2) {
                 Item item = armorList()[id];
                 System.out.println("You found a " + item.getItemName());
-                PC.getInventory().addNewItem(item);
+                player.getInventory().addNewItem(item);
             } else {
                 Item item = canisterList()[id];
                 System.out.println("You found a " + item.getItemName());
-                PC.getInventory().addNewItem(item);
+                player.getInventory().addNewItem(item);
             }
 
         }
@@ -675,7 +707,7 @@ public class Game {
      * A list of all weapons in the game
      **/
     private Weapon[] weaponList(){
-        return new Weapon[]{new Travelers(1,PC.getWeaponType()), new Standard(1,PC.getWeaponType()), new Soldiers(1,PC.getWeaponType()), new Warriors(1,PC.getWeaponType()), new Guardians(1,PC.getWeaponType()), new Heros(1,PC.getWeaponType()), new Legends(1,PC.getWeaponType())};
+        return new Weapon[]{new Travelers(1,player.getWeaponType()), new Standard(1,player.getWeaponType()), new Soldiers(1,player.getWeaponType()), new Warriors(1,player.getWeaponType()), new Guardians(1,player.getWeaponType()), new Heros(1,player.getWeaponType()), new Legends(1,player.getWeaponType())};
     }
 
     /**
